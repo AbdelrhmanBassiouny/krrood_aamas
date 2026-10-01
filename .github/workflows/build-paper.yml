@@ -1,0 +1,78 @@
+name: Build paper
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "krrood_aamas_2027/**"
+      - ".github/workflows/build-paper.yml"
+  pull_request:
+    paths:
+      - "krrood_aamas_2027/**"
+      - ".github/workflows/build-paper.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: krrood_aamas_2027
+
+      - name: Rename output for publishing
+        run: cp krrood_aamas_2027/main.pdf krrood_aamas_2027/paper.pdf
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-pdf
+          path: krrood_aamas_2027/paper.pdf
+
+      - name: Assemble Pages site
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          mkdir -p site
+          cp krrood_aamas_2027/paper.pdf site/paper.pdf
+          cat > site/index.html <<'EOF'
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8" />
+            <title>KRROOD AAMAS 2027 Paper</title>
+            <style>
+              html, body { margin: 0; height: 100%; }
+              iframe { border: none; width: 100%; height: 100%; }
+            </style>
+          </head>
+          <body>
+            <iframe src="paper.pdf" title="Paper PDF"></iframe>
+          </body>
+          </html>
+          EOF
+
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

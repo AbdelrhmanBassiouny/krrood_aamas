@@ -1,0 +1,303 @@
+%%%% main.tex
+
+\typeout{IJCAI--ECAI 26 Paper on KRROOD}
+
+\documentclass{article}
+\pdfpagewidth=8.5in
+\pdfpageheight=11in
+
+\usepackage{ijcai26}
+
+% Use the postscript times font!
+\usepackage{times}
+\usepackage{soul}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[small]{caption}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[switch]{lineno}
+\usepackage[nolist]{acronym}
+\usepackage{xcolor}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{inconsolata} % bold monospace works well
+\usepackage{comment}
+% Comment out this line in the camera-ready submission
+\linenumbers
+
+\urlstyle{same}
+
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO: #1}}}
+
+% PDF Info Is REQUIRED.
+\pdfinfo{
+/TemplateVersion (IJCAI.2026.0)
+}
+
+\title{Knowledge Representation and Reasoning with Object Oriented Design}
+
+\author{
+Abdelrhman Bassiouny\and
+Tom Schierenbeck\and
+Sorin Arion\and
+Giang Nguyen\and
+Naren Vasantakumaar\and
+Benjamin Alt\And
+Michael Beetz\\
+\affiliations
+AICOR Institute for Artificial Intelligence\\
+University of Bremen\\
+Bremen, Germany\\
+\emails
+bassioun@uni-bremen.de,
+tom\_sch@uni-bremen.de,
+sorin@uni-bremen.de,
+hoanggia@uni-bremen.de,
+naren@uni-bremen.de,
+benjamin.alt@uni-bremen.de,
+beetz@cs.uni-bremen.de
+}
+
+\begin{document}
+
+% Define acronyms
+\newacro{krr}[KR\&R]{knowledge representation and reasoning}
+\newacro{eql}[EQL]{Entity Query Language}
+\newacro{oom}[OOM]{object-ontological mapping}
+\newacro{orm}[ORM]{object-relational mapping}
+\newacro{oop}[OOP]{object-oriented programming}
+\newacro{ood}[OOD]{object-oriented design}
+\newacro{vr}[VR]{virtual reality}
+\newacro{rdr}[RDR]{Ripple Down Rule}
+\newacro{scrdr}[SCRDR]{Single Class Ripple Down Rules}
+\newacro{mcrdr}[SCRDR]{Multi-Class Ripple Down Rules}
+\newacro{grdr}[GRDR]{General Ripple Down Rules}
+\newacro{cbr}[CBR]{case-based reasoning}
+\newacro{krrood}[KRROOD]{Knowledge Representation and Reasoning through Object Oriented Design}
+\newacro{dl}[DL]{description logic}
+\newacro{ai}[AI]{artificial intelligence}
+
+
+\lstdefinestyle{clean}{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,     % Python keywords
+  stringstyle=\color{orange},
+  commentstyle=\color{gray}\itshape,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  frame=single,
+  breaklines=true,
+  tabsize=2
+}
+
+% INTRO V1
+
+\section{Introduction}
+\label{sec:introduction}
+
+Intelligent autonomous systems can benefit from internal models to interpret their environment, reason about task requirements, and select actions that robustly achieve goals. The \ac{krr} paradigm leverages explicit, interpretable structures together with algorithms that support generalizable inference across tasks and domains. Decades of work in logic-based \ac{krr} show that such explicit models make problem solving tractable by enabling abstraction, modularity, and explanation at the knowledge level \cite{newell1982knowledge}. For roboticists and domain experts deploying robots in real-world settings and the practical adoption of \ac{krr} depends not only on representational adequacy but on the seamless integration of knowledge structures with perception, planning, control, and application-specific software architectures.
+
+In contemporary robotics applications, this integration gap remains a major obstacle. Domain-specific software is typically engineered using object-oriented paradigms that support data validation, modularity, and scalable development practices, whereas \ac{krr} systems often rely on external ontologies, specialized languages, or black-box reasoners that are difficult to maintain or extend in production environments. Domain-oriented applications require representational structures that align with object-oriented patterns \cite{ledvinka2020comparison}. Yet, despite an extensive ecosystem of ontology tooling, mainstream developers remain reluctant to embed ontologies directly into their codebases due to poor extensibility, limited performance due to computational complexity, and limited tool support \cite{baset2018object,abicht2023owl}. This fragmentation is exacerbated by the division between declarative knowledge languages and imperative programming environments, which forces developers to loosely couple two representational systems with mismatched assumptions about completeness, openness, and execution models \cite{alcaraz2012towards}.
+
+Our approach begins from a usability- and extensibility-first perspective. In contrast to traditional \ac{krr} pipelines that attach generic reasoners to external knowledge descriptions, we treat knowledge representation as a first-class programming abstraction and pursue a unified computational realization of knowledge-level constructs within a symbol-level object-oriented architecture. This reflects the tradition initiated by Newell, who characterized knowledge-level entities as implemented at the symbol level; in our framework, these two levels coincide in a single inspectable computational system. Likewise, our design draws on the lineage of frame-based systems \cite{minsky1974framework}, Schank and Abelson's scripts \cite{schank1977scripts}, the FRL \cite{roberts1977frl} and KRL languages \cite{bobrow1977overview}, actor-based object systems \cite{hewitt2010actor}, and structured commonsense representations in naïve physics \cite{hayes1985second}. These traditions converge on the idea that reasoning should operate over structured objects with inheritance, slots, and procedural attachment, naturally aligning with modern object-oriented programming.
+
+At the same time, ontology-based applications combine multiple representational languages for terminological, assertional, spatial, and temporal reasoning \cite{haarslev2012racerpro}. Our framework adopts this insight, implementing all representational layers using a common object-oriented design philosophy and a shared Python-native syntax. This ensures semantic interoperability, full IDE support, end-to-end debugging of the complete \ac{krr} stack and natural integration with perception, planning, and control systems.
+
+This paper introduces \ac{krrood}, a \ac{krr} framework designed for robotics and domain-driven intelligent systems. It contributes:
+
+\begin{enumerate}
+\item An object-oriented, Python-native knowledge representation that treats domain entities as structured objects directly accessible to application code.
+
+\item ORMatic, a persistence layer that transparently stores, indexes, and retrieves knowledge objects.
+
+\item \ac{eql}, a query language supporting forward and backward chaining over Python-defined structures.
+
+\item \acp{rdr} for conflict resolution and incremental construction of extensible rule sets.
+\end{enumerate}
+
+We validate the reasoning capabilities and performance of \ac{krrood} on the OWL2Bench benchmark as well as on a human-robot task learning scenario. \ac{krrood} is fully open-source\footnote{Source code: \url{https://anonymous.4open.science/r/cognitive_robot_abstract_machine}} and integrated into the CRAM robot cognitive architecture, providing foundational capabilities for hybrid physical \ac{ai}.
+
+
+\section{ORMatic}
+\label{sec:ormatic}
+
+\ac{krr} applications require robust persistence solutions to manage complex state and domain knowledge for long-lived applications. Modern Python development has seen the rise of dataclasses as a primary means of representing structured data, providing the necessary features for many \ac{krr} tasks. However, developers often face significant friction when integrating these program-native structures with database systems. To maintain development velocity, there is a clear need for tools that bridge the gap between application logic and storage without requiring extensive boilerplate code. \Acf{orm} represents a mature technological paradigm that addresses these integration challenges.
+
+% INTRO V2
+
+\section{Introduction}
+\label{sec:introduction}
+
+\Acf{oop} has become the most common programming paradigm in modern software development, used to construct enterprise-scale applications as well as cyberphysical systems such as robots. While these systems excel at modularity and scalability, there is significant untapped potential in unifying the structured nature of \ac{oop} with explicit reasoning capabilities. Currently, intelligent autonomous systems require internal models to interpret their environments and select robust actions. However a major integration gap exists between domain-specific software engineered with \ac{oop} and traditional \acf{krr} systems.
+
+The problem is that \ac{krr} systems typically rely on external ontologies and specialized languages like OWL, SPARQL or Prolog, which are mismatched with the imperative environments where application logic resides. This makes it challenging to include reasoning capabilities into \ac{oop} codebases, as developers must often maintain two separate representational systems that do not share the same execution models, or tooling ecosystem. This fragmentation is particularly relevant in the AI community, where Python has become an important language for integrating perception, planning, and learning APIs.
+
+This paper introduces \ac{krrood}, a framework designed to make this integration easier by treating knowledge as a first-class programming abstraction. \ac{krrood} utilizes Python dataclasses for knowledge definition, a design choice that draws on the lineage of frame-based systems where reasoning operates over structured objects with inheritance and slots. This approach is promising because it aligns \ac{krr} with standard software workflows, ensuring full IDE support, enables the entire Python ecosystem for \ac{krr} applications and end-to-end debugging. \ac{krrood} is a composition of these four components:
+
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/overview.pdf}
+  \caption{System architecture. Caption and colors TODO.}
+  \label{fig:arch}
+\end{figure}
+
+% TODO: talk about making use of domain specific logic and allowing for procedural programs to be part of the logic and querying system, rules. This allows for hybrid reasoning. Thats more than just normal integration since we gain emergent effects from each other benefits? Use the word paradigm shift.
+
+\begin{enumerate}
+\item An object-oriented, Python-native knowledge representation that treats domain entities as structured objects directly accessible to application code.
+
+\item ORMatic, a persistence layer that transparently stores, indexes, and retrieves knowledge objects.
+
+\item \ac{eql}, a query language supporting forward and backward chaining over Python-defined structures.
+
+\item \acp{rdr} for conflict resolution and incremental construction of extensible rule sets.
+\end{enumerate}
+
+KRROOD is not only an integration framework for these components, but represents a pradigm shift from treating knowledge as an external resource to a level where the program and its state become the knowledgebase.
+
+We conduct experiments using both the OWL2Bench benchmark and human-robot task learning scenarios to validate that this unified approach maintains high performance while providing the rich, expressive reasoning required for real-world autonomy.
+We demonstrate the practical utility of KRROOD through its integration into the CRAM robot cognitive architecture. In our robotics experiments, KRROOD persists the robot’s entire world model—including kinematics and execution traces—directly as Python objects. For instance, a robot can use its own kinematics and dynamics computations as part of a reasoning query to determine if its hands are sufficiently dexterous for a specific task. 
+
+\ac{krrood} is fully open-source\footnote{Source code: \url{https://anonymous.4open.science/r/cognitive_robot_abstract_machine}} and integrated into the CRAM robot cognitive architecture, providing foundational capabilities for hybrid physical \ac{ai}.
+
+
+\appendix 
+
+%% The file named.bst is a bibliography style file for BibTeX 0.99c
+\bibliographystyle{named}
+\bibliography{bibliography}
+
+\appendix
+
+
+\section{EQL Core Grammar}
+\label{app:eql_grammar}
+
+\subsection{Core Grammar}
+
+This section defines the syntax of the query language.  
+The surface language consists of two layers:
+
+\begin{enumerate}
+\item A \textbf{core language}, based on the constructs \texttt{entity} and \texttt{set\_of},  
+   which form the minimal semantic kernel.
+\item A \textbf{macro layer}, providing higher-level forms such as \texttt{match}, \texttt{select},
+   \texttt{a}, and \texttt{the}, which expand deterministically into core queries.
+\end{enumerate}
+
+The grammar below uses standard BNF notation of the form  
+\texttt{<\#Name> ::= <Definition>}.
+
+The core query language consists of \emph{entity queries} and \emph{set-of queries}, 
+each containing a list of conditions.  
+Conditions include predicates, comparisons, indexing expressions, attribute access,
+Boolean disjunction, quantifiers, and flattening of nested iterables.
+
+\newcommand{\bnfrule}[2]{%
+  \par\noindent\hspace{1em}\texttt{\textless{}#1\textgreater{} ::= #2}
+}
+
+% --- Core query forms ---
+\bnfrule{Query}{\textless{}EntityQuery\textgreater{} | \textless{}SetOfQuery\textgreater{}}
+
+\bnfrule{EntityQuery}{"entity" "(" \textless{}VarLike\textgreater{} "," \textless{}CondList\textgreater{} ")"}
+
+\bnfrule{SetOfQuery}{"set\_of" "(" "(" \textless{}VarList\textgreater{} ")" "," \textless{}CondList\textgreater{} ")"}
+
+\bnfrule{Quantifier}{"an" | "the"}
+
+% --- Variables ---
+\bnfrule{VarList}{\textless{}VarLike\textgreater{} | \textless{}VarLike\textgreater{} "," \textless{}VarList\textgreater{}}
+
+% --- Conditions ---
+\bnfrule{CondList}{\textless{}Condition\textgreater{} | \textless{}Condition\textgreater{} "," \textless{}CondList\textgreater{}}
+
+\bnfrule{Condition}{\textless{}Predicate\textgreater{} | \textless{}Comparison\textgreater{} | \textless{}AndExpr\textgreater{} | \textless{}OrExpr\textgreater{} | \textless{}NotExpr\textgreater{} | \textless{}ExistsCond\textgreater{} | \textless{}ForAllCond\textgreater{} | \textless{}Expr\textgreater{}}
+
+\bnfrule{ExistsCond}{"exists" "(" \textless{}VarLike\textgreater{} "," \textless{}CondList\textgreater{} ")"}
+
+\bnfrule{ForAllCond}{"for\_all" "(" \textless{}VarLike\textgreater{} "," \textless{}CondList\textgreater{} ")"}
+
+\bnfrule{Predicate}{\textless{}Ident\textgreater{} "(" \textless{}ArgList\textgreater{} ")"}
+
+\bnfrule{ArgList}{\textless{}VarLike\textgreater{} | \textless{}VarLike\textgreater{} "," \textless{}ArgList\textgreater{}}
+
+% --- Comparisons & logical ---
+\bnfrule{Comparison}{\textless{}VarLike\textgreater{} \textless{}ComparisonOperation\textgreater{} \textless{}VarLike\textgreater{}}
+
+\bnfrule{ComparisonOperation}{== | \textasciitilde{}= | >= | <= | > | < | contains(\textless{}VarLike\textgreater{}, \textless{}VarLike\textgreater{}) | in(\textless{}VarLike\textgreater{}, \textless{}VarLike\textgreater{})}
+
+\bnfrule{OrExpr}{"or" "(" \textless{}CondList\textgreater{} ")"}
+
+\bnfrule{AndExpr}{"and" "(" \textless{}CondList\textgreater{} ")"}
+
+\bnfrule{NotExpr}{not\_"("\textless{}Condition\textgreater{}")"}
+
+% --- Expressions ---
+\bnfrule{VarLike}{\textless{}Var\textgreater{} | \textless{}AttributeAccess\textgreater{} | \textless{}Indexing\textgreater{} | \textless{}FlattenExpr\textgreater{} | \textless{}Literal\textgreater{}}
+
+\bnfrule{FlattenExpr}{"flatten" "(" \textless{}VarLike\textgreater{} ")"}
+
+\bnfrule{Indexing}{\textless{}VarLike\textgreater{} "[" \textless{}Literal\textgreater{} "]"}
+
+% --- Attribute access ---
+\bnfrule{AttributeAccess}{\textless{}Ident\textgreater{} "." \textless{}AttributeAccess\textgreater{} | \textless{}Ident\textgreater{}}
+
+% --- Terminals ---
+\bnfrule{Var}{\textless{}Ident\textgreater{}}
+
+\bnfrule{Ident}{letter \{ letter | digit | "\_" \}}
+
+\bnfrule{Literal}{string | number | individual | Type | \textless{}LiteralList\textgreater{}}
+
+\bnfrule{LiteralList}{\textless{}Literal\textgreater{} | \textless{}Literal\textgreater{} "," \textless{}LiteralList\textgreater{}}
+
+\subsection{Macro Layer: Derived Query Forms}
+
+\ac{eql} also provides macros as a syntactic sugar to simplify writing queries for complex patterns.   
+Macros do \emph{not} introduce new semantics; they expand to core-language constructs
+before evaluation. This allows the user to focus primarily on the query's logic without thinking about how the data structures look.
+
+For example, let ``\texttt{x}'' be a fresh variable if not explicitly provided.
+
+% Match Expressions
+
+\texttt{match(Type)(k\textsubscript{1}=v\textsubscript{1}, …, k\textsubscript{n}=v\textsubscript{n})} binds a fresh variable and asserts that its type matches the type \texttt{Type}.  
+It expands to an \texttt{entity} query:
+
+\bnfrule{Match}{"match" "(" \textless{}Type\textgreater{} ")" "(" \textless{}Kwargs\textgreater{} ")" \(\Rightarrow\) "entity" "(" x "," \textless{}HasType\textgreater{}(x, Type), \textless{}KwargsAsConds\textgreater{} ")"}
+
+Here \texttt{<KwargsAsConds>} denotes rewriting \texttt{k=v} into one of \texttt{x.k == v}, \texttt{contains(x.k, v)}, or \texttt{in(x.k, v)}. It could also include \texttt{flatten(v)} and/or \texttt{flatten(x.k)} depending on whether \texttt{x.k} and \texttt{v} are iterables. Meanwhile, \texttt{<HasType>} is a built-in predicate that checks if the type of x matches the specified \texttt{Type}.
+
+% Select Expressions
+
+\texttt{select(Type)(k\textsubscript{1}=v\textsubscript{1}, …, k\textsubscript{n}=v\textsubscript{n})} behaves like \texttt{match(Type)}, but if multiple of it is used in the same query, a \texttt{set\_of} query will be produced, returning the selected variables.
+
+\bnfrule{Select}{"select" "(" \textless{}Type\textgreater{} ")" "(" \textless{}Kwargs\textgreater{} ")" \(\Rightarrow\) "set\_of" "(" "(" x ")" "," \textless{}HasType\textgreater{}(x, Type), \textless{}KwargsAsConds\textgreater{} ")"}
+
+\subsection{Quantifiers}
+
+Queries are quantified by either \texttt{a/an} or \texttt{the}. \texttt{a/an} can take also take quantification constraints. The following formalizes their definitions:
+
+\bnfrule{QuantifiedQuery}{"an" "(" \textless{}Query\textgreater{} "," \textless{}QuantificationConstraint\textgreater{} ")" | "the" "(" \textless{}Query\textgreater{} ")"}
+
+\bnfrule{QuantificationConstraint}{"Range" "(" number, number ")" | "AtLeast" "(" number ")" | "AtMost" "(" number ")" | "Exactly" "(" number ")"}
+
+Where ``\texttt{the}'' is equivalent to ``\texttt{an}'' with the constraint ``\texttt{Exactly(1)}'' which means there should only be one possible answer for the query.
+
+
+\end{document}
+
+
