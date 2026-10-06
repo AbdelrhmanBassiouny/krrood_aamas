@@ -8,6 +8,10 @@
 \usepackage{listings}
 \usepackage{comment}
 \usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\newcommand{\tbd}{\textcolor{red}{\textbf{[TBD]}}}
+\setlength{\emergencystretch}{2em}
 
 %%% Copyright block: Creative Commons Attribution International 4.0 License
 \makeatletter
@@ -87,34 +91,16 @@ on Autonomous Agents and Multiagent Systems (AAMAS 2027)}{3--7 May 2027}
 \email{beetz@cs.uni-bremen.de}
 
 \begin{abstract}
-This paper introduces KRROOD, a framework designed to bridge the integration gap between modern software engineering and knowledge representation and reasoning (KR\&R) systems. While object-oriented programming (OOP) is the standard for developing complex applications, existing KR\&R frameworks often rely on external ontologies and specialized languages that are difficult to integrate with imperative code. KRROOD addresses this by treating knowledge as a first-class programming abstraction using native class structures, bridging the gap between the logic programming and OOP paradigms. We evaluate the system on the OWL2Bench benchmark and a human-robot task learning scenario. Experimental results show that KRROOD achieves strong performance while supporting the expressive reasoning required for real-world autonomous systems.
+Robots and other autonomous agents are built on cognitive architectures, whose modules for perception, planning, control and learning are object-oriented programs that act on shared knowledge. When this knowledge is modeled in an ontology, it lives in a second representation, which an external reasoner processes under different assumptions about completeness, naming and consistency, and which must be kept synchronized with the program. We present KRROOD, a framework in which the agent's object-oriented program is its knowledge base: classes and property descriptors form the terminology, live objects form the assertions, and property rules fire when facts are asserted. The Entity Query Language (EQL) queries the program with a formal, closed-world semantics. Its predicates and functions are the agent's own procedures, so reasoning is not limited to ontological inference. Ontomatic compiles OWL~2~RL ontologies into such programs by realizing a subset of the OWL~2~RL inference rules, so that positive queries return only answers entailed by the ontology. ORMatic maps the same classes to a relational database that serves as the agent's long-term memory, and translates a subset of EQL to SQL. On the OWL2Bench benchmark, KRROOD returns the same answers as an OWL~2~RL reasoner on all 18 queries of the RL profile, and its knowledge base matches the reasoner's class memberships exactly. We also compare loading and reasoning time, memory use and query time with established OWL and RDF systems.
 \end{abstract}
 
-\keywords{Knowledge Representation and Reasoning; Object-Oriented Programming; Query Languages; Ripple Down Rules; Ontologies; Robotics}
+\keywords{Knowledge Representation and Reasoning; Object-Oriented Programming; Query Languages; Ontologies; OWL 2 RL; Cognitive Architectures; Robotics}
 
 \begin{document}
 
 % Define acronyms
-\newacro{krr}[KR\&R]{knowledge representation and reasoning}
 \newacro{eql}[EQL]{Entity Query Language}
-\newacro{oom}[OOM]{object-ontological mapping}
-\newacro{orm}[ORM]{object-relational mapping}
-\newacro{oop}[OOP]{object-oriented programming}
-\newacro{ood}[OOD]{object-oriented design}
-\newacro{vr}[VR]{virtual reality}
-\newacro{rdr}[RDR]{Ripple Down Rule}
-\newacro{scrdr}[SCRDR]{Single Class Ripple Down Rules}
-\newacro{mcrdr}[SCRDR]{Multi-Class Ripple Down Rules}
-\newacro{grdr}[GRDR]{General Ripple Down Rules}
-\newacro{cbr}[CBR]{case-based reasoning}
-\newacro{krrood}[KRROOD]{Knowledge Representation and Reasoning with Object Oriented Design}
-\newacro{dl}[DL]{description logic}
-\newacro{ai}[AI]{artificial intelligence}
-\newacro{dao}[DAO]{Data Access Object}
-\newacro{fol}[FOL]{First Order Logic}
-\newacro{owl}[OWL]{Web Ontology Language}
-\newacro{rdf}[RDF]{Resource Description Framework}
-\newacro{ml}[ML]{machine learning}
+\newacro{krrood}[KRROOD]{Knowledge Representation and Reasoning with Object-Oriented Design}
 
 \lstdefinestyle{clean}{
   language=Python,
@@ -130,481 +116,404 @@ This paper introduces KRROOD, a framework designed to bridge the integration gap
 }
 
 
+\lstdefinestyle{eql}{
+  language=Python,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue!70!black}\bfseries,
+  stringstyle=\color{orange!70!black},
+  commentstyle=\color{gray}\itshape,
+  emph={an,a,the,entity,set_of,variable,flat_variable,contains,inference,where,not_,for_all,exists},
+  emphstyle=\color{violet!80!black}\bfseries,
+  emph={[2]Person,Student,Course,Organization,Interest,Thing,Role,T20CricketFan,SportsFan,Likes,Loves,IsCrazyAbout,HasSameHomeTownWith,PropertyDescriptor,TransitiveProperty,SymmetricProperty,Proxy},
+  emphstyle={[2]\color{teal!70!black}},
+  numbers=none,
+  frame=tb,
+  framerule=0.4pt,
+  aboveskip=6pt,
+  belowskip=4pt,
+  xleftmargin=2pt,
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  tabsize=4
+}
+
 \maketitle
 
 \section{Introduction}
 \label{sec:introduction}
 
-Intelligent autonomous systems benefit from internal models to interpret their environment, reason about task requirements, and select actions that robustly achieve goals. The \acf{krr} paradigm provides interpretable structures and inference mechanisms that support generalization across tasks and domains. Decades of research demonstrate that explicit knowledge models enable tractable problem solving through abstraction, modularity and explanation at the knowledge level \cite{delgrande2024current,newell1982knowledge}. Yet for roboticists and domain experts deploying intelligent systems in real-world settings, the practical adoption of \ac{krr} depends not only on representational adequacy but on the seamless integration of knowledge structures with perception, planning, control and application logic \cite{toberg2024commonsense}.
+Robots and other autonomous agents are built on cognitive architectures, which organize perception, planning, control and learning into modules that share knowledge about the world and the task~\cite{langley2009cognitive,kotseruba2020cognitive}. In robotics, ontologies in the Web Ontology Language (OWL) are a common way to make this knowledge explicit, shareable and open to sound inference~\cite{olivares2019review,Tenorth2013,delgrande2024current}. The modules themselves, however, are object-oriented programs: perception produces objects, and planners and controllers manipulate them~\cite{beetz2025robot}. For the developer of such an agent, the practical value of an ontology therefore depends on how well it integrates with the agent's \emph{application code}, the program that perceives, decides and acts~\cite{toberg2024commonsense}.
 
-This integration challenge exposes a gap between two programming paradigms. The dominant paradigm for building complex software systems is \acf{oop}, which provides modularity, data validation, and scalable development practices. In contrast, \ac{krr} systems typically rely on logic programming, and operate under fundamentally different assumptions about completeness, openness and execution semantics. As a consequence, developers must maintain two separate representational systems that do not share execution models or tooling ecosystems \cite{ledvinka2020comparison}, leading to an object-ontological equivalent of the Object-Relational Impedance Mismatch \cite{ireland2015exposing}. This mismatch is particularly acute in Python-based \ac{ai} systems, where perception, planning, and learning APIs increasingly converge, but no actively maintained \ac{krr} framework provides native, object-oriented integration of both knowledge representation and advanced reasoning capabilities \cite{abicht2023owl}.
+Today this integration means maintaining two representations of the same world: the objects of the program and the individuals of the ontology. The two differ in three fundamental assumptions. OWL assumes an open world, in which a missing fact is unknown, whereas programs and databases treat their data as complete~\cite{Reiter1978}. OWL does not assume that different names denote different individuals, whereas distinct objects are distinct. And in OWL an inconsistency makes every statement entailed, whereas a program treats a violated constraint as an error to be handled~\cite{motik2009bridging}. The developer has to translate between the two representations, invoke a reasoner on an exported copy of the data and map the results back. This is an object-ontological counterpart of the object-relational impedance mismatch~\cite{ireland2015exposing,ledvinka2020comparison}.
+
+A second requirement comes from the agent itself. Much of what a robot needs to know is not stated but computed from its own data. Whether an object is on a table, for instance, follows from the poses that perception estimates. KnowRob therefore attaches procedures, called computables, to the predicates of its knowledge base~\cite{Tenorth2013}. A knowledge representation for such agents has to let reasoning call the agent's own code.
+
+This paper argues that ontological knowledge can instead be \emph{compiled into the agent's program}, so that the program itself becomes the knowledge base and its procedures take part in reasoning. We present \acf{krrood}, a Python framework built on this idea (Figure~\ref{fig:arch}). Classes and property descriptors form the terminological part of the knowledge base (the TBox) and the live objects its assertional part (the ABox). Property rules fire at the moment application code asserts a fact. A query language with a formal, closed-world semantics reasons over the objects directly, and its predicates and functions are ordinary Python callables, so reasoning in \ac{krrood} is not limited to ontological inference. A query is a symbolic expression that is separate from its evaluation: by default it is evaluated over the objects in memory, and a subset of \ac{eql} can also be translated to SQL and evaluated by a database. We compare \ac{krrood} with OWL~2~RL reasoners to benchmark its ontological reasoning and to position it in the literature, not because OWL~2~RL bounds what it can express. The argument applies to any object-oriented language. We use Python because it is the common language of robotics and machine learning, and because its operator overloading and introspection allow a query language to be embedded in it. We make five contributions:
+
+\begin{enumerate}
+\item An object-oriented knowledge representation with a formal reading as a knowledge base, in which properties are first-class descriptors that carry their logical characteristics, multiple classification is handled by roles, and predicates are computed by the agent's own code (Section~\ref{sec:kr}).
+\item The \acf{eql}, a query language embedded in Python, with a formal semantics that places it in known complexity classes, and in which class axioms and rules are ordinary query conditions (Section~\ref{sec:eql}).
+\item Ontomatic, which compiles OWL~2~RL ontologies into such programs by realizing a subset of the OWL~2~RL inference rules, so that positive queries return only answers entailed by the ontology (Section~\ref{sec:ontomatic}).
+\item ORMatic, which generates a relational database schema from the same classes as the agent's long-term memory and translates a subset of \ac{eql} to SQL, so that queries over stored knowledge can use the optimizations of a database system (Section~\ref{sec:ormatic}).
+\item An evaluation on the OWL2Bench benchmark~\cite{singh2020owl2bench} that compares answers, loading and reasoning time, memory use and query time with established OWL and RDF systems (Section~\ref{sec:experiments}).
+\end{enumerate}
+
+Source code and experiment scripts are provided as anonymized supplementary material.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{figures/overview.pdf}
-  \caption{The \acs{krrood} framework provides representations and tooling for native, object-oriented \acs{krr} in Python.}
+  \caption{\acs{krrood} overview. The agent's program is its knowledge base: classes and objects form the working memory, Ontomatic compiles OWL ontologies into it, \acs{eql} queries it and calls the agent's procedures as predicates, and ORMatic stores it as long-term memory, which \acs{eql} queries through SQL.}
   \label{fig:arch}
 \end{figure}
-
-Beyond being an engineering inconvenience, this mismatch reflects a deeper tension in knowledge systems research. Frames \cite{minsky1974framework}, scripts \cite{schank1977scripts}, and languages such as FRL \cite{roberts1977frl} and KRL \cite{bobrow1977overview} were designed to support reasoning over structured objects. Modern \ac{oop} inherits this tradition but has diverged from modern \ac{krr} tooling, which has come to increasingly rely on external reasoners and \ac{dl} formalisms that treat knowledge as a resource separate from application logic \cite{buoncompagni2024owloop}.
-
-This paper argues that bridging this paradigm gap requires treating knowledge as a \emph{first-class programming abstraction} rather than an external resource. It introduces \acf{krrood}, a framework that unifies \ac{krr} capabilities within an \ac{oop} Python architecture and makes expressive \ac{krr} accessible within standard software development workflows. We make five core contributions:
-
-\begin{enumerate}
-\item An interpretation of Python datastructures as knowledge representation that treats domain entities as structured objects directly accessible to application code.
-
-\item \acf{eql}, a declarative querying language for Python data structures that extends upon well-established conjunctive query languages while remaining tractable and decidable.
-
-\item \Acp{rdr} for consistent incremental knowledge update and maintenance through expert interaction during system runtime.
-
-\item ORMatic, a persistence layer that transparently stores, indexes, and retrieves knowledge objects while maintaining alignment between domain models and data schemas.
-
-\item Ontomatic, a tool for automatic migration of knowledge represented in the \ac{owl} into object-oriented Python data structures.
-\end{enumerate}
-
-Taken together, they bridge the paradigm gap between application programming and \ac{krr} by enabling engineers to seamlessly \textit{program with knowledge}.
-We validate the capabilities and performance of \ac{krrood} on OWL2Bench \cite{singh2020owl2bench} and a human-robot task learning scenario. \ac{krrood} is fully open-source\footnote{Source code: \url{https://github.com/cram2/cognitive_robot_abstract_machine}} and integrated into a robot cognitive architecture \cite{beetz2025robot}, providing foundational capabilities for hybrid physical \ac{ai}.
 
 \section{Related Work}
 \label{sec:related-work}
 
-The mismatch between the representations used in \ac{krr} and those used in application programming has been identified as a core challenge in knowledge engineering \cite{ledvinka2020comparison,baset2018object,banse2024owl2proto}. \Ac{oom} systems address the structural correspondence between application objects and their representations in knowledge bases. In Java, JOPA \cite{ledvinka2016jopa}, Jastor \cite{szekely2009jastor}, KOMMA \cite{wenzel2010komma}, and the OWLAPI \cite{horridge2011owl} offer programmatic ontology access with varying degrees of object integration. Owlready2 \cite{lamy2017owlready} is a Python equivalent. More recent frameworks such as OWLOOP \cite{buoncompagni2024owloop} extend this line of work by mapping OWL axioms into \ac{oop} hierarchies with polymorphism support, allow downstream applications to use ontologies in protocol buffers \cite{banse2024owl2proto} or project ontology information into vector spaces for downstream \ac{ml} models \cite{zhapa2023mowl}. These frameworks facilitate programmatic ontology access, but delegate inference to external reasoners and do not support rule-based reasoning.
+\paragraph{Object-ontology mapping}
+Several libraries give programs access to ontologies, differing in what a program object is. In the OWL API~\cite{horridge2011owl}, objects represent axioms and class expressions rather than domain entities. Jastor~\cite{szekely2009jastor}, the mapping of Kalyanpur et al.~\cite{kalyanpur2004automatic}, KOMMA~\cite{wenzel2010komma} and JOPA~\cite{ledvinka2016jopa} generate or annotate Java classes whose instances stand for individuals, while the ontology store remains the authoritative copy. Puleston et al.\ compare such approaches and argue for hybrid models in which part of the knowledge stays in the ontology~\cite{puleston2008integrating}. In Python, Owlready2~\cite{lamy2017owlready} creates classes from an ontology at load time and stores individuals in a quadstore. OWLAPY~\cite{baci2025owlapy} and OWLOOP~\cite{buoncompagni2024owloop} model OWL entities and axioms as Python or object-oriented constructs. In all of these, the ontology defines the program's classes, and reasoning is delegated to an external reasoner whose results are read back. \ac{krrood} reverses the direction: the classes of application code are the knowledge base, an ontology is one way of generating them, and inference and queries run inside the program.
 
-External reasoners such as RacerPro \cite{haarslev2012racerpro}, HermiT \cite{glimm2014hermit}, RDFox \cite{nenov2015rdfox} and MORe \cite{armas2012more} provide sound and complete inference for various \ac{dl} fragments. Most modern \ac{krr} systems such as DeepOnto \cite{he2024deeponto} rely on reasoning as a batch process over serialized ontology files: applications must export domain state, invoke the reasoner and parse results. This separation forces developers to maintain parallel representations of domain knowledge and synchronize state across system boundaries, complicating development and maintenance. KERAIA \cite{varey2025keraia} is a recent self-contained knowledge system with dynamic aggregation and context-sensitive inheritance. However, it introduces its own representation language (KSYNTH), and integrating it into \ac{oop} applications reintroduces the impedance mismatch at the system boundary.
+\paragraph{Reasoners and materialization}
+OWL reasoners such as Pellet~\cite{sirin2007pellet}, HermiT~\cite{glimm2014hermit} and RacerPro~\cite{haarslev2012racerpro} decide entailment for expressive description logics. Rule-based systems such as RDFox~\cite{nenov2015rdfox} and GraphDB materialize the consequences of OWL~2~RL with Datalog-style rules, building on description logic programs~\cite{grosof2003description}. These systems operate on their own stores, so applications export their state, invoke the reasoner and parse the results. \ac{krrood} materializes RL consequences too, but in the objects of application code, and property consequences at the time facts are asserted. Its queries are then evaluated under the closed-world assumption, the database-style reading that Motik et al.~\cite{motik2009bridging} and Tao et al.~\cite{tao2010integrity} give to the constraints that developers write in OWL.
 
-\subsection{KRR as a Native Programming Abstraction}
+\paragraph{Queries and rules in the host language}
+LINQ integrates queries over objects, relations and XML into .NET languages~\cite{meijer2006linq}. Python libraries embed Datalog or probabilistic logic programs~\cite{carbonnelle2020pydatalog,dries2015problog2} but do not query the program's own objects. ErgoAI~\cite{kifer2018ergoai} offers object-oriented logic programming through F-logic~\cite{kifer1995flogic}, in which objects, classes and attributes are terms of the logic. KnowRob~\cite{Tenorth2013,beetz2018know} reasons in Prolog over a robot's OWL knowledge base and attaches procedures, called computables, that compute facts from the robot's data when a query needs them. Both keep the knowledge in a logic language, outside the language of application code. \ac{eql} combines the embedding of LINQ with a first-order query language and rules over the program's own objects.
 
-The vision of treating knowledge as a native programming construct has historical roots in frames \cite{minsky1974framework}, FRL \cite{roberts1977frl}, and KRL \cite{bobrow1977overview}, which were designed to support reasoning over structured objects. Systems such as ErgoAI \cite{kifer2018ergoai} and KnowRob \cite{beetz2018know} realized this vision by providing built-in reasoning through Prolog's unification mechanism. However, they also reintroduce the impedance mismatch at the system boundary, requiring developers to context-switch between paradigms. Logic programming libraries for Python embed Datalog or probabilistic inference, but do not provide object-oriented knowledge representation \cite{carbonnelle2020pydatalog,dries2015problog2}.
+\paragraph{Ontologies in agent programming}
+In multi-agent systems, JADE maps agent-communication content to Java classes generated from an ontology~\cite{bellifemine2007jade,caire2010jadeontology}. AgentSpeak-DL~\cite{moreira2006agentspeakdl} and JASDL~\cite{klapiscak2009jasdl} combine belief--desire--intention (BDI) agents with description-logic reasoning over their belief bases. Recent work observes that BDI frameworks still lack convenient support for ontological beliefs. It calls for ontology triples in the belief base, ontological inference during deliberation and queries over beliefs~\cite{burattini2025gap}, and proposes mappings between triples and beliefs~\cite{longo2025t2b2t}. \ac{krrood} addresses these requirements for agents written in Python: the belief base is the program's objects, and inference and queries operate on it directly.
 
-OWLAPY \cite{baci2025owlapy} is perhaps closest in spirit to \ac{krrood}: it models OWL entities as first-class Python objects and provides both Python-native and external reasoners. However, reasoning operates over \ac{owl} constructs rather than application domain objects, requiring developers to maintain a mapping between the two. OWLAPY also does not support rule-based reasoning or integrated persistence. 
+\section{Knowledge Representation in KRROOD}
+\label{sec:kr}
 
-No existing framework unifies object-oriented representation, expressive querying, native rule-based reasoning and persistence within a single abstraction. \Ac{krrood} addresses this gap by treating knowledge as a first-class programming construct accessible via native Python mechanisms.
+In \ac{krrood}, the knowledge base of an agent is its object-oriented program. We use one running example throughout the paper: an assistant agent for a university whose knowledge comes from the OWL2Bench university ontology~\cite{singh2020owl2bench}. The agent's \emph{application code} manipulates \texttt{Person}, \texttt{Student} and \texttt{Course} objects, for instance to suggest courses to a student, and these same objects are the individuals of its knowledge base.
 
-\section{EQL: A Python-Based Query and Logical Axiomatization Language}
+\paragraph{Vocabulary}
+A \ac{krrood} knowledge base is a pair $\mathcal{K}=(\mathcal{T},\mathcal{A})$. The TBox $\mathcal{T}$ consists of Python declarations of four kinds:
+\begin{itemize}
+  \item \emph{Concepts} are classes. Subsumption between named concepts is declared by inheritance, and \texttt{issubclass} computes its reflexive-transitive closure.
+  \item \emph{Properties} (binary relations) are attributes. Each attribute is managed by a \emph{property descriptor}, a class whose position in the descriptor hierarchy encodes property subsumption (\texttt{IsCrazyAbout} $\sqsubseteq$ \texttt{Loves} $\sqsubseteq$ \texttt{Likes}) and whose \emph{mixins}, base classes that each add one behavior to the classes inheriting from them, encode property characteristics such as transitivity, symmetry, inverses and property chains.
+  \item \emph{Axioms} that typing and inheritance cannot express, such as class definitions, are class methods that return an \ac{eql} condition (Section~\ref{sec:eql}) characterizing the members of the class. Because $\mathcal{K}$ has a single interpretation (below), an axiom does not constrain models as in a description logic. It is a condition that can be checked, like an integrity constraint~\cite{motik2009bridging,tao2010integrity}, or used to classify individuals (Section~\ref{sec:ontomatic}).
+  \item \emph{Predicates and symbolic functions} are Python callables that can appear as atoms of \ac{eql} conditions. They give reasoning direct access to the agent's own procedures, such as the timetable check of Listing~\ref{lst:agent}.
+\end{itemize}
+The ABox $\mathcal{A}$ consists of the live objects and their attribute values, which form the agent's \emph{working memory}. Listing~\ref{lst:kr} shows part of the running example. Its last statement attaches a descriptor to a class attribute: from then on, every read and write of \texttt{is\_crazy\_about} on a \texttt{Person} passes through \texttt{IsCrazyAbout}, which applies the property's rules.\footnote{Listings are simplified and use the \acs{krrood} API of the supplementary code.}
+
+\begin{lstlisting}[style=eql, caption={Part of the running example. Classes are concepts, attributes are properties, and descriptor classes carry property semantics.}, label={lst:kr}]
+@dataclass(eq=False)
+class Person(Thing):
+    is_crazy_about: set[Interest]
+    has_same_home_town_with: set[Person]
+
+@dataclass(eq=False)
+class Student(Role[Person]):  # played by a Person
+    takes_course: set[Course]
+
+class Loves(Likes): ...
+class IsCrazyAbout(Loves): ...  # sub-property
+class HasSameHomeTownWith(PropertyDescriptor,
+        TransitiveProperty, SymmetricProperty): ...
+
+# IsCrazyAbout manages Person.is_crazy_about
+Person.is_crazy_about = IsCrazyAbout(Person,
+                                     "is_crazy_about")
+\end{lstlisting}
+
+\paragraph{Multiple classification through roles}
+OWL allows an individual to belong to several classes that are not related by subsumption, such as a person who is both a \texttt{Student} and a \texttt{SportsFan}. A Python object, however, has a single most specific class. \ac{krrood} resolves this with the Role pattern~\cite{steimann2000roles,Guarino2004,boella2007roles}, and in this paper ``role'' refers only to this pattern: a role is an object of its own class that refers to the entity playing it, its \emph{role taker}, and delegates to it reads of every attribute it does not declare itself (\texttt{Student} in Listing~\ref{lst:kr}). A student who is also a sports fan is one \texttt{Person} object with a \texttt{Student} role and a \texttt{SportsFan} role, so the individual keeps a single identity.
+
+\paragraph{Interpretation}
+$\mathcal{K}$ has a single interpretation $\mathcal{I}_{\mathcal{A}}$, which assigns a set of individuals to every concept and a set of pairs to every property. Objects and individuals do not correspond one to one, because a role object and its role taker stand for the same individual. We therefore write $\iota(o)$ (iota) for the individual that an object $o$ denotes: a role object denotes the individual of its role taker, an object created for an ontology individual denotes the individual named by its IRI, and every other object denotes an individual of its own. On data values, such as numbers and strings, $\iota$ is the identity. With $O$ the set of objects in memory, a concept $C$ denotes $C^{\mathcal{I}}=\{\iota(o)\mid o\in O \text{ is an instance of } C\}$. A property $P$ that manages attribute $p$ relates the individual of every object to the individual of every value of its attribute: $P^{\mathcal{I}}=\{(\iota(o),\iota(v))\mid o\in O,\ v \text{ is } o.p \text{ or an element of } o.p\}$. A predicate denotes the tuples for which its code returns true, and a symbolic function the function its code computes. Their extensions are not stored in $\mathcal{A}$ but computed when a query needs them, like the computables of KnowRob~\cite{Tenorth2013}. $\mathcal{K}$ is read under the assumptions of relational databases~\cite{Reiter1978}:
+\begin{itemize}
+  \item \emph{closed world}: a ground atom, such as $\texttt{Student}(\mathit{alice})$, is false unless $\mathcal{I}_{\mathcal{A}}$ makes it true, so nothing is unknown;
+  \item \emph{domain closure}: there are no individuals other than those that objects denote;
+  \item \emph{unique names}: two objects denote the same individual only if they carry the same IRI or one is a role, possibly of a role, of the other.
+\end{itemize}
+These are the assumptions under which application code already treats its objects. OWL, in contrast, assumes an open world and does not assume unique names; Section~\ref{sec:ontomatic} shows how the two are reconciled for ontological knowledge.
+
+\paragraph{Reasoning inside the program}
+Knowledge in $\mathcal{K}$ is used in two ways. First, property descriptors apply the consequences of a fact at the moment application code asserts it: assigning a value to an attribute triggers forward chaining over the descriptor's characteristics. For example, adding T20 cricket to \texttt{p.is\_crazy\_about} also adds it to \texttt{p.loves} and \texttt{p.likes}. Class membership is derived when knowledge is loaded (Section~\ref{sec:ontomatic}) or by rules on request (Section~\ref{sec:eql}). Every inferred fact records the rule and the facts that produced it, so conclusions can be explained. Second, querying $\mathcal{K}$, including evaluating axioms, is done with \ac{eql}, which we present next. Section~\ref{sec:ontomatic} shows how both are generated from an OWL ontology.
+
+\section{EQL: Querying the Program as a Knowledge Base}
 \label{sec:eql}
 
-We address the paradigm gap by proposing an object-oriented, Python-native representation of knowledge. In \ac{krrood}, concepts are represented as classes, relations between concepts are captured by class attributes and $n$-ary functions, and taxonomic relations are modeled through inheritance. Although this representation differs structurally from First-Order Logic (FOL), for example, a Python class definition does not explicitly encode axioms, it is sufficiently flexible to allow arbitrary class methods that express statements holding generally for the class, as demonstrated by the experiments in Section~\ref{sec:experiments}. Queries over this knowledge can be formulated over classes, their instances, and their attributes.
+\ac{eql} is a declarative query language embedded in Python. An \ac{eql} query is not a string passed to an external engine, as in SQL or SPARQL, but a Python expression built from symbolic variables. Its names and types can therefore be checked by the development environment, and it is evaluated directly over live objects without translating them into another representation. This continues the idea of language-integrated queries~\cite{meijer2006linq}, adding first-order formulas, negation as failure, quantifiers, rules and user-defined predicates. A complete formal treatment of syntax, semantics and complexity is part of the supplementary material; here we give the parts needed to read the paper.
 
-To make this object-oriented knowledge representation practically usable as a \ac{krr} system, a mechanism is required that allows structured access to classes, instances, and their relations, while preserving the flexibility of the underlying Python execution model. This motivates a native query language that supports both declarative retrieval and procedural reasoning. We propose \ac{eql}, a declarative query interface for knowledge retrieval and axiomatization within Python applications.
-
-\subsection{Grammar and Example Queries}
+\subsection{Syntax}
 \label{ssec:eql_syntax}
 
-The syntax of \ac{eql} follows in spirit conjunctive database query languages with a Select-Where-From pattern, but adds declarative syntactical elements to facilitate \ac{krr} applications. \ac{eql} statements are descriptions of entities, rather than imperative programming commands (see Listing~\ref{lst:simple}).
+\paragraph{Variables and terms}
+A variable \texttt{x = variable(C, domain=D)} is a symbol ranging over the instances of class $C$ in a finite collection $D$. If $D$ is omitted, it is the set of all known instances of $C$. Because $D$ can be any collection computed by the program, a query can be restricted to the task-relevant part of the knowledge base. Terms are built from constants, variables, attribute access \texttt{t.a}, indexing \texttt{t.a[i]}, method calls \texttt{t.m($\bar t$)} and symbolic functions \texttt{f($\bar t$)}. Chains of attribute accesses replace the joins of relational query languages.
 
-Similar to tables in SQL and nodes/edges in graph query languages, \ac{eql} has variables as the atomic data holders. Variables are symbolic representations of Python objects that represent a set of values. They can be an arbitrary set of values or values of a specific class. Attributes of objects represented by variables can be accessed exactly as they are accessed on the objects themselves, but return symbolic representations of the attributes rather than their concrete value.
+\paragraph{Atoms and formulas}
+An atom is a predicate applied to terms, $p(\bar t)$, a comparison $t_1 \mathbin{\mathsf{op}} t_2$ with $\mathsf{op}\in\{=,\neq,<,\le,>,\ge,\in\}$, or a Boolean-valued term. Formulas are built by
+\[
+\varphi ::= \alpha \mid \varphi\wedge\varphi \mid \varphi\vee\varphi \mid \neg\varphi \mid \exists x\in D.\,\varphi \mid \forall x\in D.\,\varphi ,
+\]
+written as several arguments of \texttt{where}, \texttt{or\_}, \texttt{not\_}, \texttt{exists} and \texttt{for\_all}. The domain of a quantified variable may depend on outer variables. For example, \texttt{flat\_variable(s.takes\_course)} ranges over the courses of each student $s$.
 
-An \ac{eql} variable is constructed from a type (a class), a domain (a set of values), or both:
-\begin{center}
-  \texttt{var = variable(Type, Domain)}
-\end{center}
-Explicit domain specification enables queries to operate over program-computed sets, e.\,g., sets produced by methods of an object, rather than exhaustive class extensions, distinguishing \ac{eql} from traditional database query languages. This design permits the integration of domain-specific computation into query evaluation. Variables in \ac{eql} represent symbolic constraints over value sets, while program variables may be used directly as literals when denoting constants.
+\paragraph{Queries}
+A query selects one or more variables, \texttt{entity(x)} or \texttt{set\_of(x, y)}, constrained by \texttt{.where($\varphi$)}, and is wrapped in a result quantifier. \texttt{an} accepts any number of answers. \texttt{the} requires exactly one, following Russell's definite description, and raises an error otherwise. Aggregates (\texttt{count}, \texttt{sum}, \texttt{max}, \dots) with \texttt{grouped\_by} and \texttt{having} correspond to the grouping operator of relational algebra.
 
-An \ac{eql} query follows the structure:
-\begin{center}
-  \texttt{query = ResultProcessor(EntityDescriptor)}
-\end{center}
-The result processor applies either aggregation (e.g., \texttt{sum}, \texttt{count}) or quantification to the retrieved entities. Quantifiers constrain the cardinality of results: \texttt{a}/\texttt{an} permits zero or more matching entities (existential quantification), while \texttt{the} enforces uniqueness.
+Listing~\ref{lst:q22} shows OWL2Bench query Q22, ``students who take a course taught by the dean of an organization'', in SPARQL and in \ac{eql}. Each triple pattern becomes an attribute chain or a membership atom: no join keys are written, and the only join is the membership atom. The variable \texttt{s} ranges over a collection \texttt{students} computed by the program.
 
-An entity descriptor specifies retrieval constraints analogous to the Select-Where clause in SQL. The descriptor \texttt{entity(variable)} retrieves a single entity, while \texttt{set\_of(var1, var2, ...)} retrieves entity tuples. Constraints are specified through \texttt{where(cond1, cond2, ...)}, which accepts conjunctive conditions over entity attributes. Listing~\ref{lst:simple} finds all persons of age 20:
+\begin{lstlisting}[style=eql, caption={OWL2Bench query Q22 in SPARQL (top) and \acs{eql} (bottom).}, label={lst:q22}]
+SELECT ?s ?c WHERE { ?s a :Student .
+  ?o a :Organization . ?o :hasDean ?d .
+  ?d :teachesCourse ?c . ?s :takesCourse ?c }
+\end{lstlisting}
+\vspace{-0.9\baselineskip}
+\begin{lstlisting}[style=eql]
+s = variable(Student, domain=students)
+o = variable(Organization)
+dean = flat_variable(o.has_dean)
+c = flat_variable(dean.teaches_course)
+q22 = an(set_of(s, c).where(contains(s.takes_course, c)))
+\end{lstlisting}
 
-\begin{lstlisting}[
-  style=clean,
-  caption={A simple entity query},
-  label={lst:simple},
-  emph={an,where},
-  emphstyle=\color{blue}\bfseries,
-  emph={[2]entity,variable},
-  emphstyle={[2]\color{purple}},
-  emph={[3]Person},
-  emphstyle={[3]\color{teal}\bfseries},
-]
+\paragraph{Axioms and rules}
+Since an axiom is a class method returning an \ac{eql} condition, it can be inspected, used as a constraint, or used as the body of a rule. Listing~\ref{lst:axiom} shows the OWL2Bench definition $\texttt{T20CricketFan}\equiv\exists\texttt{isCrazyAbout}.\{\texttt{T20Cricket}\}$ as an axiom, and a rule that derives a \texttt{T20CricketFan} role for every person satisfying it. In general, a rule \texttt{inference(H)($\bar k$)} derives an instance of class $H$ for each answer of its body. Like a Skolem term, a derived object is identified by its class and its arguments. Evaluating the rule again, or another rule with the same class and arguments, returns the same object, so rule evaluation is idempotent. A rule is evaluated on request, like a query, and the application decides whether to add the derived objects to $\mathcal{A}$.
+
+\begin{lstlisting}[style=eql, caption={An OWL class definition as an axiom, used as the body of a classification rule.}, label={lst:axiom}]
+@dataclass(eq=False)
+class T20CricketFan(SportsFan):
+    @classmethod
+    def axiom(cls, p):
+        return contains(p.is_crazy_about, T20_CRICKET)
+
 p = variable(Person)
-query = an(entity(p).where(p.age == 20))
+fan = inference(T20CricketFan)(role_taker=p)
+fans = an(entity(fan).where(T20CricketFan.axiom(p)))
 \end{lstlisting}
 
-Listing~\ref{lst:complicated-query} shows a nested query with domain specification, quantification (universal and existential), multiple selected variables, and indexing of collections. The query selects robot and capability pairs where the robot possesses the capability, satisfies part-size constraints, and has sufficiently dexterous hands that have at least 5 fingers; variable definitions are omitted.
+\paragraph{A step of the agent}
+Listing~\ref{lst:agent} puts these pieces together in one step of the university assistant. Application code asserts an observed enrolment, which triggers the property rules, and an \ac{eql} query then suggests courses that the student does not take and that fit her timetable. The timetable check is an ordinary Python function used as a predicate.
 
-\begin{lstlisting}[
-  style=clean,
-  caption={A more complex query},
-  label={lst:complicated-query},
-  emph={a,where,for_all},
-  emphstyle=\color{blue}\bfseries,
-  emph={[2]set_of,contains,count},
-  emphstyle={[2]\color{purple}},
-]
-query = a(set_of(robot, capability).where(
-    contains(robot.capabilities, capability),
-    robot.parts.size[0] <= 1,
-    for_all(arm, count(arm.fingers) >= 5))))
+\begin{lstlisting}[style=eql, caption={A step of the assistant agent: assert an observation, then decide with a query that calls a domain procedure.}, label={lst:agent}]
+@symbolic_function
+def clashes(course, courses):
+    return any(course.slot == o.slot for o in courses)
+
+alice.takes_course.add(algebra)       # perceive
+c = variable(Course, domain=offered)  # decide
+suggestions = an(entity(c).where(
+    not_(contains(alice.takes_course, c)),
+    not_(clashes(c, alice.takes_course))))
 \end{lstlisting}
 
-\subsection{Semantics of EQL}
+\subsection{Semantics}
 \label{ssec:eql_semantics}
 
-\ac{eql} is grounded in the well-established framework of conjunctive queries, which correspond to the existential, conjunction-only fragment of \acf{fol}. To increase expressiveness while retaining executability, \ac{eql} extends conjunctive queries with three carefully chosen features. First, \ac{eql} supports unions of conjunctive queries, allowing disjunctive pattern matching (e.g., querying entities that satisfy one of several alternative conditions). Second, it adopts negation as failure, interpreting negation operationally as the absence of derivable evidence in the knowledge base. Third, it provides a restricted form of universal quantification, interpreted over the active domain of entities currently present in the knowledge base.
+A query $Q(\bar x)\leftarrow\varphi(\bar x,\bar y)$ is evaluated in the single interpretation $\mathcal{I}_{\mathcal{A}}$ of Section~\ref{sec:kr}. Its answers are
+\[
+\mathit{ans}(Q,\mathcal{K}) = \{\theta(\bar x) \mid \mathcal{I}_{\mathcal{A}}\models \exists\bar y.\,\varphi\theta\},
+\]
+where $\theta$ ranges over the assignments of values from their domains to $\bar x$, and $\models$ is first-order satisfaction. Atoms are evaluated by computing their terms and, for predicates, calling them. Every variable ranges over a finite domain, which may depend on the values of outer variables, so every query is safe. Negation is negation as failure: $\neg\varphi\theta$ holds if and only if $\varphi\theta$ is not satisfied in $\mathcal{I}_{\mathcal{A}}$. Because $\mathcal{I}_{\mathcal{A}}$ is a single finite interpretation of ground facts, this is Reiter's closed-world assumption~\cite{Reiter1978}. As in SQL, answers are produced with bag semantics, and \texttt{distinct} removes duplicates. Evaluation proceeds left to right by nested iteration over the variables' domains, binding each variable when it is first needed and abandoning a binding as soon as a conjunct fails.
 
-These choices reflect the closed-world assumptions commonly adopted in databases and robotic world models, where the knowledge base represents the agent's current belief state. While they are not as expressive as full \ac{fol}, they preserve decidability, tractability, and align the semantics of the language with the requirements of real-world \ac{ai} systems.
+Two properties of this semantics matter for the rest of the paper. First, \emph{positive} queries, which use only class and property atoms, equality, conjunction, disjunction and existential quantification, are monotone: adding facts to $\mathcal{A}$ never removes an answer. Second, the remaining constructs are deliberately closed-world. A query for students who take at most one course counts the courses in $\mathcal{A}$, whereas an OWL reasoner cannot conclude that a student takes at most one course without knowing all of them.
 
-\section{Python Native Rule Based Reasoning}
-\label{sec:rdrs}
-Rule-based reasoning has been used extensively in domains that require correctness, explainability, and extensibility. The advantages of rule-based systems come at the cost of ease of maintenance: As the size of the knowledge base increases, the probability of conflict between rules also increases \cite{compton2021rdr}. A range of conflict-resolution strategies have been proposed, including specificity- and recency-based rule selection \cite{brachman2004knowledge}. However, these strategies are inherently heuristic: while they may reduce the likelihood of rule conflicts, they do not eliminate them.
+\subsection{Complexity}
+\label{ssec:eql_complexity}
 
-\ac{rdr}s \cite{compton2021rdr} offer a pragmatic solution by building the knowledge base rule by rule from available data using expert supervision. While rules are being added, conflicts are automatically detected and the expert is prompted to resolve them by answering one basic question: What are the conditions that differentiate these two conflicting rules? The system then automatically places the answer as a refinement rule in the appropriate place in the rule tree.
+Table~\ref{tab:complexity} summarizes the complexity of evaluating \ac{eql} queries. \emph{Data complexity} fixes the query and measures cost in the size of $\mathcal{A}$, which is what matters for a deployed agent. \emph{Combined complexity} lets the query vary as well. Unions of conjunctive queries have the classical bounds~\cite{ChandraMerlin1977,AbiteboulHullVianu1995}. With negation and universal quantification, \ac{eql} conditions express first-order logic under the active-domain semantics, which is PSPACE-complete in combined complexity~\cite{Vardi1982} and in AC$^0$ in data complexity~\cite{immerman1987languages,barrington1990uniformity}. Counting aggregates raise data complexity to TC$^0$~\cite{hella2001aggregate}. Predicates and symbolic functions are arbitrary Python code, so we treat them as oracles. A query $\varphi$ with $k$ variables, including quantified ones, over domains of size at most $d$ calls them at most $|\varphi|\cdot d^{k}$ times. Evaluation therefore runs in polynomial time in the size of $\mathcal{A}$ whenever the callables run in polynomial time and return results of polynomial size. Termination of arbitrary callables cannot be guaranteed. The bounds concern queries; rules (Section~\ref{ssec:eql_syntax}) are evaluated as single queries.
 
-There are three established types of \ac{rdr}s: SingleClassRDRs infer concetps that are mutually exclusive; MultiClassRDRs infer non mutually exclusive concepts; and GeneralRDRs, which can contain multiple different \ac{rdr} trees for the inference of different concepts. \ac{rdr} trees are run until no extra inference is produced, making use of intermediate inferences for further activation of rules that may use them, thus inferring higher level concepts from them.
+\begin{table}[t]
+  \centering
+  \small
+  \caption{Complexity of \acs{eql} query evaluation. $^a$For \texttt{count}, \texttt{sum}, \texttt{min}, \texttt{max} and \texttt{avg} over numbers of polynomial size. $^b$If callables run in polynomial time with results of polynomial size.}
+  \label{tab:complexity}
+  \begin{tabular}{lll}
+    \toprule
+    Fragment & Data & Combined \\
+    \midrule
+    Unions of conjunctive queries & AC$^0$ & NP-complete \\
+    \quad + negation, $\forall$ (first-order) & AC$^0$ & PSPACE-complete \\
+    \quad + aggregation & TC$^0$ & PSPACE-complete$^a$ \\
+    \quad + predicates, functions & FP$^{\mathcal{O}}$ & PSPACE-complete$^{b}$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-\ac{krrood} contributes a Python-native \ac{rdr} implementation that makes use of object-oriented design and the Python ecosystem. Additionally, it extends \acp{rdr} with features that increase its maintainability and expressiveness.
-
-\begin{comment}
-\subsection{New \ac{rdr} implementation that is compliant with \ac{krrood}}
-%TODO: Needs rename
-
-\ac{krrood} provides a new, Python-native \ac{rdr} system that significantly extends flexibility, integration, and maintainability while keeping the system practical for real-world use. \Acp{rdr} in \ac{krrood} provide several improvements over the state of the art:
-
-\textbf{Cases are no longer restricted to a fixed structure.} A case can be any Python object, which makes integration with \ac{oop} straightforward. In addition, any Python function can be decorated so that the function itself becomes the \ac{rdr}: the function inputs act as the case, and the function output corresponds to the conclusions inferred by the \ac{rdr}. This makes defining \acp{rdr} nearly as easy as defining a function header.
-
-\textbf{Rule conditions are more expressive.} They can be written as arbitrary Python code, including \ac{eql} statements. This allows developers to naturally express complex logic without being constrained by a specialized rule language. Most importantly, domain-specific application logic and APIs can be used in rules. This makes it possible to reuse existing software infrastructure and avoids duplicating domain logic in a separate rule language.
-
-\textbf{Long-term maintainability.} The rule base is represented as auto-generated Python modules that contain both the rule tree and the rule logic. These modules are fully importable and can be used independently of the \ac{rdr} engine itself. Users can modify the generated modules directly, and those changes can be reloaded into the \ac{rdr} system. This approach makes rules easier to maintain as domain APIs evolve and integrates naturally with standard IDEs and development workflows.
-% TODO integrate naturally is also not neutral
-
-\textbf{Interactive knowledge acquisition.} Experts can build and refine the knowledge base directly through interaction, even when no labeled data or predefined targets are available. This keeps the knowledge engineering process lightweight and expert-driven.    
-
-\subsection{A Python-Native \ac{rdr} Implementation}
-
- % TOM: Grammar
-
-In \ac{krrood}, \ac{rdr}s can be constructed in one of two ways. The first is through direct definition of the \ac{rdr}:
-
-\begin{center}
-\texttt{rdr = GeneralRDR(model\_path, model\_name)},
-\end{center}
-
-followed by a definition of the case queries, e.g. to infer types of pyhsical objects:
-
-\begin{center}
-\texttt{case = World()}\\
-\texttt{query = CaseQuery(case, attribute\_name='bodies', type=PhysicalObject, mutualy\_exclusive=True)}
-\end{center}
-
-Next, the \ac{rdr} model is fit on it:
-
-\begin{center}
-\texttt{rdr.fit\_case(case\_query)}\\
-\end{center}
-
-The second way of constructing an \ac{rdr} is through applying a decorator to a function (see Listing~\ref{lst:decorator_rdr}). Case queries are constructed automatically whenever the function is used, and the user can control whether it should run in fitting or classification mode.
-
-\begin{lstlisting}[
-  style=clean,
-  caption={RDR definition using a decorator.},
-  label={lst:decorator_rdr},
-  emph={RDRDecorator},
-  emphstyle=\color{blue}\bfseries,
-  emph={[2]HasType, inference, refinement},
-  emphstyle={[2]\color{purple}},
-  emph={[3]PhysicalObject},
-  emphstyle={[3]\color{teal}\bfseries},
-  emph={[4]@rdr,decorator},
-  emphstyle={[4]\color{brown}}
-]
-rdr = RDRDecorator(model_path, fit=True)
-@rdr.decorator
-def infer_type(obj: PhysicalObject):
-    ...
-\end{lstlisting}
-% TOM: i dont think that any of this is helping besides the last paragraph
-
-\subsection{RDR Extensions in KRROOD}
-
-The \ac{krrood} implementation of \ac{rdr}s extends the traditional \ac{rdr} formalism in terms of expressivity and maintainability.
-
-\textbf{Flexible case representation.} \textit{Cases} are not restricted to a predefined structure but may be instantiated as arbitrary Python objects, enabling direct integration with object-oriented domain models. Moreover, Python functions can be annotated such that the function itself defines an \ac{rdr}, where the function inputs are the case description, and the function output corresponds to the inferred conclusions. This design allows \acp{rdr} to be specified in a form closely aligned with standard \ac{oop} practices.
-
-\textbf{Expressive rule conditions.} Rule conditions are expressed as executable Python code, including equality and relational expressions, rather than a dedicated rule specification language. This permits the direct use of domain-specific APIs and application logic within rule conditions, facilitating the reuse of existing software components and avoiding the duplication of domain knowledge across multiple formalisms.
-
-\textbf{Maintainable rule representation.} The rule base is materialized as automatically generated Python modules that encode both the rule tree structure and the associated rule logic. These modules are importable and executable independently of the \ac{rdr} inference engine, and user modifications to the generated code can be reloaded into the system. This representation supports long-term maintenance as domain models and APIs evolve, and aligns with established software development workflows.
-
-\textbf{Interactive knowledge acquisition.} The framework supports incremental construction and refinement of the rule base through expert interaction, without requiring labeled datasets or predefined target outputs. This preserves the interactive and knowledge-driven character of \ac{rdr} while reducing the overhead associated with knowledge engineering.
-
-\end{comment}
-
-\subsection{RDR Extensions in KRROOD}
-The \ac{krrood} \ac{rdr} implementation provides three key extensions to the traditional formalism:
-
-\textbf{Flexible case representation.} Cases may be arbitrary Python objects, enabling direct integration with \ac{oop} domain models. Python functions can be annotated to define \acp{rdr}, with function inputs as case descriptions and outputs as inferred conclusions.
-
-\textbf{Expressive rule conditions.} Rule conditions are executable Python code rather than a specialized language. This enables direct use of domain-specific APIs and eliminates knowledge duplication across formalisms.
-
-\textbf{Maintainable rule representation.} Rule bases are materialized as auto-generated Python modules comprising both the tree structure and logic. These modules are independently executable and support direct user modification, enabling maintenance as domain models evolve within standard development workflows.
-
-\textbf{Interactive rule writing.} The \ac{rdr} prompt opens an editor with template code of a function that takes the case as input and expects a conclusion of the given type as output. The expert then writes the rule in the function body, utilizing the full capabilities of the Python language and leveraging IDE support.
-
-In addition, \ac{rdr} trees can be directly defined using \ac{eql}. In Listing~\ref{lst:1_rule_tree}, the initial tree contains a single rule that infers that the parent body of a fixed connection is a \textit{Drawer} when the child body of the connection is of type \textit{Handle}. When a new case matches this rule but corresponds to a \textit{Door} rather than a \textit{Drawer}, \ac{rdr} requests a distinguishing condition from the expert. The expert specifies that a \textit{Door} has a body larger than $1\,m$. The rule tree is then automatically refined by adding this condition as a child rule, which overrides the original conclusion and infers a \textit{Door} when the refinement condition holds.
-
-\begin{lstlisting}[
-  style=clean,
-  caption={RDR tree with Refinement using EQL},
-  label={lst:1_rule_tree},
-  emph={Add},
-  emphstyle=\color{blue}\bfseries,
-  emph={[2]HasType, inference, refinement, variable},
-  emphstyle={[2]\color{purple}},
-  emph={[3]Drawer,Door},
-  emphstyle={[3]\color{teal}\bfseries},
-  emph={[4]with},
-  emphstyle={[4]\color{brown}}
-]
-fixed_connection = variable(FixedConnection)
-child = fixed_connection.child
-parent = fixed_connection.parent
-with HasType(child, Handle):
-  Add(inference(Drawer)(container=parent))
-  with refinement(parent.size > 1):
-    Add(inference(Door)(body=parent))
-\end{lstlisting}
-
-% \subsection{An Object-Oriented Perspective on Rule Trees}
-
-% In \acp{rdr}, a \textit{case} is a set of related features describing an entity, such as an animal, a disease, or a person. This maps naturally to \ac{oop}, where a case corresponds to an object and the case features correspond to the object’s attributes.
-
-% An \ac{rdr} rule is a node in a tree with parent–child relationships. A child rule represents a more specific version of its parent, as in refinement rules in SCRDR or stop rules in MCRDR \cite{compton2021rdr}. Rules may be disjoint, as in alternative rules in SCRDR, or independent, as in next rules in MCRDR. This structure closely resembles a class taxonomy in \ac{oop}, where classes can specialize, exclude, or remain independent of one another.
-
-% From this perspective, \textit{a rule can be viewed as a class in a taxonomy, and the rule conditions act as the class description}. These descriptions can be used to identify if an unknown instance belongs to this class or not. As new rules are added, the knowledge base grows with new classes that are automatically placed in the taxonomy.
-
-% The key advantage of using an \ac{rdr} rule tree as a class taxonomy is that \acp{rdr} enforce consistency and non-conflict. Rules are placed in the correct position, and sibling rules under the same parent are disjoint, mirroring the guarantees provided by well-structured OOP class hierarchies.
-
-% \todo{I still don't understand what a RDR in KRROOD looks like. Is it written in EQL? Does it have extra syntax? How do rules relate to queries and what happens to the rule tree (inference?)}
-
-% %TODO: Can we make a compact example of a KRROOD rule tree and show it here?
-
-\section{Ontomatic: OWL Conversion}
+\section{Ontomatic: Compiling OWL 2 RL Ontologies}
 \label{sec:ontomatic}
 
-\ac{krrood} provides tool support for the automatic conversion of OWL representations into \ac{ood} data structures. Ontomatic, the OWL adapter of \ac{krrood}, converts \ac{owl} ontologies in two phases. The first phase involves generating the classes and properties to represent the T-Box, including inference of subsumption between classes, inference of domains and ranges of properties, and conversion of \ac{owl} axioms into an equivalent \ac{eql} representation. Two prominent challenges are addressed in this phase:
+Ontomatic turns an OWL ontology into a \ac{krrood} knowledge base in two phases. TBox compilation generates Python modules with classes, property descriptors and axioms. ABox loading creates the objects and materializes the consequences of the ontology. Ontomatic targets the OWL~2~RL profile~\cite{motik2012owl2profiles}, which was designed for rule-based implementations and builds on description logic programs~\cite{grosof2003description}. The semantics of OWL~2~RL is captured by a fixed set of first-order rules over RDF triples, the OWL~2~RL/RDF rules~\cite[Section~4.3]{motik2012owl2profiles}. The specification names each rule by what it reasons about (\texttt{eq} equality, \texttt{prp} properties, \texttt{cls} class expressions, \texttt{cax} class axioms, \texttt{dt} datatypes, \texttt{scm} the schema) and by the construct it handles. For example, \texttt{prp-dom} states that if $P$ has domain $C$ and $P(x,y)$ holds, then $C(x)$ holds, and \texttt{prp-spo1} that a fact of a sub-property is also a fact of its super-property. For an RL ontology without punning and without annotation-property axioms, an assertion $C(a)$, $P(a,b)$ or $\mathit{SameIndividual}(a,b)$ is entailed if and only if it follows from the RL/RDF rules applied to the ontology's RDF translation~\cite[Theorem PR1]{motik2012owl2profiles}. Ontomatic realizes the rules with the mechanisms of Section~\ref{sec:kr}. Table~\ref{tab:rl} lists the correspondence, including the rules that \ac{krrood} deliberately does not implement.
 
-\textbf{Non-disjoint sibling classes.} In \ac{owl}, sibling classes are not necessarily disjoint, allowing an individual to belong to multiple sibling classes simultaneously. This contrasts with object-oriented inheritance. 
+\begin{table*}[t]
+  \centering
+  \caption{How Ontomatic represents OWL~2~RL constructs and which OWL~2~RL/RDF rules, named as in the specification~\cite[Section~4.3]{motik2012owl2profiles}, realize their inferences. ``Load'' rules are applied while loading instances, and ``assign'' rules whenever an attribute value is added, including by application code.}
+  \label{tab:rl}
+  \footnotesize
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{4.2cm}>{\raggedright\arraybackslash}p{4.6cm}l@{}}
+    \toprule
+    OWL 2 RL construct & \acs{krrood} representation & RL/RDF rules & Applied \\
+    \midrule
+    Class; \texttt{subClassOf} between named classes & class; inheritance & \texttt{cax-sco} & \texttt{isinstance} \\
+    \texttt{equivalentClass} between named classes & one class with an alias & \texttt{cax-eqc1/2} & \texttt{isinstance} \\
+    \texttt{hasValue} definition; class expression in subclass position & axiom (Listing~\ref{lst:axiom}) & \texttt{cls-hv2}, \texttt{cls-svf1}, \texttt{cls-int1} & load \\
+    Restriction in superclass position & specialized attribute type & not used (\texttt{cls-hv1}, \texttt{cls-avf}) & --- \\
+    \texttt{domain}, \texttt{range} & attribute of the domain class & \texttt{prp-dom}, \texttt{prp-rng} & load \\
+    \texttt{subPropertyOf} & descriptor inheritance & \texttt{prp-spo1} & assign \\
+    \texttt{equivalentProperty} & \texttt{HasEquivalentProperties} & \texttt{prp-eqp1/2} & assign \\
+    \texttt{inverseOf} & \texttt{HasInverseProperty} & \texttt{prp-inv1/2} & assign \\
+    \texttt{SymmetricProperty} & \texttt{SymmetricProperty} & \texttt{prp-symp} & assign \\
+    \texttt{TransitiveProperty} & \texttt{TransitiveProperty} & \texttt{prp-trp} & assign (load if symmetric) \\
+    \texttt{propertyChainAxiom} & \texttt{HasChainAxioms} & \texttt{prp-spo2} & assign \\
+    Classes marked by \texttt{roleFor} & Role pattern & --- & --- \\
+    \midrule
+    Disjointness, irreflexivity, asymmetry & not checked & \texttt{cax-dw}, \texttt{prp-irp}, \texttt{prp-asyp}, \dots & --- \\
+    Functional, inverse-functional, keys, max.\ cardinality & not supported (unique names) & \texttt{prp-fp}, \texttt{prp-ifp}, \texttt{prp-key}, \texttt{cls-maxc2}, \texttt{eq-*} & --- \\
+    \bottomrule
+  \end{tabularx}
+\end{table*}
 
-To bridge this mismatch, we model overlapping class membership using a Role pattern: a persistent entity represents the individual’s identity (URI), and role-specific classes reference it via composition rather than inheritance. This allows an individual to assume multiple roles concurrently, in line with OntoClean modeling principles \cite{Guarino2004}. Roles can either be explicitly defined in the ontology by adding a \texttt{roleFor} property, or they can be implied through disjointness constraints.
+\paragraph{TBox compilation}
+Every named class becomes a Python class, and \texttt{subClassOf} between named classes becomes inheritance. Every object property becomes a descriptor class, whose bases encode its super-properties and characteristics. It also becomes an attribute of its domain class, typed by its range. Domains and ranges that are not declared are derived from equivalent, inverse and super-properties, falling back to the ontology's root class. These schema-level rules were built incrementally as a ripple-down rule base~\cite{compton2021rdr}. Class expressions that state sufficient conditions for membership become axioms. These are \texttt{hasValue} definitions (Listing~\ref{lst:axiom}) and class expressions in subclass position, such as $\texttt{Person}\sqcap\exists\texttt{loves}.\texttt{Sports}\sqsubseteq\texttt{SportsLover}$. Restrictions in superclass position state necessary conditions, so they refine the types of attributes but are not used to classify individuals. Classes whose instances may also belong to unrelated classes are generated as roles. The ontology marks them with a restriction on an auxiliary property \texttt{roleFor}, which we added to OWL2Bench for the classes that represent roles of a person or an organization.
 
-\textbf{Expressing axioms.} \ac{owl} axioms expressed as class descriptions and restrictions cannot be fully captured through class structures alone, as inheritance hierarchies encode only taxonomic relationships and attribute ranges rather than complex constraints involving chained attributes or quantified conditions. We address this limitation by encoding axioms as class-level methods that implement verification predicates using \ac{eql}. These predicates operate over arbitrary domain instances and support existential and universal quantification. Listing~\ref{lst:axiom} illustrates the \ac{ood} representation of the constraint from OWL2Bench (DL profile) that a \texttt{LeisureStudent} is a student that takes at most one course. This is represented in OWL as an intersection of subclass of \textit{Student}, and an \textit{onProperty} restriction on the \textit{takesCourse} property with a \textit{maxQualifiedCardinality} of 1 of class \textit{Course}.
+\paragraph{ABox loading and materialization}
+Listing~\ref{lst:loading} shows the loading procedure. An object's class cannot change after it is created, so all types are inferred before any object exists. Step~1 reads every individual into a lightweight proxy, with its asserted types and property values, and adds the values implied through sub-, equivalent, inverse and symmetric properties. Step~2 adds the domains and ranges of these properties and the classes whose axioms the proxy satisfies, until no new type arises. Ontomatic evaluates the axioms in a compiled Python form for speed. Step~3 creates the objects. An individual that is, for example, both a \texttt{Student} and a \texttt{SportsFan} becomes one \texttt{Person} object with two role objects. Step~4 assigns each property value through its descriptor, on an object of the subject whose class declares the property and to an object of the value that fits its range. Each assignment triggers the property rules of Table~\ref{tab:rl}, for asserted and inferred facts alike, until no new fact arises. Transitive properties that are also symmetric are an exception. Chaining them eagerly is expensive (Section~\ref{sec:experiments}), so step~5 completes them at once: within each weakly connected component of such a property's graph, every pair of individuals is related. This step is exact: the transitive and symmetric closure of a graph relates every two members of each connected component, and each member to itself, and nothing else. If the property has a super-property, an inverse, an equivalent property or occurs in a property chain, the facts added in this step are then propagated like any other fact. Otherwise they are stored directly, and their provenance is the component.
 
-\begin{lstlisting}[
-  style=clean,
-  caption={Class with EQL Axiom},
-  label={lst:axiom},
-  emph={exists,count},
-  emphstyle=\color{blue}\bfseries,
-  emph={[2]IsSubClassOrRole,HasProperty},
-  emphstyle={[2]\color{purple}},
-  emph={[3]Student, Course, TakesCourse, LeisureStudent},
-  emphstyle={[3]\color{teal}\bfseries},
-  emph={[4]@classmethod},
-  emphstyle={[4]\color{brown}}
-]
-class LeisureStudent(Student):
- @classmethod
- def axiom(cls, candidate):
-  return (
-   exists(IsSubClassOrRole(candidate.types, Student)),
-   HasProperty(candidate, TakesCourse),
-   count(IsSubClassOrRole(candidate.takes_course.types, Course)) <= 1
-   )
+\begin{lstlisting}[style=eql, float=t, caption={ABox loading in Ontomatic, simplified from \texttt{OwlLoader.load}. Comments name the steps.}, label={lst:loading}]
+def load(graph, model):
+    # 1. a proxy per individual, with its asserted
+    #    types and values, plus the values implied by
+    #    sub-, equivalent, inverse, symmetric properties
+    proxies = {i: Proxy(i, graph.types(i), graph.values(i))
+               for i in graph.individuals()}
+    for x in proxies.values():
+        x.add_implied_values(model)
+    # 2. types from domains, ranges and axioms,
+    #    repeated until no new type arises
+    while any([x.add_inferred_types(model)
+               for x in proxies.values()]):
+        pass
+    # 3. an object per most specific type: a role taker
+    #    and its roles share the individual's identity
+    objects = {i: model.create(x.most_specific_types())
+               for i, x in proxies.items()}
+    # 4. assign through the descriptors; rules fire
+    for s, p, o in graph.property_assertions():
+        subject = declaring(objects[s], p)
+        getattr(subject, p).add(fitting(objects[o], p))
+    # 5. close symmetric and transitive properties
+    for P in model.symmetric_transitive_properties():
+        for c in weakly_connected_components(P.graph()):
+            for a, b in product(c, c):
+                P.add_inferred(a, b)
+    return objects
 \end{lstlisting}
 
+\paragraph{What is preserved}
+The loading procedure is sound with respect to OWL~2~RL:
 
-In a second phase, Ontomatic loads individuals as instances of the generated classes. The appropriate types for each instance are inferred using explicitly declared types, assigned properties and class axioms.
+\begin{proposition}[Soundness]
+\label{prop:soundness}
+Let $\mathcal{O}$ be an OWL~2~RL ontology without punning, and let $\mathcal{A}^*$ be the knowledge base that Ontomatic produces from it. Every class and property assertion of $\mathcal{I}_{\mathcal{A}^*}$ is entailed by $\mathcal{O}$. Consequently, every answer of a positive \acs{eql} query over $\mathcal{A}^*$ is a certain answer over $\mathcal{O}$.
+\end{proposition}
 
-To improve performance, on-time forward chaining is applied to all properties except those that are both transitive and symmetric, as handling these properties eagerly leads to a substantial increase in reasoning time (from ~15 seconds to around 100 minutes in our experiments). To preserve completeness, a final post-processing step extracts the induced subgraphs of symmetric-transitive properties and computes their weakly connected components. Within each component, all node pairs are inferred to be related, thereby recovering the missing relations and completing the inference. 
+The first statement holds because every fact that Listing~\ref{lst:loading} derives is the conclusion of an RL/RDF rule of Table~\ref{tab:rl}, or of a sequence of them. This includes the schema-level derivation of domains and ranges, which only composes \texttt{prp-dom}, \texttt{prp-rng}, \texttt{prp-inv} and \texttt{prp-eqp}. The second statement holds because positive queries are preserved under homomorphisms, and $\mathcal{I}_{\mathcal{A}^*}$ maps homomorphically into every model of $\mathcal{O}$, including models that identify individuals that \ac{krrood} keeps apart. Since \ac{krrood} does not check consistency, the guarantee is vacuous for an inconsistent $\mathcal{O}$.
 
-\section{ORMatic: Object-Relational Mapping and Persistence}
+The converse, completeness, does not hold in general, for four reasons:
+\begin{itemize}
+  \item \ac{krrood} assumes unique names, so it omits the equality rules, together with the facts that equality would propagate.
+  \item Of the remaining rules, only those of Table~\ref{tab:rl} are implemented. For example, \texttt{cls-hv1}, \texttt{cls-avf}, \texttt{cls-int2}, \texttt{cls-uni} and the datatype rules are not.
+  \item Types are inferred from asserted facts and from facts derived through sub-, equivalent, inverse and symmetric properties, but not from facts derived through transitivity or property chains.
+  \item A property fact is stored only on an object whose class declares the property's attribute, so a derived fact about an object without that attribute is not kept.
+\end{itemize}
+Section~\ref{sec:experiments} checks empirically, query by query, whether the answers on OWL2Bench coincide with those of an OWL~2~RL reasoner. Queries that use negation, universal quantification or aggregation are evaluated under the closed-world reading of Section~\ref{ssec:eql_semantics}. This is a deliberate choice: on a materialized knowledge base it answers questions that an open-world reasoner leaves undetermined, such as which students take at most one course.
+
+\section{ORMatic: Long-Term Memory}
 \label{sec:ormatic}
 
-\Ac{krr} applications require robust persistence solutions to manage the complex, evolving states of domain knowledge. While Python dataclasses offer a high-fidelity representation of structured data, the challenge extends beyond simple integration and involves maintaining referential integrity and schema synchronization across the application lifecycle. Without a dedicated abstraction layer, systems risk ``schema drift'' and the fragmentation of domain logic. \Ac{orm} addresses these risks by providing a declarative framework that enforces data constraints, manages complex relational networks, and ensures the persistent state's alignment with the application knowledge model.
+An agent also needs to keep knowledge beyond the lifetime of its process, for example as an episodic memory of what it has done~\cite{beetz2025robot}, and often more of it than fits in working memory. ORMatic is \ac{krrood}'s persistence layer and serves as the agent's long-term memory. From the same classes that form the TBox, it generates a relational schema and data access objects (DAOs) for SQLAlchemy, together with routines that convert objects to DAOs and back. The domain model therefore remains the single definition of the agent's knowledge: no separate schema has to be kept in sync with it, the domain classes remain free of persistence code, and mappings can be customized where the generated defaults do not fit. The database adds what working memory lacks for large amounts of data: indexes, a query optimizer that chooses how to evaluate each query~\cite{selinger1979access}, and tables that learning components can read directly.
 
-The design of ORMatic, \ac{krrood}'s persistance layer, is guided by several core principles intended to streamline the development of knowledge-based systems. Primarily, the system emphasizes maintainability and scalability, ensuring the persistence layers ability to grow alongside the application. ORMatic was designed with \textbf{
-\ac{ml} compatibility} in mind: A modern \ac{krr} system should allow for direct use of its data for machine learning, which most often requires tabular data as input \cite{kleppmann2019designing}.
-Another critical requirement is \textbf{non-interference}: the tool should not dictate the structure of domain-specific logic \cite{davis1993knowledge}. By minimizing the object-relational impedance mismatch \cite{neward2006vietnam}, ORMatic allows developers and \ac{ai} agents to use standard Python \ac{oop} patterns.
-A further requirement is the strict alignment with SOLID principles, particularly the \textbf{Single Responsibility Principle (SRP)}. In many traditional \ac{orm} implementations, the failure to separate the \acp{dao} from the domain class forces domain objects to handle their own persistence routines. This violation of SRP often introduces side effects, that interfere with domain-specific logic, slowing down execution and causing unexpected behavior. ORMatic avoids this by maintaining a clean separation between the logic used for computation and the structures used for storage.
+\begin{lstlisting}[style=eql, float=t, caption={One \acs{eql} query evaluated in working memory and, translated by ORMatic, in long-term memory. The comment shows the essence of the generated SQL, which also joins the tables of the class hierarchy.}, label={lst:ormatic}]
+s = variable(Student, domain=students)
+older = an(entity(s).where(s.role_taker.has_age > 25))
+in_memory = list(older.evaluate())              # working memory
+stored = eql_to_sql(older, session).evaluate()  # long-term memory
+# SELECT Student.* FROM Student JOIN Person
+#   ON Person.id = Student.role_taker_id
+#   WHERE Person.has_age > 25
+\end{lstlisting}
 
-ORMatic provides sensible defaults while remaining extensible through customizable mappings and supports a variety of database backends to suit different infrastructure needs. These requirements were discovered in episodic memory components for cognitive architectures \cite{beetz2025robot}.
-In complex software systems, specific parts of the domain model will likely require persistence logic or conversion routines that differ from the automatically generated defaults. 
-ORMatic provides a structured framework to define alternative persistence specifications or specialized serialization routines. These custom definitions are integrated into the global persistence pipeline, ensuring that developers can achieve full customization while still using dataclasses as the primary framework for defining information.
-
-ORMatic functions as a translation and generation layer between Python domain models and relational storage. The system automatically generates an SQLAlchemy interface that mirrors the structure and behavior of existing Python classes. To facilitate data movement, it provides built-in routines to convert domain objects into \acp{dao} and back automatically.
-This is different to many existing solutions that require extra definitions for data schemas and validation, (e. g. SQLAlchemy\footnote{\url{https://www.sqlalchemy.org/}}, Pydantic\footnote{\url{https://docs.pydantic.dev/latest/}}, peewee\footnote{\url{https://docs.peewee-orm.com/en/latest/index.html}}). ORMatic operates entirely within the application's existing dataclasses (see Fig. \ref{fig:arch}). 
-This approach ensures that the data model and the domain model remain identical, reducing the cognitive load on the developer and eliminating synchronization errors. By utilizing SQL as a backend, ORMatic benefits from the reliability and query capabilities of established relational database engines.
-
-%\subsection{Core Contribution}
-
-
+Because an \ac{eql} query is a symbolic expression that is separate from its evaluation, the same query can be evaluated in working memory or translated to SQL and evaluated in the database (Listing~\ref{lst:ormatic}). The translator maps a variable to the table of its class, an attribute chain to joins, existential quantification to a correlated \texttt{EXISTS} subquery, and aggregation, grouping and ordering to their SQL counterparts. It currently covers attribute chains along single-valued references. Collection-valued attributes, which include every object property that Ontomatic generates, are not yet supported, nor are universal quantification and predicates and functions, which run Python code. On a test database, the translated queries return the same answers as \ac{eql} for the six benchmark queries that select a class or a data property (Q4, Q5, Q12--Q14, Q19); the other twelve use object properties. The SQL queries of our experiments (Section~\ref{sec:experiments}) were therefore written by hand with SQLAlchemy. A translated query also follows SQL's three-valued logic, so negation over missing values can differ from negation as failure.
 
 \section{Experiments}
 \label{sec:experiments}
 
-%- We want to show that 
- %   - we can do the same stuff as Ontology based KRR by using OOP. 
-  %  - We are able to give the same answers to the same questions asked by KRR systems
-   % - We are able to reason in the same conclusions as the OWL stuff does, but in OOP
-    %- We are competitive regarding the reasoning and querying time, even without owl
-    %- The KRROOD approach scales to robotics framework where KRR can be used to introspect robotic behavior
-This chapter evaluates \ac{krrood} as an integrated \ac{krr} system on OWL2Bench and a robotic task learning application. The experiments show that \ac{dl} statements can be expressed directly on object-oriented knowledge structures, preserving ontological semantics while operating entirely within an \ac{ood} paradigm. The evaluation, therefore, addresses not only expressivity but also whether such an approach is competitive in terms of loading, reasoning, and querying performance.
-    
-\subsection{OWL2Bench Benchmarks}
-
-We evaluate \ac{krrood} on the OWL2Bench benchmark with the OWL 2 RL profile \cite{singh2020owl2bench}.\footnote{ The experiments can be reproduced at \url{https://github.com/tomsch420/krrood_experiments}.}
-The experimental setup utilizes a machine running Ubuntu 24.04.3 LTS, equipped with a 11th Gen Intel® Core™ i7-11700k processor and 32 GB of RAM.
-
-An object-oriented model (referenced as \ac{krrood} in Tables \ref{tab:baselines} and \ref{tab:queries}) is auto-generated from the OWL2Bench ontology using Ontomatic, with only minor changes related to the Role pattern: A few classes were modified to explicitly mention that they are roles and not just subclasses, to handle the issues arising from (non) disjoint sibling classes discussed in Section \ref{sec:ontomatic}. From the generated classes, an \ac{orm} interface is automatically derived using ORMatic and the data is persisted in a PostgreSQL database. To assess the impact of materializing object-oriented data structures on query performance, we include SQLAlchemy on that PostgreSQL data as a baseline in the query experiment (Table \ref{tab:queries}). SQLAlchemy is not compared in reasoning (Table \ref{tab:baselines}), as it does not support reasoning on its own. 
-
-\subsubsection{Loading and Reasoning}
-
-
-Loading and reasoning performance is compared  across six systems: KRROOD, owlready2 with Pellet, Protégé with Pellet, GraphDB with OWL RL (Optimized), and RDFlib with owlrl.
-
-Performance is measured for initial reasoning over raw data and re-reasoning over previously materialized inferences (``Reasoning Reasoned'' in Table \ref{tab:baselines}), as incremental reasoning is a common workflow. HermiT was excluded due to consistent memory failures. 
-
-The results are presented in Table~\ref{tab:baselines}. RDFlib with owlrl failed to terminate within 180 minutes. Protégé with Pellet demonstrates the fastest reasoning (5.5s raw, 22s reasoned) but requires approximately 5 GB for reasoning and 25 GB for RDF/XML export, limiting scalability. owlready2 reasons less efficient (203.9s raw) and exhausts memory when reasoning over materialized data. GraphDB exhibits consistent performance (1820s raw, 1606s reasoned) with stable memory usage across ontology scales, making it the most reliable alternative to \ac{krrood} for large-scale reasoning.
-
-\ac{krrood} reasoning performance (8.3s raw, 127.9s reasoned) remains competitive while providing native integration with application logic, a capability absent in all other systems. This trade-off is appropriate for applications requiring runtime introspection, procedural reasoning, or tight coupling between knowledge and domain behavior, as required in robotics tasks (see Section~\ref{sec:robot_experiments}).
-
-\subsubsection{Querying}
-
-In a second experiment, we measured the execution times of all queries in the OWL 2 RL profile from OWL2Bench. To ensure consistency, we verified that every framework returned the same set of entities. Protégé failed to terminate on Query 20. To mitigate the impact of the long runtime of Query 20 on the overall assessment, we report the geometric mean across all queries. Q12 was omitted because it would require modeling \textit{ResearchGroup} as a subclass of both Organization and Person, which violates the Liskov Substitution Principle. A \textit{ResearchGroup} cannot safely substitute for a Person.
-
-The results are shown in Table \ref{tab:queries}. SQLAlchemy achieves the fastest performance in most individual cases and maintains the best geometric mean, demonstrating its utility within the KRROOD architecture, especially for large queries. KRROOD with EQL, while not always the fastest, provides fully capable domain objects, which is a requirement for native integration into cognitive systems architectures and is not achieved by any other framework. Conversely, RDFlib, owlready2, and Protégé appear less competitive in this context, leaving GraphDB as the most viable alternative to KRROOD when query speed is the primary concern and having domain objects is not necessary.
+We evaluate \ac{krrood} with knowledge compiled from an OWL~2~RL ontology. We ask whether it returns the answers that OWL reasoners return, what loading, reasoning and memory cost it incurs, and how fast it answers queries from working memory (\ac{eql}) and from long-term memory (SQL through ORMatic).
 
 \begin{table}[t]
   \centering
-   \resizebox{\columnwidth}{!}{%
-\begin{tabular}{lll}
-\hline
-    \textbf{Framework} & 
-    \makecell[l]{\textbf{Loading + Reasoning}\\\textbf{Raw}} & 
-    \makecell[l]{\textbf{Loading + Reasoning}\\\textbf{Reasoned}} \\
-    \hline
-KRROOD & $8.32$ & $127.89$\\
-RDFLib & $36.011$ & $>10800$ \\
-owlready2 & $203.914$ & o. o. m.\\
-Protege & $\mathbf{5.465}$ & $\mathbf{22.032}$\\
-GraphDB & $1820$ & $1606$\\
-\hline
-\end{tabular}
-  }
-  \caption{Loading and reasoning times for different frameworks in seconds. The raw data contains 54,897 statements. The reasoned data contains 1,502,966 statements.
-  }
+  \caption{Loading and reasoning time (seconds) and peak memory, from raw data (54,901 statements) and from pre-reasoned data (1,431,635 statements). The best time per input is in bold. The row ``Eager chaining'' is an ablation of \acs{krrood} that replaces step~5 of Listing~\ref{lst:loading} by eager chaining.}
   \label{tab:baselines}
+  \footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \input{tables/loading_table.tex}
 \end{table}
-
 
 \begin{table*}[t]
   \centering
-  \small
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{llllllll}
-\hline
-\textbf{Query} & \textbf{Results} & \textbf{SQLAlchemy} & \textbf{GraphDB} & \textbf{EQL} & \textbf{RDFLib} & \textbf{owlready2} & \textbf{Protege}\\
-\hline
-Q2 & 7421 & $\mathbf{3.78 \pm 0.24}$ & $20.02 \pm 4.74$ & $58.77 \pm 0.96$ & $99.90 \pm 18.08$ & $142.37 \pm 18.19$ & $1620.4 \pm 74.08$\\
-Q3 & 55 & $\mathbf{0.58 \pm 0.36}$ & $2.69 \pm 0.58$ & $2.11 \pm 0.20$ & $2.91 \pm 0.84$ & $43.32 \pm 0.75$  & $15.7 \pm 1.418$\\
-Q4 & 2486 & $86.22 \pm 250.70$ & $\mathbf{8.67 \pm 1.22}$ & $29.31 \pm 1.40$ & $34.61 \pm 0.73$ & $90.57 \pm 0.48$ & $17.9 \pm 5.238$ \\
-Q5 & 20 & $1.33 \pm 0.43$ & $2.72 \pm 0.77$ & $1.52 \pm 0.12$ & $2.30 \pm 0.58$ & $7.15 \pm 0.22$ &  $\mathbf{0.5 \pm 1.581 }$\\
-Q7 & 1684 & $\mathbf{1.28 \pm 0.10}$ & $6.65 \pm 0.35$ & $10.01 \pm 0.43$ & $24.65 \pm 0.62$ & $113.44 \pm 1.29$ & $4193.2 \pm 341.577$ \\
-Q8 & 6 & $\mathbf{0.54 \pm 0.22}$ & $2.46 \pm 0.33$ & $1.77 \pm 0.06$ & $1.99 \pm 0.12$ & $43.25 \pm 0.77$ & $12.8 \pm 1.229$\\
-%Q9 & 0 & $1.21 \pm 0.30$ & $2.19 \pm 0.09$ & $4.34 \pm 0.09$ & $2.03 \pm 0.05$ & $\mathbf{0.49 \pm 0.01}$ & n.a. \\
-Q10 & 666 & $\mathbf{0.80 \pm 0.09}$ & $4.63 \pm 1.69$ & $23.75 \pm 0.88$ & $13.01 \pm 0.22$ & $75.16 \pm 0.95$ & $17.1 \pm  1.370$ \\
-Q11 & 2422 & $\mathbf{1.52 \pm 0.07}$ & $8.81 \pm 1.55$ & $35.18 \pm 1.49$ & $32.24 \pm 0.66$ & $76.62 \pm 0.38$  & $20.8 \pm 1.317$\\
-% Q12 & 2494 & $86.60 \pm 218.74$ & $7.08 \pm 0.28$ & $\mathbf{4.52 \pm 0.39}$ & $29.39 \pm 1.03$ & $85.17 \pm 0.92$ & $18.2 \pm 3.645$\\
-%Q13 & 0 & $3.95 \pm 1.47$ & $2.34 \pm 0.29$ & $1.89 \pm 0.61$ & $2.42 \pm 0.73$ & $\mathbf{0.61 \pm 0.17}$ & n.a\\
-Q15 & 21 & $\mathbf{0.51 \pm 0.18}$ & $2.41 \pm 0.31$ & $14.30 \pm 0.52$ & $2.37 \pm 0.33$ & $31.13 \pm 1.94$ & $12.5 \pm 0.85$\\
-Q16 & 21 & $\mathbf{0.49 \pm 0.11}$ & $2.36 \pm 0.14$ & $1.73 \pm 0.05$ & $2.21 \pm 0.10$ & $27.57 \pm 0.84$  & $12.6 \pm 1.174$ \\
-Q19 & 858 & $4.25 \pm 0.19$ & $\mathbf{3.94 \pm 0.21}$ & $4.74 \pm 0.25$ & $11.11 \pm 0.42$ & $49.11 \pm 0.42$  & $5.6 \pm 0.843$\\
-Q20 & 1311932 & $\mathbf{626.28 \pm 259.77}$ & $2779.74 \pm 95.42$ & $7926.19 \pm 151.63$ & $28957.92 \pm 456.97$ & $1764.62 \pm 24.80$ & $>60000.0$\\
-Q21 & 145 & $18.21 \pm 25.90$ & $30.05 \pm 80.55$ & $61.12 \pm 17.09$ & $63.08 \pm 69.27$ & $\mathbf{11.11 \pm 11.00}$ & $11038.1 \pm 450.084$ \\
-Q22 & 106 & $10.45 \pm 1.46$ & $\mathbf{3.15 \pm 0.51}$ & $288.94 \pm 20.58$ & $1625.85 \pm 37.89$ & $6.23 \pm 0.19$ & $554.9 \pm 24.324$ \\
-\hline \\
-\textbf{Geom. Mean} & --- & $\mathbf{3.39}$ & $8.07$ & $19.72$ & $26.45$ & $49.82$ & $78.33$ \\
-\hline
-\end{tabular}
-}
-  \caption{OWL2Bench (RL profile) query performance across frameworks. The results column displays the number of data points returned and is consistent across all frameworks. The framework-specific columns show the time in milliseconds averaged over 10 runs and the standard deviation.}
+  \caption{OWL2Bench (OWL~2~RL profile) query times in milliseconds (mean $\pm$ standard deviation over 10 runs; the fastest per query in bold). ``Results'' is the number of answers, which is identical for all systems whose answers we compared.}
   \label{tab:queries}
+  \footnotesize
+  \input{tables/query_table.tex}
 \end{table*}
 
-% Table 2 is too big and must be compacted. That information can be displayed in a much denser way, and must be displayed in a way that allows comparison with the baselines in Table 1. I wonder to what extent it is useful / informative to have the timings for all individual queries here, or if we should just provide aggregate statistics. The comparability to table 1 (baselines) is what is most important.
+\paragraph{Setup}
+We use the OWL~2~RL profile of OWL2Bench~\cite{singh2020owl2bench} with one university: 3,667 individuals and 54,901 explicit statements. Its OWL~2~RL closure, computed by GraphDB, has 1,431,635 statements and serves as the pre-reasoned input. We run all 18 queries of the RL profile (Q2--5, Q7--16, Q19--22). The \ac{krrood} model is generated by Ontomatic from the ontology, in which we marked the classes that represent roles of a person or an organization with \texttt{roleFor} restrictions (Section~\ref{sec:ontomatic}). For the SQL queries, ORMatic persists the loaded objects in PostgreSQL, and the queries are written with SQLAlchemy over the generated schema.
 
-% The experimental results demonstrate that the SQLAlchemy-based approach consistently outperforms both SPARQLWrapper and \ac{eql} across the majority of queries.
+We compare against four systems:
+\begin{itemize}
+  \item GraphDB 11.2 with the OWL~2~RL ruleset, in the free edition, which is limited to one CPU core;
+  \item RDFLib 7.4 with the \texttt{owlrl} OWL~2~RL reasoner;
+  \item Owlready2 0.49 with its bundled Pellet;
+  \item Protégé 5.6.7 with Pellet.
+\end{itemize}
+GraphDB and \texttt{owlrl} materialize the OWL~2~RL rules and are therefore the like-for-like baselines. We use GraphDB's answers as the reference, because its ruleset implements the rules that define OWL~2~RL entailment. Pellet is claimed sound and complete for OWL~DL~\cite{sirin2007pellet}, but OWL2Bench did not evaluate Pellet on its queries~\cite{singh2020owl2bench}, and we are not aware of a verification of its answers on this benchmark. The \texttt{roleFor} restrictions use an auxiliary property outside the benchmark vocabulary, and all systems load the same ontology file. All experiments ran on Ubuntu 24.04 with an Intel Core i7-11700K and 32\,GB of RAM.\footnote{Scripts to reproduce the experiments, including the answer comparison, are part of the supplementary material.} Query times are means over 10 runs, and loading times are means over \tbd{} runs. A loading run of RDFLib is stopped after three hours, and a run of the ablation after two hours. Peak memory is the maximum resident set size of the system's process tree, including the Java processes started by Owlready2 and the GraphDB server.
 
-% This should not be the main takeaway here. The main takeaway should be that KRROOD is, for the purpose of the OWL2Bench benchmark, functionally equivalent to existing KR&R frameworks and can correctly answer all queries. This needs a reference to Table 1 and the baselines.
+\subsection{Correctness}
+\label{ssec:correctness}
 
-% As shown by the geometric mean, SQLAlchemy achieved a  significantly faster performance than SPARQLWrapper and \ac{eql}. SQLAlchemy proved particularly efficient in handling large-scale result sets, such as in Q20. This suggests that leveraging mature relational database optimizations through an \ac{orm} layer provides a substantial performance advantage for typical knowledge retrieval tasks.
+For every query, we normalized the answers of each system to a set of tuples of IRIs and literals and compared it with GraphDB's answer set. RDFLib, Owlready2, \ac{eql} and SQL over ORMatic return answer sets identical to GraphDB's on all 18 queries. Protégé's queries were run manually, and we did not compare its answer sets. Q9, Q13 and Q14 have empty answers in every system, because the RL ontology entails no instances for them. We also compared the knowledge base produced by Ontomatic with GraphDB's OWL~2~RL closure, assertion by assertion. For all 3,667 individuals, the class memberships coincide: \ac{krrood} derives no class membership that the closure lacks and misses none. No property assertion of \ac{krrood} is missing from the closure. Conversely, 4,037 property assertions of the closure are not derived by \ac{krrood}. They come from two property chains and from \texttt{hasWork} facts of research groups, whose objects do not declare that attribute (Section~\ref{sec:ontomatic}), and no benchmark query asks for them. Proposition~\ref{prop:soundness} is thus confirmed on the benchmark, and the incompleteness discussed in Section~\ref{sec:ontomatic} is visible but affects no query.
 
-% While \ac{eql} generally exhibited higher latency, it surpassed the other engines in specific cases like Q12, Q13, and Q16. These instances highlight the potential of \ac{eql} when operating directly on domain objects, though its performance fluctuated significantly with query complexity, as seen in the high execution times for Q2 and Q19. SPARQLWrapper maintained competitive and stable performance across most benchmarks but was rarely the fastest option. In conclusion, the data indicates that using an object-oriented design with a relational backend via SQLAlchemy offers the most efficient path for retrieving complex data structures, even when factoring in the overhead of object assembly in memory.
+Q12 illustrates how roles reconcile OWL entailment with object types. In OWL2Bench, research groups have research projects, \texttt{hasResearchProject} is a sub-property of \texttt{hasWork}, and the domain of \texttt{hasWork} is \texttt{Employee}. The ontology therefore entails that every research group is an employee, and thus a person. A \texttt{ResearchGroup} object cannot become a \texttt{Person} by inheritance, so \ac{krrood} represents the entailment as an \texttt{Employee} role of the research group. Q12 then returns the same 2,494 persons as GraphDB, while application code keeps a well-typed \texttt{ResearchGroup} object.
+
+\subsection{Loading and Reasoning}
+
+Table~\ref{tab:baselines} reports the time and peak memory for loading the ontology and computing its consequences, starting from the raw data and from the pre-reasoned data. For \ac{krrood}, this is Ontomatic's loading procedure (Listing~\ref{lst:loading}). The row ``KRROOD + ORMatic'' adds persisting all objects into PostgreSQL.
+
+\tbd{} Results paragraph: compare \ac{krrood} with the RL baselines (GraphDB, RDFLib) and with Pellet, for both inputs, in time and memory.
+
+The ablation row replaces the connected-components step of Listing~\ref{lst:loading} by eager chaining of symmetric and transitive properties. \tbd{} Report whether it finished within the two-hour limit.
 
 
-\subsection{Application: Interactive Robot Task Understanding}
-\label{sec:robot_experiments}
-To assess the suitability of \ac{krrood} for \ac{krr} applications in physical intelligence systems, we conducted a series of human-robot interactive task learning experiments. A human demonstrates pick-and-insert actions using a Montessori box, and the robot learns to reproduce the task by observing object–hole insertion patterns and selecting its own actions accordingly (see Fig. \ref{fig:MultiverseDemo}).
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\linewidth]{figures/MultiverseDemo.png}
-    \caption{A virtual robot performing an object insertion learned from human demonstration, with the human interacting through a \ac{vr} interface.}
-    \label{fig:MultiverseDemo}
-\end{figure}
+\subsection{Querying}
 
-Action annotation and reasoning are handled by Segmind, an interactive robot-learning framework based on \ac{krrood}, which represents agents, actions, and interaction relations symbolically to enable logical inference and explainable decision-making. The experiments were implemented in Multiverse\footnote{\url{https://github.com/Multiverse-Framework/Multiverse}} \cite{Multiverse}, which records complete interaction scenarios via a \ac{vr} headset with hand tracking. Visual rendering is performed in Unreal Engine 5, while physics simulation is handled by MuJoCo \cite{todorov2012mujoco}, with all interaction data recorded for analysis.
+Table~\ref{tab:queries} reports the time to answer each query once the data is loaded. EQL evaluates the queries over the objects in working memory. SQLAlchemy runs hand-written SQL queries over the data that ORMatic persisted from the same objects, which corresponds to querying the agent's long-term memory. The geometric mean is taken over the queries that all systems completed.
 
-The interaction follows a demonstration, feedback, and generalization loop. The human first demonstrates a correct object insertion, after which the robot attempts the task based on the observed action. Upon failure, the robot requests a corrective demonstration through audio and infers the object–hole matching constraint. Using this inferred rule, the robot successfully completes the insertion task for the remaining objects.\footnote{A video of the experiment, experiment code, and an interactive simulation environment will be provided online after double-blind review.}
+\tbd{} Results paragraph: relate EQL to GraphDB, the like-for-like baseline, and to the other systems, and explain the extremes (Q20 with 1.3 million answers; Q22, the five-atom join of Listing~\ref{lst:q22}).
 
-During task execution, Segmind continuously identifies objects and events relevant to the task. The robot infers new task-relevant knowledge using previously learned inference rules stored as \ac{rdr} trees. The \ac{rdr} trees are contextual by design. For example, a single tree may encode the sequence of dynamic events required to recognize a \textit{PickUp} action. Each tree can contain multiple rules corresponding to different situations encountered during the robot’s operation. These rules are incrementally constructed through interaction with the human, who answers the robot’s queries during learning. Reasoning in this framework goes beyond simple rule matching by allowing individual rules to invoke different reasoning mechanisms, such as geometric reasoning (e.g., shapes or holes), spatial reasoning (e.g., containment), and physics-based reasoning. This heterogeneity is supported by the flexible design of the RDR implementation.
 
-Listing~\ref{lst:segmind_rule_tree} illustrates a portion of the RDR tree in Segmind that annotates \textit{PickUp}-related events. A rule detects a \textit{LossOfContactEvent} involving a support object, where contact events are inferred via physics-based collision reasoning in the Multiverse simulation. This leads to a \textit{LossOfSupport} inference. Using a General RDR, the tree is re-evaluated until no new inferences are produced, allowing refinement rules to fire in subsequent passes. As a result, the event is classified as a \textit{PickUpEvent}, unless a refinement rule determines that the object is falling.
-
-\begin{lstlisting}[
-  style=clean,
-  caption={Part of the RDR tree for event annotation},
-  label={lst:segmind_rule_tree},
-  emph={Add},
-  emphstyle=\color{blue}\bfseries,
-  emph={[2]HasType, inference, refinement, variable_from},
-  emphstyle={[2]\color{purple}},
-  emph={[3]PickUpEvent, FallingEvent, LossOfSupportEvent, LossOfContactEvent, Support},
-  emphstyle={[3]\color{teal}\bfseries},
-  emph={[4]with},
-  emphstyle={[4]\color{brown}}
-]
-event = variable_from(domain=new_events)
-with HasType(event, LossOfContactEvent) 
-     & HasType(event.other_body, Support):
-  Add(inference(LossOfSupportEvent)(body=event.body, support=event.other_body))
-  with HasType(event, LossOfSupportEvent):
-    Add(inference(PickUpEvent)(body=event.body))
-    with refinement(Equal(event.body.acceleration, GRAVITY_ACC):
-      Add(inference(FallingEvent)(body=event.body))
-\end{lstlisting}
-
-At any point during execution, queries can be issued about the robot’s current knowledge of the world, and about how specific events were inferred. Such explanations are enabled by two core capabilities of \ac{krrood}: (i) the ability to trace which rules contributed to a given conclusion, and (ii) the ability of \ac{eql} to access domain knowledge represented as class data structures, including the inference rules themselves.
 
 \section{Discussion and Conclusion}
 \label{sec:discussion_conclusion}
 
-This paper introduces \ac{krrood}, a Python-native \ac{krr} system built on \ac{ood} principles. The experiments indicate that treating knowledge as a first-class abstraction in Python can bridge the representational gap between \ac{krr} tooling and application-centric software engineering.
+We presented \ac{krrood}, which turns an agent's object-oriented program into its knowledge base. Property rules fire when application code asserts facts, class membership is derived when knowledge is loaded, and \ac{eql} queries the program under a closed-world semantics. Because the knowledge base is the program, application code reads and writes knowledge with ordinary attribute access, and axioms and rules can call the agent's own procedures. Ontomatic compiles OWL~2~RL ontologies into this form, and ORMatic stores the knowledge as long-term memory, which a subset of \ac{eql} can query through SQL. On OWL2Bench, \ac{krrood} returns the same answers as an OWL~2~RL reasoner on every query, with soundness confirmed assertion by assertion against the reasoner's closure, and \tbd{} summary of cost.
 
-\textbf{Capabilities.}
-\ac{krrood} enables hybrid AI systems by representing knowledge as Python domain objects that are directly usable by application code. This allows \ac{eql} predicates and \ac{rdr} rule conditions to invoke domain procedures (e.g., geometry, kinematics, simulation) and avoids reliance on external reasoners, while supporting end-to-end introspection and explanation during execution \cite{beetz2025robot,mania2024open,alt2023knowledge,stelter2022open}. Second, the combination of \ac{eql} with ORMatic enables knowledge engineering with \ac{oop} and efficient relational persistence with manageable overheads. \ac{krrood} incurs higher loading costs due to object materialization, but provides competitive reasoning and query capabilities.
-% To add (maybe): Competitive in reasoning/querying/loading time to existing KRR implementations that are using OWL.(while also using less resources), Closed world assumption so it will terminate (and can return the expected answers), CC is done natively. RDR's providing a way to incrementally and interactively acquire knowledge.
+\paragraph{Limitations}
+\begin{itemize}
+  \item \ac{krrood} adopts the closed-world and unique-name assumptions. It therefore omits equality reasoning and does not detect inconsistent ontologies.
+  \item Ontomatic targets OWL~2~RL. Constructs outside RL, and RL rules other than those of Table~\ref{tab:rl}, are not supported, so completeness is not guaranteed (Section~\ref{sec:ontomatic}).
+  \item User-defined predicates and functions make \ac{eql} more expressive, but termination and complexity then depend on that code.
+  \item Inferred facts are not retracted when the facts they were derived from are removed; incremental maintenance of materialized knowledge~\cite{MotikNenovPiroHorrocks2015} is future work.
+  \item Negation as failure is evaluated over the derived facts, so where Ontomatic is incomplete, a closed-world answer can contradict OWL entailment.
+  \item Materializing a rich object graph costs memory, and we evaluated a single benchmark scale.
+\end{itemize}
 
-\textbf{Limitations.}
-\ac{eql} makes several principled operational choices (e.g. negation-as-failure and active-domain universal quantification) that align with closed-world assumptions common in physical \ac{ai} applications, but differ from open-world \ac{dl} semantics. Allowing arbitrary Python code in predicates and rules increases practical expressivity but weakens static guarantees such as worst-case runtime and termination. Likewise, Ontomatic preserves most OWL-DL semantics but cannot be fully lossless in general due to modeling mismatches (e.g., non-disjoint sibling classes). Large-scale deployments may incur high memory and latency costs from materializing rich object graphs, though reasoning with \ac{krrood} is orders of magnitude more memory-efficient than OWL-based alternatives. %\todo{needs experimental results that show the memory issues}
-
-\textbf{Future work.}
-Promising directions include defining stricter \ac{eql} fragments with explicit complexity bounds, as well as developing hybrid materialization strategies that instantiate only task-relevant subgraphs on demand. \Ac{krrood} will be evaluated on large-scale, long horizon experiments on intelligent robot task planning and control, human-robot task learning and explainable machine learning.
-%\todo{What is the actual future work?}
-%Using Krrood for machine learning and explanations? Michael oftens mention, that in order to be able to really explain the behaviour of an agent, you will need the detailed internal state model as a knowledge representation, which with krrood can be enabled 
-% LLM-generated knowledge for owl vs krrood
+\paragraph{Future work}
+We will extend Ontomatic beyond OWL~2~RL towards OWL~DL constructs, extend the translation to SQL to collection-valued attributes, and compile \ac{eql} conditions to Python so that axioms are evaluated in their declarative form at the speed of their compiled form. We also plan to evaluate \ac{krrood} as the belief base of agents that act on ontological knowledge, such as BDI agents.
 
 \balance
 \bibliographystyle{ACM-Reference-Format}
