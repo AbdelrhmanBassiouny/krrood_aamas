@@ -12,7 +12,8 @@ bash run_ubuntu.sh            # set up, then the full run in the background (9-1
 bash run_ubuntu.sh status     # any time
 ```
 
-Then Protégé by hand (README, "Protégé (by hand)"), and `bash run_ubuntu.sh tables`.
+Then Protégé by hand (README, "Protégé (by hand)"), and `bash run_ubuntu.sh tables`. Protégé's queries run once each:
+in `protege.json`, set `std_ms` to 0 for every query (`null` makes `tables` fail).
 
 Rules for a Claude Code session on the PC: change no file of the bundle, don't change limits or repetitions,
 don't use the machine during the run, and stop and report if a step fails.
@@ -27,6 +28,7 @@ bash planning/import_results.sh /path/to/aamas27_results.tgz
 ```
 
 It checks the run, prints the BUNDLE id (it must be the zip's, `environment/BUNDLE`) and copies the two LaTeX
-tables into `krrood_aamas_2027/tables/`. The final zip is built with
+tables into `krrood_aamas_2027/tables/`, renaming two loading rows to the paper's names ("KRROOD (with ORMatic)",
+"KRROOD without step 5") and dropping "± 0.00" from Protégé's single-run query times. The final zip is built with
 `make_supplement.py <out> --results planning/results/aamas27/run` from `supplement/` of the experiments repository
 (branch `aamas27-experiments`).

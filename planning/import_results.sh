@@ -64,5 +64,26 @@ print("PROBLEMS:", problems if problems else "none")
 PY
 
 cp "$RUN/tables/loading_table.tex" "$RUN/tables/query_table.tex" "$REPO/krrood_aamas_2027/tables/"
+# The paper names two rows differently from make_tables.py of the bundle (renamed after the run had started).
+sed -i 's/KRROOD + ORMatic/KRROOD (with ORMatic)/; s/Eager chaining/KRROOD without step 5/' \
+    "$REPO/krrood_aamas_2027/tables/loading_table.tex"
+grep -q "KRROOD (with ORMatic)" "$REPO/krrood_aamas_2027/tables/loading_table.tex" \
+    && grep -q "KRROOD without step 5" "$REPO/krrood_aamas_2027/tables/loading_table.tex" \
+    || { echo "FAILED: the two loading-table rows were not renamed"; exit 1; }
+# Protégé's queries ran once (std_ms 0 in protege.json): its column, the last one, shows the time without "± 0.00".
+python3 - "$REPO/krrood_aamas_2027/tables/query_table.tex" <<'PY'
+import re, sys
+path = sys.argv[1]
+lines = open(path).read().split("\n")
+header = next((l for l in lines if l.startswith("\\textbf{Query}")), "")
+if "Prot" in header.split("&")[-1]:
+    for i, line in enumerate(lines):
+        if re.match(r"Q\d+ &", line):
+            cells = line.split(" & ")
+            cells[-1] = cells[-1].replace(" \\pm 0.00", "")
+            lines[i] = " & ".join(cells)
+    open(path, "w").write("\n".join(lines))
+    print("Protégé column: single runs, without ± 0.00")
+PY
 echo "copied loading_table.tex and query_table.tex into krrood_aamas_2027/tables/"
 git -C "$REPO" diff --stat -- krrood_aamas_2027/tables
