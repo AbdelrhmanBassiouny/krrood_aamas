@@ -124,7 +124,7 @@ Robots and other autonomous agents are built on cognitive architectures, whose m
   commentstyle=\color{gray}\itshape,
   emph={an,a,the,entity,set_of,variable,flat_variable,contains,inference,where,not_,for_all,exists},
   emphstyle=\color{violet!80!black}\bfseries,
-  emph={[2]Person,Student,Course,Organization,Interest,Thing,Role,T20CricketFan,SportsFan,Likes,Loves,IsCrazyAbout,HasSameHomeTownWith,PropertyDescriptor,TransitiveProperty,SymmetricProperty,Proxy},
+  emph={[2]Person,Student,Course,Organization,Interest,Thing,Role,T20CricketFan,SportsFan,Likes,Loves,IsCrazyAbout,IsPartOf,HasSameHomeTownWith,PropertyDescriptor,TransitiveProperty,SymmetricProperty,Proxy},
   emphstyle={[2]\color{teal!70!black}},
   numbers=none,
   frame=tb,
@@ -196,13 +196,12 @@ A \ac{krrood} knowledge base is a pair $\mathcal{K}=(\mathcal{T},\mathcal{A})$. 
   \item \emph{Axioms} that typing and inheritance cannot express, such as class definitions, are class methods that return an \ac{eql} condition (Section~\ref{sec:eql}) characterizing the members of the class. Because $\mathcal{K}$ has a single interpretation (below), an axiom does not constrain models as in a description logic. It is a condition that can be checked, like an integrity constraint~\cite{motik2009bridging,tao2010integrity}, or used to classify individuals (Section~\ref{sec:ontomatic}).
   \item \emph{Predicates and symbolic functions} are Python callables that can appear as atoms of \ac{eql} conditions. They give reasoning direct access to the agent's own procedures, such as the timetable check of Listing~\ref{lst:agent}.
 \end{itemize}
-The ABox $\mathcal{A}$ consists of the live objects and their attribute values, which form the agent's \emph{working memory}. Listing~\ref{lst:kr} shows part of the running example. Its last statement attaches a descriptor to a class attribute: from then on, every read and write of \texttt{is\_crazy\_about} on a \texttt{Person} passes through \texttt{IsCrazyAbout}, which applies the property's rules.\footnote{Listings are simplified and use the \acs{krrood} API of the supplementary code.}
+The ABox $\mathcal{A}$ consists of the live objects and their attribute values, which form the agent's \emph{working memory}. Listing~\ref{lst:kr} shows part of the running example. Its last statement attaches a descriptor to a class attribute: from then on, every read and write of \texttt{is\_crazy\_about} on a \texttt{Person} passes through \texttt{IsCrazyAbout}, which applies the property's rules.\footnote{Listings are simplified. Listing~\ref{lst:loading} and the experiments use an earlier version of \acs{krrood}, the other listings the current one; the supplementary material contains both.}
 
 \begin{lstlisting}[style=eql, caption={Part of the running example. Classes are concepts, attributes are properties, and descriptor classes carry property semantics.}, label={lst:kr}]
 @dataclass(eq=False)
 class Person(Thing):
     is_crazy_about: set[Interest]
-    has_same_home_town_with: set[Person]
 
 @dataclass(eq=False)
 class Student(Role[Person]):  # played by a Person
@@ -210,8 +209,7 @@ class Student(Role[Person]):  # played by a Person
 
 class Loves(Likes): ...
 class IsCrazyAbout(Loves): ...  # sub-property
-class HasSameHomeTownWith(PropertyDescriptor,
-        TransitiveProperty, SymmetricProperty): ...
+class IsPartOf(PropertyDescriptor, TransitiveProperty): ...
 
 # IsCrazyAbout manages Person.is_crazy_about
 Person.is_crazy_about = IsCrazyAbout(Person,
@@ -436,7 +434,7 @@ stored = eql_to_sql(older, session).evaluate()  # long-term memory
 #   WHERE Person.has_age > 25
 \end{lstlisting}
 
-Because an \ac{eql} query is a symbolic expression that is separate from its evaluation, the same query can be evaluated in working memory or translated to SQL and evaluated in the database (Listing~\ref{lst:ormatic}). The translator maps a variable to the table of its class, an attribute chain to joins, existential quantification to a correlated \texttt{EXISTS} subquery, and aggregation, grouping and ordering to their SQL counterparts. It currently covers attribute chains along single-valued references. Collection-valued attributes, which include every object property that Ontomatic generates, are not yet supported, nor are universal quantification and predicates and functions, which run Python code. On a test database, the translated queries return the same answers as \ac{eql} for the six benchmark queries that select a class or a data property (Q4, Q5, Q12--Q14, Q19); the other twelve use object properties. The SQL queries of our experiments (Section~\ref{sec:experiments}) were therefore written by hand with SQLAlchemy. A translated query also follows SQL's three-valued logic, so negation over missing values can differ from negation as failure.
+Because an \ac{eql} query is a symbolic expression that is separate from its evaluation, the same query can be evaluated in working memory or translated to SQL and evaluated in the database (Listing~\ref{lst:ormatic}). The translator maps a variable to the table of its class and an attribute chain to joins. A collection-valued attribute, as every object property that Ontomatic generates is, is stored as rows of an association table: ranging over its elements becomes a join, and membership and existential quantification become correlated \texttt{EXISTS} subqueries. Universal quantification, predicates and functions, which run Python code, and rules, which create objects, are not translated; the translator rejects them instead of answering differently. On a test database over the part of the OWL2Bench model that the benchmark queries use, the translations of all 18 queries return the same answers as \ac{eql}. The SQL queries of our experiments (Section~\ref{sec:experiments}) were written by hand with SQLAlchemy.
 
 \section{Experiments}
 \label{sec:experiments}
@@ -513,7 +511,7 @@ We presented \ac{krrood}, which turns an agent's object-oriented program into it
 \end{itemize}
 
 \paragraph{Future work}
-We will extend Ontomatic beyond OWL~2~RL towards OWL~DL constructs, extend the translation to SQL to collection-valued attributes, and compile \ac{eql} conditions to Python so that axioms are evaluated in their declarative form at the speed of their compiled form. We also plan to evaluate \ac{krrood} as the belief base of agents that act on ontological knowledge, such as BDI agents.
+We will extend Ontomatic beyond OWL~2~RL towards OWL~DL constructs, and compile \ac{eql} conditions to Python so that axioms are evaluated in their declarative form at the speed of their compiled form. We also plan to evaluate \ac{krrood} as the belief base of agents that act on ontological knowledge, such as BDI agents.
 
 \balance
 \bibliographystyle{ACM-Reference-Format}
