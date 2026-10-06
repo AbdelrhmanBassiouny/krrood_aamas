@@ -1,0 +1,265 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,left=2.2cm,right=4.6cm,top=2.2cm,bottom=2.4cm,marginparwidth=3.6cm]{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{warn}{HTML}{9C2A00}
+\definecolor{ok}{HTML}{2E6B30}
+\titleformat{\section}{\large\bfseries\color{accent}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{accent}}{\thesubsection}{0.5em}{}
+\setlist{itemsep=2pt,topsep=3pt}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\verdict}[1]{\textbf{#1}}
+\newcommand{\agree}{\textcolor{ok}{\textbf{Agree.}}}
+\newcommand{\refine}{\textcolor{accent}{\textbf{Agree, with refinement.}}}
+\newcommand{\pushback}{\textcolor{warn}{\textbf{Push back.}}}
+
+\title{\bfseries KRROOD for AAMAS 2027: Revision Plan and Discussion}
+\author{Prepared for discussion with the paper authors}
+\date{5 October 2026}
+
+\begin{document}
+\maketitle
+
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep}{\small
+\textbf{How to use this document.} Every section and numbered item is meant to be commented on directly in the PDF. Comment numbers \#1--\#22 refer to the annotations in \code{krrood\_aamas27-compressed.pdf}. Nothing has been edited in the paper or the code yet.}}
+
+\section{The deadline drives the plan}
+
+\begin{itemize}
+  \item The AAMAS 2027 main-track \textbf{paper deadline is 8 October 2026 (AoE), three days from now}. Abstract registration closed on 1 October.
+  \item The submission rules say metadata must not change ``in any substantive way'' after the abstract deadline. \textbf{The title therefore stays.} Rewriting the abstract text to drop the robot experiment should be fine.
+  \item The limit is \textbf{8 pages of content plus unlimited reference pages}. An appendix inside the paper counts toward the 8 pages. An optional supplementary zip of up to 25\,MB is allowed; reviewers are not required to read it.
+  \item The current draft ends around the top of page~7. Removing the RDR section and the robot scenario frees about 1.5 more pages, so about \textbf{3 pages are available} to go deeper on the core argument.
+\end{itemize}
+{\small\raggedright Sources: AAMAS 2027 website (\url{https://warwick.ac.uk/fac/sci/dcs/aamas2027/}), its Q\&A page and its submission-instructions page.\par}
+
+\section{Proposed single theme}
+
+\subsection{Thesis}
+\begin{quote}
+\textbf{Ontological knowledge can be compiled into the agent's own object-oriented program.} The class hierarchy carries the TBox (classes and subsumption) and objects carry the ABox (individuals and facts). Property semantics are applied by forward chaining when attributes are assigned, and EQL answers queries over the result under closed-world semantics. For positive queries this gives the same answers as an OWL~RL reasoner, at competitive cost, with no second representation to keep in sync.
+\end{quote}
+
+\subsection{One application, one running example}
+The single application is OWL2Bench (the university ontology). It should also be the \textbf{one running example through the whole paper} (Student, Course, \code{takesCourse}, \code{BasketBallFan}). The current draft introduces Person/age, robot/fingers, Drawer/Door and LeisureStudent in turn, which is the ``surprise'' problem.
+
+\subsection{Literature anchors that make the argument rigorous}
+\begin{enumerate}
+  \item \textbf{OWL~2~RL is designed for rule-based materialization.} The W3C OWL~2 Profiles specification proves that forward chaining with the RL rules is sound and complete for ground atomic facts. This builds on the Description Logic Programs line of work (Grosof et al., 2003).
+  \item \textbf{The closed-world tension is already argued in the literature.} Motik, Horrocks and Sattler (2009) and Tao et al.\ (AAAI 2010) argue for closed-world integrity-constraint semantics on top of OWL. This is exactly KRROOD's position.
+\end{enumerate}
+
+From these we can state a \textbf{proposition}: for the constructs Ontomatic supports, the materialized object graph is the least model, so positive (union of conjunctive) EQL queries return exactly the answers that OWL~RL entails. The OWL2Bench result agreement then becomes empirical confirmation of a proved property rather than a coincidence.
+
+\subsection{Fit with AAMAS}
+Without the robot scenario the paper needs an explicit agent framing: \emph{the ontology becomes the agent's belief base}. Prior agent-platform work to position against:
+\begin{itemize}
+  \item JADE's ontology-to-Java-bean support;
+  \item JASDL and AgentSpeak-DL, which combine BDI agents with OWL.
+\end{itemize}
+Every new citation will be verified online (DOI or venue) before it enters the bibliography; none will be written from memory.
+
+\subsection{Page budget}
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Section & Pages\\
+\midrule
+Introduction & 0.9\\
+Related work, with a comparison table & 0.8\\
+Knowledge representation in KRROOD & 1.0\\
+EQL & 1.5\\
+Ontomatic & 1.4\\
+Persistence and long-term memory (ORMatic) & 0.4\\
+Experiments & 1.5\\
+Discussion & 0.5\\
+\midrule
+Total & 8.0\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Response to the PDF comments}
+
+\subsection{Clear agreement}
+\begin{enumerate}[label=\textbf{3.\arabic*}]
+  \item \textbf{\#5, \#13--15, \#19: remove RDRs and ``rule-based reasoning''.} \agree{} RDRs are only demonstrated in the robot scenario and do not serve the theme. One catch: Ontomatic on \code{dl} uses an RDR internally to infer property domains and ranges. That is an implementation detail the paper can leave out.
+  \item \textbf{\#9, \#22: remove the human--robot scenario.} \agree{} The abstract and the keywords also mention it.
+  \item \textbf{\#3, \#4: anonymization.} \agree{} There is one more leak that was not marked: the experiments footnote links \code{github.com/tomsch420/krrood\_experiments}, and the code footnote links \code{cram2/...}. Both must point to an anonymous mirror. Self-citations should be in the third person.
+  \item \textbf{\#8, \#10: one term for ``application code''.} \agree{} Use ``application code'' throughout, defined once with a concrete example: the perception and planning modules that hold \code{Course} and \code{Student} objects \emph{are} the knowledge base.
+  \item \textbf{\#11, \#12: vague related work.} \agree{} Replace ``varying degrees of object integration'' with a concrete axis:
+  \begin{itemize}
+    \item OWLAPI: axioms are API objects, not domain objects.
+    \item JOPA, Jastor, KOMMA: generated or annotated entity classes.
+    \item Owlready2: Python classes are generated from the ontology; the ontology (an SQLite quadstore) remains the source of truth; reasoning is delegated to HermiT or Pellet.
+  \end{itemize}
+  KRROOD inverts this: the application's classes are the source of truth, and OWL is one import path. A small comparison table would make this visible at a glance.
+  \item \textbf{\#17: knowledge representation before the query language.} \agree{} The DKE draft already has a start ($\mathcal{K}=(\mathcal{T},\mathcal{A})$, active domain, typing function). Centre the section on a mapping table:
+  \begin{center}\small
+  \begin{tabular}{ll}
+  \toprule
+  DL / OWL & KRROOD\\
+  \midrule
+  concept & class\\
+  subsumption $\sqsubseteq$ & inheritance\\
+  role (property) & typed attribute plus property descriptor\\
+   & (inverse, transitive, symmetric, chains)\\
+  individual & object\\
+  assertion & \code{isinstance} check or attribute value\\
+  multiple typing & Role pattern\\
+  complex definition & axiom predicate in EQL\\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+  \item \textbf{\#7: ``tractable and decidable''.} \agree{} It is worse than it looks: conjunctive queries are NP-complete in combined complexity. The honest claim is ``polynomial data complexity, assuming terminating callables'' (see Section~5).
+\end{enumerate}
+
+\subsection{Agreement with refinements}
+\begin{enumerate}[label=\textbf{3.\arabic*},resume]
+  \item \textbf{\#1: ``execution semantics'' $\to$ ``consistency''.} \refine{} ``Consistency'' is a real difference: an OWL inconsistency makes everything entailed, while in OOP a constraint violation is a runtime error. The sentence should name all three concrete differences, each with a citation: open vs.\ closed world, the unique name assumption, and consistency handling.
+  \item \textbf{\#2: ``Why only Python?''} \refine{} The argument applies to any OOP language. Python is our realization, chosen because it is the shared language of ML and robotics, and because operator overloading and introspection make an embedded query language possible. The paper should also cite \textbf{LINQ} (C\#), the classic language-integrated query; a reviewer will raise it otherwise.
+  \item \textbf{\#6: ``transparently'' $\to$ ``automatically''.} \refine{} Yes for schema and data-access-object generation. ``Transparent persistence'' has a specific meaning in the database literature, so drop it rather than defend it.
+  \item \textbf{\#16: one language for working and long-term memory.} \refine{} This is \textbf{true on cram \code{main}}: \code{ormatic/eql\_interface.py} contains an EQL-to-SQL translator (\code{EQLTranslator}). However, the experiments on \code{dl} used \textbf{hand-written SQLAlchemy queries}. The paper can claim the capability, but cannot claim the experiments demonstrate it unless they are re-run.
+\end{enumerate}
+
+\subsection{Push back}
+\begin{enumerate}[label=\textbf{3.\arabic*},resume]
+  \item \textbf{\#20: ``use the match pattern everywhere''.} \pushback{} \code{match} is excellent for structural patterns, but comparisons, negation, \code{for\_all} and aggregation still need \code{.where()}. Using \code{match} everywhere also hides the correspondence with first-order logic that the formal section relies on. Proposal:
+  \begin{itemize}
+    \item introduce the core \code{variable}/\code{where} form first, which maps one-to-one to the formal syntax;
+    \item present \code{match} as syntactic sugar that expands into a conjunction of type and equality atoms (a one-line formal statement);
+    \item then use \code{match} wherever it fits.
+  \end{itemize}
+  \item \textbf{\#21: expand Ontomatic.} \pushback{} (on scope, not on the request) The translation table must list only what the code actually does. Three findings on \code{dl}:
+  \begin{enumerate}[label=(\alph*)]
+    \item \textbf{Functional properties are never detected.} \code{owl\_to\_python.py:573} compares \code{prop\_type} where it should compare \code{prop\_type\_uri}.
+    \item \textbf{Unqualified cardinality restrictions are not handled.} The classes for them exist, but the restriction handler never routes to them.
+    \item \textbf{The loader classifies types with the generated Python version of each axiom} (\code{axiom\_python}, \code{owl\_instances\_loader.py:346}), not the EQL version. The paper currently implies the EQL axioms drive inference.
+  \end{enumerate}
+  The algorithm mentioned in the comment is \textbf{not in any local \code{.tex} file or in git history}; the only \code{algorithmic} blocks are the template's dummy example. It may be on Overleaf; otherwise it can be written from \code{OwlLoader.load()}.
+\end{enumerate}
+
+\section{Problems not covered by the comments}
+
+\begin{enumerate}[label=\textbf{4.\arabic*}]
+  \item \textbf{The LeisureStudent listing is semantically wrong for OWL.} Classifying someone as a LeisureStudent because they take at most one course is closed-world reasoning that OWL does not entail. It also comes from the DL profile, while the experiments use RL. Replace it with an existential example such as
+  \[\code{BasketBallFan} \equiv \code{SportsFan} \sqcap \exists\,\code{isCrazyAbout}.\code{BasketBall},\]
+  which is valid in RL, sound under the open-world assumption, and already appears in the generated code.
+  \item \textbf{``Same set of entities''.} The experiment script only asserts \textbf{equal result counts}. Either verify set equality or say ``same number of results''.
+  \item \textbf{Unmatched baselines.} Pellet is a complete OWL~DL reasoner, while KRROOD materializes an RL fragment. GraphDB's OWL-RL mode is the like-for-like comparison. Grouping baselines by semantics heads off an unfairness attack.
+  \item \textbf{``Orders of magnitude more memory-efficient''.} There are no memory measurements anywhere in the experiments repository. Either measure or drop the claim.
+  \item \textbf{Inconsistencies in the experiments text.}
+  \begin{itemize}
+    \item ``Six systems'' names five.
+    \item The Ontomatic section says about 15\,s; the table says 8.32\,s.
+    \item Q9 and Q13 (zero results) are silently dropped.
+    \item The Q12 exclusion rests on a Liskov argument even though the Role pattern exists.
+  \end{itemize}
+  \item \textbf{The overview figure is 40\,MB} and probably shows RDRs. It needs redrawing. Who owns it?
+\end{enumerate}
+
+\section{The EQL formalization}
+
+\subsection{Worth importing into the paper}
+\begin{itemize}
+  \item the signature and knowledge-base definitions;
+  \item the grammar for terms, atoms and formulas;
+  \item query and result-quantifier semantics (\code{the} as Russell's definite description is a nice touch);
+  \item aggregation as the relational-algebra grouping operator $\gamma$.
+\end{itemize}
+
+\subsection{Errors to fix before anything enters the paper}
+\begin{enumerate}[label=\textbf{5.\arabic*}]
+  \item \textbf{The complexity table is not monotone.} ``+ universal quantification'' is listed as NP-complete in combined complexity, yet it sits below ``+ NAF'' (PSPACE). With $\exists$, $\forall$ and negation over finite domains, EQL is full first-order logic under active-domain semantics: AC$^0$ in data complexity and \textbf{PSPACE-complete} in combined complexity (Vardi, 1982). The footnote saying $\forall$ ``introduces no additional alternation'' is wrong for combined complexity, since nested $\forall\exists$ encodes QBF.
+  \item \textbf{``Decidable with external callables'' does not follow.} Purity and an acyclic call graph do not guarantee termination: a pure, non-recursive function can still loop forever. The correct framing treats callables as oracles. For a fixed query, evaluation makes polynomially many oracle calls, so it terminates whenever the callables do.
+  \item \textbf{Misattributed negation semantics.} Adding $\neg\alpha$ for every underivable ground fact is Reiter's closed-world assumption, not Clark's completion. Because $\mathcal{D}$ contains only facts, the two coincide; cite Reiter and note the equivalence.
+  \item \textbf{The informal definitions of NP and PSPACE} should be removed.
+\end{enumerate}
+
+In the paper, complexity becomes a small, correct table plus one sentence. The corrected formalization goes into the supplement (its LaTeX source is needed).
+
+\section{The experiments and the deprecated \texttt{dl} branch}
+
+\subsection{Current state of the repositories}
+\begin{itemize}
+  \item cram \code{dl} has 85 commits that are not on \code{main} (mostly tests and Ontomatic). \code{main} has \textbf{5,082} commits that are not on \code{dl}.
+  \item \textbf{Ontomatic exists only on \code{dl}} (and \code{dl2}).
+  \item krrood\_experiments \code{dl} imports about 12 names that were removed on \code{main}, and it already fails on cram \code{dl}'s current tip (\code{has\_solution} was renamed). The last compatible cram commit is about \code{5310e1b4b}.
+  \item krrood\_experiments pins nothing: its virtualenv runs whatever cram has checked out, currently \code{eql\_verbalization}.
+  \item Local \code{dl} and \code{origin/dl} in cram have diverged by two commits each way.
+\end{itemize}
+
+\subsection{Options}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.4cm} X@{}}
+\toprule
+Option & Verdict\\
+\midrule
+A. Freeze and pin now & \textbf{Recommended for submission.} Record the exact commits used, tag them, put an anonymized snapshot in the supplement, and report the existing numbers.\\
+\addlinespace
+B. Port Ontomatic to \code{main} after submission & \textbf{Recommended before the rebuttal (20 Nov) or camera-ready (25 Jan).} Rewrite Ontomatic as a clean module on \code{main}'s API and fix the two bugs. Replace hand-written SQL with EQL-to-SQL, which backs comment \#16 with experiments. Add memory measurement and re-run everything.\\
+\addlinespace
+C. Merge \code{main} into \code{dl} & \textbf{No.} Five thousand commits, and \code{dl2} already shows the pain. Porting one module is cleaner than merging a branch.\\
+\addlinespace
+D. Leave it as is & \textbf{No.} The camera-ready says ``open source'', but public \code{main} has no Ontomatic.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Open point: listing syntax}
+The EQL listings should use \textbf{current \code{main} syntax}, but the experiments ran on the older API. Proposal: a footnote stating that the experiments used an earlier version of the API, pinned in the supplement; generated-code listings shown in current syntax and labelled ``simplified''.
+
+\section{Execution plan}
+Each step ends with an explicit verification before the next starts.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}c X X@{}}
+\toprule
+Step & Content & Verification\\
+\midrule
+1 & Restructure: remove RDRs and robot scenario, anonymize, new outline & Compiles; page count; search for ``RDR'', robot, GitHub, author names, institution\\
+\addlinespace
+2 & Knowledge-representation section with mapping table and running example & Hostile-reviewer pass (KR expert)\\
+\addlinespace
+3 & EQL: syntax, \code{match} as sugar, semantics, corrected complexity & \textbf{Every listing executed against cram \code{main}} in a separate git worktree\\
+\addlinespace
+4 & Ontomatic: translation table, algorithm, materialization proposition & Each table row traced to a code line; proof sketch reviewed\\
+\addlinespace
+5 & Related work plus comparison table & Every new reference verified online (DOI or venue)\\
+\addlinespace
+6 & Experiments rewrite (numbers unchanged) & Each claim checked against data and scripts; optional set-equality and memory runs on the frozen commit\\
+\addlinespace
+7 & Introduction, abstract, conclusion, written last & Consistency with the body\\
+\addlinespace
+8 & Whole-paper review & Separate reviewer passes (KR, multi-agent systems, clarity and flow); final compile and page check\\
+\addlinespace
+9 & Supplement: corrected formalization and anonymized code & Zip builds; no names inside\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Decisions needed}
+\begin{enumerate}[label=\textbf{D\arabic*}]
+  \item Was the abstract registered by 1 October? Are co-authors editing on Overleaf in parallel? If so, a sync rule is needed.
+  \item Approve the theme and thesis in Section~2? Should ORMatic be a headline contribution or a ``long-term memory'' subsection?
+  \item Which commits produced the reported numbers: local \code{dl} or \code{origin/dl}, and which cram commit?
+  \item Current \code{main} syntax in listings, with the footnote? Or \code{dl} syntax?
+  \item Where is the Ontomatic algorithm: Overleaf, or written from the code?
+  \item Who redraws the overview figure?
+  \item Drop the memory claim, or attempt a quick measurement on the frozen commit?
+  \item Is the LaTeX source of the formalization available, so it can be corrected for the supplement?
+\end{enumerate}
+
+\end{document}
