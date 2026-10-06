@@ -10,6 +10,8 @@
 \usepackage{makecell}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \newcommand{\tbd}{\textcolor{red}{\textbf{[TBD]}}}
 \setlength{\emergencystretch}{2em}
 
@@ -196,7 +198,7 @@ A \ac{krrood} knowledge base is a pair $\mathcal{K}=(\mathcal{T},\mathcal{A})$. 
   \item \emph{Axioms} that typing and inheritance cannot express, such as class definitions, are class methods that return an \ac{eql} condition (Section~\ref{sec:eql}) characterizing the members of the class. Because $\mathcal{K}$ has a single interpretation (below), an axiom does not constrain models as in a description logic. It is a condition that can be checked, like an integrity constraint~\cite{motik2009bridging,tao2010integrity}, or used to classify individuals (Section~\ref{sec:ontomatic}).
   \item \emph{Predicates and symbolic functions} are Python callables that can appear as atoms of \ac{eql} conditions. They give reasoning direct access to the agent's own procedures, such as the timetable check of Listing~\ref{lst:agent}.
 \end{itemize}
-The ABox $\mathcal{A}$ consists of the live objects and their attribute values, which form the agent's \emph{working memory}. Listing~\ref{lst:kr} shows part of the running example. Its last statement attaches a descriptor to a class attribute: from then on, every read and write of \texttt{is\_crazy\_about} on a \texttt{Person} passes through \texttt{IsCrazyAbout}, which applies the property's rules.\footnote{Listings are simplified. Listing~\ref{lst:loading} and the experiments use an earlier version of \acs{krrood}, the other listings the current one; the supplementary material contains both.}
+The ABox $\mathcal{A}$ consists of the live objects and their attribute values, which form the agent's \emph{working memory}. Listing~\ref{lst:kr} shows part of the running example. Its last statement attaches a descriptor to a class attribute: from then on, every read and write of \texttt{is\_crazy\_about} on a \texttt{Person} passes through \texttt{IsCrazyAbout}, which applies the property's rules.\footnote{Listings are simplified. They use the current version of \acs{krrood}; Ontomatic (Algorithm~\ref{alg:loading}) and the experiments use an earlier version, and the supplementary material contains both.}
 
 \begin{lstlisting}[style=eql, caption={Part of the running example. Classes are concepts, attributes are properties, and descriptor classes carry property semantics.}, label={lst:kr}]
 @dataclass(eq=False)
@@ -369,40 +371,40 @@ Ontomatic turns an OWL ontology into a \ac{krrood} knowledge base in two phases.
 Every named class becomes a Python class, and \texttt{subClassOf} between named classes becomes inheritance. Every object property becomes a descriptor class, whose bases encode its super-properties and characteristics. It also becomes an attribute of its domain class, typed by its range. Domains and ranges that are not declared are derived from equivalent, inverse and super-properties, falling back to the ontology's root class. These schema-level rules were built incrementally as a ripple-down rule base~\cite{compton2021rdr}. Class expressions that state sufficient conditions for membership become axioms. These are \texttt{hasValue} definitions (Listing~\ref{lst:axiom}) and class expressions in subclass position, such as $\texttt{Person}\sqcap\exists\texttt{loves}.\texttt{Sports}\sqsubseteq\texttt{SportsLover}$. Restrictions in superclass position state necessary conditions. They refine the types of attributes, and loading applies them to the members of the class (Table~\ref{tab:rl}), but they never make an individual a member of the class. Classes whose instances may also belong to unrelated classes are generated as roles. The ontology marks them with a restriction on an auxiliary property \texttt{roleFor}, which we added to OWL2Bench for the classes that represent roles of a person or an organization.
 
 \paragraph{ABox loading and materialization}
-Listing~\ref{lst:loading} shows the loading procedure. An object's class cannot change after it is created, so all types are inferred before any object exists. Step~1 reads every individual into a lightweight proxy, with its asserted types and property values, and adds the values implied through sub-, equivalent, inverse and symmetric properties. Step~2 adds the domains and ranges of these properties, the classes whose axioms the proxy satisfies, and the types and values that the necessary conditions of its classes require. It also applies transitivity and chains to the properties that class expressions and chains use, and repeats until nothing new arises. Ontomatic evaluates the axioms in a compiled Python form for speed. Step~3 creates the objects. An individual that is, for example, both a \texttt{Student} and a \texttt{SportsFan} becomes one \texttt{Person} object with two role objects. Step~4 assigns each property value, asserted or required by a \texttt{hasValue} restriction, through its descriptor, on an object of the subject whose class declares the property and to an object of the value that fits its range. Each assignment triggers the property rules of Table~\ref{tab:rl}, for asserted and inferred facts alike, until no new fact arises. Transitive properties that are also symmetric are an exception. Chaining them eagerly is expensive (Section~\ref{sec:experiments}), so step~5 completes them at once: within each weakly connected component of such a property's graph, every pair of individuals is related. This step is exact: the transitive and symmetric closure of a graph relates every two members of each connected component, and each member to itself, and nothing else. If the property has a super-property, an inverse, an equivalent property or occurs in a property chain, the facts added in this step are then propagated like any other fact. Otherwise they are stored directly, and their provenance is the component.
+Algorithm~\ref{alg:loading} shows the loading procedure. An object's class cannot change after it is created, so all types are inferred before any object exists. Step~1 reads every individual into a lightweight proxy, with its asserted types and property values, and adds the values implied through sub-, equivalent, inverse and symmetric properties. Step~2 adds the domains and ranges of these properties, the classes whose axioms the proxy satisfies, and the types and values that the necessary conditions of its classes require. It also applies transitivity and chains to the properties that class expressions and chains use, and repeats until nothing new arises. Ontomatic evaluates the axioms in a compiled Python form for speed. Step~3 creates the objects. An individual that is, for example, both a \texttt{Student} and a \texttt{SportsFan} becomes one \texttt{Person} object with two role objects. Step~4 assigns each property value, asserted or required by a \texttt{hasValue} restriction, through its descriptor, on an object of the subject whose class declares the property and to an object of the value that fits its range. Each assignment triggers the property rules of Table~\ref{tab:rl}, for asserted and inferred facts alike, until no new fact arises. Transitive properties that are also symmetric are an exception. Chaining them eagerly is expensive (Section~\ref{sec:experiments}), so step~5 completes them at once: within each weakly connected component of such a property's graph, every pair of individuals is related. This step is exact: the transitive and symmetric closure of a graph relates every two members of each connected component, and each member to itself, and nothing else. If the property has a super-property, an inverse, an equivalent property or occurs in a property chain, the facts added in this step are then propagated like any other fact. Otherwise they are stored directly, and their provenance is the component.
 
-\begin{lstlisting}[style=eql, float=t, caption={ABox loading in Ontomatic, simplified from \texttt{OwlLoader.load}. Comments name the steps.}, label={lst:loading}]
-def load(graph, model):
-    # 1. a proxy per individual, with its asserted
-    #    types and values, plus the values implied by
-    #    sub-, equivalent, inverse, symmetric properties
-    proxies = {i: Proxy(i, graph.types(i), graph.values(i))
-               for i in graph.individuals()}
-    for x in proxies.values():
-        x.add_implied_values(model)
-    # 2. types from domains, ranges, axioms, necessary
-    #    conditions, and values derived by chains and
-    #    transitivity, repeated until nothing new arises
-    while any([x.add_inferred_types(model)
-               for x in proxies.values()]):
-        pass
-    # 3. an object per most specific type: a role taker
-    #    and its roles share the individual's identity
-    objects = {i: model.create(x.most_specific_types())
-               for i, x in proxies.items()}
-    # 4. assign asserted values and those required by
-    #    hasValue restrictions; descriptor rules fire
-    for s, p, o in chain(graph.property_assertions(),
-                         model.required_values(objects)):
-        subject = declaring(objects[s], p)
-        getattr(subject, p).add(fitting(objects[o], p))
-    # 5. close symmetric and transitive properties
-    for P in model.symmetric_transitive_properties():
-        for c in weakly_connected_components(P.graph()):
-            for a, b in product(c, c):
-                P.add_inferred(a, b)
-    return objects
-\end{lstlisting}
+\begin{algorithm}[t]
+\caption{ABox loading in Ontomatic (\texttt{OwlLoader.load}).}
+\label{alg:loading}
+\small
+\begin{algorithmic}[1]
+\Require RDF graph $G$ of the ABox, generated model
+\For{each individual $i$ of $G$} \Comment{Step 1}
+  \State $p_i \gets$ a proxy with the asserted types and values of $i$
+  \State add the values implied by sub-, inverse and symmetric properties
+\EndFor
+\Repeat \Comment{Step 2}
+  \State apply chains and transitivity where types depend on them
+  \For{each proxy $p_i$}
+    \State add the domains and ranges of the properties of $p_i$
+    \State add the classes whose axioms $p_i$ satisfies
+    \State add what the necessary conditions of its classes require
+  \EndFor
+\Until{no type or value is added}
+\For{each proxy $p_i$} \Comment{Step 3}
+  \State $O_i \gets$ one object per most specific type of $p_i$
+\EndFor
+\For{each $P(i,j)$ asserted or required by \texttt{hasValue}} \Comment{Step 4}
+  \State add the object of $O_j$ fitting $P$'s range to $P$ on the object of $O_i$ declaring $P$; the rules of $P$ fire
+\EndFor
+\For{each symmetric and transitive property $P$} \Comment{Step 5}
+  \For{each weakly connected component $C$ of the graph of $P$}
+    \State add $P(a,b)$ for all $a, b \in C$
+  \EndFor
+\EndFor
+\State \Return the objects $O_i$
+\end{algorithmic}
+\end{algorithm}
 
 \paragraph{What is preserved}
 The loading procedure is sound with respect to OWL~2~RL:
@@ -412,7 +414,7 @@ The loading procedure is sound with respect to OWL~2~RL:
 Let $\mathcal{O}$ be an OWL~2~RL ontology without punning, and let $\mathcal{A}^*$ be the knowledge base that Ontomatic produces from it. Every class and property assertion of $\mathcal{I}_{\mathcal{A}^*}$ is entailed by $\mathcal{O}$. Consequently, every answer of a positive \acs{eql} query over $\mathcal{A}^*$ is a certain answer over $\mathcal{O}$.
 \end{proposition}
 
-The first statement holds because every fact that Listing~\ref{lst:loading} derives is the conclusion of an RL/RDF rule of Table~\ref{tab:rl}, or of a sequence of them. This includes the schema-level derivation of domains and ranges, which only composes \texttt{prp-dom}, \texttt{prp-rng}, \texttt{prp-inv} and \texttt{prp-eqp}. The second statement holds because positive queries are preserved under homomorphisms, and $\mathcal{I}_{\mathcal{A}^*}$ maps homomorphically into every model of $\mathcal{O}$, including models that identify individuals that \ac{krrood} keeps apart. For an inconsistent $\mathcal{O}$ the guarantee is vacuous; the check described next reports the inconsistencies that the RL/RDF rules derive from $\mathcal{A}^*$.
+The first statement holds because every fact that Algorithm~\ref{alg:loading} derives is the conclusion of an RL/RDF rule of Table~\ref{tab:rl}, or of a sequence of them. This includes the schema-level derivation of domains and ranges, which only composes \texttt{prp-dom}, \texttt{prp-rng}, \texttt{prp-inv} and \texttt{prp-eqp}. The second statement holds because positive queries are preserved under homomorphisms, and $\mathcal{I}_{\mathcal{A}^*}$ maps homomorphically into every model of $\mathcal{O}$, including models that identify individuals that \ac{krrood} keeps apart. For an inconsistent $\mathcal{O}$ the guarantee is vacuous; the check described next reports the inconsistencies that the RL/RDF rules derive from $\mathcal{A}^*$.
 
 \ac{krrood} does not merge individuals. Instead, a check after loading evaluates on $\mathcal{A}^*$ the RL/RDF rules that derive the equality of two individuals (\texttt{prp-fp}, \texttt{prp-ifp}, \texttt{prp-key}, \texttt{cls-maxc2}, \texttt{cls-maxqc3/4}) or an inconsistency (Table~\ref{tab:rl}), and reports every application. If none applies and $\mathcal{O}$ uses only the constructs of Table~\ref{tab:rl}, the unique-name assumption is entailed rather than assumed, and the converse of Proposition~\ref{prop:soundness} holds:
 
@@ -449,7 +451,7 @@ We evaluate \ac{krrood} with knowledge compiled from an OWL~2~RL ontology. We as
 
 \begin{table}[t]
   \centering
-  \caption{Loading and reasoning time (seconds) and peak memory, from raw data (54,901 statements) and from pre-reasoned data (1,431,635 statements). The best time per input is in bold. The row ``Eager chaining'' is an ablation of \acs{krrood} that replaces step~5 of Listing~\ref{lst:loading} by eager chaining.}
+  \caption{Loading and reasoning time (seconds) and peak memory, from raw data (54,901 statements) and from pre-reasoned data (1,431,635 statements). The best time per input is in bold. The row ``Eager chaining'' is an ablation of \acs{krrood} that replaces step~5 of Algorithm~\ref{alg:loading} by eager chaining.}
   \label{tab:baselines}
   \footnotesize
   \setlength{\tabcolsep}{3pt}
@@ -485,11 +487,11 @@ Q12 illustrates how roles reconcile OWL entailment with object types. In OWL2Ben
 
 \subsection{Loading and Reasoning}
 
-Table~\ref{tab:baselines} reports the time and peak memory for loading the ontology and computing its consequences, starting from the raw data and from the pre-reasoned data. For \ac{krrood}, this is Ontomatic's loading procedure (Listing~\ref{lst:loading}). The row ``KRROOD + ORMatic'' adds persisting all objects into PostgreSQL.
+Table~\ref{tab:baselines} reports the time and peak memory for loading the ontology and computing its consequences, starting from the raw data and from the pre-reasoned data. For \ac{krrood}, this is Ontomatic's loading procedure (Algorithm~\ref{alg:loading}). The row ``KRROOD + ORMatic'' adds persisting all objects into PostgreSQL.
 
 \tbd{} Results paragraph: compare \ac{krrood} with the RL baselines (GraphDB, RDFLib) and with Pellet, for both inputs, in time and memory.
 
-The ablation row replaces the connected-components step of Listing~\ref{lst:loading} by eager chaining of symmetric and transitive properties. \tbd{} Report whether it finished within the two-hour limit.
+The ablation row replaces the connected-components step of Algorithm~\ref{alg:loading} by eager chaining of symmetric and transitive properties. \tbd{} Report whether it finished within the two-hour limit.
 
 
 
