@@ -161,7 +161,7 @@ This paper argues that ontological knowledge can instead be \emph{compiled into 
 \item An evaluation on the OWL2Bench benchmark~\cite{singh2020owl2bench} that compares answers, loading and reasoning time, memory use and query time with established OWL and RDF systems (Section~\ref{sec:experiments}).
 \end{enumerate}
 
-Source code and experiment scripts are provided as anonymized supplementary material.
+Source code, experiment scripts and the full formalization of \ac{eql} are provided as anonymized supplementary material.
 
 \begin{figure}[t]
   \centering
@@ -271,7 +271,7 @@ q22 = an(set_of(s, c).where(contains(s.takes_course, c)))
 \end{lstlisting}
 
 \paragraph{Axioms and rules}
-Since an axiom is a class method returning an \ac{eql} condition, it can be inspected, used as a constraint, or used as the body of a rule. Listing~\ref{lst:axiom} shows the OWL2Bench definition $\texttt{T20CricketFan}\equiv\exists\texttt{isCrazyAbout}.\{\texttt{T20Cricket}\}$ as an axiom, and a rule that derives a \texttt{T20CricketFan} role for every person satisfying it. In general, a rule \texttt{inference(H)($\bar k$)} derives an instance of class $H$ for each answer of its body. Like a Skolem term, a derived object is identified by its class and its arguments. Evaluating the rule again, or another rule with the same class and arguments, returns the same object, so rule evaluation is idempotent. A rule is evaluated on request, like a query, and the application decides whether to add the derived objects to $\mathcal{A}$.
+Since an axiom is a class method returning an \ac{eql} condition, it can be inspected, used as a constraint, or used as the body of a rule. Listing~\ref{lst:axiom} shows the OWL2Bench definition $\texttt{T20CricketFan}\equiv\exists\texttt{isCrazyAbout}.\{\texttt{T20Cricket}\}$ as an axiom, and a rule that derives a \texttt{T20CricketFan} role for every person satisfying it. In general, a rule \texttt{inference(H)($\bar k$)} derives an instance of class $H$ for each answer of its body. Like a Skolem term, a derived object is identified by its class and its arguments. Evaluating the rule again, or another rule with the same class and arguments, returns the same object, so rule evaluation is idempotent. A rule is evaluated on request, like a query, and returns the derived objects.
 
 \begin{lstlisting}[style=eql, caption={An OWL class definition as an axiom, used as the body of a classification rule.}, label={lst:axiom}]
 @dataclass(eq=False)
@@ -305,9 +305,9 @@ suggestions = an(entity(c).where(
 
 A query $Q(\bar x)\leftarrow\varphi(\bar x,\bar y)$ is evaluated in the single interpretation $\mathcal{I}_{\mathcal{A}}$ of Section~\ref{sec:kr}. Its answers are
 \[
-\mathit{ans}(Q,\mathcal{K}) = \{\theta(\bar x) \mid \mathcal{I}_{\mathcal{A}}\models \exists\bar y.\,\varphi\theta\},
+\mathit{ans}(Q,\mathcal{K}) = \{\theta(\bar x) \mid \mathcal{I}_{\mathcal{A}}\models \varphi\theta\},
 \]
-where $\theta$ ranges over the assignments of values from their domains to $\bar x$, and $\models$ is first-order satisfaction. Atoms are evaluated by computing their terms and, for predicates, calling them. Every variable ranges over a finite domain, which may depend on the values of outer variables, so every query is safe. Negation is negation as failure: $\neg\varphi\theta$ holds if and only if $\varphi\theta$ is not satisfied in $\mathcal{I}_{\mathcal{A}}$. Because $\mathcal{I}_{\mathcal{A}}$ is a single finite interpretation of ground facts, this is Reiter's closed-world assumption~\cite{Reiter1978}. As in SQL, answers are produced with bag semantics, and \texttt{distinct} removes duplicates. Evaluation proceeds left to right by nested iteration over the variables' domains, binding each variable when it is first needed and abandoning a binding as soon as a conjunct fails.
+where $\theta$ ranges over the assignments of values from their domains to $\bar x$ and $\bar y$, and $\models$ is first-order satisfaction. Atoms are evaluated by computing their terms and, for predicates, calling them. Every variable ranges over a finite domain, which may depend on the values of outer variables, so every query is safe. Negation is negation as failure: $\neg\varphi\theta$ holds if and only if $\varphi\theta$ is not satisfied in $\mathcal{I}_{\mathcal{A}}$. Because $\mathcal{I}_{\mathcal{A}}$ is a single finite interpretation of ground facts, this is Reiter's closed-world assumption~\cite{Reiter1978}. As in SQL, answers are produced with bag semantics, and \texttt{distinct} removes duplicates. Evaluation proceeds left to right by nested iteration over the variables' domains, binding each variable when it is first needed and abandoning a binding as soon as a conjunct fails.
 
 Two properties of this semantics matter for the rest of the paper. First, \emph{positive} queries, which use only class and property atoms, equality, conjunction, disjunction and existential quantification, are monotone: adding facts to $\mathcal{A}$ never removes an answer. Second, the remaining constructs are deliberately closed-world. A query for students who take at most one course counts the courses in $\mathcal{A}$, whereas an OWL reasoner cannot conclude that a student takes at most one course without knowing all of them.
 
