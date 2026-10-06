@@ -1,4 +1,4 @@
-# KRROOD — AAMAS 2027
+  # KRROOD — AAMAS 2027
 
 LaTeX sources for the AAMAS 2027 submission of KRROOD (*Implementing Knowledge Representation and Reasoning with Object Oriented Design*), ported from the arXiv version ([arXiv:2601.14840](https://arxiv.org/abs/2601.14840)) into the AAMAS 2027 template.
 
