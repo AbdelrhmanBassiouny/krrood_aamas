@@ -1,0 +1,57 @@
+"""
+The integration requirements of the delivery robot (Section 7.4), per way of building it, from the agent loop's
+runs with five seeds (aggregate_agent_loop_seeds.py) and from its code:
+
+* Languages: the languages in which the robot's developer writes code or queries (the OWL ontology is the same
+  input for all). KRROOD: Python. GraphDB: Python and SPARQL (updates and queries).
+* Processes: the processes that hold the robot's knowledge at runtime. GraphDB runs as a Java server, reached
+  over HTTP.
+* World models: the representations of the robot's world at runtime: the objects of the program, and for GraphDB
+  also its RDF store.
+* Planner: where the planner's predicate and function run: inside the query (KRROOD), on the query's answers
+  (GraphDB), or before the query, with its results written into the store (GraphDB, push).
+* Round trips and writes: medians per step over all steps of all seeds; writes are statements inserted into or
+  deleted from another store (KRROOD's assignments change its own objects).
+* Boundary lines: synchronization / mapping identifiers / procedure integration, counted by the @boundary markers
+  of the agent loop's code.
+* Step time: median over all steps of all seeds, with the range of the per-seed medians.
+
+Usage: python3 planning/integration_table.py planning/results_agentloop_seeds/agent_loop_seeds.json \
+           krrood_aamas_2027/tables/integration_table.tex
+"""
+import json
+import sys
+from pathlib import Path
+
+COLUMNS = [("krrood", "KRROOD"), ("graphdb", "GraphDB"), ("graphdb_push", "GraphDB, push")]
+STRUCTURE = {
+    "Languages": {"krrood": "1", "graphdb": "2", "graphdb_push": "2"},
+    "Processes": {"krrood": "1", "graphdb": "2", "graphdb_push": "2"},
+    "World models": {"krrood": "1", "graphdb": "2", "graphdb_push": "2"},
+    "Planner runs": {"krrood": "in query", "graphdb": "on answers", "graphdb_push": "before query"},
+}
+
+
+def number(value: float) -> str:
+    return f"{value:.0f}"
+
+
+summary = json.loads(Path(sys.argv[1]).read_text())["variants"]
+rows = [[label] + [cells[key] for key, _ in COLUMNS] for label, cells in STRUCTURE.items()]
+rows.append(["Round trips / step"] + [number(summary[key]["median_per_step"]["round_trips"]) for key, _ in COLUMNS])
+rows.append(["Writes / step"] + [
+    "0" if key.startswith("krrood") else number(summary[key]["median_per_step"]["statements_inserted"]
+                                                + summary[key]["median_per_step"]["statements_deleted"])
+    for key, _ in COLUMNS])
+rows.append(["Boundary lines"] + [
+    "/".join(str(summary[key]["boundary_lines"]["per_category"][c])
+             for c in ("synchronization", "mapping", "procedure_integration")) for key, _ in COLUMNS])
+rows.append(["Step [ms]"] + [
+    f"{summary[key]['median_step_ms']:.0f} ({min(summary[key]['per_seed_median_step_ms']):.0f}--"
+    f"{max(summary[key]['per_seed_median_step_ms']):.0f})" for key, _ in COLUMNS])
+lines = [r"\begin{tabular}{@{}lrrr@{}}", r"\toprule",
+         " & ".join([""] + [f"\\textbf{{{label}}}" for _, label in COLUMNS]) + r"\\", r"\midrule"]
+lines += [" & ".join(row) + r"\\" for row in rows]
+lines += [r"\bottomrule", r"\end{tabular}"]
+Path(sys.argv[2]).write_text("\n".join(lines) + "\n")
+print("\n".join(lines))
