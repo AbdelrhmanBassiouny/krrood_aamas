@@ -1,0 +1,6 @@
+All results come from one full run of mode "all" with bundle ae0b139a90267579 (2026-10-06 14:18 to 23:58 UTC),
+except loading_krrood: its 10 runs in loading/loading.json come from a rerun of that step on 2026-10-07 at
+06:44-06:53 UTC on the same machine and image, because a desktop program used some CPU during the first pass
+(see host/monitor.csv). query_timing was rerun as well (06:27-06:44 UTC, logged in reproduce.log); those
+measurements are not used: GraphDB was timed right after a restart, without the warm-up by the answer check
+that it had in the full run, so queries/ holds the full run's query times.
