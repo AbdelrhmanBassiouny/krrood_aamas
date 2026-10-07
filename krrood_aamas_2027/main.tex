@@ -497,14 +497,14 @@ We presented \ac{krrood}, which turns an agent's object-oriented program into it
 \begin{itemize}
   \item \ac{krrood} adopts the closed-world and unique-name assumptions. It reports equal individuals but does not merge them, so facts that an equality propagates may be missing.
   \item Ontomatic targets OWL~2~RL. Constructs outside RL are out of scope, and the generator does not yet compile some RL constructs, such as \texttt{oneOf} and \texttt{owl:Nothing}.
-  \item Inferred facts are not retracted when the facts they were derived from are removed; incremental maintenance of materialized knowledge~\cite{MotikNenovPiroHorrocks2015} is future work.
+  \item Inferred facts are not retracted when the facts they were derived from are removed.
   \item Negation as failure is evaluated over the derived facts, so where Proposition~\ref{prop:completeness} does not apply, for example when the check reports an equality, a closed-world answer can contradict OWL entailment.
   \item Robots observe their environment partially and with noise, which challenges the closed-world reading.
   \item We evaluated a single benchmark scale.
 \end{itemize}
 
 \paragraph{Future work}
-We will extend Ontomatic towards OWL~DL, compile \ac{eql} conditions to Python so that declarative axioms run at compiled speed, add \ac{eql} back ends for perception and control, and evaluate \ac{krrood} on real robots in long-running episodes.
+We will maintain inferred facts incrementally as the agent's observations change~\cite{MotikNenovPiroHorrocks2015}, extend Ontomatic towards OWL~DL, compile \ac{eql} conditions to Python so that declarative axioms run at compiled speed, add \ac{eql} back ends for perception and control, and evaluate \ac{krrood} on real robots in long-running episodes.
 
 \balance
 \bibliographystyle{ACM-Reference-Format}
