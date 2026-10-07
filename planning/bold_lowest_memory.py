@@ -14,7 +14,7 @@ UNITS = {"MB": 1.0, "GB": 1024.0}
 
 
 def megabytes(cell: str) -> float:
-    number, unit = cell.strip().split("\\,")
+    number, unit = cell.strip().replace("$^{\\ast}$", "").split("\\,")
     return float(number) * UNITS[unit]
 
 
