@@ -1,0 +1,113 @@
+{
+  "protege_version": "5.6.7",
+  "pellet_plugin_version": "2.2.0 (com.clarkparsia.protege.plugin.pellet), Snap SPARQL Query 6.0.0",
+  "java_options": "-Xmx28G (bundled OpenJDK 11.0.25), -Xlog:gc",
+  "loading": {
+    "raw": {
+      "seconds": 4.56,
+      "peak_rss_mib": 5209,
+      "heap_increase_mib": 2955,
+      "loading_ms": 539,
+      "reasoning_ms": 4023,
+      "status": "ok"
+    },
+    "reasoned": {
+      "seconds": 16.69,
+      "peak_rss_mib": 5235,
+      "heap_increase_mib": 3194,
+      "loading_ms": 4084,
+      "reasoning_ms": 12603,
+      "status": "ok"
+    }
+  },
+  "queries": {
+    "2": {
+      "mean_ms": 3329.0,
+      "std_ms": 0.0,
+      "results": 7421
+    },
+    "3": {
+      "mean_ms": 58.0,
+      "std_ms": 0.0,
+      "results": 55
+    },
+    "4": {
+      "mean_ms": 48.0,
+      "std_ms": 0.0,
+      "results": 2486
+    },
+    "5": {
+      "mean_ms": 5.0,
+      "std_ms": 0.0,
+      "results": 20
+    },
+    "7": {
+      "mean_ms": 63.0,
+      "std_ms": 0.0,
+      "results": 1684
+    },
+    "8": {
+      "mean_ms": 50.0,
+      "std_ms": 0.0,
+      "results": 6
+    },
+    "9": {
+      "mean_ms": null,
+      "status": "error"
+    },
+    "10": {
+      "mean_ms": 55.0,
+      "std_ms": 0.0,
+      "results": 666
+    },
+    "11": {
+      "mean_ms": 75.0,
+      "std_ms": 0.0,
+      "results": 2422
+    },
+    "12": {
+      "mean_ms": 23.0,
+      "std_ms": 0.0,
+      "results": 2494
+    },
+    "13": {
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "results": 0
+    },
+    "14": {
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "results": 0
+    },
+    "15": {
+      "mean_ms": 64.0,
+      "std_ms": 0.0,
+      "results": 21
+    },
+    "16": {
+      "mean_ms": 51.0,
+      "std_ms": 0.0,
+      "results": 21
+    },
+    "19": {
+      "mean_ms": 8.0,
+      "std_ms": 0.0,
+      "results": 858
+    },
+    "20": {
+      "mean_ms": null,
+      "status": "timeout"
+    },
+    "21": {
+      "mean_ms": 46300.0,
+      "std_ms": 0.0,
+      "results": 145
+    },
+    "22": {
+      "mean_ms": 616.0,
+      "std_ms": 0.0,
+      "results": 106
+    }
+  }
+}

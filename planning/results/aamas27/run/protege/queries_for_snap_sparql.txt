@@ -1,0 +1,126 @@
+########## Q2  [GraphDB: 7,421 answers]  (Find Person instances who are member (Student or Employee) of some Organization.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  ?y  WHERE { ?x  owl2bench:isMemberOf  ?y  }
+
+########## Q3  [GraphDB: 55 answers]  (Find the instances of Organization which is a Part Of any other Organization.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  ?y  WHERE { ?x  owl2bench:isPartOf  ?y  }
+
+########## Q4  [GraphDB: 2,486 answers]  (Find the age of all the Person instances.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  ?y  WHERE { ?x  owl2bench:hasAge  ?y  }
+
+########## Q5  [GraphDB: 20 answers]  (Find all the instances of class T20CricketFan. T20CricketFan is a Person who is crazy about Cricket. {Cricket} is an instance of Class Cricket.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  WHERE { ?x  rdf:type  owl2bench:T20CricketFan  }
+
+########## Q7  [GraphDB: 1,684 answers]  (Find all the alumni of a University.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  ?y  WHERE { ?x  owl2bench:hasAlumnus  ?y  }
+
+########## Q8  [GraphDB: 6 answers]  (Find Affiliations of all the Organizations.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  ?y  WHERE  {  ?x  owl2bench:isAffiliatedOrganizationOf  ?y  }
+
+########## Q9  [GraphDB: 0 answers]  (Find all the colleges having Non-Science discipline. NonScience is something which is not Science)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT DISTINCT ?x WHERE { ?x owl2bench:hasCollegeDiscipline owl2bench:NonScience }
+
+########## Q10  [GraphDB: 666 answers]  (Find all the instances who has Collaboration with any other instance. The query performs search across universities.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  ?y  WHERE  { ?x  owl2bench:hasCollaborationWith ?y  }
+
+########## Q11  [GraphDB: 2,422 answers]  (Find all the instances who are advised by some other instance.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  ?y  WHERE { ?x  owl2bench:isAdvisedBy  ?y  }
+
+########## Q12  [GraphDB: 2,494 answers]  (Find all the instances of class Person. A Person is union of Man and Woman.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  WHERE { ?x  rdf:type  owl2bench:Person}
+
+########## Q13  [GraphDB: 0 answers]  (Find all the instances of class WomanCollege. WomanCollege is a College which has only Woman Students.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  WHERE { ?x  rdf:type  owl2bench:WomanCollege}
+
+########## Q14  [GraphDB: 0 answers]  (Find all the instances of class LeisureStudent. Leisure student is a Student who takes Maximum one course.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  WHERE { ?x  rdf:type  owl2bench:LeisureStudent}
+
+########## Q15  [GraphDB: 21 answers]  (Find the head of all the Organization.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  WHERE {?x  owl2bench:isHeadOf  ?y}
+
+########## Q16  [GraphDB: 21 answers]  (Find all the Organizations who has head.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  WHERE {?x  owl2bench:hasHead  ?y}
+
+########## Q19  [GraphDB: 858 answers]  (Find all the instances of class Faculty. A Faculty is an Employee who teaches some Course.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  WHERE { ?x  rdf:type  owl2bench:Faculty  }
+
+########## Q20  [GraphDB: 1,311,932 answers]  (Find all the instances who have same home town with any other instance. The query performs search across universities.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?x  ?y  WHERE  {?x  owl2bench:hasSameHomeTownWith  ?y  }
+
+########## Q21  [GraphDB: 145 answers]  (Find all the Engineering Students. The Query performs search across all the universities.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT DISTINCT ?x ?y WHERE {?x rdf:type owl2bench:Student. ?x owl2bench:isStudentOf ?y. ?y owl2bench:isPartOf ?z . ?z owl2bench:hasCollegeDiscipline owl2bench:Engineering}
+
+########## Q22  [GraphDB: 106 answers]  (Find all the students who took course taught by the Dean of the Organization. The Query performs search across all the universities.)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl2bench: <http://benchmark/OWL2Bench#>
+
+SELECT  DISTINCT  ?s  ?c  WHERE  {?s  rdf:type  owl2bench:Student.  ?x rdf:type  owl2bench:Organization.  ?x  owl2bench:hasDean  ?z.  ?z  owl2bench:teachesCourse  ?c.  ?s owl2bench:takesCourse  ?c  }
+

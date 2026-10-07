@@ -7,7 +7,10 @@ data. The increase is:
 * for a worker-based system, the largest peak RSS of its runs (as make_tables.py takes it) minus the peak RSS of a
   fresh worker after its imports (memory/import_memory.json);
 * for GraphDB, the Java heap in use after GC at its peak during the load minus before it
-  (memory/graphdb_heap/graphdb_heap.json).
+  (memory/graphdb_heap/graphdb_heap.json);
+* for Protégé, likewise its Java heap in use after GC, from loading the file until Pellet has finished
+  (heap_increase_mib in protege.json, see protege/README.txt); its JVM has a 28 GB heap, so its RSS shows how lazily
+  the JVM collects garbage rather than what Pellet needs.
 
 The Protégé row is kept as a row to fill in while there is no protege.json. Run before bold_lowest_memory.py.
 
@@ -79,6 +82,10 @@ for line in lines:
         line = " & ".join(cells) + "\\\\"
     elif label == PROTEGE:
         cells = [cell.strip() for cell in line.rstrip("\\").split("&")]
+        if (run_dir / "protege.json").exists():
+            loading = json.loads((run_dir / "protege.json").read_text())["loading"]
+            for column, input_name in ((2, "raw"), (4, "reasoned")):
+                cells[column] = format_memory(loading[input_name]["heap_increase_mib"])
         line = " & ".join(cells + ["no"]) + "\\\\"
     output.append(line)
     if label == "Owlready2" and not any(l.split("&")[0].strip() == PROTEGE for l in lines):

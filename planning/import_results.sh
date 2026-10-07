@@ -72,20 +72,6 @@ grep -q "KRROOD (with ORMatic)" "$REPO/krrood_aamas_2027/tables/loading_table.te
     || { echo "FAILED: the two loading-table rows were not renamed"; exit 1; }
 python3 "$REPO/planning/loading_memory_increase.py" "$RUN" "$REPO/krrood_aamas_2027/tables/loading_table.tex"
 python3 "$REPO/planning/bold_lowest_memory.py" "$REPO/krrood_aamas_2027/tables/loading_table.tex"
-# Protégé's queries ran once (std_ms 0 in protege.json): its column, the last one, shows the time without "± 0.00".
-python3 - "$REPO/krrood_aamas_2027/tables/query_table.tex" <<'PY'
-import re, sys
-path = sys.argv[1]
-lines = open(path).read().split("\n")
-header = next((l for l in lines if l.startswith("\\textbf{Query}")), "")
-if "Prot" in header.split("&")[-1]:
-    for i, line in enumerate(lines):
-        if re.match(r"Q\d+ &", line):
-            cells = line.split(" & ")
-            cells[-1] = cells[-1].replace(" \\pm 0.00", "")
-            lines[i] = " & ".join(cells)
-    open(path, "w").write("\n".join(lines))
-    print("Protégé column: single runs, without ± 0.00")
-PY
+python3 "$REPO/planning/protege_query_column.py" "$RUN" "$REPO/krrood_aamas_2027/tables/query_table.tex"
 echo "copied loading_table.tex and query_table.tex into krrood_aamas_2027/tables/"
 git -C "$REPO" diff --stat -- krrood_aamas_2027/tables
