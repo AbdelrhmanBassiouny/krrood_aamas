@@ -1,0 +1,61 @@
+{
+  "experiment": "loading_and_reasoning",
+  "arguments": {
+    "systems": "graphdb",
+    "inputs": "raw",
+    "repetitions": 1,
+    "repetitions_per_system": "graphdb=1,rdflib_owlrl=1",
+    "timeout_seconds": 10800,
+    "rdflib_timeout_seconds": null,
+    "memory_limit_gib": null,
+    "java_memory_mb": 2000,
+    "graphdb_ruleset": "owl2-rl-optimized",
+    "graphdb_url": null,
+    "raw_file": "/opt/aamas27/code/earlier/experiments/resources/owl2bench_statements_unreasoned.rdf",
+    "reasoned_file": "/opt/aamas27/code/earlier/experiments/resources/owl2bench_statements_reasoned.rdf",
+    "results_dir": "/w/results_raw"
+  },
+  "input_files": {
+    "raw": "/opt/aamas27/code/earlier/experiments/resources/owl2bench_statements_unreasoned.rdf",
+    "reasoned": "/opt/aamas27/code/earlier/experiments/resources/owl2bench_statements_reasoned.rdf"
+  },
+  "runs": [
+    {
+      "wall_seconds": 1215.9819243989914,
+      "rss_before_bytes": 2131427328,
+      "peak_rss_bytes": 7007604736,
+      "rss_after_bytes": 7007801344,
+      "peak_rss_mib": 6682.97265625,
+      "peak_minus_before_mib": 4650.28515625,
+      "status": "ok",
+      "repository": "aamas27_load_raw_owl2_rl_optimized",
+      "ruleset": "owl2-rl-optimized",
+      "ruleset_label": "OWL2-RL (Optimized)",
+      "worker_result": {
+        "load_and_reasoning_seconds": 1215.981848469004,
+        "statements": {
+          "explicit": 54901,
+          "total": 1467912
+        }
+      },
+      "server_pid": 41,
+      "server_java_options": [
+        "-XX:MaxDirectMemorySize=128G",
+        "-Xms8g",
+        "-Xmx8g",
+        "-XX:-OmitStackTraceInFastThrow",
+        "-XX:OnOutOfMemoryError=kill -9 %p",
+        "-Dgraphdb.distribution=zip",
+        "-Xlog:gc:file=/w/gc_raw.log:uptime,level,tags",
+        "-Dgraphdb.pidfile=/w/graphdb_raw.pid",
+        "-Dgraphdb.dist=/opt/graphdb/dist",
+        "-Dgraphdb.home=/w/graphdb-home-raw",
+        "-Dgraphdb.license.file=/license/graphdb.license",
+        "-Dgraphdb.connector.port=7200"
+      ],
+      "system": "graphdb",
+      "input": "raw",
+      "repetition": 0
+    }
+  ]
+}

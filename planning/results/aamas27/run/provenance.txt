@@ -4,3 +4,15 @@ except loading_krrood: its 10 runs in loading/loading.json come from a rerun of 
 (see host/monitor.csv). query_timing was rerun as well (06:27-06:44 UTC, logged in reproduce.log); those
 measurements are not used: GraphDB was timed right after a restart, without the warm-up by the answer check
 that it had in the full run, so queries/ holds the full run's query times.
+
+Memory as the increase during loading (memory/, measured on 2026-10-07 on the same machine and image):
+- memory/import_memory.json: peak RSS of a fresh worker process after its imports and before it loads data
+  (measure_import_memory.py, three runs each). Subtracted from the peak RSS of the worker-based systems.
+- memory/graphdb_heap/: GraphDB loaded each input once more, started as in reproduce.sh (8 GB heap) with a GC log
+  and a forced full GC before and after the load (driver.sh, run outside reproduce.sh, with a copy of graphdb-home).
+  graphdb_heap.json gives the Java heap in use: the increase is the largest heap after a GC pause during the load
+  minus the heap after the forced GC before it (graphdb_heap_from_gc.py). Load times 1216 s and 766 s; the table keeps
+  the times of the full run. GraphDB's process RSS reflects its fixed 8 GB heap, not the data.
+
+ablation_scaling/: why the ablation does not finish within two hours, measured on 2026-10-07 on the same machine and
+image on small synthetic data (scaling.txt, probe.py, test_eager_symmetric_transitive.py).

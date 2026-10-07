@@ -1,0 +1,18 @@
+{
+  "raw": {
+    "heap_before_mib": 68,
+    "heap_peak_mib": 928,
+    "heap_increase_mib": 860,
+    "heap_after_load_mib": 109,
+    "pauses_during_load": 318,
+    "old_generation_cycles_during_load": 0
+  },
+  "reasoned": {
+    "heap_before_mib": 68,
+    "heap_peak_mib": 474,
+    "heap_increase_mib": 406,
+    "heap_after_load_mib": 108,
+    "pauses_during_load": 242,
+    "old_generation_cycles_during_load": 0
+  }
+}

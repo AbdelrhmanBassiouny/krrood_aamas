@@ -1,0 +1,25 @@
+Eager chaining of hasSameHomeTownWith (the ablation's mode) on the OWL2Bench TBox plus n synthetic persons, measured
+on 2026-10-07 in the bundle's image on the run's machine with probe.py. "attempts" counts calls of
+PropertyDescriptorRelation.update_source; "facts" is the number of values added (n^2, everyone with everyone);
+"complete" means every person is related to all n persons. Component mode (step 5) gives the same facts.
+
+topology  n    seconds  attempts    facts  complete
+chain     8    0.36     622         64     yes
+chain     16   0.38     4822        256    yes
+chain     32   0.52     38332       1024   yes
+chain     64   1.57     306037      4096   yes
+chain     128  10.09    2447152     16384  yes
+chain     256  74.86    19574230    65536  yes
+star      8    0.36     640         64     yes
+star      16   0.38     4928        256    yes
+star      32   0.52     38784       1024   yes
+star      64   1.59     307968      4096   yes
+star      128  10.21    2455040     16384  yes
+star      256  78.27    19606528    65536  yes
+
+Attempts grow about 8-fold per doubling of n (about 1.17 n^3). In the raw data, the largest group of individuals linked
+by hasSameHomeTownWith has 1,145 members (1,413 asserted links, 92 groups), so eager chaining needs about 1.8e9
+attempts. test_eager_symmetric_transitive.py (9 tests: termination, completeness, equality with component mode, each
+fact added once, one relation per fact, cubic growth) passes:
+  /opt/venvs/earlier/bin/python -m pytest test_eager_symmetric_transitive.py   (from code/earlier/experiments,
+  after python make_tbox.py <raw rdf> tbox.rdf in this folder)

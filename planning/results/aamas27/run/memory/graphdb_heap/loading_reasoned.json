@@ -1,0 +1,61 @@
+{
+  "experiment": "loading_and_reasoning",
+  "arguments": {
+    "systems": "graphdb",
+    "inputs": "reasoned",
+    "repetitions": 1,
+    "repetitions_per_system": "graphdb=1,rdflib_owlrl=1",
+    "timeout_seconds": 10800,
+    "rdflib_timeout_seconds": null,
+    "memory_limit_gib": null,
+    "java_memory_mb": 2000,
+    "graphdb_ruleset": "owl2-rl-optimized",
+    "graphdb_url": null,
+    "raw_file": "/opt/aamas27/code/earlier/experiments/resources/owl2bench_statements_unreasoned.rdf",
+    "reasoned_file": "/opt/aamas27/code/earlier/experiments/resources/owl2bench_statements_reasoned.rdf",
+    "results_dir": "/w/results_reasoned"
+  },
+  "input_files": {
+    "raw": "/opt/aamas27/code/earlier/experiments/resources/owl2bench_statements_unreasoned.rdf",
+    "reasoned": "/opt/aamas27/code/earlier/experiments/resources/owl2bench_statements_reasoned.rdf"
+  },
+  "runs": [
+    {
+      "wall_seconds": 766.3184881640045,
+      "rss_before_bytes": 2073640960,
+      "peak_rss_bytes": 6649450496,
+      "rss_after_bytes": 6649647104,
+      "peak_rss_mib": 6341.41015625,
+      "peak_minus_before_mib": 4363.83203125,
+      "status": "ok",
+      "repository": "aamas27_load_reasoned_owl2_rl_optimized",
+      "ruleset": "owl2-rl-optimized",
+      "ruleset_label": "OWL2-RL (Optimized)",
+      "worker_result": {
+        "load_and_reasoning_seconds": 766.3184214669891,
+        "statements": {
+          "explicit": 1431635,
+          "total": 1467912
+        }
+      },
+      "server_pid": 337,
+      "server_java_options": [
+        "-XX:MaxDirectMemorySize=128G",
+        "-Xms8g",
+        "-Xmx8g",
+        "-XX:-OmitStackTraceInFastThrow",
+        "-XX:OnOutOfMemoryError=kill -9 %p",
+        "-Dgraphdb.distribution=zip",
+        "-Xlog:gc:file=/w/gc_reasoned.log:uptime,level,tags",
+        "-Dgraphdb.pidfile=/w/graphdb_reasoned.pid",
+        "-Dgraphdb.dist=/opt/graphdb/dist",
+        "-Dgraphdb.home=/w/graphdb-home-reasoned",
+        "-Dgraphdb.license.file=/license/graphdb.license",
+        "-Dgraphdb.connector.port=7200"
+      ],
+      "system": "graphdb",
+      "input": "reasoned",
+      "repetition": 0
+    }
+  ]
+}

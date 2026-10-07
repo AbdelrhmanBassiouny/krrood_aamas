@@ -1,0 +1,35 @@
+{
+  "krrood": {
+    "import_rss_mib": [
+      129.45703125,
+      129.015625,
+      128.5390625
+    ],
+    "max_mib": 129.45703125,
+    "imports": "from krrood_experiments.aamas27 import loading_worker as w; w._import_krrood()"
+  },
+  "owlready2_pellet": {
+    "import_rss_mib": [
+      27.0,
+      27.1875,
+      27.1875
+    ],
+    "max_mib": 27.1875,
+    "imports": "import krrood_experiments.aamas27.loading_worker, owlready2"
+  },
+  "rdflib_owlrl": {
+    "import_rss_mib": [
+      27.5625,
+      27.375,
+      27.375
+    ],
+    "max_mib": 27.5625,
+    "imports": "import krrood_experiments.aamas27.loading_worker, owlrl, rdflib"
+  },
+  "krrood_ormatic": {
+    "same_as": "krrood"
+  },
+  "krrood_eager_symmetric_transitive": {
+    "same_as": "krrood"
+  }
+}

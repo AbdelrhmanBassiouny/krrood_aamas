@@ -1,15 +1,15 @@
-\begin{tabular}{@{}lrrrr@{}}
+\begin{tabular}{@{}lrrrrc@{}}
 \toprule
- & \multicolumn{2}{c}{\textbf{Raw input}} & \multicolumn{2}{c}{\textbf{Pre-reasoned input}}\\
+ & \multicolumn{2}{c}{\textbf{Raw input}} & \multicolumn{2}{c}{\textbf{Pre-reasoned input}} & \\
 \cmidrule(lr){2-3}\cmidrule(l){4-5}
-\textbf{System} & \textbf{Time [s]} & \textbf{Memory} & \textbf{Time [s]} & \textbf{Memory}\\
+\textbf{System} & \textbf{Time [s]} & \textbf{Memory} & \textbf{Time [s]} & \textbf{Memory} & \textbf{Persists}\\
 \midrule
-KRROOD & $\mathbf{8.15 \pm 0.03}$ & \textbf{338\,MB} & $\mathbf{89.2 \pm 0.40}$ & \textbf{1.93\,GB}\\
-RDFLib & $>10800$ & 5.78\,GB & $>10800$ & 2.38\,GB\\
-Owlready2 & $39.2 \pm 0.94$ & 2.29\,GB & failed & 2.32\,GB\\
-Prot\'eg\'e & \tbd{} & \tbd{} & \tbd{} & \tbd{}\\
-GraphDB & $1210$ & 7.73\,GB & $748$ & 8.10\,GB\\
-KRROOD (with ORMatic) & $28.9 \pm 0.11$ & 1.55\,GB & $114 \pm 0.38$ & 3.03\,GB\\
-KRROOD without step 5 & $>7200$ & 768\,MB & n/a & n/a\\
+KRROOD & $\mathbf{8.15 \pm 0.03}$ & \textbf{209\,MB} & $\mathbf{89.2 \pm 0.40}$ & 1.81\,GB & no\\
+RDFLib & $>10800$ & 5.75\,GB & $>10800$ & 2.35\,GB & no\\
+Owlready2 & $39.2 \pm 0.94$ & 2.26\,GB & failed & 2.30\,GB & no\\
+Prot\'eg\'e & \tbd{} & \tbd{} & \tbd{} & \tbd{} & no\\
+GraphDB & $1210$ & 860\,MB & $748$ & \textbf{406\,MB} & yes\\
+KRROOD (with ORMatic) & $28.9 \pm 0.11$ & 1.43\,GB & $114 \pm 0.38$ & 2.90\,GB & yes\\
+KRROOD without step 5 & $>7200$ & 638\,MB & n/a & n/a & no\\
 \bottomrule
 \end{tabular}
