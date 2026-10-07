@@ -1,0 +1,15 @@
+The agent loop of Section 7.4 (the delivery robot), measured on 2026-10-07 on the machine of the main run (Intel
+Core i7-13700, 64 GB RAM, Ubuntu 24.04), in a container of the Docker image of the bundle plus reasonable 0.4.4,
+limited to 6 CPUs and 16 GB, with GraphDB 11.2 Free (one core) in the same container. Code: experiments commit
+c4aede2 (src/krrood_experiments/aamas27/agent_loop/), seed 0, 200 steps, 3 perceived additions per step. One run per
+variant. Other experiments ran on the machine at the same time.
+
+The variants krrood, graphdb, graphdb_push and reasonable were run first (run200.log); krrood_navigation was added
+afterwards with --resume (run200_resume.log), which kept the other variants' results. Between the runs the code
+changed only in ways that do not affect what was measured: reasonable's variant frees its previous closure before
+the final full materialization (its first attempt ran out of memory there), an unused import, the table header,
+the --resume option and the tests.
+
+GraphDB's repository was loaded once (raw data, OWL 2 RL, about 23 minutes); after the graphdb variant, the
+statements it had written were deleted and the explicit and total statement counts checked to equal those after
+loading, before graphdb_push used the repository.

@@ -30,6 +30,8 @@ ROWS = {
 }
 PERSISTS = {"GraphDB", "KRROOD (with ORMatic)"}
 PROTEGE = "Prot\\'eg\\'e"
+HEAP = "$^{\\ast}$"
+"""Marks a memory cell that is the increase of a Java heap in use, not of process memory (see the table's caption)."""
 INPUTS = ("raw", "reasoned")
 
 
@@ -77,7 +79,7 @@ for line in lines:
         for column, input_name in ((2, "raw"), (4, "reasoned")):
             mib = increase_mib(run_dir, ROWS[label], input_name)
             if mib is not None:
-                cells[column] = format_memory(mib)
+                cells[column] = format_memory(mib) + (HEAP if ROWS[label] == "graphdb" else "")
         cells.append("yes" if label in PERSISTS else "no")
         line = " & ".join(cells) + "\\\\"
     elif label == PROTEGE:
@@ -85,7 +87,7 @@ for line in lines:
         if (run_dir / "protege.json").exists():
             loading = json.loads((run_dir / "protege.json").read_text())["loading"]
             for column, input_name in ((2, "raw"), (4, "reasoned")):
-                cells[column] = format_memory(loading[input_name]["heap_increase_mib"])
+                cells[column] = format_memory(loading[input_name]["heap_increase_mib"]) + HEAP
         line = " & ".join(cells + ["no"]) + "\\\\"
     output.append(line)
     if label == "Owlready2" and not any(l.split("&")[0].strip() == PROTEGE for l in lines):

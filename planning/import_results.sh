@@ -71,6 +71,11 @@ grep -q "KRROOD (with ORMatic)" "$REPO/krrood_aamas_2027/tables/loading_table.te
     && grep -q "KRROOD without step 5" "$REPO/krrood_aamas_2027/tables/loading_table.tex" \
     || { echo "FAILED: the two loading-table rows were not renamed"; exit 1; }
 python3 "$REPO/planning/loading_memory_increase.py" "$RUN" "$REPO/krrood_aamas_2027/tables/loading_table.tex"
+# The in-memory baselines come from their own run (planning/results_baselines, kept across imports).
+if [[ -d "$REPO/planning/results_baselines" ]]; then
+    python3 "$REPO/planning/baseline_rows.py" "$REPO/planning/results_baselines" \
+        "$REPO/krrood_aamas_2027/tables/loading_table.tex"
+fi
 python3 "$REPO/planning/bold_lowest_memory.py" "$REPO/krrood_aamas_2027/tables/loading_table.tex"
 python3 "$REPO/planning/protege_query_column.py" "$RUN" "$REPO/krrood_aamas_2027/tables/query_table.tex"
 echo "copied loading_table.tex and query_table.tex into krrood_aamas_2027/tables/"

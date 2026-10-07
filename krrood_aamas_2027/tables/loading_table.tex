@@ -4,11 +4,13 @@
 \cmidrule(lr){2-3}\cmidrule(l){4-5}
 \textbf{System} & \textbf{Time [s]} & \textbf{Memory} & \textbf{Time [s]} & \textbf{Memory} & \textbf{Persists}\\
 \midrule
-KRROOD & $8.15 \pm 0.03$ & \textbf{209\,MB} & $89.2 \pm 0.40$ & 1.81\,GB & no\\
+KRROOD & $8.15 \pm 0.03$ & 209\,MB & $89.2 \pm 0.40$ & 1.81\,GB & no\\
 RDFLib & $>10800$ & 5.75\,GB & $>10800$ & 2.35\,GB & no\\
 Owlready2 & $39.2 \pm 0.94$ & 2.26\,GB & failed & 2.30\,GB & no\\
-Prot\'eg\'e & $\mathbf{4.56}$ & 2.89\,GB & $\mathbf{16.7}$ & 3.12\,GB & no\\
-GraphDB & $1210$ & 860\,MB & $748$ & \textbf{406\,MB} & yes\\
+Prot\'eg\'e & $\mathbf{4.56}$ & 2.89\,GB$^{\ast}$ & $\mathbf{16.7}$ & 3.12\,GB$^{\ast}$ & no\\
+GraphDB & $1210$ & 860\,MB$^{\ast}$ & $748$ & \textbf{406\,MB$^{\ast}$} & yes\\
+Nemo & $5.62 \pm 0.10$ & \textbf{200\,MB} & out of memory & $>$24\,GB & no\\
+reasonable & $77.8 \pm 0.13$ & 16.53\,GB & out of memory & $>$24\,GB & no\\
 KRROOD (with ORMatic) & $28.9 \pm 0.11$ & 1.43\,GB & $114 \pm 0.38$ & 2.90\,GB & yes\\
 KRROOD without step 5 & $>7200$ & 638\,MB & n/a & n/a & no\\
 \bottomrule

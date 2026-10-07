@@ -1,0 +1,375 @@
+{
+  "raw": "resources/owl2bench_statements_unreasoned.rdf",
+  "reference": "/data/owl2bench_statements_reasoned.rdf",
+  "individuals": 3667,
+  "object_properties": 91,
+  "data_properties": 12,
+  "candidates": {
+    "nemo_owlrl": {
+      "path": "/out/baselines/nemo_owlrl.nt",
+      "triples": 1479165,
+      "class": {
+        "reference": 17558,
+        "candidate": 17558,
+        "matching": 17558,
+        "missing": 0,
+        "extra": 0,
+        "missing_by_name": {},
+        "extra_by_name": {},
+        "missing_examples": [],
+        "extra_examples": []
+      },
+      "object": {
+        "reference": 1385869,
+        "candidate": 1385869,
+        "matching": 1385869,
+        "missing": 0,
+        "extra": 0,
+        "missing_by_name": {},
+        "extra_by_name": {},
+        "missing_examples": [],
+        "extra_examples": []
+      },
+      "data": {
+        "reference": 20933,
+        "candidate": 20933,
+        "matching": 20933,
+        "missing": 0,
+        "extra": 0,
+        "missing_by_name": {},
+        "extra_by_name": {},
+        "missing_examples": [],
+        "extra_examples": []
+      }
+    },
+    "reasonable_owlrl": {
+      "path": "/out/baselines/reasonable_owlrl.nt",
+      "triples": 1488568,
+      "class": {
+        "reference": 17558,
+        "candidate": 17616,
+        "matching": 17558,
+        "missing": 0,
+        "extra": 58,
+        "missing_by_name": {},
+        "extra_by_name": {
+          "SportsFan": 18,
+          "SportsLover": 17,
+          "Man": 14,
+          "Woman": 7,
+          "PeopleWithHobby": 2
+        },
+        "missing_examples": [],
+        "extra_examples": [
+          [
+            "class",
+            "Man",
+            "http://benchmark/OWL2Bench#U0C0D1FP4",
+            ""
+          ],
+          [
+            "class",
+            "Man",
+            "http://benchmark/OWL2Bench#U0C1D0FP0",
+            ""
+          ],
+          [
+            "class",
+            "Man",
+            "http://benchmark/OWL2Bench#U0C1D1FP1",
+            ""
+          ],
+          [
+            "class",
+            "Man",
+            "http://benchmark/OWL2Bench#U0C1D2FP4",
+            ""
+          ],
+          [
+            "class",
+            "Man",
+            "http://benchmark/OWL2Bench#U0C1D3FP6",
+            ""
+          ],
+          [
+            "class",
+            "Man",
+            "http://benchmark/OWL2Bench#U0C2D0FP2",
+            ""
+          ],
+          [
+            "class",
+            "Man",
+            "http://benchmark/OWL2Bench#U0C2D2FP3",
+            ""
+          ],
+          [
+            "class",
+            "Man",
+            "http://benchmark/OWL2Bench#U0C2D3FP2",
+            ""
+          ],
+          [
+            "class",
+            "Man",
+            "http://benchmark/OWL2Bench#U0C3D0FP3",
+            ""
+          ],
+          [
+            "class",
+            "Man",
+            "http://benchmark/OWL2Bench#U0C3D1FP0",
+            ""
+          ]
+        ]
+      },
+      "object": {
+        "reference": 1385869,
+        "candidate": 1414059,
+        "matching": 1366129,
+        "missing": 19740,
+        "extra": 47930,
+        "missing_by_name": {
+          "hasMember": 4935,
+          "isMemberOf": 4935,
+          "hasEmployee": 2957,
+          "worksFor": 2957,
+          "hasStudent": 1978,
+          "isStudentOf": 1978
+        },
+        "extra_by_name": {
+          "hasSameHomeTownWith": 25303,
+          "isAdvisedBy": 5658,
+          "hasAdvisor": 5658,
+          "isTaughtBy": 1199,
+          "teachesCourse": 1199,
+          "hasWork": 1199,
+          "hasCollaborationWith": 720,
+          "knows": 700,
+          "hasFaculty": 420,
+          "isProfessorOf": 420,
+          "isFacultyOf": 420,
+          "isFullProfessorOf": 420,
+          "hasMember": 420,
+          "hasHead": 420,
+          "hasProfessor": 420,
+          "hasFullProfessor": 420,
+          "hasEmployee": 420,
+          "worksFor": 420,
+          "isMemberOf": 420,
+          "isHeadOf": 420,
+          "likes": 387,
+          "hasAuthor": 260,
+          "loves": 235,
+          "isCrazyAbout": 178,
+          "dislikes": 114,
+          "isDeanOf": 40,
+          "hasDean": 40
+        },
+        "missing_examples": [
+          [
+            "object",
+            "hasEmployee",
+            "http://benchmark/OWL2Bench#U0",
+            "http://benchmark/OWL2Bench#U0C0D0AP0"
+          ],
+          [
+            "object",
+            "hasEmployee",
+            "http://benchmark/OWL2Bench#U0",
+            "http://benchmark/OWL2Bench#U0C0D0AP1"
+          ],
+          [
+            "object",
+            "hasEmployee",
+            "http://benchmark/OWL2Bench#U0",
+            "http://benchmark/OWL2Bench#U0C0D0AP2"
+          ],
+          [
+            "object",
+            "hasEmployee",
+            "http://benchmark/OWL2Bench#U0",
+            "http://benchmark/OWL2Bench#U0C0D0AP3"
+          ],
+          [
+            "object",
+            "hasEmployee",
+            "http://benchmark/OWL2Bench#U0",
+            "http://benchmark/OWL2Bench#U0C0D0AP4"
+          ],
+          [
+            "object",
+            "hasEmployee",
+            "http://benchmark/OWL2Bench#U0",
+            "http://benchmark/OWL2Bench#U0C0D0AP5"
+          ],
+          [
+            "object",
+            "hasEmployee",
+            "http://benchmark/OWL2Bench#U0",
+            "http://benchmark/OWL2Bench#U0C0D0AP6"
+          ],
+          [
+            "object",
+            "hasEmployee",
+            "http://benchmark/OWL2Bench#U0",
+            "http://benchmark/OWL2Bench#U0C0D0AP7"
+          ],
+          [
+            "object",
+            "hasEmployee",
+            "http://benchmark/OWL2Bench#U0",
+            "http://benchmark/OWL2Bench#U0C0D0AssocP0"
+          ],
+          [
+            "object",
+            "hasEmployee",
+            "http://benchmark/OWL2Bench#U0",
+            "http://benchmark/OWL2Bench#U0C0D0AssocP1"
+          ]
+        ],
+        "extra_examples": [
+          [
+            "object",
+            "dislikes",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "http://benchmark/OWL2Bench#FictionMovie"
+          ],
+          [
+            "object",
+            "dislikes",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "http://benchmark/OWL2Bench#FrontCrawl"
+          ],
+          [
+            "object",
+            "dislikes",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "http://benchmark/OWL2Bench#NewspaperReading"
+          ],
+          [
+            "object",
+            "dislikes",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "http://benchmark/OWL2Bench#PCGame"
+          ],
+          [
+            "object",
+            "dislikes",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "http://benchmark/OWL2Bench#Shopping"
+          ],
+          [
+            "object",
+            "dislikes",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "http://benchmark/OWL2Bench#StampCollecting"
+          ],
+          [
+            "object",
+            "dislikes",
+            "http://benchmark/OWL2Bench#U0C0D1FP4",
+            "http://benchmark/OWL2Bench#FrontCrawl"
+          ],
+          [
+            "object",
+            "dislikes",
+            "http://benchmark/OWL2Bench#U0C0D1FP4",
+            "http://benchmark/OWL2Bench#NewspaperReading"
+          ],
+          [
+            "object",
+            "dislikes",
+            "http://benchmark/OWL2Bench#U0C0D1FP4",
+            "http://benchmark/OWL2Bench#PCGame"
+          ],
+          [
+            "object",
+            "dislikes",
+            "http://benchmark/OWL2Bench#U0C0D1FP4",
+            "http://benchmark/OWL2Bench#Shopping"
+          ]
+        ]
+      },
+      "data": {
+        "reference": 20933,
+        "candidate": 23453,
+        "matching": 20933,
+        "missing": 0,
+        "extra": 2520,
+        "missing_by_name": {},
+        "extra_by_name": {
+          "hasLastName": 420,
+          "hasEmailAddress": 420,
+          "hasCode": 420,
+          "hasName": 420,
+          "hasFirstName": 420,
+          "hasID": 420
+        },
+        "missing_examples": [],
+        "extra_examples": [
+          [
+            "data",
+            "hasCode",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "U0C0D1FP4"
+          ],
+          [
+            "data",
+            "hasCode",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "U0C0D2FP1"
+          ],
+          [
+            "data",
+            "hasCode",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "U0C1D0FP0"
+          ],
+          [
+            "data",
+            "hasCode",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "U0C1D1FP1"
+          ],
+          [
+            "data",
+            "hasCode",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "U0C1D2FP4"
+          ],
+          [
+            "data",
+            "hasCode",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "U0C1D3FP6"
+          ],
+          [
+            "data",
+            "hasCode",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "U0C2D0FP2"
+          ],
+          [
+            "data",
+            "hasCode",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "U0C2D1FP9"
+          ],
+          [
+            "data",
+            "hasCode",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "U0C2D2FP3"
+          ],
+          [
+            "data",
+            "hasCode",
+            "http://benchmark/OWL2Bench#U0C0D0FP4",
+            "U0C2D3FP2"
+          ]
+        ]
+      }
+    }
+  }
+}

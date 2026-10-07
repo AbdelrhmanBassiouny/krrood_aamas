@@ -8,13 +8,13 @@ Usage: python3 planning/bold_lowest_memory.py krrood_aamas_2027/tables/loading_t
 import re
 import sys
 
-COMPARED = ("KRROOD", "RDFLib", "Owlready2", "Prot\\'eg\\'e", "GraphDB")
+COMPARED = ("KRROOD", "RDFLib", "Owlready2", "Prot\\'eg\\'e", "GraphDB", "Nemo", "reasonable")
 FINISHED = re.compile(r"^\$(\\mathbf\{)?[0-9]")
 UNITS = {"MB": 1.0, "GB": 1024.0}
 
 
 def megabytes(cell: str) -> float:
-    number, unit = cell.strip().split("\\,")
+    number, unit = cell.strip().replace("$^{\\ast}$", "").split("\\,")
     return float(number) * UNITS[unit]
 
 

@@ -1,0 +1,2452 @@
+{
+  "experiment": "agent_loop",
+  "arguments": {
+    "results_dir": "/work/results/aamas27/agent_loop-20261007-seed0-200steps",
+    "steps": 200,
+    "seed": 0,
+    "events_per_step": 3,
+    "variants": "krrood,krrood_navigation",
+    "graphdb_url": null,
+    "raw_file": "/work/resources/owl2bench_statements_unreasoned.rdf",
+    "timeout_seconds": 21600,
+    "resume": true
+  },
+  "scenario": {
+    "places": 379,
+    "edges": 381,
+    "rooms": 222,
+    "docks": 2,
+    "courses_with_room": 858,
+    "people_with_mailbox": 2616,
+    "knowledge_events": {
+      "course_taking": 378,
+      "enrollment": 129,
+      "cricket_enthusiasm": 93
+    }
+  },
+  "reference": "krrood",
+  "variants": {
+    "krrood": {
+      "description": "KRROOD objects are the knowledge base: descriptor assignment with forward chaining, EQL queries that call the robot's predicate and function on the live objects.",
+      "setup": {
+        "seconds": {
+          "load_and_reasoning": 12.935439457010943,
+          "application_data": 0.005389062003814615
+        },
+        "total_seconds": 12.940828519014758,
+        "individuals": 3667,
+        "after_last_step": {},
+        "import_seconds": 1.234483601001557,
+        "follows_reference_actions": false
+      },
+      "steps": {
+        "total_seconds": {
+          "count": 200,
+          "total": 20.700941000250168,
+          "mean": 0.10350470500125084,
+          "median": 0.09482191900315229,
+          "p95": 0.1528420399990864,
+          "min": 0.06674904198735021,
+          "max": 0.26515264296904206
+        },
+        "phases": {
+          "mapping": {
+            "count": 200,
+            "total": 0.005003668295103125,
+            "mean": 2.5018341475515626e-05,
+            "median": 2.3616514226887375e-05,
+            "p95": 3.819999983534217e-05,
+            "min": 1.8134000129066408e-05,
+            "max": 4.8739006160758436e-05
+          },
+          "update": {
+            "count": 200,
+            "total": 0.07233743088727351,
+            "mean": 0.0003616871544363676,
+            "median": 0.00042711500282166526,
+            "p95": 0.0008267150114988908,
+            "min": 5.992698424961418e-05,
+            "max": 0.0014146969915600494
+          },
+          "reasoning": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "push": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "query": {
+            "count": 200,
+            "total": 20.40420592551527,
+            "mean": 0.10202102962757635,
+            "median": 0.0937179409302189,
+            "p95": 0.1506448847358115,
+            "min": 0.06621251822798513,
+            "max": 0.2638480490859365
+          },
+          "procedures": {
+            "count": 200,
+            "total": 0.19317574356682599,
+            "mean": 0.0009658787178341299,
+            "median": 0.0008315807426697575,
+            "p95": 0.0016536375624127686,
+            "min": 0.00025820023438427597,
+            "max": 0.0024568100925534964
+          },
+          "decide": {
+            "count": 200,
+            "total": 0.025508463033474982,
+            "mean": 0.0001275423151673749,
+            "median": 0.00011822900705737993,
+            "p95": 0.000234783990890719,
+            "min": 7.480994099751115e-06,
+            "max": 0.0003491440002107993
+          },
+          "act": {
+            "count": 200,
+            "total": 0.000709768952219747,
+            "mean": 3.548844761098735e-06,
+            "median": 3.3860051189549267e-06,
+            "p95": 5.186011549085379e-06,
+            "min": 1.995009370148182e-06,
+            "max": 7.467999239452183e-06
+          }
+        },
+        "decisions": {
+          "handouts": {
+            "count": 200,
+            "total": 9.749936577878543,
+            "mean": 0.048749682889392715,
+            "median": 0.04278883400547784,
+            "p95": 0.07550478698976804,
+            "min": 0.017459194001276046,
+            "max": 0.21220501599600539
+          },
+          "tickets": {
+            "count": 200,
+            "total": 10.85888392101333,
+            "mean": 0.05429441960506665,
+            "median": 0.05109366899705492,
+            "p95": 0.09095085400622338,
+            "min": 0.047249149007257074,
+            "max": 0.09183194101206027
+          }
+        },
+        "statements_inserted": {
+          "count": 200,
+          "total": 858,
+          "mean": 4.29,
+          "median": 5.0,
+          "p95": 7,
+          "min": 3,
+          "max": 9
+        },
+        "statements_deleted": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "round_trips": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "reasoner_calls": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "procedure_calls": {
+          "can_reach": {
+            "count": 200,
+            "total": 262135,
+            "mean": 1310.675,
+            "median": 1126.5,
+            "p95": 2287,
+            "min": 789,
+            "max": 2369
+          },
+          "travel_seconds": {
+            "count": 200,
+            "total": 245105,
+            "mean": 1225.525,
+            "median": 1048.0,
+            "p95": 2287,
+            "min": 6,
+            "max": 2361
+          }
+        },
+        "handout_candidates": {
+          "count": 200,
+          "total": 172027,
+          "mean": 860.135,
+          "median": 819.0,
+          "p95": 1144,
+          "min": 0,
+          "max": 1180
+        },
+        "ticket_candidates": {
+          "count": 200,
+          "total": 12415,
+          "mean": 62.075,
+          "median": 56.5,
+          "p95": 106,
+          "min": 6,
+          "max": 111
+        },
+        "actions": {
+          "deliver_ticket": 96,
+          "deliver_handouts": 96,
+          "charge": 8
+        }
+      },
+      "code": {
+        "boundary_lines": {
+          "total": 19,
+          "per_category": {
+            "synchronization": 0,
+            "mapping": 12,
+            "procedure_integration": 7
+          },
+          "per_function": {
+            "KrroodVariant._attach_application_data": {
+              "category": "mapping",
+              "lines": 8
+            },
+            "KrroodVariant._register": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "KrroodVariant._resolve": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "krrood_variant.CanReach": {
+              "category": "procedure_integration",
+              "lines": 5
+            },
+            "krrood_variant.travel_time": {
+              "category": "procedure_integration",
+              "lines": 2
+            }
+          }
+        },
+        "queries": {
+          "handouts": {
+            "language": "eql",
+            "text": "student = variable(model.Student, domain=None)\ncourse = variable_from(student.takes_course)\ndriving_time = travel_time(self.robot, course.taught_in)\nquery = an(\n    set_of(student, course, driving_time).where(\n        contains(student.is_member_of, college),\n        CanReach(self.robot, course.taught_in),\n    )\n)",
+            "tokens": 69,
+            "lines": 9,
+            "characters": 282
+          },
+          "tickets": {
+            "language": "eql",
+            "text": "person = variable(model.Person, domain=None)\ndriving_time = travel_time(self.robot, person.mailbox)\nquery = an(\n    set_of(person, driving_time).where(\n        *model.T20CricketFan.axiom(person),\n        CanReach(self.robot, person.mailbox),\n    )\n)",
+            "tokens": 60,
+            "lines": 8,
+            "characters": 218
+          }
+        }
+      },
+      "process": {
+        "command": [
+          "/opt/venvs/earlier/bin/python",
+          "-m",
+          "krrood_experiments.aamas27.agent_loop.worker",
+          "--variant",
+          "krrood",
+          "--scenario",
+          "/scratch/run200/scenario.json",
+          "--results-dir",
+          "/scratch/run200"
+        ],
+        "wall_seconds": 36.67314782200265,
+        "peak_rss_bytes": 399843328,
+        "return_code": 0,
+        "timed_out": false,
+        "memory_limit_exceeded": false,
+        "samples": 728,
+        "stderr_tail": "/opt/aamas27/code/earlier/krrood/src/krrood/ormatic/utils.py:101: SyntaxWarning: invalid escape sequence '\\ '\n  \"\"\"\n[krrood] step 0: 0.1571 s\n[krrood] step 20: 0.1020 s\n[krrood] step 40: 0.1052 s\n[krrood] step 60: 0.1226 s\n[krrood] step 80: 0.0874 s\n[krrood] step 100: 0.0837 s\n[krrood] step 120: 0.0960 s\n[krrood] step 140: 0.1005 s\n[krrood] step 160: 0.1101 s\n[krrood] step 180: 0.0906 s\n[krrood] step 199: 0.0805 s",
+        "peak_rss_mib": 381.3203125
+      },
+      "files": {
+        "steps": "agent_loop_krrood.json",
+        "candidates": "agent_loop_krrood_candidates.json.gz"
+      }
+    },
+    "graphdb": {
+      "description": "Python objects + GraphDB 11.2 (owl2-rl-optimized): facts mirrored with SPARQL INSERT DATA, SPARQL returns candidate IRIs, mapped back to objects, the procedures run in Python on the candidates.",
+      "setup": {
+        "seconds": {
+          "create_repository": 0.016774187999544665,
+          "load_and_reasoning": 1401.7790373160096,
+          "application_data": 0.0002729989937506616
+        },
+        "total_seconds": 1401.796084503003,
+        "repository_reused": false,
+        "statements_after_loading": {
+          "explicit": 54901,
+          "total": 1467912
+        },
+        "statements": {
+          "explicit": 54901,
+          "total": 1467912
+        },
+        "graphdb_version": {
+          "productType": "free",
+          "productVersion": "11.2.0",
+          "connectors": "16.5.0",
+          "sesame": "5.1.6-jakarta",
+          "Workbench": "3.2.0"
+        },
+        "graphdb_license": {
+          "productType": "free",
+          "product": "GRAPHDB_LITE",
+          "version": "11.2",
+          "maxCpuCores": 1,
+          "valid": true
+        },
+        "graphdb_java_options": [
+          "-XX:MaxDirectMemorySize=128G",
+          "-Xms6g",
+          "-Xmx6g",
+          "-XX:-OmitStackTraceInFastThrow",
+          "-XX:OnOutOfMemoryError=kill -9 %p",
+          "-Dgraphdb.distribution=zip",
+          "-Dgraphdb.pidfile=/scratch/state/graphdb.pid",
+          "-Dgraphdb.dist=/opt/graphdb/dist",
+          "-Dgraphdb.home=/scratch/state/graphdb-home",
+          "-Dgraphdb.license.file=/license/graphdb.license",
+          "-Dgraphdb.connector.port=7200"
+        ],
+        "after_last_step": {
+          "statements": {
+            "explicit": 55630,
+            "total": 1472445
+          },
+          "restore": {
+            "seconds": 46.382870265006204,
+            "statements": {
+              "explicit": 54901,
+              "total": 1467912
+            },
+            "clean": true
+          }
+        },
+        "import_seconds": 0.036227678996510804,
+        "follows_reference_actions": true
+      },
+      "steps": {
+        "total_seconds": {
+          "count": 200,
+          "total": 15.63596429694735,
+          "mean": 0.07817982148473675,
+          "median": 0.09230706249945797,
+          "p95": 0.1606526819523424,
+          "min": 0.03101191300083883,
+          "max": 0.27224342500267085
+        },
+        "phases": {
+          "mapping": {
+            "count": 200,
+            "total": 0.020026336002047174,
+            "mean": 0.00010013168001023587,
+            "median": 9.906399645842612e-05,
+            "p95": 0.0001258810079889372,
+            "min": 6.813200889155269e-05,
+            "max": 0.0001778129953891039
+          },
+          "update": {
+            "count": 200,
+            "total": 14.24105474598764,
+            "mean": 0.07120527372993819,
+            "median": 0.08532124100020155,
+            "p95": 0.15427626398741268,
+            "min": 0.02616967400535941,
+            "max": 0.2627667499909876
+          },
+          "reasoning": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "push": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "query": {
+            "count": 200,
+            "total": 1.3386454771389253,
+            "mean": 0.006693227385694627,
+            "median": 0.006326991453533992,
+            "p95": 0.010600059089483693,
+            "min": 0.004679690930061042,
+            "max": 0.015907830034848303
+          },
+          "procedures": {
+            "count": 200,
+            "total": 0.018682720692595467,
+            "mean": 9.341360346297734e-05,
+            "median": 4.3612002627924085e-05,
+            "p95": 0.00017257893341593444,
+            "min": 2.6405949029140174e-05,
+            "max": 0.0004466509708436206
+          },
+          "decide": {
+            "count": 200,
+            "total": 0.01702346712409053,
+            "mean": 8.511733562045265e-05,
+            "median": 8.502700075041503e-05,
+            "p95": 0.00011307300883345306,
+            "min": 6.603004294447601e-06,
+            "max": 0.00017335799930151552
+          },
+          "act": {
+            "count": 200,
+            "total": 0.0005315500020515174,
+            "mean": 2.657750010257587e-06,
+            "median": 2.435001078993082e-06,
+            "p95": 3.5819975892081857e-06,
+            "min": 1.8199934856966138e-06,
+            "max": 5.605004844255745e-06
+          }
+        },
+        "decisions": {
+          "handouts": {
+            "count": 200,
+            "total": 1.0194923990784446,
+            "mean": 0.005097461995392223,
+            "median": 0.004849051496421453,
+            "p95": 0.007768146999296732,
+            "min": 0.0034730409970507026,
+            "max": 0.013878947007469833
+          },
+          "tickets": {
+            "count": 200,
+            "total": 0.3679933930252446,
+            "mean": 0.001839966965126223,
+            "median": 0.001725697009533178,
+            "p95": 0.002512366001610644,
+            "min": 0.0013824789930367842,
+            "max": 0.004121021993341856
+          }
+        },
+        "statements_inserted": {
+          "count": 200,
+          "total": 729,
+          "mean": 3.645,
+          "median": 4.0,
+          "p95": 5,
+          "min": 3,
+          "max": 6
+        },
+        "statements_deleted": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "round_trips": {
+          "count": 200,
+          "total": 600,
+          "mean": 3.0,
+          "median": 3.0,
+          "p95": 3,
+          "min": 3,
+          "max": 3
+        },
+        "reasoner_calls": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "procedure_calls": {
+          "can_reach": {
+            "count": 200,
+            "total": 11890,
+            "mean": 59.45,
+            "median": 58.0,
+            "p95": 76,
+            "min": 38,
+            "max": 79
+          },
+          "travel_seconds": {
+            "count": 200,
+            "total": 11227,
+            "mean": 56.135,
+            "median": 57.0,
+            "p95": 76,
+            "min": 2,
+            "max": 79
+          }
+        },
+        "handout_candidates": {
+          "count": 200,
+          "total": 172027,
+          "mean": 860.135,
+          "median": 819.0,
+          "p95": 1144,
+          "min": 0,
+          "max": 1180
+        },
+        "ticket_candidates": {
+          "count": 200,
+          "total": 12415,
+          "mean": 62.075,
+          "median": 56.5,
+          "p95": 106,
+          "min": 6,
+          "max": 111
+        },
+        "actions": {
+          "deliver_ticket": 96,
+          "deliver_handouts": 96,
+          "charge": 8
+        }
+      },
+      "code": {
+        "boundary_lines": {
+          "total": 27,
+          "per_category": {
+            "synchronization": 16,
+            "mapping": 9,
+            "procedure_integration": 2
+          },
+          "per_function": {
+            "GraphDBMirror._application_data": {
+              "category": "mapping",
+              "lines": 4
+            },
+            "GraphDBVariant._handout_rows": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "GraphDBVariant._reachable_driving_times": {
+              "category": "procedure_integration",
+              "lines": 2
+            },
+            "GraphDBVariant._ticket_rows": {
+              "category": "mapping",
+              "lines": 3
+            },
+            "rdf_mirror.event_triples": {
+              "category": "synchronization",
+              "lines": 11
+            },
+            "rdf_mirror.insert_data": {
+              "category": "synchronization",
+              "lines": 3
+            },
+            "rdf_mirror.object_term": {
+              "category": "synchronization",
+              "lines": 2
+            }
+          }
+        },
+        "queries": {
+          "handouts": {
+            "language": "sparql",
+            "text": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX owl2bench: <http://benchmark/OWL2Bench#>\nSELECT ?student ?course WHERE {\n  ?student a owl2bench:Student ;\n           owl2bench:isMemberOf ?college ;\n           owl2bench:takesCourse ?course .\n}",
+            "tokens": 16,
+            "lines": 7,
+            "characters": 228
+          },
+          "tickets": {
+            "language": "sparql",
+            "text": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX owl2bench: <http://benchmark/OWL2Bench#>\nSELECT ?person WHERE {\n  ?person a owl2bench:T20CricketFan .\n}",
+            "tokens": 9,
+            "lines": 5,
+            "characters": 162
+          }
+        }
+      },
+      "process": {
+        "command": [
+          "/opt/venvs/earlier/bin/python",
+          "-m",
+          "krrood_experiments.aamas27.agent_loop.worker",
+          "--variant",
+          "graphdb",
+          "--scenario",
+          "/scratch/run200/scenario.json",
+          "--results-dir",
+          "/scratch/run200",
+          "--reference-steps",
+          "/scratch/run200/agent_loop_krrood.json",
+          "--graphdb-state",
+          "/scratch/run200/graphdb_repository_state.json"
+        ],
+        "wall_seconds": 1466.196708094998,
+        "peak_rss_bytes": 92676096,
+        "return_code": 0,
+        "timed_out": false,
+        "memory_limit_exceeded": false,
+        "samples": 29102,
+        "stderr_tail": "[graphdb] step 0: 0.1938 s\n[graphdb] step 20: 0.0410 s\n[graphdb] step 40: 0.0374 s\n[graphdb] step 60: 0.1588 s\n[graphdb] step 80: 0.0930 s\n[graphdb] step 100: 0.0431 s\n[graphdb] step 120: 0.0956 s\n[graphdb] step 140: 0.1560 s\n[graphdb] step 160: 0.0944 s\n[graphdb] step 180: 0.0331 s\n[graphdb] step 199: 0.0310 s",
+        "peak_rss_mib": 88.3828125
+      },
+      "files": {
+        "steps": "agent_loop_graphdb.json",
+        "candidates": "agent_loop_graphdb_candidates.json.gz"
+      },
+      "agreement": {
+        "reference": "krrood",
+        "steps": 200,
+        "steps_compared": 200,
+        "equal_actions": 200,
+        "equal_candidate_sets": 200,
+        "all_agree": true,
+        "known_cause": null,
+        "first_disagreements": [],
+        "disagreeing_steps": []
+      }
+    },
+    "graphdb_push": {
+      "description": "GraphDB with pushed procedure results: every step the driving time to every reachable room is written into GraphDB (after deleting the previous values), and one SPARQL query per decision selects and orders.",
+      "setup": {
+        "seconds": {
+          "create_repository": 0.016774187999544665,
+          "load_and_reasoning": 1401.7790373160096,
+          "application_data": 0.00024114499683491886,
+          "application_data_push": 0.1577457319945097
+        },
+        "total_seconds": 1401.9537983810005,
+        "repository_reused": true,
+        "statements_after_loading": {
+          "explicit": 54901,
+          "total": 1467912
+        },
+        "statements": {
+          "explicit": 58246,
+          "total": 1471667
+        },
+        "graphdb_version": {
+          "productType": "free",
+          "productVersion": "11.2.0",
+          "connectors": "16.5.0",
+          "sesame": "5.1.6-jakarta",
+          "Workbench": "3.2.0"
+        },
+        "graphdb_license": {
+          "productType": "free",
+          "product": "GRAPHDB_LITE",
+          "version": "11.2",
+          "maxCpuCores": 1,
+          "valid": true
+        },
+        "graphdb_java_options": [
+          "-XX:MaxDirectMemorySize=128G",
+          "-Xms6g",
+          "-Xmx6g",
+          "-XX:-OmitStackTraceInFastThrow",
+          "-XX:OnOutOfMemoryError=kill -9 %p",
+          "-Dgraphdb.distribution=zip",
+          "-Dgraphdb.pidfile=/scratch/state/graphdb.pid",
+          "-Dgraphdb.dist=/opt/graphdb/dist",
+          "-Dgraphdb.home=/scratch/state/graphdb-home",
+          "-Dgraphdb.license.file=/license/graphdb.license",
+          "-Dgraphdb.connector.port=7200"
+        ],
+        "after_last_step": {
+          "statements": {
+            "explicit": 59265,
+            "total": 1476494
+          },
+          "restore": {
+            "seconds": 45.881235270993784,
+            "statements": {
+              "explicit": 54901,
+              "total": 1467912
+            },
+            "clean": true
+          }
+        },
+        "import_seconds": 0.02337792399339378,
+        "follows_reference_actions": true
+      },
+      "steps": {
+        "total_seconds": {
+          "count": 200,
+          "total": 28.340262038298533,
+          "mean": 0.14170131019149268,
+          "median": 0.14330888550466625,
+          "p95": 0.23502042198379058,
+          "min": 0.07841453800210729,
+          "max": 0.2785617629851913
+        },
+        "phases": {
+          "mapping": {
+            "count": 200,
+            "total": 0.11275612082681619,
+            "mean": 0.0005637806041340809,
+            "median": 0.0005255990035948344,
+            "p95": 0.0006872540106996894,
+            "min": 1.1953001376241446e-05,
+            "max": 0.0075837880140170455
+          },
+          "update": {
+            "count": 200,
+            "total": 13.716658586883568,
+            "mean": 0.06858329293441784,
+            "median": 0.0840503625004203,
+            "p95": 0.1583164490002673,
+            "min": 0.026016193005489185,
+            "max": 0.2073866410064511
+          },
+          "reasoning": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "push": {
+            "count": 200,
+            "total": 11.804467544177896,
+            "mean": 0.05902233772088948,
+            "median": 0.059460241594933905,
+            "p95": 0.06830117091885768,
+            "min": 0.039295849041081965,
+            "max": 0.0749892841122346
+          },
+          "query": {
+            "count": 200,
+            "total": 2.657072209971375,
+            "mean": 0.013285361049856875,
+            "median": 0.012507160507084336,
+            "p95": 0.017030283008352853,
+            "min": 0.003928345002350397,
+            "max": 0.054607643993222155
+          },
+          "procedures": {
+            "count": 200,
+            "total": 0.02961184660671279,
+            "mean": 0.00014805923303356394,
+            "median": 9.816192323341966e-05,
+            "p95": 0.0002299969783052802,
+            "min": 6.51839654892683e-05,
+            "max": 0.0003824198938673362
+          },
+          "decide": {
+            "count": 200,
+            "total": 0.018789877896779217,
+            "mean": 9.394938948389608e-05,
+            "median": 9.199450141750276e-05,
+            "p95": 0.0001239400007762015,
+            "min": 9.522002073936164e-06,
+            "max": 0.00020844700338784605
+          },
+          "act": {
+            "count": 200,
+            "total": 0.0009058519353857264,
+            "mean": 4.529259676928632e-06,
+            "median": 4.496505425777286e-06,
+            "p95": 5.793990567326546e-06,
+            "min": 2.3850006982684135e-06,
+            "max": 6.710004527121782e-06
+          }
+        },
+        "decisions": {
+          "handouts": {
+            "count": 200,
+            "total": 2.3683567878906615,
+            "mean": 0.011841783939453308,
+            "median": 0.011158572502608877,
+            "p95": 0.015334360010456294,
+            "min": 0.0023712620022706687,
+            "max": 0.0523064770095516
+          },
+          "tickets": {
+            "count": 200,
+            "total": 0.4123151620296994,
+            "mean": 0.0020615758101484973,
+            "median": 0.0020004040052299388,
+            "p95": 0.0025415100099053234,
+            "min": 0.0014864550030324608,
+            "max": 0.0031088160030776635
+          }
+        },
+        "statements_inserted": {
+          "count": 200,
+          "total": 38663,
+          "mean": 193.315,
+          "median": 204.0,
+          "p95": 208,
+          "min": 26,
+          "max": 210
+        },
+        "statements_deleted": {
+          "count": 200,
+          "total": 37644,
+          "mean": 188.22,
+          "median": 201.0,
+          "p95": 201,
+          "min": 0,
+          "max": 201
+        },
+        "round_trips": {
+          "count": 200,
+          "total": 800,
+          "mean": 4.0,
+          "median": 4.0,
+          "p95": 4,
+          "min": 4,
+          "max": 4
+        },
+        "reasoner_calls": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "procedure_calls": {
+          "can_reach": {
+            "count": 200,
+            "total": 40200,
+            "mean": 201.0,
+            "median": 201.0,
+            "p95": 201,
+            "min": 201,
+            "max": 201
+          },
+          "travel_seconds": {
+            "count": 200,
+            "total": 37805,
+            "mean": 189.025,
+            "median": 201.0,
+            "p95": 201,
+            "min": 23,
+            "max": 201
+          }
+        },
+        "handout_candidates": {
+          "count": 200,
+          "total": 172027,
+          "mean": 860.135,
+          "median": 819.0,
+          "p95": 1144,
+          "min": 0,
+          "max": 1180
+        },
+        "ticket_candidates": {
+          "count": 200,
+          "total": 12415,
+          "mean": 62.075,
+          "median": 56.5,
+          "p95": 106,
+          "min": 6,
+          "max": 111
+        },
+        "actions": {
+          "deliver_ticket": 96,
+          "deliver_handouts": 96,
+          "charge": 8
+        }
+      },
+      "code": {
+        "boundary_lines": {
+          "total": 59,
+          "per_category": {
+            "synchronization": 44,
+            "mapping": 15,
+            "procedure_integration": 0
+          },
+          "per_function": {
+            "GraphDBMirror._application_data": {
+              "category": "mapping",
+              "lines": 4
+            },
+            "GraphDBPushVariant._application_triples": {
+              "category": "synchronization",
+              "lines": 14
+            },
+            "GraphDBPushVariant._handout_records": {
+              "category": "mapping",
+              "lines": 5
+            },
+            "GraphDBPushVariant._knowledge_triples": {
+              "category": "synchronization",
+              "lines": 8
+            },
+            "GraphDBPushVariant._procedure_results": {
+              "category": "synchronization",
+              "lines": 6
+            },
+            "GraphDBPushVariant._ticket_records": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "rdf_mirror.event_triples": {
+              "category": "synchronization",
+              "lines": 11
+            },
+            "rdf_mirror.insert_data": {
+              "category": "synchronization",
+              "lines": 3
+            },
+            "rdf_mirror.object_term": {
+              "category": "synchronization",
+              "lines": 2
+            },
+            "rdf_mirror.place_identifier": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "rdf_mirror.place_iri": {
+              "category": "mapping",
+              "lines": 2
+            }
+          }
+        },
+        "queries": {
+          "handouts": {
+            "language": "sparql",
+            "text": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX owl2bench: <http://benchmark/OWL2Bench#>\nPREFIX agent: <https://example.org/agent-loop#>\nSELECT ?student ?course ?room ?seconds WHERE {\n  ?student a owl2bench:Student ;\n           owl2bench:isMemberOf ?college ;\n           owl2bench:takesCourse ?course .\n  ?course agent:taughtIn ?room .\n  ?room agent:travelSeconds ?seconds .\n}\nORDER BY ?seconds ?course ?student",
+            "tokens": 31,
+            "lines": 11,
+            "characters": 390
+          },
+          "tickets": {
+            "language": "sparql",
+            "text": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX owl2bench: <http://benchmark/OWL2Bench#>\nPREFIX agent: <https://example.org/agent-loop#>\nSELECT ?person ?room ?seconds WHERE {\n  ?person a owl2bench:T20CricketFan ;\n          agent:mailbox ?room .\n  ?room agent:travelSeconds ?seconds .\n}\nORDER BY ?seconds ?person",
+            "tokens": 22,
+            "lines": 9,
+            "characters": 306
+          },
+          "push_delete": {
+            "language": "sparql",
+            "text": "PREFIX agent: <https://example.org/agent-loop#>\nDELETE WHERE { ?room agent:travelSeconds ?seconds }",
+            "tokens": 7,
+            "lines": 2,
+            "characters": 98
+          }
+        }
+      },
+      "process": {
+        "command": [
+          "/opt/venvs/earlier/bin/python",
+          "-m",
+          "krrood_experiments.aamas27.agent_loop.worker",
+          "--variant",
+          "graphdb_push",
+          "--scenario",
+          "/scratch/run200/scenario.json",
+          "--results-dir",
+          "/scratch/run200",
+          "--reference-steps",
+          "/scratch/run200/agent_loop_krrood.json",
+          "--graphdb-state",
+          "/scratch/run200/graphdb_repository_state.json"
+        ],
+        "wall_seconds": 76.47323000499455,
+        "peak_rss_bytes": 107634688,
+        "return_code": 0,
+        "timed_out": false,
+        "memory_limit_exceeded": false,
+        "samples": 1523,
+        "stderr_tail": "[graphdb_push] step 0: 0.2483 s\n[graphdb_push] step 20: 0.0798 s\n[graphdb_push] step 40: 0.0993 s\n[graphdb_push] step 60: 0.2326 s\n[graphdb_push] step 80: 0.1599 s\n[graphdb_push] step 100: 0.1023 s\n[graphdb_push] step 120: 0.1730 s\n[graphdb_push] step 140: 0.2552 s\n[graphdb_push] step 160: 0.1716 s\n[graphdb_push] step 180: 0.1012 s\n[graphdb_push] step 199: 0.0881 s",
+        "peak_rss_mib": 102.6484375
+      },
+      "files": {
+        "steps": "agent_loop_graphdb_push.json",
+        "candidates": "agent_loop_graphdb_push_candidates.json.gz"
+      },
+      "agreement": {
+        "reference": "krrood",
+        "steps": 200,
+        "steps_compared": 200,
+        "equal_actions": 200,
+        "equal_candidate_sets": 200,
+        "all_agree": true,
+        "known_cause": null,
+        "first_disagreements": [],
+        "disagreeing_steps": []
+      }
+    },
+    "reasonable": {
+      "description": "Python objects + reasonable 0.4.4 (in-memory OWL 2 RL): facts added with from_graph, reason() every step, candidates by filtering the returned closure, the procedures run in Python on the candidates.",
+      "setup": {
+        "seconds": {
+          "parse": 1.2213921639922773,
+          "load": 0.18963194999378175,
+          "reasoning": 97.62299884599634,
+          "application_data": 0.0026387969992356375
+        },
+        "total_seconds": 99.03666175698163,
+        "explicit_statements": 54902,
+        "closure_statements": 1488568,
+        "full_materialisation_seconds": 97.62299884599634,
+        "reasonable_version": "0.4.4",
+        "after_last_step": {
+          "full_rematerialisation_seconds": 95.79677366600663,
+          "closure_statements": 1491975
+        },
+        "import_seconds": 0.022184590008691885,
+        "follows_reference_actions": true
+      },
+      "steps": {
+        "total_seconds": {
+          "count": 200,
+          "total": 942.7483621672727,
+          "mean": 4.713741810836364,
+          "median": 4.692616933985846,
+          "p95": 5.022815429983893,
+          "min": 4.306880964970333,
+          "max": 5.373332717004814
+        },
+        "phases": {
+          "mapping": {
+            "count": 200,
+            "total": 0.00957384705543518,
+            "mean": 4.78692352771759e-05,
+            "median": 4.7171000915113837e-05,
+            "p95": 7.161601388361305e-05,
+            "min": 2.119300188496709e-05,
+            "max": 0.00010168898734264076
+          },
+          "update": {
+            "count": 200,
+            "total": 1.3055746360332705,
+            "mean": 0.006527873180166352,
+            "median": 0.009545551009068731,
+            "p95": 0.009837589008384384,
+            "min": 0.0007224899891298264,
+            "max": 0.010867706994758919
+          },
+          "reasoning": {
+            "count": 200,
+            "total": 741.1130047179759,
+            "mean": 3.7055650235898794,
+            "median": 3.725881311002013,
+            "p95": 3.8968440119933803,
+            "min": 3.357512300994131,
+            "max": 4.026240513994708
+          },
+          "push": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "query": {
+            "count": 200,
+            "total": 200.29247562782257,
+            "mean": 1.0014623781391128,
+            "median": 0.9482305069905124,
+            "p95": 1.3186165010120021,
+            "min": 0.9334618640132248,
+            "max": 1.396198257949436
+          },
+          "procedures": {
+            "count": 200,
+            "total": 0.024185212154407054,
+            "mean": 0.00012092606077203527,
+            "median": 2.144354220945388e-05,
+            "p95": 0.0001660319830989465,
+            "min": 1.4572025975212455e-05,
+            "max": 0.008856710948748514
+          },
+          "decide": {
+            "count": 200,
+            "total": 0.002958407101687044,
+            "mean": 1.4792035508435219e-05,
+            "median": 1.4362500223796815e-05,
+            "p95": 1.964099647011608e-05,
+            "min": 9.198993211612105e-06,
+            "max": 2.689400571398437e-05
+          },
+          "act": {
+            "count": 200,
+            "total": 0.0005897191294934601,
+            "mean": 2.9485956474673005e-06,
+            "median": 2.7700079954229295e-06,
+            "p95": 4.008004907518625e-06,
+            "min": 2.025990397669375e-06,
+            "max": 1.9069004338234663e-05
+          }
+        },
+        "decisions": {
+          "handouts": {
+            "count": 200,
+            "total": 200.28820284713584,
+            "mean": 1.001441014235679,
+            "median": 0.9482226195032126,
+            "p95": 1.3186142119957367,
+            "min": 0.9334534009976778,
+            "max": 1.396165572994505
+          },
+          "tickets": {
+            "count": 200,
+            "total": 0.04146795997803565,
+            "mean": 0.00020733979989017825,
+            "median": 0.00014289300452219322,
+            "p95": 0.00026283400075044483,
+            "min": 5.6810997193679214e-05,
+            "max": 0.008910775010008365
+          }
+        },
+        "statements_inserted": {
+          "count": 200,
+          "total": 729,
+          "mean": 3.645,
+          "median": 4.0,
+          "p95": 5,
+          "min": 3,
+          "max": 6
+        },
+        "statements_deleted": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "round_trips": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "reasoner_calls": {
+          "count": 200,
+          "total": 400,
+          "mean": 2.0,
+          "median": 2.0,
+          "p95": 2,
+          "min": 2,
+          "max": 2
+        },
+        "procedure_calls": {
+          "can_reach": {
+            "count": 200,
+            "total": 4085,
+            "mean": 20.425,
+            "median": 22.0,
+            "p95": 22,
+            "min": 13,
+            "max": 22
+          },
+          "travel_seconds": {
+            "count": 200,
+            "total": 3887,
+            "mean": 19.435,
+            "median": 21.0,
+            "p95": 22,
+            "min": 2,
+            "max": 22
+          }
+        },
+        "handout_candidates": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "ticket_candidates": {
+          "count": 200,
+          "total": 12415,
+          "mean": 62.075,
+          "median": 56.5,
+          "p95": 106,
+          "min": 6,
+          "max": 111
+        },
+        "actions": {
+          "deliver_ticket": 192,
+          "charge": 8
+        }
+      },
+      "code": {
+        "boundary_lines": {
+          "total": 28,
+          "per_category": {
+            "synchronization": 17,
+            "mapping": 9,
+            "procedure_integration": 2
+          },
+          "per_function": {
+            "ReasonableVariant._application_data": {
+              "category": "mapping",
+              "lines": 4
+            },
+            "ReasonableVariant._handout_rows": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "ReasonableVariant._rdf_triples": {
+              "category": "synchronization",
+              "lines": 6
+            },
+            "ReasonableVariant._reachable_driving_times": {
+              "category": "procedure_integration",
+              "lines": 2
+            },
+            "ReasonableVariant._ticket_rows": {
+              "category": "mapping",
+              "lines": 3
+            },
+            "rdf_mirror.event_triples": {
+              "category": "synchronization",
+              "lines": 11
+            }
+          }
+        },
+        "queries": {
+          "closure_index": {
+            "language": "python",
+            "text": "index = cls()\nfor subject, predicate, value in triples:\n    if predicate == RDF.type:\n        if value == STUDENT:\n            index.students.add(subject)\n        elif value == T20_CRICKET_FAN:\n            index.fans.add(subject)\n    elif predicate == IS_MEMBER_OF:\n        index.members[value].add(subject)\n    elif predicate == TAKES_COURSE:\n        index.courses[subject].append(value)",
+            "tokens": 79,
+            "lines": 11,
+            "characters": 310
+          },
+          "handouts": {
+            "language": "python",
+            "text": "members = self.members.get(URIRef(college), set()) & self.students\nreturn [(student, course) for student in members for course in self.courses.get(student, ())]",
+            "tokens": 47,
+            "lines": 2,
+            "characters": 159
+          },
+          "tickets": {
+            "language": "python",
+            "text": "fans = list(self._closure_index().fans)",
+            "tokens": 12,
+            "lines": 1,
+            "characters": 39
+          }
+        }
+      },
+      "process": {
+        "command": [
+          "/opt/venvs/earlier/bin/python",
+          "-m",
+          "krrood_experiments.aamas27.agent_loop.worker",
+          "--variant",
+          "reasonable",
+          "--scenario",
+          "/scratch/run200/scenario.json",
+          "--results-dir",
+          "/scratch/run200",
+          "--reference-steps",
+          "/scratch/run200/agent_loop_krrood.json"
+        ],
+        "wall_seconds": 1137.997078542001,
+        "peak_rss_bytes": 17132142592,
+        "return_code": 0,
+        "timed_out": false,
+        "memory_limit_exceeded": false,
+        "samples": 22622,
+        "stderr_tail": "[reasonable] step 0: 4.7347 s\n[reasonable] step 20: 4.6091 s\n[reasonable] step 40: 4.6783 s\n[reasonable] step 60: 4.5215 s\n[reasonable] step 80: 4.6771 s\n[reasonable] step 100: 5.1431 s\n[reasonable] step 120: 4.9700 s\n[reasonable] step 140: 4.5368 s\n[reasonable] step 160: 4.6227 s\n[reasonable] step 180: 4.5140 s\n[reasonable] step 199: 4.5312 s",
+        "peak_rss_mib": 16338.484375
+      },
+      "files": {
+        "steps": "agent_loop_reasonable.json",
+        "candidates": "agent_loop_reasonable_candidates.json.gz"
+      },
+      "agreement": {
+        "reference": "krrood",
+        "steps": 200,
+        "steps_compared": 200,
+        "equal_actions": 104,
+        "equal_candidate_sets": 2,
+        "all_agree": false,
+        "known_cause": "reasonable 0.4.4 does not implement the OWL 2 RL property-chain rule prp-spo2, so it does not infer isMemberOf of a college (enrollIn o isPartOf): its handout candidates are empty or incomplete.",
+        "first_disagreements": [
+          {
+            "step": 0,
+            "reference_action": [
+              "deliver_ticket",
+              "U0C1D0-office",
+              [
+                "http://benchmark/OWL2Bench#U0C1D0PD1"
+              ]
+            ],
+            "action": [
+              "deliver_ticket",
+              "U0C1D0-office",
+              [
+                "http://benchmark/OWL2Bench#U0C1D0PD1"
+              ]
+            ],
+            "handouts": {
+              "reference": 885,
+              "variant": 0,
+              "only_in_reference": 885,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC15",
+                  "U0C1D0-classroom-4",
+                  111.216358
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC17",
+                  "U0C1D0-classroom-6",
+                  117.883024
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC18",
+                  "U0C1D0-classroom-2",
+                  104.549691
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC5",
+                  "U0C1D0-classroom-9",
+                  124.549691
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D1EC35",
+                  "U0C1D1-classroom-4",
+                  123.716358
+                ]
+              ],
+              "only_in_variant_examples": []
+            },
+            "tickets": {
+              "reference": 20,
+              "variant": 20,
+              "only_in_reference": 0,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [],
+              "only_in_variant_examples": []
+            }
+          },
+          {
+            "step": 1,
+            "reference_action": [
+              "deliver_ticket",
+              "U0C1D2-office",
+              [
+                "http://benchmark/OWL2Bench#U0C1D2OS15"
+              ]
+            ],
+            "action": [
+              "deliver_ticket",
+              "U0C1D2-office",
+              [
+                "http://benchmark/OWL2Bench#U0C1D2OS15"
+              ]
+            ],
+            "handouts": {
+              "reference": 769,
+              "variant": 0,
+              "only_in_reference": 769,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D0EC22",
+                  "U0C3D0-classroom-0",
+                  319.619199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D0EC23",
+                  "U0C3D0-classroom-1",
+                  319.619199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D2EC28",
+                  "U0C3D2-classroom-0",
+                  344.619199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS1",
+                  "http://benchmark/OWL2Bench#U0C3D1EC27",
+                  "U0C3D1-classroom-1",
+                  332.119199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS10",
+                  "http://benchmark/OWL2Bench#U0C3D1EC34",
+                  "U0C3D1-classroom-4",
+                  345.452533
+                ]
+              ],
+              "only_in_variant_examples": []
+            },
+            "tickets": {
+              "reference": 20,
+              "variant": 20,
+              "only_in_reference": 0,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [],
+              "only_in_variant_examples": []
+            }
+          },
+          {
+            "step": 2,
+            "reference_action": [
+              "deliver_ticket",
+              "U0C1D3-office",
+              [
+                "http://benchmark/OWL2Bench#U0C1D3L5"
+              ]
+            ],
+            "action": [
+              "deliver_ticket",
+              "U0C1D3-office",
+              [
+                "http://benchmark/OWL2Bench#U0C1D3L5"
+              ]
+            ],
+            "handouts": {
+              "reference": 1036,
+              "variant": 0,
+              "only_in_reference": 1036,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [
+                [
+                  "http://benchmark/OWL2Bench#U0WC0D0PGWS0",
+                  "http://benchmark/OWL2Bench#U0WC0D0EC32",
+                  "U0WC0D0-classroom-0",
+                  352.776343
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0WC0D0PGWS0",
+                  "http://benchmark/OWL2Bench#U0WC0D0EC33",
+                  "U0WC0D0-classroom-0",
+                  352.776343
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0WC0D0PGWS0",
+                  "http://benchmark/OWL2Bench#U0WC0D0EC35",
+                  "U0WC0D0-classroom-7",
+                  372.776343
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0WC0D0PGWS0",
+                  "http://benchmark/OWL2Bench#U0WC0D1EC21",
+                  "U0WC0D1-classroom-5",
+                  378.609676
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0WC0D0PGWS1",
+                  "http://benchmark/OWL2Bench#U0WC0D0EC27",
+                  "U0WC0D0-classroom-1",
+                  352.776343
+                ]
+              ],
+              "only_in_variant_examples": []
+            },
+            "tickets": {
+              "reference": 21,
+              "variant": 21,
+              "only_in_reference": 0,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [],
+              "only_in_variant_examples": []
+            }
+          },
+          {
+            "step": 3,
+            "reference_action": [
+              "deliver_ticket",
+              "U0C1D1-office",
+              [
+                "http://benchmark/OWL2Bench#U0C1D1UGS6"
+              ]
+            ],
+            "action": [
+              "deliver_ticket",
+              "U0C1D1-office",
+              [
+                "http://benchmark/OWL2Bench#U0C1D1UGS6"
+              ]
+            ],
+            "handouts": {
+              "reference": 769,
+              "variant": 0,
+              "only_in_reference": 769,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D0EC22",
+                  "U0C3D0-classroom-0",
+                  357.119199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D0EC23",
+                  "U0C3D0-classroom-1",
+                  357.119199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D2EC28",
+                  "U0C3D2-classroom-0",
+                  382.119199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS1",
+                  "http://benchmark/OWL2Bench#U0C3D1EC27",
+                  "U0C3D1-classroom-1",
+                  369.619199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS10",
+                  "http://benchmark/OWL2Bench#U0C3D1EC34",
+                  "U0C3D1-classroom-4",
+                  382.952533
+                ]
+              ],
+              "only_in_variant_examples": []
+            },
+            "tickets": {
+              "reference": 22,
+              "variant": 22,
+              "only_in_reference": 0,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [],
+              "only_in_variant_examples": []
+            }
+          },
+          {
+            "step": 4,
+            "reference_action": [
+              "deliver_ticket",
+              "U0C4D2-office",
+              [
+                "http://benchmark/OWL2Bench#U0C4D2OS2"
+              ]
+            ],
+            "action": [
+              "deliver_ticket",
+              "U0C4D2-office",
+              [
+                "http://benchmark/OWL2Bench#U0C4D2OS2"
+              ]
+            ],
+            "handouts": {
+              "reference": 769,
+              "variant": 0,
+              "only_in_reference": 769,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D0EC22",
+                  "U0C3D0-classroom-0",
+                  332.119199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D0EC23",
+                  "U0C3D0-classroom-1",
+                  332.119199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D2EC28",
+                  "U0C3D2-classroom-0",
+                  357.119199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS1",
+                  "http://benchmark/OWL2Bench#U0C3D1EC27",
+                  "U0C3D1-classroom-1",
+                  344.619199
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS10",
+                  "http://benchmark/OWL2Bench#U0C3D1EC34",
+                  "U0C3D1-classroom-4",
+                  357.952533
+                ]
+              ],
+              "only_in_variant_examples": []
+            },
+            "tickets": {
+              "reference": 22,
+              "variant": 22,
+              "only_in_reference": 0,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [],
+              "only_in_variant_examples": []
+            }
+          },
+          {
+            "step": 5,
+            "reference_action": [
+              "deliver_handouts",
+              "U0C1D0-classroom-0",
+              [
+                "http://benchmark/OWL2Bench#U0C1",
+                "http://benchmark/OWL2Bench#U0C1D0EC33"
+              ]
+            ],
+            "action": [
+              "deliver_ticket",
+              "U0C3D1-office",
+              [
+                "http://benchmark/OWL2Bench#U0C3D1OS10"
+              ]
+            ],
+            "handouts": {
+              "reference": 887,
+              "variant": 0,
+              "only_in_reference": 887,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC15",
+                  "U0C1D0-classroom-4",
+                  217.767503
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC17",
+                  "U0C1D0-classroom-6",
+                  224.434169
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC18",
+                  "U0C1D0-classroom-2",
+                  211.100836
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC5",
+                  "U0C1D0-classroom-9",
+                  231.100836
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D1EC35",
+                  "U0C1D1-classroom-4",
+                  230.267503
+                ]
+              ],
+              "only_in_variant_examples": []
+            },
+            "tickets": {
+              "reference": 22,
+              "variant": 22,
+              "only_in_reference": 0,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [],
+              "only_in_variant_examples": []
+            }
+          },
+          {
+            "step": 6,
+            "reference_action": [
+              "deliver_handouts",
+              "U0C2D0-classroom-0",
+              [
+                "http://benchmark/OWL2Bench#U0C2",
+                "http://benchmark/OWL2Bench#U0C2D0EC23"
+              ]
+            ],
+            "action": [
+              "deliver_ticket",
+              "U0C0D0-office",
+              [
+                "http://benchmark/OWL2Bench#U0C0D0OS14"
+              ]
+            ],
+            "handouts": {
+              "reference": 1102,
+              "variant": 0,
+              "only_in_reference": 1102,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [
+                [
+                  "http://benchmark/OWL2Bench#U0C2D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C2D0UGC12",
+                  "U0C2D0-classroom-5",
+                  232.438101
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C2D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C2D0UGC14",
+                  "U0C2D0-classroom-2",
+                  225.771434
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C2D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C2D0UGC2",
+                  "U0C2D0-classroom-4",
+                  232.438101
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C2D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C2D3EC40",
+                  "U0C2D3-classroom-7",
+                  276.604768
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C2D0UGS1",
+                  "http://benchmark/OWL2Bench#U0C2D0EC38",
+                  "U0C2D0-classroom-5",
+                  232.438101
+                ]
+              ],
+              "only_in_variant_examples": []
+            },
+            "tickets": {
+              "reference": 22,
+              "variant": 22,
+              "only_in_reference": 0,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [],
+              "only_in_variant_examples": []
+            }
+          },
+          {
+            "step": 7,
+            "reference_action": [
+              "deliver_ticket",
+              "U0C2D3-office",
+              [
+                "http://benchmark/OWL2Bench#U0C2D3L2"
+              ]
+            ],
+            "action": [
+              "deliver_ticket",
+              "U0C2D3-office",
+              [
+                "http://benchmark/OWL2Bench#U0C2D3L2"
+              ]
+            ],
+            "handouts": {
+              "reference": 769,
+              "variant": 0,
+              "only_in_reference": 769,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D0EC22",
+                  "U0C3D0-classroom-0",
+                  467.0573
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D0EC23",
+                  "U0C3D0-classroom-1",
+                  467.0573
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS0",
+                  "http://benchmark/OWL2Bench#U0C3D2EC28",
+                  "U0C3D2-classroom-0",
+                  492.0573
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS1",
+                  "http://benchmark/OWL2Bench#U0C3D1EC27",
+                  "U0C3D1-classroom-1",
+                  479.5573
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C3D0PGS10",
+                  "http://benchmark/OWL2Bench#U0C3D1EC34",
+                  "U0C3D1-classroom-4",
+                  492.890634
+                ]
+              ],
+              "only_in_variant_examples": []
+            },
+            "tickets": {
+              "reference": 22,
+              "variant": 22,
+              "only_in_reference": 0,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [],
+              "only_in_variant_examples": []
+            }
+          },
+          {
+            "step": 8,
+            "reference_action": [
+              "deliver_ticket",
+              "U0C2D3-office",
+              [
+                "http://benchmark/OWL2Bench#U0C2D3OS3"
+              ]
+            ],
+            "action": [
+              "deliver_ticket",
+              "U0C2D3-office",
+              [
+                "http://benchmark/OWL2Bench#U0C2D3OS3"
+              ]
+            ],
+            "handouts": {
+              "reference": 887,
+              "variant": 0,
+              "only_in_reference": 887,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC15",
+                  "U0C1D0-classroom-4",
+                  263.271434
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC17",
+                  "U0C1D0-classroom-6",
+                  269.938101
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC18",
+                  "U0C1D0-classroom-2",
+                  256.604768
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC5",
+                  "U0C1D0-classroom-9",
+                  276.604768
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D1EC35",
+                  "U0C1D1-classroom-4",
+                  275.771434
+                ]
+              ],
+              "only_in_variant_examples": []
+            },
+            "tickets": {
+              "reference": 22,
+              "variant": 22,
+              "only_in_reference": 0,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [],
+              "only_in_variant_examples": []
+            }
+          },
+          {
+            "step": 9,
+            "reference_action": [
+              "deliver_ticket",
+              "U0C2D3-office",
+              [
+                "http://benchmark/OWL2Bench#U0C2D3PGS19"
+              ]
+            ],
+            "action": [
+              "deliver_ticket",
+              "U0C2D3-office",
+              [
+                "http://benchmark/OWL2Bench#U0C2D3PGS19"
+              ]
+            ],
+            "handouts": {
+              "reference": 888,
+              "variant": 0,
+              "only_in_reference": 888,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC15",
+                  "U0C1D0-classroom-4",
+                  263.271434
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC17",
+                  "U0C1D0-classroom-6",
+                  269.938101
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC18",
+                  "U0C1D0-classroom-2",
+                  256.604768
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D0UGC5",
+                  "U0C1D0-classroom-9",
+                  276.604768
+                ],
+                [
+                  "http://benchmark/OWL2Bench#U0C1D0UGS0",
+                  "http://benchmark/OWL2Bench#U0C1D1EC35",
+                  "U0C1D1-classroom-4",
+                  275.771434
+                ]
+              ],
+              "only_in_variant_examples": []
+            },
+            "tickets": {
+              "reference": 22,
+              "variant": 22,
+              "only_in_reference": 0,
+              "only_in_variant": 0,
+              "only_in_reference_examples": [],
+              "only_in_variant_examples": []
+            }
+          }
+        ],
+        "disagreeing_steps": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159,
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185,
+          186,
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199
+        ]
+      }
+    },
+    "krrood_navigation": {
+      "description": "KRROOD as in krrood, but the handout query starts from the requested college (its has_student values) instead of scanning all students.",
+      "setup": {
+        "seconds": {
+          "load_and_reasoning": 8.226681162006571,
+          "application_data": 0.0032208030024776235
+        },
+        "total_seconds": 8.229901965009049,
+        "individuals": 3667,
+        "after_last_step": {},
+        "import_seconds": 0.9577622859942494,
+        "follows_reference_actions": true
+      },
+      "steps": {
+        "total_seconds": {
+          "count": 200,
+          "total": 15.116213010958745,
+          "mean": 0.07558106505479373,
+          "median": 0.07301671499590157,
+          "p95": 0.08172158298839349,
+          "min": 0.051912714989157394,
+          "max": 0.2604639300116105
+        },
+        "phases": {
+          "mapping": {
+            "count": 200,
+            "total": 0.0041132929909508675,
+            "mean": 2.0566464954754337e-05,
+            "median": 2.0257495634723455e-05,
+            "p95": 2.3949993192218244e-05,
+            "min": 1.696600520517677e-05,
+            "max": 3.486298373900354e-05
+          },
+          "update": {
+            "count": 200,
+            "total": 0.06280374983907677,
+            "mean": 0.00031401874919538385,
+            "median": 0.0004015874947072007,
+            "p95": 0.0007356080022873357,
+            "min": 5.8434990933164954e-05,
+            "max": 0.0010334959952160716
+          },
+          "reasoning": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "push": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "query": {
+            "count": 200,
+            "total": 14.90836940454028,
+            "mean": 0.0745418470227014,
+            "median": 0.07208689967228565,
+            "p95": 0.08042805297009181,
+            "min": 0.0514928867778508,
+            "max": 0.25951121041725855
+          },
+          "procedures": {
+            "count": 200,
+            "total": 0.12328904955938924,
+            "mean": 0.0006164452477969462,
+            "median": 0.0006178134281071834,
+            "p95": 0.0008083748980425298,
+            "min": 0.00022999418433755636,
+            "max": 0.0008724161598365754
+          },
+          "decide": {
+            "count": 200,
+            "total": 0.017128849038272165,
+            "mean": 8.564424519136082e-05,
+            "median": 8.451450412394479e-05,
+            "p95": 0.00011542299762368202,
+            "min": 6.6250067902728915e-06,
+            "max": 0.00014210300287231803
+          },
+          "act": {
+            "count": 200,
+            "total": 0.0005086649907752872,
+            "mean": 2.5433249538764356e-06,
+            "median": 2.3625034373253584e-06,
+            "p95": 3.6840065149590373e-06,
+            "min": 1.767999492585659e-06,
+            "max": 4.779009032063186e-06
+          }
+        },
+        "decisions": {
+          "handouts": {
+            "count": 200,
+            "total": 4.822886038949946,
+            "mean": 0.02411443019474973,
+            "median": 0.021915012497629505,
+            "p95": 0.030404342993278988,
+            "min": 0.005391600003349595,
+            "max": 0.2083968829974765
+          },
+          "tickets": {
+            "count": 200,
+            "total": 10.214838483923813,
+            "mean": 0.051074192419619066,
+            "median": 0.04925437049678294,
+            "p95": 0.05264372499368619,
+            "min": 0.04560045000107493,
+            "max": 0.22653387299214955
+          }
+        },
+        "statements_inserted": {
+          "count": 200,
+          "total": 858,
+          "mean": 4.29,
+          "median": 5.0,
+          "p95": 7,
+          "min": 3,
+          "max": 9
+        },
+        "statements_deleted": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "round_trips": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "reasoner_calls": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "procedure_calls": {
+          "can_reach": {
+            "count": 200,
+            "total": 197026,
+            "mean": 985.13,
+            "median": 929.0,
+            "p95": 1237,
+            "min": 771,
+            "max": 1289
+          },
+          "travel_seconds": {
+            "count": 200,
+            "total": 184442,
+            "mean": 922.21,
+            "median": 911.0,
+            "p95": 1227,
+            "min": 6,
+            "max": 1289
+          }
+        },
+        "handout_candidates": {
+          "count": 200,
+          "total": 172027,
+          "mean": 860.135,
+          "median": 819.0,
+          "p95": 1144,
+          "min": 0,
+          "max": 1180
+        },
+        "ticket_candidates": {
+          "count": 200,
+          "total": 12415,
+          "mean": 62.075,
+          "median": 56.5,
+          "p95": 106,
+          "min": 6,
+          "max": 111
+        },
+        "actions": {
+          "deliver_ticket": 96,
+          "deliver_handouts": 96,
+          "charge": 8
+        }
+      },
+      "code": {
+        "boundary_lines": {
+          "total": 19,
+          "per_category": {
+            "synchronization": 0,
+            "mapping": 12,
+            "procedure_integration": 7
+          },
+          "per_function": {
+            "KrroodVariant._attach_application_data": {
+              "category": "mapping",
+              "lines": 8
+            },
+            "KrroodVariant._register": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "KrroodVariant._resolve": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "krrood_variant.CanReach": {
+              "category": "procedure_integration",
+              "lines": 5
+            },
+            "krrood_variant.travel_time": {
+              "category": "procedure_integration",
+              "lines": 2
+            }
+          }
+        },
+        "queries": {
+          "handouts": {
+            "language": "eql",
+            "text": "student = variable(model.Student, domain=college.has_student)\ncourse = variable_from(student.takes_course)\ndriving_time = travel_time(self.robot, course.taught_in)\nquery = an(set_of(student, course, driving_time).where(CanReach(self.robot, course.taught_in)))",
+            "tokens": 61,
+            "lines": 4,
+            "characters": 256
+          },
+          "tickets": {
+            "language": "eql",
+            "text": "person = variable(model.Person, domain=None)\ndriving_time = travel_time(self.robot, person.mailbox)\nquery = an(\n    set_of(person, driving_time).where(\n        *model.T20CricketFan.axiom(person),\n        CanReach(self.robot, person.mailbox),\n    )\n)",
+            "tokens": 60,
+            "lines": 8,
+            "characters": 218
+          }
+        }
+      },
+      "process": {
+        "command": [
+          "/opt/venvs/earlier/bin/python",
+          "-m",
+          "krrood_experiments.aamas27.agent_loop.worker",
+          "--variant",
+          "krrood_navigation",
+          "--scenario",
+          "/work/results/aamas27/agent_loop-20261007-seed0-200steps/scenario.json",
+          "--results-dir",
+          "/work/results/aamas27/agent_loop-20261007-seed0-200steps",
+          "--reference-steps",
+          "/work/results/aamas27/agent_loop-20261007-seed0-200steps/agent_loop_krrood.json"
+        ],
+        "wall_seconds": 25.67497991399432,
+        "peak_rss_bytes": 394850304,
+        "return_code": 0,
+        "timed_out": false,
+        "memory_limit_exceeded": false,
+        "samples": 510,
+        "stderr_tail": "/opt/aamas27/code/earlier/krrood/src/krrood/ormatic/utils.py:101: SyntaxWarning: invalid escape sequence '\\ '\n  \"\"\"\n[krrood_navigation] step 0: 0.0714 s\n[krrood_navigation] step 20: 0.0661 s\n[krrood_navigation] step 40: 0.0676 s\n[krrood_navigation] step 60: 0.0777 s\n[krrood_navigation] step 80: 0.0722 s\n[krrood_navigation] step 100: 0.2480 s\n[krrood_navigation] step 120: 0.0814 s\n[krrood_navigation] step 140: 0.0826 s\n[krrood_navigation] step 160: 0.0724 s\n[krrood_navigation] step 180: 0.0735 s\n[krrood_navigation] step 199: 0.0638 s",
+        "peak_rss_mib": 376.55859375
+      },
+      "files": {
+        "steps": "agent_loop_krrood_navigation.json",
+        "candidates": "agent_loop_krrood_navigation_candidates.json.gz"
+      },
+      "agreement": {
+        "reference": "krrood",
+        "steps": 200,
+        "steps_compared": 200,
+        "equal_actions": 200,
+        "equal_candidate_sets": 200,
+        "all_agree": true,
+        "known_cause": null,
+        "first_disagreements": [],
+        "disagreeing_steps": []
+      }
+    }
+  },
+  "previous_arguments": [
+    {
+      "results_dir": "/scratch/run200",
+      "steps": 200,
+      "seed": 0,
+      "events_per_step": 3,
+      "variants": "krrood,graphdb,graphdb_push,reasonable",
+      "graphdb_url": null,
+      "raw_file": "/work/resources/owl2bench_statements_unreasoned.rdf",
+      "timeout_seconds": 21600,
+      "resume": true
+    }
+  ]
+}

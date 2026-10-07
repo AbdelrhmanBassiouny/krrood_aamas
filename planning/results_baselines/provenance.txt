@@ -1,0 +1,13 @@
+In-memory baselines of Table 3 (Nemo and reasonable), measured on 2026-10-07 after the reviewers' request for an
+in-memory OWL 2 RL/Datalog engine, on the machine of the main run (Intel Core i7-13700, 64 GB RAM, Ubuntu 24.04),
+in the Docker image built from experiments commit 5f66441 (bundle 2f196b71d4840935: the bundle of the main run plus
+the two baselines). Command: run.sh in this folder, inside the image. The pre-reasoned input is GraphDB's export
+of the main run (1,431,635 statements). A second, unrelated experiment ran on the machine at the same time.
+
+KRROOD was measured again alongside: raw 8.36 +- 0.01 s (main run 8.15), pre-reasoned 93.7 +- 0.39 s (main run
+89.2), memory increase 210 MB and 1.83 GB (main run 209 MB and 1.81 GB). The table keeps KRROOD's numbers of the
+main run.
+
+Runs stopped at the memory limit (24 GiB, as the ablation's) are "out of memory": Nemo after 65 s, reasonable after
+94 s, both on the pre-reasoned input. baselines/closure_comparison.json compares their closures from the raw data
+with GraphDB's, as the soundness audit compares KRROOD's knowledge base.
