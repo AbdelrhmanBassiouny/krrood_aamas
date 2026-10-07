@@ -70,6 +70,7 @@ sed -i 's/KRROOD + ORMatic/KRROOD (with ORMatic)/; s/Eager chaining/KRROOD witho
 grep -q "KRROOD (with ORMatic)" "$REPO/krrood_aamas_2027/tables/loading_table.tex" \
     && grep -q "KRROOD without step 5" "$REPO/krrood_aamas_2027/tables/loading_table.tex" \
     || { echo "FAILED: the two loading-table rows were not renamed"; exit 1; }
+python3 "$REPO/planning/bold_lowest_memory.py" "$REPO/krrood_aamas_2027/tables/loading_table.tex"
 # Protégé's queries ran once (std_ms 0 in protege.json): its column, the last one, shows the time without "± 0.00".
 python3 - "$REPO/krrood_aamas_2027/tables/query_table.tex" <<'PY'
 import re, sys

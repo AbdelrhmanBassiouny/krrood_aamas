@@ -29,6 +29,6 @@ bash planning/import_results.sh /path/to/aamas27_results.tgz
 
 It checks the run, prints the BUNDLE id (it must be the zip's, `environment/BUNDLE`) and copies the two LaTeX
 tables into `krrood_aamas_2027/tables/`, renaming two loading rows to the paper's names ("KRROOD (with ORMatic)",
-"KRROOD without step 5") and dropping "± 0.00" from Protégé's single-run query times. The final zip is built with
+"KRROOD without step 5"), marking the lowest memory per input in bold (`planning/bold_lowest_memory.py`) and dropping "± 0.00" from Protégé's single-run query times. The final zip is built with
 `make_supplement.py <out> --results planning/results/aamas27/run` from `supplement/` of the experiments repository
 (branch `aamas27-experiments`).
