@@ -4,7 +4,7 @@ Everything for the run is in the supplementary zip, `planning/krrood-aamas27-sup
 the Docker set-up and the instructions (`README.md` in the zip). Anyone, us or a reviewer, follows that README.
 This file only says how we use it.
 
-## Run (on the Ubuntu PC, i7-11700K, 32 GB RAM)
+## Run (on the Ubuntu PC, i7-13700, 64 GB RAM)
 
 ```bash
 unzip -DD krrood-aamas27-supplement.zip && cd krrood-aamas27-supplement
