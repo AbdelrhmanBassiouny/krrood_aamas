@@ -8,12 +8,14 @@ This file only says how we use it.
 
 ```bash
 unzip -DD krrood-aamas27-supplement.zip && cd krrood-aamas27-supplement
-bash run_ubuntu.sh            # set up, then the full run in the background (9-13 h)
-bash run_ubuntu.sh status     # any time
+bash run_ubuntu.sh            # quick check, ~3 min after the build, prints the report
+bash run_ubuntu.sh full       # set up, then the full run in the background (9-13 h)
+bash run_ubuntu.sh status     # any time; "report" prints the report so far
 ```
 
-Then Protégé by hand (README, "Protégé (by hand)"), and `bash run_ubuntu.sh tables`. Protégé's queries run once each:
-in `protege.json`, set `std_ms` to 0 for every query (`null` makes `tables` fail).
+Then Protégé by hand (README, "Protégé (by hand)"; our sessions are in `results/protege/`), and
+`bash run_ubuntu.sh tables`. Every run ends with a report (tables with titles and captions, next to the paper's
+numbers) in the terminal and in `state/results/REPORT.md`.
 
 Rules for a Claude Code session on the PC: change no file of the bundle, don't change limits or repetitions,
 don't use the machine during the run, and stop and report if a step fails.
