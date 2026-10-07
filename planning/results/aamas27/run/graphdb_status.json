@@ -1,0 +1,21 @@
+{
+  "version": {
+    "productType": "free",
+    "productVersion": "11.2.0",
+    "connectors": "16.5.0",
+    "sesame": "5.1.6-jakarta",
+    "Workbench": "3.2.0"
+  },
+  "repositories": {
+    "aamas27_rl": {
+      "ruleset": "owl2-rl-optimized",
+      "explicit": 54901,
+      "total": 1467912
+    },
+    "aamas27_noinf": {
+      "ruleset": "empty",
+      "explicit": 1431635,
+      "total": 1431635
+    }
+  }
+}

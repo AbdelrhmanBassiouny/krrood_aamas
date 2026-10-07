@@ -480,9 +480,9 @@ Q12 illustrates how roles reconcile OWL entailment with object types. In OWL2Ben
 
 Table~\ref{tab:baselines} reports the time and peak memory for loading the ontology and computing its consequences. For \ac{krrood}, this is Ontomatic's loading procedure (Algorithm~\ref{alg:loading}). The row ``KRROOD (with ORMatic)'' adds persisting all objects into PostgreSQL.
 
-\tbd{} Results paragraph: compare \ac{krrood} with the RL baselines (GraphDB, RDFLib) and with Pellet, for both inputs, in time and memory.
+From raw data, \ac{krrood} loads the ontology and computes its closure in 8.4\,s with a peak of 339\,MB. GraphDB, the like-for-like OWL~2~RL baseline, takes 1,210\,s, about 140 times as long, on its single licensed core; its peak memory of 7.7\,GB mostly reflects its configured 8\,GB heap. RDFLib with \texttt{owlrl} does not finish within the three-hour limit on either input. Owlready2 with Pellet takes 39\,s from raw data; from pre-reasoned data, its Java process runs out of memory with Owlready2's default heap of 2\,GB. From pre-reasoned data, which has 26 times as many statements, \ac{krrood} takes 90.6\,s and 1.95\,GB, and GraphDB 748\,s. Persisting all objects with ORMatic adds about 20\,s for either input. \tbd{} Protégé.
 
-The ablation row replaces the connected-components step of Algorithm~\ref{alg:loading} by forward chaining of symmetric and transitive properties on every assignment. \tbd{} Report whether it finished within the two-hour limit.
+The ablation row replaces the connected-components step of Algorithm~\ref{alg:loading} by forward chaining of symmetric and transitive properties on every assignment. It does not finish within the two-hour limit, so on raw data the step makes loading more than 850 times faster.
 
 
 
@@ -490,14 +490,14 @@ The ablation row replaces the connected-components step of Algorithm~\ref{alg:lo
 
 Table~\ref{tab:queries} reports query times once the data is loaded: \ac{eql} over the objects in working memory, and SQLAlchemy over the data that ORMatic persisted from them, the agent's long-term memory. SQLAlchemy's times include building the rows or DAOs that SQLAlchemy returns, but not converting DAOs into domain objects, which ORMatic can do. Only \ac{eql} returns objects of application code; GraphDB and RDFLib return IRIs and literals, and Owlready2 its own Python objects. The geometric mean is taken over the queries that all systems completed.
 
-\tbd{} Results paragraph: relate EQL to GraphDB, the like-for-like baseline, and to the other systems, and explain the extremes (Q20 with 1.3 million answers; Q22, the five-atom join of Listing~\ref{lst:q22}).
+SQLAlchemy over the persisted data has the lowest geometric mean (0.98\,ms) and is the fastest on 13 of the 18 queries. \ac{eql} (5.93\,ms) is within a factor of 1.7 of GraphDB (3.47\,ms), the like-for-like baseline, and faster than RDFLib (11.04\,ms) and Owlready2 (18.66\,ms). It is faster than GraphDB on 8 queries, all with at most 858 answers, and the fastest of all systems on Q13 and Q19. Q20 returns 1.3 million answers: every system needs between 1.0\,s (SQLAlchemy) and 22.5\,s (RDFLib), and \ac{eql} 5.9\,s, three times as long as GraphDB. Q22, the five-atom join of Listing~\ref{lst:q22}, shows \ac{eql}'s largest gap: 214\,ms against 1.4\,ms for GraphDB. SQL over the objects that ORMatic persisted answers it in 9.4\,ms, so the gap comes from evaluating the join in working memory, not from the object model. \tbd{} Protégé.
 
 
 
 \section{Discussion and Conclusion}
 \label{sec:discussion_conclusion}
 
-We presented \ac{krrood}, which turns an agent's object-oriented program into its knowledge base, so that application code reads and writes knowledge with ordinary attribute access, and axioms and rules can call the agent's own procedures. On OWL2Bench, \ac{krrood} returns the same answers as an OWL~2~RL reasoner on every query, its knowledge base equals the reasoner's closure assertion by assertion, and \tbd{} summary of cost.
+We presented \ac{krrood}, which turns an agent's object-oriented program into its knowledge base, so that application code reads and writes knowledge with ordinary attribute access, and axioms and rules can call the agent's own procedures. On OWL2Bench, \ac{krrood} returns the same answers as an OWL~2~RL reasoner on every query, its knowledge base equals the reasoner's closure assertion by assertion, and it loads and reasons over the raw data about 140 times faster than GraphDB, while answering queries from working memory within a factor of 1.7 of GraphDB in geometric mean; SQL over its persisted objects is the fastest of all systems.
 
 \paragraph{Limitations}
 \begin{itemize}

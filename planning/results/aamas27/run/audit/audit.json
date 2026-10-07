@@ -1,0 +1,1763 @@
+{
+  "reference_repository": "aamas27_rl",
+  "individuals_in_reference": 3667,
+  "individuals_in_krrood": 3667,
+  "individuals_only_in_reference": [],
+  "individuals_only_in_krrood": [],
+  "classes": {
+    "AeronauticalEngineering": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Anthropology": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Architecture": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Article": {
+      "krrood": 73,
+      "reference": 73,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "AsianArts": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "AssistantProfessor": {
+      "krrood": 203,
+      "reference": 203,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "AssociateProfessor": {
+      "krrood": 160,
+      "reference": 160,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Astronomy": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Badminton": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "BasketBall": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "BasketBallFan": {
+      "krrood": 31,
+      "reference": 31,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "BasketBallLover": {
+      "krrood": 57,
+      "reference": 57,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Biology": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "BiomedicalEngineering": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Book": {
+      "krrood": 12,
+      "reference": 12,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Chair": {
+      "krrood": 21,
+      "reference": 21,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ChemicalEngineering": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Chemistry": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "CivilEngineering": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "College": {
+      "krrood": 6,
+      "reference": 6,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "CollegeDiscipline": {
+      "krrood": 45,
+      "reference": 45,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ComputerEngineering": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ComputerScience": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ConferencePaper": {
+      "krrood": 14,
+      "reference": 14,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Course": {
+      "krrood": 858,
+      "reference": 858,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Cricket": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Department": {
+      "krrood": 21,
+      "reference": 21,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Drama": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Economics": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ElectiveCourse": {
+      "krrood": 358,
+      "reference": 358,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ElectricalEngineering": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Employee": {
+      "krrood": 1504,
+      "reference": 1504,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Engineering": {
+      "krrood": 10,
+      "reference": 10,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "English": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Faculty": {
+      "krrood": 858,
+      "reference": 858,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "FineArts": {
+      "krrood": 10,
+      "reference": 10,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "FootBall": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "FullProfessor": {
+      "krrood": 167,
+      "reference": 167,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Game": {
+      "krrood": 2,
+      "reference": 2,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Geosciences": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "History": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Humanities": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "HumanitiesAndSocial": {
+      "krrood": 10,
+      "reference": 10,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "IndustryEngineering": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Interest": {
+      "krrood": 30,
+      "reference": 30,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "JournalArticle": {
+      "krrood": 18,
+      "reference": 18,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "LatinArts": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Lecturer": {
+      "krrood": 163,
+      "reference": 163,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Linguistics": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Man": {
+      "krrood": 1130,
+      "reference": 1130,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Manual": {
+      "krrood": 14,
+      "reference": 14,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "MarineScience": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "MaterialScienceEngineering": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "MaterialsScience": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Mathematics": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "MechanicalEngineering": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "MediaArtsAndSciences": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "MedievalArts": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ModernArts": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ModernLanguages": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Movie": {
+      "krrood": 7,
+      "reference": 7,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Music": {
+      "krrood": 3,
+      "reference": 3,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "MusicsClass": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Organization": {
+      "krrood": 35,
+      "reference": 35,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "PGProgram": {
+      "krrood": 11,
+      "reference": 11,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "PGStudent": {
+      "krrood": 198,
+      "reference": 198,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Painting": {
+      "krrood": 2,
+      "reference": 2,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "PeopleWithHobby": {
+      "krrood": 1372,
+      "reference": 1372,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "PerformingArts": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Person": {
+      "krrood": 2494,
+      "reference": 2494,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "PetroleumlEngineering": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "PhDProgram": {
+      "krrood": 8,
+      "reference": 8,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "PhDStudent": {
+      "krrood": 26,
+      "reference": 26,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Philosophy": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Physics": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "PostDoc": {
+      "krrood": 93,
+      "reference": 93,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Professor": {
+      "krrood": 602,
+      "reference": 602,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Program": {
+      "krrood": 40,
+      "reference": 40,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Psychology": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Publication": {
+      "krrood": 162,
+      "reference": 162,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Reading": {
+      "krrood": 3,
+      "reference": 3,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Religions": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ResearchAssistant": {
+      "krrood": 37,
+      "reference": 37,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ResearchGroup": {
+      "krrood": 7,
+      "reference": 7,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ResearchProject": {
+      "krrood": 7,
+      "reference": 7,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "School": {
+      "krrood": 6,
+      "reference": 6,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Science": {
+      "krrood": 10,
+      "reference": 10,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "ScienceStudent": {
+      "krrood": 342,
+      "reference": 342,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Software": {
+      "krrood": 15,
+      "reference": 15,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Specification": {
+      "krrood": 20,
+      "reference": 20,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Sports": {
+      "krrood": 8,
+      "reference": 8,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "SportsFan": {
+      "krrood": 170,
+      "reference": 170,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "SportsLover": {
+      "krrood": 347,
+      "reference": 347,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Statistics": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Student": {
+      "krrood": 989,
+      "reference": 989,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Swimming": {
+      "krrood": 2,
+      "reference": 2,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "T20CricketFan": {
+      "krrood": 20,
+      "reference": 20,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "TeachingAssistant": {
+      "krrood": 224,
+      "reference": 224,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "TeachingCourse": {
+      "krrood": 858,
+      "reference": 858,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "TechnicalReport": {
+      "krrood": 23,
+      "reference": 23,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Tennis": {
+      "krrood": 2,
+      "reference": 2,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "TheatreAndDance": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Travelling": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "UGCourse": {
+      "krrood": 500,
+      "reference": 500,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "UGProgram": {
+      "krrood": 21,
+      "reference": 21,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "UGStudent": {
+      "krrood": 765,
+      "reference": 765,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "University": {
+      "krrood": 1,
+      "reference": 1,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "UnofficialPublication": {
+      "krrood": 15,
+      "reference": 15,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "VisitingProfessor": {
+      "krrood": 72,
+      "reference": 72,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Woman": {
+      "krrood": 1356,
+      "reference": 1356,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "Work": {
+      "krrood": 865,
+      "reference": 865,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    }
+  },
+  "class_totals": {
+    "unsound": 0,
+    "missing": 0
+  },
+  "object_properties": {
+    "dislikes": {
+      "krrood": 731,
+      "reference": 731,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "enrollFor": {
+      "krrood": 989,
+      "reference": 989,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "enrollIn": {
+      "krrood": 989,
+      "reference": 989,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "evaluatedBy": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "evaluates": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasAdvisor": {
+      "krrood": 2422,
+      "reference": 2422,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasAlumnus": {
+      "krrood": 1684,
+      "reference": 1684,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasAssistantProfessor": {
+      "krrood": 203,
+      "reference": 203,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasAssociateProfessor": {
+      "krrood": 160,
+      "reference": 160,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasAuthor": {
+      "krrood": 496,
+      "reference": 496,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasClericalStaff": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasCollaborationWith": {
+      "krrood": 666,
+      "reference": 666,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasCollege": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasCollegeDiscipline": {
+      "krrood": 6,
+      "reference": 6,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasCommitteeMembers": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasDean": {
+      "krrood": 6,
+      "reference": 6,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasDegreeFrom": {
+      "krrood": 1684,
+      "reference": 1684,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasDepartment": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasDoctoralDegreeFrom": {
+      "krrood": 695,
+      "reference": 695,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasEmployee": {
+      "krrood": 4454,
+      "reference": 4454,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasEmployeeEvaluationCommittee": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasEvaluationCommittee": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasFaculty": {
+      "krrood": 858,
+      "reference": 858,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasFullProfessor": {
+      "krrood": 167,
+      "reference": 167,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasHead": {
+      "krrood": 21,
+      "reference": 21,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasLecturer": {
+      "krrood": 163,
+      "reference": 163,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasMajor": {
+      "krrood": 989,
+      "reference": 989,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasMasterDegreeFrom": {
+      "krrood": 959,
+      "reference": 959,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasMember": {
+      "krrood": 7421,
+      "reference": 7421,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasOtherStaff": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasPGProgram": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasPart": {
+      "krrood": 55,
+      "reference": 55,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasPhDProgram": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasPostDoc": {
+      "krrood": 93,
+      "reference": 93,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasProfessor": {
+      "krrood": 602,
+      "reference": 602,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasProgram": {
+      "krrood": 40,
+      "reference": 40,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasResearchAssistant": {
+      "krrood": 37,
+      "reference": 37,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasResearchGroup": {
+      "krrood": 7,
+      "reference": 7,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasResearchProject": {
+      "krrood": 7,
+      "reference": 7,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasSameHomeTownWith": {
+      "krrood": 1311932,
+      "reference": 1311932,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasStudent": {
+      "krrood": 2967,
+      "reference": 2967,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasStudentEvaluationCommittee": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasSubOrganization": {
+      "krrood": 55,
+      "reference": 55,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasSupportingStaff": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasSystemStaff": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasThesisEvaluationCommittee": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasUGProgram": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasUndergraduateDegreeFrom": {
+      "krrood": 1684,
+      "reference": 1684,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasVisitingProfessor": {
+      "krrood": 72,
+      "reference": 72,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasWomenCollege": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasWork": {
+      "krrood": 2600,
+      "reference": 2600,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isAdvisedBy": {
+      "krrood": 2422,
+      "reference": 2422,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isAffiliateOf": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isAffiliatedOrganizationOf": {
+      "krrood": 6,
+      "reference": 6,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isAssistantProfessorOf": {
+      "krrood": 203,
+      "reference": 203,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isAssociateProfessorOf": {
+      "krrood": 160,
+      "reference": 160,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isClericalStaffOf": {
+      "krrood": 100,
+      "reference": 100,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isCollegeOf": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isCrazyAbout": {
+      "krrood": 621,
+      "reference": 621,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isDeanOf": {
+      "krrood": 6,
+      "reference": 6,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isDepartmentOf": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isFacultyOf": {
+      "krrood": 858,
+      "reference": 858,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isFullProfessorOf": {
+      "krrood": 167,
+      "reference": 167,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isHeadOf": {
+      "krrood": 21,
+      "reference": 21,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isLecturerOf": {
+      "krrood": 163,
+      "reference": 163,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isMemberOf": {
+      "krrood": 7421,
+      "reference": 7421,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isOtherStaffOf": {
+      "krrood": 427,
+      "reference": 427,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isPartOf": {
+      "krrood": 55,
+      "reference": 55,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isPostDocOf": {
+      "krrood": 93,
+      "reference": 93,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isProfessorOf": {
+      "krrood": 602,
+      "reference": 602,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isResearchAssistantOf": {
+      "krrood": 37,
+      "reference": 37,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isResearchGroupOf": {
+      "krrood": 7,
+      "reference": 7,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isStudentOf": {
+      "krrood": 2967,
+      "reference": 2967,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isSubOrganizationOf": {
+      "krrood": 55,
+      "reference": 55,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isSupportingStaffOf": {
+      "krrood": 602,
+      "reference": 602,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isSystemStaffOf": {
+      "krrood": 75,
+      "reference": 75,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isTaughtBy": {
+      "krrood": 2593,
+      "reference": 2593,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isTeachingAssistantOf": {
+      "krrood": 224,
+      "reference": 224,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isVisitingProfessorOf": {
+      "krrood": 72,
+      "reference": 72,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "isWomenCollegeOf": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "knows": {
+      "krrood": 1427,
+      "reference": 1427,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "likes": {
+      "krrood": 4020,
+      "reference": 4020,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "loves": {
+      "krrood": 1321,
+      "reference": 1321,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "offerCourse": {
+      "krrood": 858,
+      "reference": 858,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "orgPublication": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "publicationResearch": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "roleFor": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "takesCourse": {
+      "krrood": 5325,
+      "reference": 5325,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "teachesCourse": {
+      "krrood": 2593,
+      "reference": 2593,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "tenured": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "worksFor": {
+      "krrood": 4454,
+      "reference": 4454,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    }
+  },
+  "object_property_totals": {
+    "unsound": 0,
+    "missing": 0
+  },
+  "data_properties": {
+    "hasAge": {
+      "krrood": 2486,
+      "reference": 2486,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasCode": {
+      "krrood": 2487,
+      "reference": 2487,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasEmailAddress": {
+      "krrood": 2486,
+      "reference": 2486,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasFirstName": {
+      "krrood": 2486,
+      "reference": 2486,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasID": {
+      "krrood": 2487,
+      "reference": 2487,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasLastName": {
+      "krrood": 2486,
+      "reference": 2486,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasName": {
+      "krrood": 2509,
+      "reference": 2509,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasOfficeNumber": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasPublicationDate": {
+      "krrood": 162,
+      "reference": 162,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasResearchInterest": {
+      "krrood": 858,
+      "reference": 858,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasTelephone": {
+      "krrood": 2486,
+      "reference": 2486,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    },
+    "hasTitle": {
+      "krrood": 0,
+      "reference": 0,
+      "unsound": 0,
+      "missing": 0,
+      "unsound_examples": [],
+      "missing_examples": []
+    }
+  },
+  "data_property_totals": {
+    "unsound": 0,
+    "missing": 0
+  },
+  "krrood_loading_seconds": 8.70994529300151,
+  "owl2_rl_check": {
+    "passed": true,
+    "equalities": 0,
+    "inconsistencies": 0,
+    "findings_per_rule": {},
+    "outside_owl2_rl": [
+      "BasketBallFan SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "BasketBallLover SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "Chair SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "Dean SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "Director SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "Employee SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "Lecturer SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "LeisureStudent SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "PeopleWithHobby SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "SportsFan SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "SportsLover SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "Student SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "T20CricketFan SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "TeachingAssistant SubClassOf ObjectSomeValuesFrom on roleFor in superclass position",
+      "VisitingProfessor SubClassOf ObjectSomeValuesFrom on roleFor in superclass position"
+    ],
+    "seconds": 0.2635690040006011,
+    "findings": []
+  }
+}

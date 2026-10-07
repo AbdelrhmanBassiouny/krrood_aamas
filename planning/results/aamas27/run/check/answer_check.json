@@ -1,0 +1,692 @@
+{
+  "reference": "graphdb",
+  "queries": {
+    "2": {
+      "eql": {
+        "reference": 7421,
+        "candidate": 7421,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 7421,
+        "candidate": 7421,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 7421,
+        "candidate": 7421,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 7421,
+        "candidate": 7421,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "3": {
+      "eql": {
+        "reference": 55,
+        "candidate": 55,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 55,
+        "candidate": 55,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 55,
+        "candidate": 55,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 55,
+        "candidate": 55,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "4": {
+      "eql": {
+        "reference": 2486,
+        "candidate": 2486,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 2486,
+        "candidate": 2486,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 2486,
+        "candidate": 2486,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 2486,
+        "candidate": 2486,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "5": {
+      "eql": {
+        "reference": 20,
+        "candidate": 20,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 20,
+        "candidate": 20,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 20,
+        "candidate": 20,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 20,
+        "candidate": 20,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "7": {
+      "eql": {
+        "reference": 1684,
+        "candidate": 1684,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 1684,
+        "candidate": 1684,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 1684,
+        "candidate": 1684,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 1684,
+        "candidate": 1684,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "8": {
+      "eql": {
+        "reference": 6,
+        "candidate": 6,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 6,
+        "candidate": 6,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 6,
+        "candidate": 6,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 6,
+        "candidate": 6,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "9": {
+      "eql": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "10": {
+      "eql": {
+        "reference": 666,
+        "candidate": 666,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 666,
+        "candidate": 666,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 666,
+        "candidate": 666,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 666,
+        "candidate": 666,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "11": {
+      "eql": {
+        "reference": 2422,
+        "candidate": 2422,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 2422,
+        "candidate": 2422,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 2422,
+        "candidate": 2422,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 2422,
+        "candidate": 2422,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "12": {
+      "eql": {
+        "reference": 2494,
+        "candidate": 2494,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 2494,
+        "candidate": 2494,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 2494,
+        "candidate": 2494,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 2494,
+        "candidate": 2494,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "13": {
+      "eql": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "14": {
+      "eql": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 0,
+        "candidate": 0,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "15": {
+      "eql": {
+        "reference": 21,
+        "candidate": 21,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 21,
+        "candidate": 21,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 21,
+        "candidate": 21,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 21,
+        "candidate": 21,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "16": {
+      "eql": {
+        "reference": 21,
+        "candidate": 21,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 21,
+        "candidate": 21,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 21,
+        "candidate": 21,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 21,
+        "candidate": 21,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "19": {
+      "eql": {
+        "reference": 858,
+        "candidate": 858,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 858,
+        "candidate": 858,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 858,
+        "candidate": 858,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 858,
+        "candidate": 858,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "20": {
+      "eql": {
+        "reference": 1311932,
+        "candidate": 1311932,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 1311932,
+        "candidate": 1311932,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 1311932,
+        "candidate": 1311932,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 1311932,
+        "candidate": 1311932,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "21": {
+      "eql": {
+        "reference": 145,
+        "candidate": 145,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 145,
+        "candidate": 145,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 145,
+        "candidate": 145,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 145,
+        "candidate": 145,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    },
+    "22": {
+      "eql": {
+        "reference": 106,
+        "candidate": 106,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "sqlalchemy": {
+        "reference": 106,
+        "candidate": 106,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "rdflib": {
+        "reference": 106,
+        "candidate": 106,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      },
+      "owlready2": {
+        "reference": 106,
+        "candidate": 106,
+        "only_in_reference": 0,
+        "only_in_candidate": 0,
+        "equal": true,
+        "only_in_reference_examples": [],
+        "only_in_candidate_examples": []
+      }
+    }
+  },
+  "mismatches": [],
+  "all_equal": true,
+  "known_differences": {}
+}
