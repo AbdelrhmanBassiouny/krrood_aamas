@@ -1,0 +1,289 @@
+{
+ "sizes": [
+  {
+   "universities": 1,
+   "raw_statements": 54902,
+   "systems": {
+    "krrood": {
+     "status": "ok",
+     "repetitions": 3,
+     "mean_seconds": 8.897569947992451,
+     "stdev_seconds": 0.14472552675967545,
+     "memory_increase_mib": 209.21875
+    },
+    "nemo_owlrl": {
+     "status": "ok",
+     "repetitions": 3,
+     "mean_seconds": 5.788333333333333,
+     "stdev_seconds": 0.11806918875529407,
+     "memory_increase_mib": 213.67578125
+    },
+    "reasonable_owlrl": {
+     "status": "ok",
+     "repetitions": 3,
+     "mean_seconds": 84.87895429766893,
+     "stdev_seconds": 1.512112742299582,
+     "memory_increase_mib": 16966.46875
+    },
+    "graphdb": {
+     "status": "ok",
+     "repetitions": 1,
+     "mean_seconds": 1209.8727983619974,
+     "stdev_seconds": 0.0,
+     "memory_increase_mib": 671.75,
+     "statements": {
+      "explicit": 54901,
+      "total": 1467912
+     }
+    }
+   },
+   "audit": {
+    "named_individuals": 3667,
+    "reference_statements": 1479165,
+    "facts": {
+     "krrood": 1424360,
+     "reference": 1424360,
+     "matching": 1424360,
+     "missing": 0,
+     "extra": 0
+    },
+    "kinds": {
+     "class": {
+      "reference": 17558,
+      "candidate": 17558,
+      "matching": 17558,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     },
+     "object": {
+      "reference": 1385869,
+      "candidate": 1385869,
+      "matching": 1385869,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     },
+     "data": {
+      "reference": 20933,
+      "candidate": 20933,
+      "matching": 20933,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     }
+    },
+    "krrood_load_and_reasoning_seconds": 24.137064632988768
+   }
+  },
+  {
+   "universities": 2,
+   "raw_statements": 107359,
+   "systems": {
+    "krrood": {
+     "status": "ok",
+     "repetitions": 3,
+     "mean_seconds": 24.279664485007135,
+     "stdev_seconds": 0.19086622789691884,
+     "memory_increase_mib": 610.95703125
+    },
+    "nemo_owlrl": {
+     "status": "ok",
+     "repetitions": 3,
+     "mean_seconds": 20.268333333333334,
+     "stdev_seconds": 0.5687612269954155,
+     "memory_increase_mib": 573.5390625
+    },
+    "reasonable_owlrl": {
+     "status": "memory_limit",
+     "repetitions": 0,
+     "peak_rss_mib": 24623.12890625,
+     "wall_seconds": 111.98956101498334
+    },
+    "graphdb": {
+     "status": "ok",
+     "repetitions": 1,
+     "mean_seconds": 11439.79299990501,
+     "stdev_seconds": 0.0,
+     "memory_increase_mib": 6475.03515625,
+     "statements": {
+      "explicit": 107358,
+      "total": 5045959
+     }
+    }
+   },
+   "audit": {
+    "named_individuals": 7171,
+    "reference_statements": 5069292,
+    "facts": {
+     "krrood": 4965932,
+     "reference": 4965932,
+     "matching": 4965932,
+     "missing": 0,
+     "extra": 0
+    },
+    "kinds": {
+     "class": {
+      "reference": 34230,
+      "candidate": 34230,
+      "matching": 34230,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     },
+     "object": {
+      "reference": 4890440,
+      "candidate": 4890440,
+      "matching": 4890440,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     },
+     "data": {
+      "reference": 41262,
+      "candidate": 41262,
+      "matching": 41262,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     }
+    },
+    "krrood_load_and_reasoning_seconds": 43.477732146013295
+   }
+  },
+  {
+   "universities": 4,
+   "raw_statements": 270714,
+   "systems": {
+    "krrood": {
+     "status": "ok",
+     "repetitions": 3,
+     "mean_seconds": 117.91125424933853,
+     "stdev_seconds": 0.4896286713785155,
+     "memory_increase_mib": 3648.890625
+    },
+    "nemo_owlrl": {
+     "status": "ok",
+     "repetitions": 3,
+     "mean_seconds": 133.916,
+     "stdev_seconds": 1.317523054826741,
+     "memory_increase_mib": 3057.484375
+    }
+   },
+   "audit": {
+    "named_individuals": 17941,
+    "reference_statements": 32117713,
+    "facts": {
+     "krrood": 31861460,
+     "reference": 31861460,
+     "matching": 31861460,
+     "missing": 0,
+     "extra": 0
+    },
+    "kinds": {
+     "class": {
+      "reference": 86345,
+      "candidate": 86345,
+      "matching": 86345,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     },
+     "object": {
+      "reference": 31669853,
+      "candidate": 31669853,
+      "matching": 31669853,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     },
+     "data": {
+      "reference": 105262,
+      "candidate": 105262,
+      "matching": 105262,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     }
+    },
+    "krrood_load_and_reasoning_seconds": 116.16729555997881
+   }
+  },
+  {
+   "universities": 8,
+   "raw_statements": 577245,
+   "systems": {
+    "krrood": {
+     "status": "ok",
+     "repetitions": 3,
+     "mean_seconds": 454.18013381766895,
+     "stdev_seconds": 2.971207713063488,
+     "memory_increase_mib": 7740.31640625
+    },
+    "nemo_owlrl": {
+     "status": "ok",
+     "repetitions": 3,
+     "mean_seconds": 649.548,
+     "stdev_seconds": 17.643258230837034,
+     "memory_increase_mib": 12806.98828125
+    }
+   },
+   "audit": {
+    "named_individuals": 38069,
+    "reference_statements": 142186070,
+    "facts": {
+     "krrood": 141643419,
+     "reference": 141643419,
+     "matching": 141643419,
+     "missing": 0,
+     "extra": 0
+    },
+    "kinds": {
+     "class": {
+      "reference": 183458,
+      "candidate": 183458,
+      "matching": 183458,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     },
+     "object": {
+      "reference": 141234734,
+      "candidate": 141234734,
+      "matching": 141234734,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     },
+     "data": {
+      "reference": 225227,
+      "candidate": 225227,
+      "matching": 225227,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+     }
+    },
+    "krrood_load_and_reasoning_seconds": 440.04044169801637
+   }
+  }
+ ],
+ "import_memory_mib": {
+  "krrood": 129.45703125,
+  "owlready2_pellet": 27.1875,
+  "rdflib_owlrl": 27.5625,
+  "nemo_owlrl": 0.0
+ }
+}

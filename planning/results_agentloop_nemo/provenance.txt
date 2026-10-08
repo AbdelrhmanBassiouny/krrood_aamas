@@ -1,0 +1,21 @@
+Agent loop with Nemo, 5 seeds (0-4), 200 steps each.
+
+Code: krrood_experiments commit 36c8846 (the agent-loop files were last modified before the runs started and are
+unchanged in that commit). Image krrood-aamas27-dev, venv /opt/venvs/earlier, nmo 0.10.1.
+Command, per seed: run_agent_loop.py --variants krrood,nemo --steps 200 --seed SEED --results-dir seedSEED
+KRROOD is run alongside as the reference of the agreement check; its step times here are not the paper's (those
+come from the main run), as this run shared the machine.
+Cores 10-15; during the whole run, GraphDB loaded 4 and 8 universities on cores 6-9 (scaling experiment).
+Started 2026-10-08T07:59:02Z, finished 2026-10-08T09:37:50Z (progress.log).
+
+Result: Nemo made KRROOD's decisions and returned its candidate sets in all 1000 steps (200 per seed).
+Median step time 5.68 s (per-seed medians 5.65-5.69 s); medians of Nemo's own report: import 2.2 s,
+reasoning 3.4 s, export of the two answer files under 0.01 s.
+
+The candidate files (*_candidates.json.gz) are left out for size: decompressed, Nemo's and KRROOD's are identical
+in every seed, and equal to KRROOD's in agent_loop/ (seed 0) and agent_loop/seeds/seedN. MD5 of the decompressed files:
+  seed0 krrood adb8cabb49325b0fe5a2ed1acf18fcb1 nemo adb8cabb49325b0fe5a2ed1acf18fcb1
+  seed1 krrood dffdf4a60f542c5b063dea4b81ff8396 nemo dffdf4a60f542c5b063dea4b81ff8396
+  seed2 krrood 36b9bc8933d4e624966338385a37bc37 nemo 36b9bc8933d4e624966338385a37bc37
+  seed3 krrood 7a94e48a56b28056e4781c59171fa752 nemo 7a94e48a56b28056e4781c59171fa752
+  seed4 krrood c432022eec518edaba2eea0267b54b52 nemo c432022eec518edaba2eea0267b54b52

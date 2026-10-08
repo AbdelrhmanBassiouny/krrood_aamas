@@ -1,0 +1,56 @@
+{
+  "raw_file": "raw_u8.rdf",
+  "raw_statements": 577245,
+  "named_individuals": 38069,
+  "reference_statements": 142186070,
+  "krrood_load_and_reasoning_seconds": 440.04044169801637,
+  "reference_normalise_seconds": 989.905825171998,
+  "facts": {
+    "krrood": 141643419,
+    "reference": 141643419,
+    "matching": 141643419,
+    "missing": 0,
+    "extra": 0
+  },
+  "kinds": {
+    "class": {
+      "reference": 183458,
+      "candidate": 183458,
+      "matching": 183458,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+    },
+    "object": {
+      "reference": 141234734,
+      "candidate": 141234734,
+      "matching": 141234734,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+    },
+    "data": {
+      "reference": 225227,
+      "candidate": 225227,
+      "matching": 225227,
+      "missing": 0,
+      "extra": 0,
+      "missing_examples": [],
+      "extra_examples": []
+    }
+  },
+  "comparison": "64-bit BLAKE2b hashes of the normalised facts",
+  "nemo": {
+    "nemo_version": "nemo-cli 0.10.1",
+    "load_seconds": 267.871,
+    "reasoning_seconds": 365.512,
+    "export_seconds": 54.435,
+    "load_and_reasoning_seconds": 633.383,
+    "nemo_process_wall_seconds": 688.1874706409872,
+    "triples_after_reasoning": 142186070,
+    "inconsistency_facts": 0
+  },
+  "wall_seconds": 2686.345104014006
+}

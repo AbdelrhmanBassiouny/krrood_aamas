@@ -1,0 +1,15 @@
+Owlready2 0.49 + Pellet on the pre-reasoned data with a Java heap of 22 GB (owlready2.reasoning.JAVA_MEMORY = 22000),
+1 run, 8 October 2026, image krrood-aamas27-dev (code/earlier), container limited to 2 cores (cpuset 2-3) and 30 GB;
+the run's memory limit was 24 GiB, as for the in-memory baselines.
+
+Command: scripts/aamas27/run_loading.py --systems owlready2_pellet --inputs reasoned --repetitions 1
+         --java-memory-mb 22000 --memory-limit-gib 24 --timeout-seconds 14400 --reasoned-file reasoned.rdf
+
+Input: GraphDB's OWL 2 RL closure of the raw data as exported by the final reproduction run of 7 October
+(1,431,635 statements, with the T20CricketFan memberships), the file reproduce.sh exports as the pre-reasoned input.
+A first run on the January export in resources/, which predates the T20CricketFan axiom, took 1,186 s and 16.4 GB
+peak; it is not used.
+
+Other experiments ran on other cores of the machine at the same time (GraphDB loads, KRROOD and Nemo scaling runs).
+Memory in the paper is the peak resident set size minus that after the imports (27 MB, memory/import_memory.json of
+the main run): 16,831 - 27 MiB = 16.41 GiB.

@@ -1,0 +1,23 @@
+Scaling experiment (supplement README, "scaling"), run on 7-8 October 2026 on the machine of the main run, in the
+supplement's Docker image (code/earlier/experiments at the state of this bundle).
+
+Data. raw_u{1,2,4,8}.rdf were derived with scripts/aamas27/derive_scaled_owl2bench.py from the output of OWL2Bench's
+generator (github.com/kracr/owl2bench, commit 0730bdddfb2d, OWL2Bench.jar sha256 1f2d6013cfdc..., run with Java 21
+and --add-opens java.base/java.lang=ALL-UNNAMED; generated files: u1 80632f95896a, u2 a1a4300baac4, u4 48f5fae88dd4,
+u8 9fb265df0088, first 12 hex digits of sha256). raw_u1.rdf equals the paper's raw file. The raw files are not
+included (12-130 MB); raw_files.sha256 holds their hashes, and reproduce.sh regenerates them.
+
+Loading (loading_inmemory_u*/). KRROOD and Nemo: 3 repetitions per size, 24 GiB limit, CPUs 10-15. reasonable:
+3 repetitions at one university; at two universities 1 run, stopped at the 24 GiB limit (status memory_limit).
+reasonable was not run at 4 and 8 universities. The runs of 2, 4 and 8 universities ran while three GraphDB loads
+(below) ran on CPUs 4-9.
+
+Audit (audit/u*.json). python -m krrood_experiments.aamas27.scaling_audit per size, each in a fresh process,
+CPUs 10-15: KRROOD's knowledge base equals Nemo's OWL 2 RL closure at every size, with no fact missing or extra
+(8 universities: 141,643,419 facts).
+
+GraphDB. One load per size of 2, 4 and 8 universities, each in its own container with 2 CPUs (4-5, 6-7, 8-9) and an
+8 GB heap, all three started at 05:33 UTC (07:33 local) on 8 October, 12 h limit. GraphDB at one university is the
+main run's (loading/loading.json, 1,210 s).
+Two universities finished in 11,440 s (loading_graphdb_u2/, status ok; GraphDB at one university: 1,210 s). Its memory
+is the increase of the server's resident set size during the upload, not the heap in use as in Table 2.
