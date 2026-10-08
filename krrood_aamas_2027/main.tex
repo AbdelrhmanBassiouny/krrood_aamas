@@ -368,10 +368,10 @@ We evaluate \ac{krrood} with knowledge compiled from an OWL~2~RL ontology. Corre
 
 \begin{table}[t]
   \centering
-  \caption{Loading and reasoning time (s; mean $\pm$ standard deviation over 5 runs, or one run) and memory increase ($^{\ast}$of the Java heap in use), from raw (54,901 statements) and pre-reasoned data (1,431,635). Lowest per input among finished runs in bold. ``Out of memory'': stopped at 24\,GB. ``Persists'': data stored outside working memory. ``KRROOD (with ORMatic)'' also persists all objects in PostgreSQL (server memory excluded). $^{\dagger}$22\,GB Java heap; with the default 2\,GB, Pellet fails.}
+  \caption{Loading and reasoning time (s; mean $\pm$ standard deviation over 5 runs, or one run) and memory increase ($^{\ast}$of the Java heap in use), from raw (54,901 statements) and pre-reasoned data (1,431,635). Lowest per input among finished runs in bold. ``Out of memory'': stopped at 24\,GB. ``Persists'': data stored outside working memory. ``KRROOD + ORMatic'' also persists all objects in PostgreSQL (server memory excluded). $^{\dagger}$22\,GB Java heap; with the default 2\,GB, Pellet fails.}
   \label{tab:baselines}
   \footnotesize
-  \setlength{\tabcolsep}{3pt}
+  \setlength{\tabcolsep}{2.4pt}
   \input{tables/loading_table.tex}
 \end{table}
 
@@ -427,7 +427,7 @@ The 18 queries test \ac{eql} over the program's objects and long-term memory thr
   \caption{The delivery robot built in four ways, all deciding alike in every step. Rows above follow from \ac{eql}'s semantics, rows below from the implementation (defined in Section~\ref{ssec:agent_loop}). Per step: medians; step: median over the 1,000 steps of five seeds (range of the seeds' medians). Nemo from its own run, which starts one Nemo process per step.}
   \label{tab:integration}
   \footnotesize
-  \setlength{\tabcolsep}{2pt}
+  \setlength{\tabcolsep}{1.4pt}
   \input{tables/integration_table.tex}
 \end{table}
 

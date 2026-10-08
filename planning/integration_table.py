@@ -62,7 +62,7 @@ semantics.append(["Synchronization lines"] + [lines_of(key, "synchronization") f
 implementation = [[label] + [STRUCTURE[label][key] for key, _ in COLUMNS] for label in ("Languages", "Processes")]
 implementation.append(["Round trips / step"] + [
     "1 run" if key == "nemo" else number(summary[key]["median_per_step"]["round_trips"]) for key, _ in COLUMNS])
-implementation.append(["Mapping/procedure lines"] + [
+implementation.append(["Mapping/proc.\\ lines"] + [
     f"{lines_of(key, 'mapping')}/{lines_of(key, 'procedure_integration')}" for key, _ in COLUMNS])
 implementation.append(["Step [ms]"] + [
     f"{summary[key]['median_step_ms']:,.0f} ({min(summary[key]['per_seed_median_step_ms']):,.0f}--"

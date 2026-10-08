@@ -25,10 +25,10 @@ ROWS = {
     "RDFLib": "rdflib_owlrl",
     "Owlready2": "owlready2_pellet",
     "GraphDB": "graphdb",
-    "KRROOD (with ORMatic)": "krrood_ormatic",
+    "KRROOD + ORMatic": "krrood_ormatic",
     "KRROOD without step 5": "krrood_eager_symmetric_transitive",
 }
-PERSISTS = {"GraphDB", "KRROOD (with ORMatic)"}
+PERSISTS = {"GraphDB", "KRROOD + ORMatic"}
 PROTEGE = "Prot\\'eg\\'e"
 HEAP = "$^{\\ast}$"
 """Marks a memory cell that is the increase of a Java heap in use, not of process memory (see the table's caption)."""
