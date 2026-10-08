@@ -156,7 +156,7 @@ This paper argues that this knowledge can instead be \emph{represented explicitl
 \begin{enumerate}
 \item An object-oriented knowledge representation with a formal reading as a knowledge base, in which properties are first-class descriptors that carry their logical characteristics, multiple classification is handled by roles, and predicates are computed by the agent's own code (Section~\ref{sec:kr}).
 \item The \acf{eql}, a query language embedded in Python, with a formal, closed-world semantics, in which class axioms and rules are ordinary query conditions and the agent's procedures are predicates (Section~\ref{sec:eql}).
-\item Ontomatic, which compiles OWL~2~RL ontologies into such programs so that positive queries return only entailed answers and, under conditions we identify, all of them, and whose property rules keep holding as the agent asserts facts (Section~\ref{sec:ontomatic}).
+\item Ontomatic, which compiles OWL~2~RL ontologies into such programs so that positive queries return only entailed answers and, under conditions we identify, all of them, and whose property rules hold as the agent asserts facts (Section~\ref{sec:ontomatic}).
 \item ORMatic, which generates a relational schema from the same classes as the agent's long-term memory, in which episodes are stored, recalled and queried, and translates a subset of \ac{eql} to SQL (Section~\ref{sec:ormatic}).
 \end{enumerate}
 
@@ -165,7 +165,7 @@ Our evaluation asks whether this unification is faithful and usable rather than 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.64\columnwidth]{figures/overview.pdf}
-  \caption{\acs{krrood} overview. The agent's program is its knowledge base: classes and objects form the working memory, Ontomatic compiles OWL ontologies into it, \acs{eql} queries it and calls the agent's procedures as predicates, and ORMatic stores it as long-term memory, which \acs{eql} queries through SQL.}
+  \caption{\acs{krrood} overview. The agent's program is its knowledge base: classes and objects form the working memory, Ontomatic compiles OWL ontologies into it, \acs{eql} queries it and calls the agent's procedures as predicates, and ORMatic stores it as long-term memory, queried through SQL.}
   \label{fig:arch}
 \end{figure}
 
@@ -182,7 +182,7 @@ OWL reasoners such as Pellet~\cite{sirin2007pellet}, HermiT~\cite{glimm2014hermi
 LINQ integrates queries over objects, relations and XML into .NET languages~\cite{meijer2006linq}, and Pony ORM~\cite{ponyorm} translates Python generator expressions to SQL. pyDatalog~\cite{carbonnelle2020pydatalog} embeds Datalog in Python and queries attributes of Python objects, and ProbLog~\cite{dries2015problog2} embeds probabilistic logic programs. ErgoAI~\cite{kifer2018ergoai} offers object-oriented logic programming through F-logic~\cite{kifer1995flogic}, and KnowRob~\cite{Tenorth2013,beetz2018know} reasons in Prolog over a robot's OWL knowledge base, a triple store that the robot's program queries and updates as a separate ROS node, with computables that compute facts from the robot's data when a query needs them; its C++ successor can be embedded in a Python program, whose state is still mapped to triples. All of these keep the terminology in a logic language, outside the application's classes. Production rule systems such as CLIPS with its object system COOL~\cite{giarratano2005expert}, Jess with its shadow facts~\cite{friedmanhill2003jess} and Drools~\cite{proctor2012drools} match rules against a working memory of host-language objects with the Rete algorithm~\cite{forgy1982rete}, but the rules are written in a rule language, and the program must insert its objects into the engine and report their changes. \ac{eql} combines the embedding of LINQ with a first-order query language and rules over the program's own objects, whose concepts, properties and predicates are classes related by inheritance; recursion, such as transitivity, is left to property descriptors.
 
 \paragraph{Ontologies in agent programming}
-In multi-agent systems, JADE maps agent-communication content to Java classes that correspond to the schemas of an ontology~\cite{bellifemine2007jade,caire2010jadeontology}. AgentSpeak-DL~\cite{moreira2006agentspeakdl} and JASDL~\cite{klapiscak2009jasdl} combine belief--desire--intention (BDI) agents with description-logic reasoning over their belief bases. Recent work finds that BDI frameworks lack support for ontological beliefs, inference and queries over them~\cite{burattini2025gap}, and maps triples to beliefs~\cite{longo2025t2b2t}. In JaCaMo~\cite{boissier2013jacamo}, the observable properties of artifacts, which are Java objects~\cite{ricci2011cartago}, are likewise mapped to the beliefs of agents, and the working memory of Soar~\cite{laird2012soar} is a graph of the architecture's own elements. \ac{krrood} addresses these needs in Python: the belief base is the program's objects, and inference and queries operate on it directly.
+In multi-agent systems, JADE maps agent-communication content to Java classes that correspond to the schemas of an ontology~\cite{bellifemine2007jade,caire2010jadeontology}. AgentSpeak-DL~\cite{moreira2006agentspeakdl} and JASDL~\cite{klapiscak2009jasdl} combine belief--desire--intention (BDI) agents with description-logic reasoning over their belief bases. Recent work finds that BDI frameworks lack support for ontological beliefs, inference and queries over them~\cite{burattini2025gap}, and maps triples to beliefs~\cite{longo2025t2b2t}. In JaCaMo~\cite{boissier2013jacamo}, the observable properties of artifacts, which are Java objects~\cite{ricci2011cartago}, are likewise mapped to the beliefs of agents, and the working memory of Soar~\cite{laird2012soar} is a graph of the architecture's own elements. \ac{krrood} addresses these needs in Python: the belief base is the program's objects, and inference and queries operate on it.
 
 \section{Knowledge Representation in KRROOD}
 \label{sec:kr}
@@ -197,7 +197,7 @@ A \ac{krrood} knowledge base is a pair $\mathcal{K}=(\mathcal{T},\mathcal{A})$. 
   \item \emph{Axioms} that typing and inheritance cannot express, such as the definition of a class by a necessary and sufficient condition (\texttt{T20CricketFan} in Listing~\ref{lst:axiom}), are class methods that return an \ac{eql} condition (Section~\ref{sec:eql}) characterizing the members of the class. Because $\mathcal{K}$, like a relational database~\cite{reiter1984relational}, has a single interpretation, an axiom does not constrain models as in a description logic~\cite{baader2003dlhandbook}. It is a condition that can be checked, like an integrity constraint~\cite{motik2009bridging,tao2010integrity}, or used to classify individuals (Section~\ref{sec:ontomatic}).
   \item \emph{Predicates and symbolic functions} are Python callables that can appear as atoms of \ac{eql} conditions. They give reasoning direct access to the agent's own procedures, such as the reachability check of Listing~\ref{lst:agent}.
 \end{itemize}
-The ABox $\mathcal{A}$ consists of the live objects and their attribute values, which form the agent's \emph{working memory}. Listing~\ref{lst:kr} shows part of the running example. Its last statement attaches a descriptor to a class attribute: from then on, every read and write of \texttt{is\_crazy\_about} on a \texttt{Person} passes through \texttt{IsCrazyAbout}, which applies the property's rules.\footnote{Listings are simplified. They use the current version of \acs{krrood}; Ontomatic (Algorithm~\ref{alg:loading}) and the experiments use an earlier version, and the supplementary material contains both.}
+The ABox $\mathcal{A}$ consists of the live objects and their attribute values, which form the agent's \emph{working memory}. Listing~\ref{lst:kr} shows part of the running example. Its last statement attaches a descriptor to a class attribute: from then on, every read and write of \texttt{is\_crazy\_about} on a \texttt{Person} passes through \texttt{IsCrazyAbout}, which applies the property's rules.\footnote{Listings are simplified. They use the current version of \acs{krrood}; Ontomatic (Algorithm~\ref{alg:loading}) and the experiments use an earlier version, and the supplement contains both.}
 
 \begin{lstlisting}[style=eql, caption={Part of the running example. Classes are concepts, attributes are properties, and descriptor classes carry property semantics.}, label={lst:kr}]
 @dataclass(eq=False)
@@ -277,21 +277,22 @@ fans = an(entity(fan).where(T20CricketFan.axiom(p)))
 \end{lstlisting}
 
 \paragraph{A step of the agent}
-Listing~\ref{lst:agent} puts these pieces together in one step of the university assistant. Application code asserts an observed enrolment, which triggers the property rules, and an \ac{eql} query then suggests courses that the student does not take and whose rooms they can reach in the break after algebra. The reachability check is a predicate whose code searches the campus map for a shortest path, procedural knowledge the agent already has as code.
+Listing~\ref{lst:agent} shows a step of the delivery robot of Section~\ref{ssec:agent_loop}. Perceiving an enrolment is an assignment, from which the chain $\texttt{enrollIn}\circ\texttt{isPartOf}$ makes the student a member of the department's college. The query selects the students of a college, the courses they take whose rooms the robot can reach, and the driving times, calling the robot's path planner, which reads its pose and battery when the query is evaluated.
 
-\begin{lstlisting}[style=eql, caption={A step of the assistant agent: assert an observation, then decide with a query that calls a domain procedure.}, label={lst:agent}]
+\begin{lstlisting}[style=eql, caption={A step of the delivery robot: perceive by assignment, then decide with a query that calls the robot's planner.}, label={lst:agent}]
 @dataclass
-class CanReachInTime(Predicate):
-    start: Room
-    goal: Room
-    def __call__(self):  # shortest path on the campus map
-        return walking_minutes(self.start, self.goal) <= BREAK
-
-alice.takes_course.add(algebra)       # perceive
-c = variable(Course, domain=offered)  # decide
-suggestions = an(entity(c).where(
-    not_(contains(alice.takes_course, c)),
-    CanReachInTime(algebra.room, c.room)))
+class CanReach(Predicate):
+    robot: Robot
+    room: Place
+    def __call__(self):  # shortest paths on the map
+        return can_reach(self.robot, self.room)
+student.enroll_in.add(department)  # perceive
+s = variable(Student)              # decide
+c = flat_variable(s.takes_course)
+t = travel_time(robot, c.taught_in)  # function
+handouts = an(set_of(s, c, t).where(
+    contains(s.is_member_of, college),
+    CanReach(robot, c.taught_in)))
 \end{lstlisting}
 
 \subsection{Semantics}
@@ -470,7 +471,7 @@ SQLAlchemy is the fastest on 14 queries; \ac{eql}'s geometric mean is 1.8 times 
   \input{tables/integration_table.tex}
 \end{table}
 
-We built one delivery robot on the OWL2Bench campus in three ways (Table~\ref{tab:integration}). A map adds rooms and charging docks; the robot's path planner backs a predicate (a room is reachable on the remaining battery) and a function (the driving time), as in Listing~\ref{lst:agent}. In each of 200 steps, the robot perceives three new facts (an enrolment, a course taken, a T20 cricket fan; never a removal), decides with two queries that need inferred facts and call the planner, and acts. Each of five seeds has its own map and facts. With \ac{krrood}, the robot perceives by assignment, which applies the property rules in under a millisecond, and its queries call the planner on its objects. With GraphDB, it keeps a second world model in a server: it mirrors each step's facts with a SPARQL update, 89\,ms (38\,ms when empty), maps the answers' IRIs back to its objects and runs the planner on them. For SPARQL alone to decide, the planner's results must be written into the store. A wrapper generating SPARQL or an embedded store could also give one language and one process, but keeps two world models; the upper rows follow from evaluating queries over the program's objects. All three decide alike in every step of every seed. Step times are comparable: \ac{krrood}'s is spent querying (74\,ms with a join order chosen by hand), GraphDB's updating. Recomputing the closure each step, Nemo takes 5.7\,s and decides alike, and reasonable 4.6\,s, missing every handout for lack of property chains; Owlready2 would run Pellet every step, 39\,s on the raw data.
+We built one delivery robot on the OWL2Bench campus in three ways (Table~\ref{tab:integration}). A map adds rooms and charging docks; the robot's path planner, Dijkstra's algorithm, backs a predicate (the robot can reach a room and then a dock on its battery) and a function (the driving time), as in Listing~\ref{lst:agent}. In each of 200 steps, the robot perceives three new facts (an enrolment, a course taken, a T20 cricket fan; never a removal), decides with two queries that call the planner, for handouts to the students of a requested college, which need the chain, and for tickets to T20 cricket fans, which need the axiom of Listing~\ref{lst:axiom}, and drives to the nearest candidate or to a dock. Each of five seeds has its own map and facts. With \ac{krrood}, perceiving applies the property rules in under a millisecond. With GraphDB, it keeps a second world model in a server: it mirrors each step's facts with a SPARQL update, 89\,ms (38\,ms when empty), maps the answers' IRIs back to its objects and runs the planner on them. For SPARQL alone to decide, the planner's results must be written into the store. A wrapper generating SPARQL or an embedded store could also give one language and one process, but keeps two world models; the upper rows follow from evaluating queries over the program's objects. All three decide alike in every step of every seed. Step times are comparable: \ac{krrood}'s is spent querying (74\,ms with a join order chosen by hand), GraphDB's updating. Recomputing the closure each step, Nemo takes 5.7\,s and decides alike, and reasonable 4.6\,s, missing every handout for lack of property chains; Owlready2 would run Pellet, 39\,s, every step.
 
 \section{Discussion and Conclusion}
 \label{sec:discussion_conclusion}
