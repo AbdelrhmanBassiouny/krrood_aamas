@@ -12,10 +12,10 @@ runs with five seeds (aggregate_agent_loop_seeds.py) and from its code:
   (GraphDB), or before the query, with its results written into the store (GraphDB, push).
 * Round trips and writes: medians per step over all steps of all seeds; writes are statements inserted into or
   deleted from another store (KRROOD's assignments change its own objects).
-* Synchronization lines: counted by the @boundary markers of the agent loop's code. The mapping and
-  procedure-integration lines that the markers also count are not shown: the mapping lines follow from the simulated
-  perceptions, which arrive as IRIs in every build, and the procedure lines from wrapping the planner, not from the
-  number of world models.
+* Synchronization lines: counted by the @boundary markers of the agent loop's code.
+* All boundary lines: every line the markers count, also the mapping and procedure-integration lines, which are not
+  shown on their own: the mapping lines follow from the simulated perceptions, which arrive as IRIs in every build,
+  and the procedure lines from wrapping the planner, not from the number of world models.
 
 The rows are grouped by what they follow from: the semantics (queries are evaluated over the program's objects, so
 there is one world model, the planner is a predicate of the query, and nothing is written to another store or
@@ -64,6 +64,7 @@ semantics.append(["Synchronization lines"] + [lines_of(key, "synchronization") f
 implementation = [[label] + [STRUCTURE[label][key] for key, _ in COLUMNS] for label in ("Languages", "Processes")]
 implementation.append(["Round trips / step"] + [
     "1 run" if key == "nemo" else number(summary[key]["median_per_step"]["round_trips"]) for key, _ in COLUMNS])
+implementation.append(["All boundary lines"] + [str(summary[key]["boundary_lines"]["total"]) for key, _ in COLUMNS])
 implementation.append(["Step [ms]"] + [
     f"{summary[key]['median_step_ms']:,.0f} ({min(summary[key]['per_seed_median_step_ms']):,.0f}--"
     f"{max(summary[key]['per_seed_median_step_ms']):,.0f})".replace(",", "{,}") for key, _ in COLUMNS])
