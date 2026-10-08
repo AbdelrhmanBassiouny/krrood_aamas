@@ -12,8 +12,13 @@ runs with five seeds (aggregate_agent_loop_seeds.py) and from its code:
   (GraphDB), or before the query, with its results written into the store (GraphDB, push).
 * Round trips and writes: medians per step over all steps of all seeds; writes are statements inserted into or
   deleted from another store (KRROOD's assignments change its own objects).
-* Boundary lines: synchronization / mapping identifiers / procedure integration, counted by the @boundary markers
-  of the agent loop's code.
+* Synchronization lines, and mapping / procedure-integration lines: counted by the @boundary markers of the agent
+  loop's code.
+
+The rows are grouped by what they follow from: the semantics (queries are evaluated over the program's objects, so
+there is one world model, the planner is a predicate of the query, and nothing is written to another store or
+synchronized), or the implementation (one language and one process, which a wrapper that generates SPARQL or an
+embedded store could also give while keeping two world models).
 * Step time: median over all steps of all seeds, with the range of the per-seed medians.
 
 Usage: python3 planning/integration_table.py planning/results_agentloop_seeds/agent_loop_seeds.json \
@@ -37,21 +42,31 @@ def number(value: float) -> str:
 
 
 summary = json.loads(Path(sys.argv[1]).read_text())["variants"]
-rows = [[label] + [cells[key] for key, _ in COLUMNS] for label, cells in STRUCTURE.items()]
-rows.append(["Round trips / step"] + [number(summary[key]["median_per_step"]["round_trips"]) for key, _ in COLUMNS])
-rows.append(["Writes / step"] + [
+
+
+def lines_of(key: str, category: str) -> str:
+    return str(summary[key]["boundary_lines"]["per_category"].get(category, 0))
+
+
+semantics = [[label] + [STRUCTURE[label][key] for key, _ in COLUMNS] for label in ("World models", "Planner runs")]
+semantics.append(["Writes / step"] + [
     "0" if key.startswith("krrood") else number(summary[key]["median_per_step"]["statements_inserted"]
                                                 + summary[key]["median_per_step"]["statements_deleted"])
     for key, _ in COLUMNS])
-rows.append(["Boundary lines"] + [
-    "/".join(str(summary[key]["boundary_lines"]["per_category"][c])
-             for c in ("synchronization", "mapping", "procedure_integration")) for key, _ in COLUMNS])
-rows.append(["Step [ms]"] + [
+semantics.append(["Synchronization lines"] + [lines_of(key, "synchronization") for key, _ in COLUMNS])
+implementation = [[label] + [STRUCTURE[label][key] for key, _ in COLUMNS] for label in ("Languages", "Processes")]
+implementation.append(["Round trips / step"] + [
+    number(summary[key]["median_per_step"]["round_trips"]) for key, _ in COLUMNS])
+implementation.append(["Mapping/procedure lines"] + [
+    f"{lines_of(key, 'mapping')}/{lines_of(key, 'procedure_integration')}" for key, _ in COLUMNS])
+implementation.append(["Step [ms]"] + [
     f"{summary[key]['median_step_ms']:.0f} ({min(summary[key]['per_seed_median_step_ms']):.0f}--"
     f"{max(summary[key]['per_seed_median_step_ms']):.0f})" for key, _ in COLUMNS])
 lines = [r"\begin{tabular}{@{}lrrr@{}}", r"\toprule",
          " & ".join([""] + [f"\\textbf{{{label}}}" for _, label in COLUMNS]) + r"\\", r"\midrule"]
-lines += [" & ".join(row) + r"\\" for row in rows]
+for title, rows in (("From the semantics", semantics), ("From the implementation", implementation)):
+    lines.append(f"\\multicolumn{{4}}{{@{{}}l}}{{\\emph{{{title}}}}}\\\\")
+    lines += [" & ".join(row) + r"\\" for row in rows]
 lines += [r"\bottomrule", r"\end{tabular}"]
 Path(sys.argv[2]).write_text("\n".join(lines) + "\n")
 print("\n".join(lines))

@@ -2,13 +2,16 @@
 \toprule
  & \textbf{KRROOD} & \textbf{GraphDB} & \textbf{GraphDB, push}\\
 \midrule
-Languages & 1 & 2 & 2\\
-Processes & 1 & 2 & 2\\
+\multicolumn{4}{@{}l}{\emph{From the semantics}}\\
 World models & 1 & 2 & 2\\
 Planner runs & in query & on answers & before query\\
-Round trips / step & 0 & 3 & 4\\
 Writes / step & 0 & 4 & 405\\
-Boundary lines & 0/12/7 & 16/9/2 & 44/15/0\\
+Synchronization lines & 0 & 16 & 44\\
+\multicolumn{4}{@{}l}{\emph{From the implementation}}\\
+Languages & 1 & 2 & 2\\
+Processes & 1 & 2 & 2\\
+Round trips / step & 0 & 3 & 4\\
+Mapping/procedure lines & 12/7 & 9/2 & 15/0\\
 Step [ms] & 90 (88--90) & 96 (93--100) & 162 (150--166)\\
 \bottomrule
 \end{tabular}
