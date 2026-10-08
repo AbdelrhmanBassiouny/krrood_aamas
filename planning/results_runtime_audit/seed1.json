@@ -1,0 +1,1325 @@
+{
+  "seed": 1,
+  "steps": 200,
+  "events_per_step": 3,
+  "checkpoints": [
+    0,
+    10,
+    50,
+    100,
+    200
+  ],
+  "raw_file": "/work/resources/owl2bench_statements_unreasoned.rdf",
+  "scenario_sha256": "5dbaa7b52805ae6887fb759b0d61ccef3bd0067beec8d684977840f46f7ba9b1",
+  "scenario_statistics": {
+    "places": 379,
+    "edges": 381,
+    "rooms": 222,
+    "docks": 2,
+    "courses_with_room": 858,
+    "people_with_mailbox": 2637,
+    "knowledge_events": {
+      "cricket_enthusiasm": 90,
+      "course_taking": 360,
+      "enrollment": 150
+    }
+  },
+  "named_individuals": 3667,
+  "object_properties": 91,
+  "data_properties": 12,
+  "raw_input_serialisation_check": {
+    "facts_from_rdfxml": 1424360,
+    "facts_from_ntriples": 1424360,
+    "equal": true
+  },
+  "loop": {
+    "setup": {
+      "seconds": {
+        "load_and_reasoning": 7.733166249003261,
+        "application_data": 0.0034159329952672124
+      },
+      "total_seconds": 7.7365821819985285,
+      "individuals": 3667,
+      "after_last_step": {}
+    },
+    "steps_run": 200,
+    "step_seconds_total": 19.101405060995603,
+    "statements_inserted": 900,
+    "wall_seconds_including_audits": 190.12752880100743
+  },
+  "results": [
+    {
+      "steps": 0,
+      "events": 0,
+      "event_kinds": {},
+      "event_statements": 0,
+      "event_statements_distinct": 0,
+      "individuals": 3667,
+      "new_people": 0,
+      "individuals_without_krrood_objects": [],
+      "registry_individuals_not_compared": 0,
+      "reference_triples": 1479165,
+      "facts": {
+        "krrood": 1424360,
+        "reference": 1424360,
+        "matching": 1424360,
+        "missing": 0,
+        "extra": 0
+      },
+      "kinds": {
+        "class": {
+          "reference": 17558,
+          "candidate": 17558,
+          "matching": 17558,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        },
+        "object": {
+          "reference": 1385869,
+          "candidate": 1385869,
+          "matching": 1385869,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        },
+        "data": {
+          "reference": 20933,
+          "candidate": 20933,
+          "matching": 20933,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        }
+      },
+      "missing_class_justifications": {},
+      "missing_class_justification_examples": {},
+      "on_demand_class_answers": {},
+      "nemo": {
+        "nemo_version": "nemo-cli 0.10.1",
+        "load_seconds": 2.388,
+        "reasoning_seconds": 3.43,
+        "export_seconds": 0.568,
+        "load_and_reasoning_seconds": 5.818,
+        "nemo_process_wall_seconds": 6.393106572999386,
+        "triples_after_reasoning": 1479165,
+        "inconsistency_facts": 0
+      },
+      "seconds": {
+        "total": 31.313914559985278,
+        "nemo_process": 6.393106572999386,
+        "reference_parse_and_normalise": 20.282964682992315,
+        "krrood_normalise": 1.6908637520100456,
+        "justifications": 6.658985512331128e-06,
+        "on_demand_queries": 0.00019941999926231802
+      }
+    },
+    {
+      "steps": 10,
+      "events": 30,
+      "event_kinds": {
+        "cricket_enthusiasm": 3,
+        "course_taking": 15,
+        "enrollment": 12
+      },
+      "event_statements": 42,
+      "event_statements_distinct": 42,
+      "individuals": 3679,
+      "new_people": 12,
+      "individuals_without_krrood_objects": [],
+      "registry_individuals_not_compared": 0,
+      "reference_triples": 1479555,
+      "facts": {
+        "krrood": 1424564,
+        "reference": 1424575,
+        "matching": 1424564,
+        "missing": 11,
+        "extra": 0
+      },
+      "kinds": {
+        "class": {
+          "reference": 17593,
+          "candidate": 17582,
+          "matching": 17582,
+          "missing": 11,
+          "extra": 0,
+          "missing_by_name": {
+            "T20CricketFan": 3,
+            "SportsFan": 3,
+            "SportsLover": 3,
+            "PeopleWithHobby": 2
+          },
+          "extra_by_name": {},
+          "missing_examples": [
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C0D1UGS29",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C2D1PGS18",
+              ""
+            ],
+            [
+              "class",
+              "SportsFan",
+              "http://benchmark/OWL2Bench#U0C0D1UGS29",
+              ""
+            ],
+            [
+              "class",
+              "SportsFan",
+              "http://benchmark/OWL2Bench#U0C2D1PGS18",
+              ""
+            ],
+            [
+              "class",
+              "SportsFan",
+              "http://benchmark/OWL2Bench#U0C3D0OS20",
+              ""
+            ],
+            [
+              "class",
+              "SportsLover",
+              "http://benchmark/OWL2Bench#U0C0D1UGS29",
+              ""
+            ],
+            [
+              "class",
+              "SportsLover",
+              "http://benchmark/OWL2Bench#U0C2D1PGS18",
+              ""
+            ],
+            [
+              "class",
+              "SportsLover",
+              "http://benchmark/OWL2Bench#U0C3D0OS20",
+              ""
+            ],
+            [
+              "class",
+              "T20CricketFan",
+              "http://benchmark/OWL2Bench#U0C0D1UGS29",
+              ""
+            ],
+            [
+              "class",
+              "T20CricketFan",
+              "http://benchmark/OWL2Bench#U0C2D1PGS18",
+              ""
+            ]
+          ],
+          "extra_examples": []
+        },
+        "object": {
+          "reference": 1386049,
+          "candidate": 1386049,
+          "matching": 1386049,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        },
+        "data": {
+          "reference": 20933,
+          "candidate": 20933,
+          "matching": 20933,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        }
+      },
+      "missing_class_justifications": {
+        "PeopleWithHobby": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 2
+        },
+        "SportsFan": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 3
+        },
+        "SportsLover": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 3
+        },
+        "T20CricketFan": {
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 3,
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 3
+        }
+      },
+      "missing_class_justification_examples": {
+        "PeopleWithHobby": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18"
+          ]
+        },
+        "SportsFan": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18",
+            "http://benchmark/OWL2Bench#U0C3D0OS20"
+          ]
+        },
+        "SportsLover": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18",
+            "http://benchmark/OWL2Bench#U0C3D0OS20"
+          ]
+        },
+        "T20CricketFan": {
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": [
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18",
+            "http://benchmark/OWL2Bench#U0C3D0OS20"
+          ],
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18",
+            "http://benchmark/OWL2Bench#U0C3D0OS20"
+          ]
+        }
+      },
+      "on_demand_class_answers": {
+        "PeopleWithHobby": {
+          "axiom_classes_queried": [
+            "PeopleWithHobby"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "PeopleWithHobby"
+          ],
+          "reference": 1374,
+          "stored": 1372,
+          "missing_stored": 2,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 1372,
+          "on_demand_missing": 2,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.010807762009790167
+        },
+        "SportsFan": {
+          "axiom_classes_queried": [
+            "SportsFan"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "SportsFan"
+          ],
+          "reference": 173,
+          "stored": 170,
+          "missing_stored": 3,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 170,
+          "on_demand_missing": 3,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18",
+            "http://benchmark/OWL2Bench#U0C3D0OS20"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.010690148017602041
+        },
+        "SportsLover": {
+          "axiom_classes_queried": [
+            "SportsLover"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "SportsLover"
+          ],
+          "reference": 350,
+          "stored": 347,
+          "missing_stored": 3,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 347,
+          "on_demand_missing": 3,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18",
+            "http://benchmark/OWL2Bench#U0C3D0OS20"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.01083065097918734
+        },
+        "T20CricketFan": {
+          "axiom_classes_queried": [
+            "T20CricketFan"
+          ],
+          "axiom_classes_testing_types_attribute": [],
+          "reference": 23,
+          "stored": 20,
+          "missing_stored": 3,
+          "axiom_query_answers": 23,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 3,
+          "on_demand": 23,
+          "on_demand_missing": 0,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.04883061599684879
+        }
+      },
+      "nemo": {
+        "nemo_version": "nemo-cli 0.10.1",
+        "load_seconds": 2.388,
+        "reasoning_seconds": 3.413,
+        "export_seconds": 0.572,
+        "load_and_reasoning_seconds": 5.801,
+        "nemo_process_wall_seconds": 6.381636540987529,
+        "triples_after_reasoning": 1479555,
+        "inconsistency_facts": 0
+      },
+      "seconds": {
+        "total": 32.714242728980025,
+        "nemo_process": 6.381636540987529,
+        "reference_parse_and_normalise": 21.03681979101384,
+        "krrood_normalise": 1.6765858999860939,
+        "justifications": 0.0008657540020067245,
+        "on_demand_queries": 0.5375002140062861
+      }
+    },
+    {
+      "steps": 50,
+      "events": 150,
+      "event_kinds": {
+        "cricket_enthusiasm": 24,
+        "course_taking": 88,
+        "enrollment": 38
+      },
+      "event_statements": 188,
+      "event_statements_distinct": 188,
+      "individuals": 3705,
+      "new_people": 38,
+      "individuals_without_krrood_objects": [],
+      "registry_individuals_not_compared": 0,
+      "reference_triples": 1480589,
+      "facts": {
+        "krrood": 1425089,
+        "reference": 1425164,
+        "matching": 1425089,
+        "missing": 75,
+        "extra": 0
+      },
+      "kinds": {
+        "class": {
+          "reference": 17709,
+          "candidate": 17634,
+          "matching": 17634,
+          "missing": 75,
+          "extra": 0,
+          "missing_by_name": {
+            "T20CricketFan": 24,
+            "SportsFan": 21,
+            "SportsLover": 20,
+            "PeopleWithHobby": 10
+          },
+          "extra_by_name": {},
+          "missing_examples": [
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C0D1UGS29",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D0UGS22",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D0UGS23",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D3UGS23",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C2D1PGS18",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C2D2UGS20",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C2D3UGS33",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C2D3UGS38",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0WC0D0UGWS6",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0WC0D2UGWS3",
+              ""
+            ]
+          ],
+          "extra_examples": []
+        },
+        "object": {
+          "reference": 1386522,
+          "candidate": 1386522,
+          "matching": 1386522,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        },
+        "data": {
+          "reference": 20933,
+          "candidate": 20933,
+          "matching": 20933,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        }
+      },
+      "missing_class_justifications": {
+        "PeopleWithHobby": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 10
+        },
+        "SportsFan": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 21
+        },
+        "SportsLover": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 20
+        },
+        "T20CricketFan": {
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 24,
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 24
+        }
+      },
+      "missing_class_justification_examples": {
+        "PeopleWithHobby": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C1D0UGS22",
+            "http://benchmark/OWL2Bench#U0C1D0UGS23"
+          ]
+        },
+        "SportsFan": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D2L0"
+          ]
+        },
+        "SportsLover": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D2L0"
+          ]
+        },
+        "T20CricketFan": {
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D2L0"
+          ],
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D2L0"
+          ]
+        }
+      },
+      "on_demand_class_answers": {
+        "PeopleWithHobby": {
+          "axiom_classes_queried": [
+            "PeopleWithHobby"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "PeopleWithHobby"
+          ],
+          "reference": 1382,
+          "stored": 1372,
+          "missing_stored": 10,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 1372,
+          "on_demand_missing": 10,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C1D0UGS22",
+            "http://benchmark/OWL2Bench#U0C1D0UGS23",
+            "http://benchmark/OWL2Bench#U0C1D3UGS23",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18",
+            "http://benchmark/OWL2Bench#U0C2D2UGS20",
+            "http://benchmark/OWL2Bench#U0C2D3UGS33",
+            "http://benchmark/OWL2Bench#U0C2D3UGS38",
+            "http://benchmark/OWL2Bench#U0WC0D0UGWS6",
+            "http://benchmark/OWL2Bench#U0WC0D2UGWS3"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.010784576996229589
+        },
+        "SportsFan": {
+          "axiom_classes_queried": [
+            "SportsFan"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "SportsFan"
+          ],
+          "reference": 191,
+          "stored": 170,
+          "missing_stored": 21,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 170,
+          "on_demand_missing": 21,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D2L0",
+            "http://benchmark/OWL2Bench#U0C1D0UGS22",
+            "http://benchmark/OWL2Bench#U0C1D0UGS23",
+            "http://benchmark/OWL2Bench#U0C1D1FP2",
+            "http://benchmark/OWL2Bench#U0C1D3UGS23",
+            "http://benchmark/OWL2Bench#U0C2D0OS13",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18",
+            "http://benchmark/OWL2Bench#U0C2D2UGS20"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.010786111990455538
+        },
+        "SportsLover": {
+          "axiom_classes_queried": [
+            "SportsLover"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "SportsLover"
+          ],
+          "reference": 367,
+          "stored": 347,
+          "missing_stored": 20,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 347,
+          "on_demand_missing": 20,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D2L0",
+            "http://benchmark/OWL2Bench#U0C1D0UGS22",
+            "http://benchmark/OWL2Bench#U0C1D0UGS23",
+            "http://benchmark/OWL2Bench#U0C1D1FP2",
+            "http://benchmark/OWL2Bench#U0C1D3UGS23",
+            "http://benchmark/OWL2Bench#U0C2D0OS13",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18",
+            "http://benchmark/OWL2Bench#U0C2D2UGS20"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.010746954008936882
+        },
+        "T20CricketFan": {
+          "axiom_classes_queried": [
+            "T20CricketFan"
+          ],
+          "axiom_classes_testing_types_attribute": [],
+          "reference": 44,
+          "stored": 20,
+          "missing_stored": 24,
+          "axiom_query_answers": 44,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 24,
+          "on_demand": 44,
+          "on_demand_missing": 0,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [],
+          "on_demand_extra_examples": [],
+          "query_seconds": 1.0890500840032473
+        }
+      },
+      "nemo": {
+        "nemo_version": "nemo-cli 0.10.1",
+        "load_seconds": 2.196,
+        "reasoning_seconds": 3.419,
+        "export_seconds": 0.568,
+        "load_and_reasoning_seconds": 5.615,
+        "nemo_process_wall_seconds": 6.190494223003043,
+        "triples_after_reasoning": 1480589,
+        "inconsistency_facts": 0
+      },
+      "seconds": {
+        "total": 32.119965758989565,
+        "nemo_process": 6.190494223003043,
+        "reference_parse_and_normalise": 19.57155835998128,
+        "krrood_normalise": 1.6744679370021913,
+        "justifications": 0.004894718003924936,
+        "on_demand_queries": 1.5753840100078378
+      }
+    },
+    {
+      "steps": 100,
+      "events": 300,
+      "event_kinds": {
+        "cricket_enthusiasm": 44,
+        "course_taking": 184,
+        "enrollment": 72
+      },
+      "event_statements": 372,
+      "event_statements_distinct": 372,
+      "individuals": 3739,
+      "new_people": 72,
+      "individuals_without_krrood_objects": [],
+      "registry_individuals_not_compared": 0,
+      "reference_triples": 1481874,
+      "facts": {
+        "krrood": 1425754,
+        "reference": 1425895,
+        "matching": 1425754,
+        "missing": 141,
+        "extra": 0
+      },
+      "kinds": {
+        "class": {
+          "reference": 17843,
+          "candidate": 17702,
+          "matching": 17702,
+          "missing": 141,
+          "extra": 0,
+          "missing_by_name": {
+            "T20CricketFan": 44,
+            "SportsFan": 39,
+            "SportsLover": 37,
+            "PeopleWithHobby": 21
+          },
+          "extra_by_name": {},
+          "missing_examples": [
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C0D0UGS4",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C0D1UGS29",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D0UGS22",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D0UGS23",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D1UGS13",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D2UGS24",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D3UGS23",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C2D1PGS18",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C2D2UGS20",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C2D2UGS4",
+              ""
+            ]
+          ],
+          "extra_examples": []
+        },
+        "object": {
+          "reference": 1387119,
+          "candidate": 1387119,
+          "matching": 1387119,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        },
+        "data": {
+          "reference": 20933,
+          "candidate": 20933,
+          "matching": 20933,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        }
+      },
+      "missing_class_justifications": {
+        "PeopleWithHobby": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 21
+        },
+        "SportsFan": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 39
+        },
+        "SportsLover": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 37
+        },
+        "T20CricketFan": {
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 44,
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 44
+        }
+      },
+      "missing_class_justification_examples": {
+        "PeopleWithHobby": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C1D0UGS22"
+          ]
+        },
+        "SportsFan": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29"
+          ]
+        },
+        "SportsLover": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29"
+          ]
+        },
+        "T20CricketFan": {
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29"
+          ],
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29"
+          ]
+        }
+      },
+      "on_demand_class_answers": {
+        "PeopleWithHobby": {
+          "axiom_classes_queried": [
+            "PeopleWithHobby"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "PeopleWithHobby"
+          ],
+          "reference": 1393,
+          "stored": 1372,
+          "missing_stored": 21,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 1372,
+          "on_demand_missing": 21,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C1D0UGS22",
+            "http://benchmark/OWL2Bench#U0C1D0UGS23",
+            "http://benchmark/OWL2Bench#U0C1D1UGS13",
+            "http://benchmark/OWL2Bench#U0C1D2UGS24",
+            "http://benchmark/OWL2Bench#U0C1D3UGS23",
+            "http://benchmark/OWL2Bench#U0C2D1PGS18",
+            "http://benchmark/OWL2Bench#U0C2D2UGS20",
+            "http://benchmark/OWL2Bench#U0C2D2UGS4"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.011085779988206923
+        },
+        "SportsFan": {
+          "axiom_classes_queried": [
+            "SportsFan"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "SportsFan"
+          ],
+          "reference": 209,
+          "stored": 170,
+          "missing_stored": 39,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 170,
+          "on_demand_missing": 39,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D2L0",
+            "http://benchmark/OWL2Bench#U0C1D0UGS22",
+            "http://benchmark/OWL2Bench#U0C1D0UGS23",
+            "http://benchmark/OWL2Bench#U0C1D1FP2",
+            "http://benchmark/OWL2Bench#U0C1D1FP6",
+            "http://benchmark/OWL2Bench#U0C1D1UGS13",
+            "http://benchmark/OWL2Bench#U0C1D2AP11"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.0109661289898213
+        },
+        "SportsLover": {
+          "axiom_classes_queried": [
+            "SportsLover"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "SportsLover"
+          ],
+          "reference": 384,
+          "stored": 347,
+          "missing_stored": 37,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 347,
+          "on_demand_missing": 37,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D2L0",
+            "http://benchmark/OWL2Bench#U0C1D0UGS22",
+            "http://benchmark/OWL2Bench#U0C1D0UGS23",
+            "http://benchmark/OWL2Bench#U0C1D1FP2",
+            "http://benchmark/OWL2Bench#U0C1D1FP6",
+            "http://benchmark/OWL2Bench#U0C1D1UGS13",
+            "http://benchmark/OWL2Bench#U0C1D2AP11"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.01084352598991245
+        },
+        "T20CricketFan": {
+          "axiom_classes_queried": [
+            "T20CricketFan"
+          ],
+          "axiom_classes_testing_types_attribute": [],
+          "reference": 64,
+          "stored": 20,
+          "missing_stored": 44,
+          "axiom_query_answers": 64,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 44,
+          "on_demand": 64,
+          "on_demand_missing": 0,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.0508353250043001
+        }
+      },
+      "nemo": {
+        "nemo_version": "nemo-cli 0.10.1",
+        "load_seconds": 2.372,
+        "reasoning_seconds": 3.428,
+        "export_seconds": 0.569,
+        "load_and_reasoning_seconds": 5.8,
+        "nemo_process_wall_seconds": 6.376532832015073,
+        "triples_after_reasoning": 1481874,
+        "inconsistency_facts": 0
+      },
+      "seconds": {
+        "total": 31.818953517999034,
+        "nemo_process": 6.376532832015073,
+        "reference_parse_and_normalise": 20.105346008989727,
+        "krrood_normalise": 1.6820135230082087,
+        "justifications": 0.009075026988284662,
+        "on_demand_queries": 0.5386744989955332
+      }
+    },
+    {
+      "steps": 200,
+      "events": 600,
+      "event_kinds": {
+        "cricket_enthusiasm": 90,
+        "course_taking": 360,
+        "enrollment": 150
+      },
+      "event_statements": 750,
+      "event_statements_distinct": 750,
+      "individuals": 3817,
+      "new_people": 150,
+      "individuals_without_krrood_objects": [],
+      "registry_individuals_not_compared": 0,
+      "reference_triples": 1484752,
+      "facts": {
+        "krrood": 1427235,
+        "reference": 1427519,
+        "matching": 1427235,
+        "missing": 284,
+        "extra": 0
+      },
+      "kinds": {
+        "class": {
+          "reference": 18142,
+          "candidate": 17858,
+          "matching": 17858,
+          "missing": 284,
+          "extra": 0,
+          "missing_by_name": {
+            "T20CricketFan": 90,
+            "SportsFan": 82,
+            "SportsLover": 76,
+            "PeopleWithHobby": 36
+          },
+          "extra_by_name": {},
+          "missing_examples": [
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#AgentLoopPerson106",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#AgentLoopPerson69",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C0D0UGS4",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C0D1UGS29",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C0D1UGS32",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C0D2PhDS0",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C0D2UGS3",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D0SS3",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D0UGS22",
+              ""
+            ],
+            [
+              "class",
+              "PeopleWithHobby",
+              "http://benchmark/OWL2Bench#U0C1D0UGS23",
+              ""
+            ]
+          ],
+          "extra_examples": []
+        },
+        "object": {
+          "reference": 1388444,
+          "candidate": 1388444,
+          "matching": 1388444,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        },
+        "data": {
+          "reference": 20933,
+          "candidate": 20933,
+          "matching": 20933,
+          "missing": 0,
+          "extra": 0,
+          "missing_by_name": {},
+          "extra_by_name": {},
+          "missing_examples": [],
+          "extra_examples": []
+        }
+      },
+      "missing_class_justifications": {
+        "PeopleWithHobby": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 36
+        },
+        "SportsFan": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 82
+        },
+        "SportsLover": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 76
+        },
+        "T20CricketFan": {
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 90,
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 90
+        }
+      },
+      "missing_class_justification_examples": {
+        "PeopleWithHobby": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": [
+            "http://benchmark/OWL2Bench#AgentLoopPerson106",
+            "http://benchmark/OWL2Bench#AgentLoopPerson69",
+            "http://benchmark/OWL2Bench#U0C0D0UGS4"
+          ]
+        },
+        "SportsFan": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": [
+            "http://benchmark/OWL2Bench#AgentLoopPerson106",
+            "http://benchmark/OWL2Bench#AgentLoopPerson69",
+            "http://benchmark/OWL2Bench#U0C0D0CS3"
+          ]
+        },
+        "SportsLover": {
+          "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": [
+            "http://benchmark/OWL2Bench#AgentLoopPerson106",
+            "http://benchmark/OWL2Bench#AgentLoopPerson69",
+            "http://benchmark/OWL2Bench#U0C0D0CS3"
+          ]
+        },
+        "T20CricketFan": {
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": [
+            "http://benchmark/OWL2Bench#AgentLoopPerson106",
+            "http://benchmark/OWL2Bench#AgentLoopPerson69",
+            "http://benchmark/OWL2Bench#U0C0D0CS3"
+          ],
+          "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": [
+            "http://benchmark/OWL2Bench#AgentLoopPerson106",
+            "http://benchmark/OWL2Bench#AgentLoopPerson69",
+            "http://benchmark/OWL2Bench#U0C0D0CS3"
+          ]
+        }
+      },
+      "on_demand_class_answers": {
+        "PeopleWithHobby": {
+          "axiom_classes_queried": [
+            "PeopleWithHobby"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "PeopleWithHobby"
+          ],
+          "reference": 1408,
+          "stored": 1372,
+          "missing_stored": 36,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 1372,
+          "on_demand_missing": 36,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#AgentLoopPerson106",
+            "http://benchmark/OWL2Bench#AgentLoopPerson69",
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D1UGS32",
+            "http://benchmark/OWL2Bench#U0C0D2PhDS0",
+            "http://benchmark/OWL2Bench#U0C0D2UGS3",
+            "http://benchmark/OWL2Bench#U0C1D0SS3",
+            "http://benchmark/OWL2Bench#U0C1D0UGS22",
+            "http://benchmark/OWL2Bench#U0C1D0UGS23"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.011140198999783024
+        },
+        "SportsFan": {
+          "axiom_classes_queried": [
+            "SportsFan"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "SportsFan"
+          ],
+          "reference": 252,
+          "stored": 170,
+          "missing_stored": 82,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 170,
+          "on_demand_missing": 82,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#AgentLoopPerson106",
+            "http://benchmark/OWL2Bench#AgentLoopPerson69",
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1AP2",
+            "http://benchmark/OWL2Bench#U0C0D1FP2",
+            "http://benchmark/OWL2Bench#U0C0D1PD0",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D1UGS32",
+            "http://benchmark/OWL2Bench#U0C0D2FP2"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.01123546200687997
+        },
+        "SportsLover": {
+          "axiom_classes_queried": [
+            "SportsLover"
+          ],
+          "axiom_classes_testing_types_attribute": [
+            "SportsLover"
+          ],
+          "reference": 423,
+          "stored": 347,
+          "missing_stored": 76,
+          "axiom_query_answers": 0,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 0,
+          "on_demand": 347,
+          "on_demand_missing": 76,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [
+            "http://benchmark/OWL2Bench#AgentLoopPerson106",
+            "http://benchmark/OWL2Bench#AgentLoopPerson69",
+            "http://benchmark/OWL2Bench#U0C0D0CS3",
+            "http://benchmark/OWL2Bench#U0C0D0UGS4",
+            "http://benchmark/OWL2Bench#U0C0D1AP2",
+            "http://benchmark/OWL2Bench#U0C0D1FP2",
+            "http://benchmark/OWL2Bench#U0C0D1PD0",
+            "http://benchmark/OWL2Bench#U0C0D1UGS29",
+            "http://benchmark/OWL2Bench#U0C0D1UGS32",
+            "http://benchmark/OWL2Bench#U0C0D2FP2"
+          ],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.011145330005092546
+        },
+        "T20CricketFan": {
+          "axiom_classes_queried": [
+            "T20CricketFan"
+          ],
+          "axiom_classes_testing_types_attribute": [],
+          "reference": 110,
+          "stored": 20,
+          "missing_stored": 90,
+          "axiom_query_answers": 110,
+          "axiom_query_answers_not_in_reference": 0,
+          "missing_answered_by_axiom_query": 90,
+          "on_demand": 110,
+          "on_demand_missing": 0,
+          "on_demand_extra": 0,
+          "on_demand_missing_examples": [],
+          "on_demand_extra_examples": [],
+          "query_seconds": 0.05305738901370205
+        }
+      },
+      "nemo": {
+        "nemo_version": "nemo-cli 0.10.1",
+        "load_seconds": 2.23,
+        "reasoning_seconds": 3.437,
+        "export_seconds": 0.57,
+        "load_and_reasoning_seconds": 5.667,
+        "nemo_process_wall_seconds": 6.24456659698626,
+        "triples_after_reasoning": 1484752,
+        "inconsistency_facts": 0
+      },
+      "seconds": {
+        "total": 33.317059011984384,
+        "nemo_process": 6.24456659698626,
+        "reference_parse_and_normalise": 21.638598175981315,
+        "krrood_normalise": 1.7210624220024329,
+        "justifications": 0.017936514981556684,
+        "on_demand_queries": 0.5420976539899129
+      }
+    }
+  ],
+  "wall_seconds": 241.80343049098155
+}

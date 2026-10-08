@@ -2,36 +2,36 @@
  "variant": "krrood",
  "setup": {
   "seconds": {
-   "load_and_reasoning": 12.935439457010943,
-   "application_data": 0.005389062003814615
+   "load_and_reasoning": 8.278426085002138,
+   "application_data": 0.0032561940024606884
   },
-  "total_seconds": 12.940828519014758,
+  "total_seconds": 8.281682279004599,
   "individuals": 3667,
   "after_last_step": {},
-  "import_seconds": 1.234483601001557,
+  "import_seconds": 0.8773203650052892,
   "follows_reference_actions": false
  },
  "steps": [
   {
    "step": 0,
    "seconds": {
-    "mapping": 3.1248011509887874e-05,
-    "update": 0.0013987069833092391,
+    "mapping": 2.0000996300950646e-05,
+    "update": 0.000816769985249266,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.15410863382567186,
-    "procedures": 0.0013564761902671307,
-    "decide": 0.00018367700977250934,
-    "act": 7.288996130228043e-06
+    "query": 0.08195695393078495,
+    "procedures": 0.0007985800766618922,
+    "decide": 9.15790005819872e-05,
+    "act": 5.623995093628764e-06
    },
-   "total_seconds": 0.15708603101666085,
+   "total_seconds": 0.08368950798467267,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.06456444899959024,
-    "tickets": 0.09092569700442255
+    "handouts": 0.03686997499607969,
+    "tickets": 0.04590124700916931
    },
    "procedure_calls": {
     "can_reach": 905,
@@ -60,23 +60,23 @@
   {
    "step": 1,
    "seconds": {
-    "mapping": 3.991101402789354e-05,
-    "update": 0.0008267150114988908,
+    "mapping": 2.6358015020377934e-05,
+    "update": 0.000451600004453212,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.14844295992224943,
-    "procedures": 0.001081192065612413,
-    "decide": 0.00015328200242947787,
-    "act": 7.467999239452183e-06
+    "query": 0.07885035189974587,
+    "procedures": 0.000624480118858628,
+    "decide": 7.39639945095405e-05,
+    "act": 3.608991391956806e-06
    },
-   "total_seconds": 0.15055152801505756,
+   "total_seconds": 0.08003036302397959,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05862304801121354,
-    "tickets": 0.09101559901318979
+    "handouts": 0.032914526003878564,
+    "tickets": 0.04659151699161157
    },
    "procedure_calls": {
     "can_reach": 789,
@@ -105,23 +105,23 @@
   {
    "step": 2,
    "seconds": {
-    "mapping": 3.6165991332381964e-05,
-    "update": 0.0014146969915600494,
+    "mapping": 2.1468993509188294e-05,
+    "update": 0.0007760440203128383,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.21245161991100758,
-    "procedures": 0.0024568100925534964,
-    "decide": 0.0003491440002107993,
-    "act": 5.186011549085379e-06
+    "query": 0.11446116137085482,
+    "procedures": 0.0014255336282076314,
+    "decide": 0.0001738459977786988,
+    "act": 2.629996743053198e-06
    },
-   "total_seconds": 0.2167136229982134,
+   "total_seconds": 0.11686068400740623,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.12424921699857805,
-    "tickets": 0.09077292600704823
+    "handouts": 0.07020626298617572,
+    "tickets": 0.04571127300732769
    },
    "procedure_calls": {
     "can_reach": 2093,
@@ -150,23 +150,23 @@
   {
    "step": 3,
    "seconds": {
-    "mapping": 4.8739006160758436e-05,
-    "update": 0.00022590499429497868,
+    "mapping": 2.3388973204419017e-05,
+    "update": 0.00013016999582760036,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.14878010170650668,
-    "procedures": 0.001079124296666123,
-    "decide": 0.00015060699661262333,
-    "act": 4.394009010866284e-06
+    "query": 0.07893336382403504,
+    "procedures": 0.0006256701744860038,
+    "decide": 9.165199298877269e-05,
+    "act": 3.655994078144431e-06
    },
-   "total_seconds": 0.15028887100925203,
+   "total_seconds": 0.07980790095461998,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05880770899238996,
-    "tickets": 0.09123487399483565
+    "handouts": 0.03270619000250008,
+    "tickets": 0.046907908996217884
    },
    "procedure_calls": {
     "can_reach": 791,
@@ -195,23 +195,23 @@
   {
    "step": 4,
    "seconds": {
-    "mapping": 3.740699321497232e-05,
-    "update": 0.00012534798588603735,
+    "mapping": 2.739200135692954e-05,
+    "update": 8.660800813231617e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.14767489496443886,
-    "procedures": 0.0010583650437183678,
-    "decide": 0.00016219200915656984,
-    "act": 6.065994966775179e-06
+    "query": 0.07960136604378931,
+    "procedures": 0.0006488309445558116,
+    "decide": 7.356300193350762e-05,
+    "act": 3.2560055842623115e-06
    },
-   "total_seconds": 0.14906427299138159,
+   "total_seconds": 0.08044101600535214,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05775149300461635,
-    "tickets": 0.091083253006218
+    "handouts": 0.03338080299727153,
+    "tickets": 0.04690825499710627
    },
    "procedure_calls": {
     "can_reach": 791,
@@ -240,23 +240,23 @@
   {
    "step": 5,
    "seconds": {
-    "mapping": 3.936298890039325e-05,
-    "update": 0.0008480720134684816,
+    "mapping": 2.2414998966269195e-05,
+    "update": 0.0004593070043483749,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1539002298086416,
-    "procedures": 0.0011893921910086647,
-    "decide": 0.00019259499094914645,
-    "act": 4.906003596261144e-06
+    "query": 0.0822869889670983,
+    "procedures": 0.0006746080325683579,
+    "decide": 8.574499224778265e-05,
+    "act": 2.8080103220418096e-06
    },
-   "total_seconds": 0.15617455799656454,
+   "total_seconds": 0.08353187200555112,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.06469559301331174,
-    "tickets": 0.09049260999017861
+    "handouts": 0.03604377299780026,
+    "tickets": 0.04694736300734803
    },
    "procedure_calls": {
     "can_reach": 909,
@@ -287,23 +287,23 @@
   {
    "step": 6,
    "seconds": {
-    "mapping": 3.9077000110410154e-05,
-    "update": 0.0008273559942608699,
+    "mapping": 2.1988002117723227e-05,
+    "update": 0.0004417039890540764,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1640134928311454,
-    "procedures": 0.001412762183463201,
-    "decide": 0.0002147799968952313,
-    "act": 6.162998033687472e-06
+    "query": 0.08757434326980729,
+    "procedures": 0.0008226427162298933,
+    "decide": 0.00010161900718230754,
+    "act": 3.474997356534004e-06
    },
-   "total_seconds": 0.1665136310039088,
+   "total_seconds": 0.08896577198174782,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07482293900102377,
-    "tickets": 0.0907181020011194
+    "handouts": 0.0420894889975898,
+    "tickets": 0.046337667998159304
    },
    "procedure_calls": {
     "can_reach": 1124,
@@ -334,23 +334,23 @@
   {
    "step": 7,
    "seconds": {
-    "mapping": 3.819999983534217e-05,
-    "update": 0.0008146440086420625,
+    "mapping": 2.2162988898344338e-05,
+    "update": 0.00045568100176751614,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.14820540000800975,
-    "procedures": 0.0010848509846255183,
-    "decide": 0.00017061099060811102,
-    "act": 4.540997906588018e-06
+    "query": 0.07917089299007785,
+    "procedures": 0.0006292309990385547,
+    "decide": 8.413598698098212e-05,
+    "act": 4.345987690612674e-06
    },
-   "total_seconds": 0.15031824698962737,
+   "total_seconds": 0.08036644995445386,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.058384914009366184,
-    "tickets": 0.091020652995212
+    "handouts": 0.03247998800361529,
+    "tickets": 0.047356810988276266
    },
    "procedure_calls": {
     "can_reach": 791,
@@ -379,23 +379,23 @@
   {
    "step": 8,
    "seconds": {
-    "mapping": 3.684400871861726e-05,
-    "update": 0.0013315889955265447,
+    "mapping": 2.5679997634142637e-05,
+    "update": 0.000780057001975365,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.15378568271989934,
-    "procedures": 0.0012025312753394246,
-    "decide": 0.0001844060025177896,
-    "act": 4.43200406152755e-06
+    "query": 0.08245981279469561,
+    "procedures": 0.0006938542210264131,
+    "decide": 8.785999671090394e-05,
+    "act": 2.711007255129516e-06
    },
-   "total_seconds": 0.15654548500606325,
+   "total_seconds": 0.08404997501929756,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.06396663399937097,
-    "tickets": 0.09112108600675128
+    "handouts": 0.03611314301087987,
+    "tickets": 0.04707828600658104
    },
    "procedure_calls": {
     "can_reach": 909,
@@ -424,23 +424,23 @@
   {
    "step": 9,
    "seconds": {
-    "mapping": 3.9758990169502795e-05,
-    "update": 0.0008150460053002462,
+    "mapping": 2.268599928356707e-05,
+    "update": 0.0004465380043257028,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.154766256804578,
-    "procedures": 0.0009756582003319636,
-    "decide": 0.00019824301125481725,
-    "act": 4.4140033423900604e-06
+    "query": 0.08214132179273292,
+    "procedures": 0.0005478292150655761,
+    "decide": 8.462498954031616e-05,
+    "act": 2.5800109142437577e-06
    },
-   "total_seconds": 0.15679937701497693,
+   "total_seconds": 0.08324558001186233,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.06408060601097532,
-    "tickets": 0.09177229199849535
+    "handouts": 0.03589268500218168,
+    "tickets": 0.046827341997413896
    },
    "procedure_calls": {
     "can_reach": 910,
@@ -469,23 +469,23 @@
   {
    "step": 10,
    "seconds": {
-    "mapping": 4.2011000914499164e-05,
-    "update": 0.00022416000138036907,
+    "mapping": 2.223800402134657e-05,
+    "update": 0.000126651008031331,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.14928114565555006,
-    "procedures": 0.0008986243628896773,
-    "decide": 0.0001697429979685694,
-    "act": 5.545996828004718e-06
+    "query": 0.07838487125991378,
+    "procedures": 0.0005366047553252429,
+    "decide": 7.904000813141465e-05,
+    "act": 2.8619979275390506e-06
    },
-   "total_seconds": 0.15062123001553118,
+   "total_seconds": 0.07915226703335065,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.059329380994313397,
-    "tickets": 0.09095085400622338
+    "handouts": 0.03331716300453991,
+    "tickets": 0.0456340319942683
    },
    "procedure_calls": {
     "can_reach": 824,
@@ -514,23 +514,23 @@
   {
    "step": 11,
    "seconds": {
-    "mapping": 4.1636027162894607e-05,
-    "update": 0.0009008699998958036,
+    "mapping": 2.1960993763059378e-05,
+    "update": 0.00047789399104658514,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1643163840053603,
-    "procedures": 0.0014120889973128214,
-    "decide": 0.00024005099839996547,
-    "act": 4.654997610487044e-06
+    "query": 0.08756464716861956,
+    "procedures": 0.0008199748262995854,
+    "decide": 0.000106920997495763,
+    "act": 2.7249916456639767e-06
    },
-   "total_seconds": 0.16691568502574228,
+   "total_seconds": 0.08899412296887022,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0746017349883914,
-    "tickets": 0.09122378400934394
+    "handouts": 0.041604386002290994,
+    "tickets": 0.04680943400308024
    },
    "procedure_calls": {
     "can_reach": 1129,
@@ -559,23 +559,23 @@
   {
    "step": 12,
    "seconds": {
-    "mapping": 4.158900992479175e-05,
-    "update": 0.0002345249813515693,
+    "mapping": 2.4225999368354678e-05,
+    "update": 0.00013724500604439527,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1646435769071104,
-    "procedures": 0.001440487103536725,
-    "decide": 0.0002188179933000356,
-    "act": 3.868000931106508e-06
+    "query": 0.08789618661103304,
+    "procedures": 0.0008309213735628873,
+    "decide": 0.00010467499669175595,
+    "act": 3.374996595084667e-06
    },
-   "total_seconds": 0.16658286399615463,
+   "total_seconds": 0.08899662898329552,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0746725700009847,
-    "tickets": 0.09152178699150681
+    "handouts": 0.04206994599371683,
+    "tickets": 0.04669495100097265
    },
    "procedure_calls": {
     "can_reach": 1130,
@@ -604,23 +604,23 @@
   {
    "step": 13,
    "seconds": {
-    "mapping": 3.6802011891268194e-05,
-    "update": 0.0008801850053714588,
+    "mapping": 2.06139957299456e-05,
+    "update": 0.0004975379852112383,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1492439893190749,
-    "procedures": 0.0009103456832235679,
-    "decide": 0.00017121501150541008,
-    "act": 4.7470093704760075e-06
+    "query": 0.07843950724054594,
+    "procedures": 0.0005011247703805566,
+    "decide": 7.525099499616772e-05,
+    "act": 2.273998688906431e-06
    },
-   "total_seconds": 0.15124728404043708,
+   "total_seconds": 0.07953630898555275,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.058450584998354316,
-    "tickets": 0.09183122900140006
+    "handouts": 0.032464690011693165,
+    "tickets": 0.04650955200486351
    },
    "procedure_calls": {
     "can_reach": 795,
@@ -649,23 +649,23 @@
   {
    "step": 14,
    "seconds": {
-    "mapping": 4.051401629112661e-05,
-    "update": 0.0008268589881481603,
+    "mapping": 2.5465007638558745e-05,
+    "update": 0.00045270001282915473,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1506448847358115,
-    "procedures": 0.0011609532521106303,
-    "decide": 0.000163846998475492,
-    "act": 4.982008249498904e-06
+    "query": 0.0799401352123823,
+    "procedures": 0.0006629647832596675,
+    "decide": 8.074499783106148e-05,
+    "act": 2.5850022211670876e-06
    },
-   "total_seconds": 0.1528420399990864,
+   "total_seconds": 0.08116459501616191,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.060092321000411175,
-    "tickets": 0.09183194101206027
+    "handouts": 0.03348474999074824,
+    "tickets": 0.04715533800481353
    },
    "procedure_calls": {
     "can_reach": 829,
@@ -694,23 +694,23 @@
   {
    "step": 15,
    "seconds": {
-    "mapping": 3.949500387534499e-05,
-    "update": 0.0008114099910017103,
+    "mapping": 2.5950008421204984e-05,
+    "update": 0.00045536398829426616,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.15282200580986682,
-    "procedures": 0.0014537911920342594,
-    "decide": 0.0001419239997630939,
-    "act": 4.599001840688288e-06
+    "query": 0.08888870252121706,
+    "procedures": 0.000834500475320965,
+    "decide": 0.00010245900193694979,
+    "act": 2.715998562052846e-06
    },
-   "total_seconds": 0.15527322499838192,
+   "total_seconds": 0.0903096919937525,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07550478698976804,
-    "tickets": 0.07887819199822843
+    "handouts": 0.042544539013761096,
+    "tickets": 0.047218484003678896
    },
    "procedure_calls": {
     "can_reach": 1131,
@@ -741,23 +741,23 @@
   {
    "step": 16,
    "seconds": {
-    "mapping": 2.920400584116578e-05,
-    "update": 8.497301314491779e-05,
+    "mapping": 2.4422974092885852e-05,
+    "update": 7.600201934110373e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11779753598966636,
-    "procedures": 0.0015723260148661211,
-    "decide": 0.0002051239862339571,
-    "act": 3.667009877972305e-06
+    "query": 0.11529999102640431,
+    "procedures": 0.0013839639723300934,
+    "decide": 0.0002085699961753562,
+    "act": 3.064997144974768e-06
    },
-   "total_seconds": 0.11969283001963049,
+   "total_seconds": 0.11699601498548873,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07103502500103787,
-    "tickets": 0.0483926290035015
+    "handouts": 0.06970137100142892,
+    "tickets": 0.04702071499195881
    },
    "procedure_calls": {
     "can_reach": 2112,
@@ -786,23 +786,23 @@
   {
    "step": 17,
    "seconds": {
-    "mapping": 2.35070037888363e-05,
-    "update": 8.189499203581363e-05,
+    "mapping": 2.3307002265937626e-05,
+    "update": 7.98170076450333e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08115359253133647,
-    "procedures": 0.0007069134735502303,
-    "decide": 9.801199485082179e-05,
-    "act": 4.866000381298363e-06
+    "query": 0.07988488614500966,
+    "procedures": 0.0006579228647751734,
+    "decide": 7.51650077290833e-05,
+    "act": 2.273998688906431e-06
    },
-   "total_seconds": 0.08206878599594347,
+   "total_seconds": 0.0807233720261138,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.034037477991660126,
-    "tickets": 0.04790854400198441
+    "handouts": 0.03384018900396768,
+    "tickets": 0.04676795600971673
    },
    "procedure_calls": {
     "can_reach": 829,
@@ -833,23 +833,23 @@
   {
    "step": 18,
    "seconds": {
-    "mapping": 2.4535009288229048e-05,
-    "update": 8.73749959282577e-05,
+    "mapping": 2.297398168593645e-05,
+    "update": 7.65970180509612e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.07932070715469308,
-    "procedures": 0.0006535728316521272,
-    "decide": 8.707000233698636e-05,
-    "act": 3.3329997677356005e-06
+    "query": 0.07705014011298772,
+    "procedures": 0.0006067188805900514,
+    "decide": 7.483399531338364e-05,
+    "act": 3.4660042729228735e-06
    },
-   "total_seconds": 0.08017659299366642,
+   "total_seconds": 0.07783472999290098,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.031889500009128824,
-    "tickets": 0.048130972994840704
+    "handouts": 0.03163213199877646,
+    "tickets": 0.046053120007854886
    },
    "procedure_calls": {
     "can_reach": 829,
@@ -878,23 +878,23 @@
   {
    "step": 19,
    "seconds": {
-    "mapping": 2.5900997570715845e-05,
-    "update": 8.170498767867684e-05,
+    "mapping": 2.3164015146903694e-05,
+    "update": 7.755498518235981e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0703726549691055,
-    "procedures": 0.0005344350211089477,
-    "decide": 1.5634999726898968e-05,
-    "act": 2.83999543171376e-06
+    "query": 0.06827768389484845,
+    "procedures": 0.0005158691055839881,
+    "decide": 1.0203992133028805e-05,
+    "act": 2.2610038286074996e-06
    },
-   "total_seconds": 0.07103317097062245,
+   "total_seconds": 0.06890673699672334,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.02342039899667725,
-    "tickets": 0.047537300997646526
+    "handouts": 0.022581174998776987,
+    "tickets": 0.046239752002293244
    },
    "procedure_calls": {
     "can_reach": 1516,
@@ -919,23 +919,23 @@
   {
    "step": 20,
    "seconds": {
-    "mapping": 2.4890992790460587e-05,
-    "update": 0.00015213899314403534,
+    "mapping": 2.0536986994557083e-05,
+    "update": 0.0001264589955098927,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.100478389125783,
-    "procedures": 0.0011558838741621003,
-    "decide": 0.0001674759987508878,
-    "act": 4.732006345875561e-06
+    "query": 0.09764989984978456,
+    "procedures": 0.000988466155831702,
+    "decide": 0.00014791599824093282,
+    "act": 2.649001544341445e-06
    },
-   "total_seconds": 0.10198351099097636,
+   "total_seconds": 0.09893592698790599,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05358456198882777,
-    "tickets": 0.04806662100600079
+    "handouts": 0.051920554993557744,
+    "tickets": 0.04672846299945377
    },
    "procedure_calls": {
     "can_reach": 1517,
@@ -964,23 +964,23 @@
   {
    "step": 21,
    "seconds": {
-    "mapping": 2.3994973162189126e-05,
-    "update": 0.00015381700359284878,
+    "mapping": 1.965097908396274e-05,
+    "update": 0.00012030001380480826,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1003598247480113,
-    "procedures": 0.0010393042612122372,
-    "decide": 0.00016040400078054518,
-    "act": 5.055000656284392e-06
+    "query": 0.09786454895220231,
+    "procedures": 0.0008965510496636853,
+    "decide": 0.00014475100033450872,
+    "act": 2.397995558567345e-06
    },
-   "total_seconds": 0.10174239998741541,
+   "total_seconds": 0.09904819999064784,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.053603128995746374,
-    "tickets": 0.0478573599975789
+    "handouts": 0.05222727700311225,
+    "tickets": 0.04657869000220671
    },
    "procedure_calls": {
     "can_reach": 1518,
@@ -1009,23 +1009,23 @@
   {
    "step": 22,
    "seconds": {
-    "mapping": 2.4859007680788636e-05,
-    "update": 8.206299389712512e-05,
+    "mapping": 2.1202009520493448e-05,
+    "update": 7.284502498805523e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11836933701124508,
-    "procedures": 0.0015022169973235577,
-    "decide": 0.00021174900757614523,
-    "act": 3.6259880289435387e-06
+    "query": 0.11505480228515808,
+    "procedures": 0.0013208657182985917,
+    "decide": 0.0001916510082082823,
+    "act": 2.549000782892108e-06
    },
-   "total_seconds": 0.12019385100575164,
+   "total_seconds": 0.11666391504695639,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07184539300214965,
-    "tickets": 0.04809951699280646
+    "handouts": 0.06962026499968488,
+    "tickets": 0.04680305300280452
    },
    "procedure_calls": {
     "can_reach": 2116,
@@ -1054,23 +1054,23 @@
   {
    "step": 23,
    "seconds": {
-    "mapping": 2.8036010917276144e-05,
-    "update": 8.888702723197639e-05,
+    "mapping": 2.2692998754791915e-05,
+    "update": 7.312498928513378e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08947852201526985,
-    "procedures": 0.0009134289866779,
-    "decide": 0.00012064100883435458,
-    "act": 3.870009095408022e-06
+    "query": 0.08779094471537974,
+    "procedures": 0.0008348022820428014,
+    "decide": 0.0001058530033333227,
+    "act": 3.7080026231706142e-06
    },
-   "total_seconds": 0.09063338505802676,
+   "total_seconds": 0.08883112599141896,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04258965500048362,
-    "tickets": 0.047896629010210745
+    "handouts": 0.042052011005580425,
+    "tickets": 0.04663435400289018
    },
    "procedure_calls": {
     "can_reach": 1135,
@@ -1099,23 +1099,23 @@
   {
    "step": 24,
    "seconds": {
-    "mapping": 2.631600364111364e-05,
-    "update": 0.0001426499948138371,
+    "mapping": 2.173401298932731e-05,
+    "update": 0.00012973298726137727,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09040218307927717,
-    "procedures": 0.0007923559169284999,
-    "decide": 0.00012494600377976894,
-    "act": 4.2230094550177455e-06
+    "query": 0.08740449354809243,
+    "procedures": 0.0007084044482326135,
+    "decide": 0.0001092080055968836,
+    "act": 2.4300097720697522e-06
    },
-   "total_seconds": 0.0914926740078954,
+   "total_seconds": 0.0883760030119447,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0431299319898244,
-    "tickets": 0.04812066099839285
+    "handouts": 0.04136812199431006,
+    "tickets": 0.04677887199795805
    },
    "procedure_calls": {
     "can_reach": 1136,
@@ -1144,23 +1144,23 @@
   {
    "step": 25,
    "seconds": {
-    "mapping": 2.364697866141796e-05,
-    "update": 0.0010670450137695298,
+    "mapping": 1.9593979232013226e-05,
+    "update": 0.001034802000503987,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11780944193014875,
-    "procedures": 0.0014778120821574703,
-    "decide": 0.00019212100596632808,
-    "act": 4.208006430417299e-06
+    "query": 0.11576326657086611,
+    "procedures": 0.0013037924363743514,
+    "decide": 0.00019354699179530144,
+    "act": 3.75098898075521e-06
    },
-   "total_seconds": 0.12057427501713391,
+   "total_seconds": 0.11831875296775252,
    "statements_inserted": 9,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07102417200803757,
-    "tickets": 0.04831415000080597
+    "handouts": 0.07006399000238162,
+    "tickets": 0.04704310400120448
    },
    "procedure_calls": {
     "can_reach": 2119,
@@ -1191,23 +1191,23 @@
   {
    "step": 26,
    "seconds": {
-    "mapping": 2.1916988771408796e-05,
-    "update": 7.288798224180937e-05,
+    "mapping": 2.2782987798564136e-05,
+    "update": 7.632798224221915e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1180370976071572,
-    "procedures": 0.0016311694053001702,
-    "decide": 0.00017009599832817912,
-    "act": 3.206994733773172e-06
+    "query": 0.11667034392303322,
+    "procedures": 0.0014325840747915208,
+    "decide": 0.00017120799748227,
+    "act": 2.511995262466371e-06
    },
-   "total_seconds": 0.11993637497653253,
+   "total_seconds": 0.11837575896061026,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07200316501257475,
-    "tickets": 0.0477201879984932
+    "handouts": 0.07073674599814694,
+    "tickets": 0.04742211899429094
    },
    "procedure_calls": {
     "can_reach": 2123,
@@ -1236,23 +1236,23 @@
   {
    "step": 27,
    "seconds": {
-    "mapping": 2.152401430066675e-05,
-    "update": 0.0001310079824179411,
+    "mapping": 2.3209024220705032e-05,
+    "update": 0.00012967598740942776,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.07978196087060496,
-    "procedures": 0.000662799138808623,
-    "decide": 6.91780005581677e-05,
-    "act": 2.4420005502179265e-06
+    "query": 0.07920285512227565,
+    "procedures": 0.0006086878711357713,
+    "decide": 7.247300527524203e-05,
+    "act": 3.2850075513124466e-06
    },
-   "total_seconds": 0.08066891200724058,
+   "total_seconds": 0.08004018601786811,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.032874766999157146,
-    "tickets": 0.04762069300340954
+    "handouts": 0.03289784699154552,
+    "tickets": 0.04696984399924986
    },
    "procedure_calls": {
     "can_reach": 806,
@@ -1283,23 +1283,23 @@
   {
    "step": 28,
    "seconds": {
-    "mapping": 2.3161002900451422e-05,
-    "update": 0.00048535800306126475,
+    "mapping": 2.254202263429761e-05,
+    "update": 0.00048135001270566136,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10027357177750673,
-    "procedures": 0.0011314972216496244,
-    "decide": 0.00012839899864047766,
-    "act": 2.786997356452048e-06
+    "query": 0.09892970525834244,
+    "procedures": 0.0010162317339563742,
+    "decide": 0.00012839598639402539,
+    "act": 2.2570020519196987e-06
    },
-   "total_seconds": 0.102044774001115,
+   "total_seconds": 0.10058048201608472,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05332415500015486,
-    "tickets": 0.048109299008501694
+    "handouts": 0.05283186999440659,
+    "tickets": 0.04714200799935497
    },
    "procedure_calls": {
     "can_reach": 1529,
@@ -1328,23 +1328,23 @@
   {
    "step": 29,
    "seconds": {
-    "mapping": 2.2281004930846393e-05,
-    "update": 0.0004831019905395806,
+    "mapping": 2.103000588249415e-05,
+    "update": 0.00047946901759132743,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08389084275404457,
-    "procedures": 0.0007514772296417505,
-    "decide": 7.882798672653735e-05,
-    "act": 2.486995072104037e-06
+    "query": 0.08263415901456028,
+    "procedures": 0.0007019699842203408,
+    "decide": 8.646599599160254e-05,
+    "act": 3.111999831162393e-06
    },
-   "total_seconds": 0.08522901796095539,
+   "total_seconds": 0.08392620601807721,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03648536399123259,
-    "tickets": 0.04819860799761955
+    "handouts": 0.036208364996127784,
+    "tickets": 0.047169943994958885
    },
    "procedure_calls": {
     "can_reach": 927,
@@ -1373,23 +1373,23 @@
   {
    "step": 30,
    "seconds": {
-    "mapping": 2.371400478295982e-05,
-    "update": 0.00011618601274676621,
+    "mapping": 2.333600423298776e-05,
+    "update": 0.00011628899665083736,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0806501697661588,
-    "procedures": 0.0005411942256614566,
-    "decide": 7.442699279636145e-05,
-    "act": 2.5089975679293275e-06
+    "query": 0.07916655488952529,
+    "procedures": 0.0005104641022626311,
+    "decide": 7.980300870258361e-05,
+    "act": 3.178007318638265e-06
    },
-   "total_seconds": 0.08140819999971427,
+   "total_seconds": 0.07989962500869296,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0333818540093489,
-    "tickets": 0.04783905598742422
+    "handouts": 0.03284079300647136,
+    "tickets": 0.046869179990608245
    },
    "procedure_calls": {
     "can_reach": 838,
@@ -1418,23 +1418,23 @@
   {
    "step": 31,
    "seconds": {
-    "mapping": 1.876101305242628e-05,
-    "update": 6.455900438595563e-05,
+    "mapping": 2.220200258307159e-05,
+    "update": 6.658201164100319e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.07997885411896277,
-    "procedures": 0.0005379138892749324,
-    "decide": 6.9650006480515e-05,
-    "act": 2.540997229516506e-06
+    "query": 0.07811582725844346,
+    "procedures": 0.0004873787402175367,
+    "decide": 7.723900489509106e-05,
+    "act": 2.4949986254796386e-06
    },
-   "total_seconds": 0.08067227902938612,
+   "total_seconds": 0.07877172401640564,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.032854844990652055,
-    "tickets": 0.04768899400369264
+    "handouts": 0.03221156100335065,
+    "tickets": 0.04641914200328756
    },
    "procedure_calls": {
     "can_reach": 810,
@@ -1465,23 +1465,23 @@
   {
    "step": 32,
    "seconds": {
-    "mapping": 1.9279003026895225e-05,
-    "update": 0.0007444069924531505,
+    "mapping": 2.0391016732901335e-05,
+    "update": 0.000740194009267725,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08009619246877264,
-    "procedures": 0.0006811775238020346,
-    "decide": 7.66520097386092e-05,
-    "act": 2.5249901227653027e-06
+    "query": 0.07989600668952335,
+    "procedures": 0.0006284793198574334,
+    "decide": 7.429700053762645e-05,
+    "act": 2.943997969850898e-06
    },
-   "total_seconds": 0.0816202329879161,
+   "total_seconds": 0.08136231203388888,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.033553482993738726,
-    "tickets": 0.047249149007257074
+    "handouts": 0.0335288209898863,
+    "tickets": 0.04702181099855807
    },
    "procedure_calls": {
     "can_reach": 839,
@@ -1510,23 +1510,23 @@
   {
    "step": 33,
    "seconds": {
-    "mapping": 2.1574014681391418e-05,
-    "update": 0.00012619097833521664,
+    "mapping": 2.221000613644719e-05,
+    "update": 0.00012473897368181497,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.07940724233048968,
-    "procedures": 0.0006702696700813249,
-    "decide": 6.897401181049645e-05,
-    "act": 2.606000634841621e-06
+    "query": 0.07835266982147004,
+    "procedures": 0.0006106211803853512,
+    "decide": 7.142200774978846e-05,
+    "act": 2.4809996830299497e-06
    },
-   "total_seconds": 0.08029685700603295,
+   "total_seconds": 0.07918414298910648,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03273910300049465,
-    "tickets": 0.04736538100405596
+    "handouts": 0.032417341994005255,
+    "tickets": 0.04657197798951529
    },
    "procedure_calls": {
     "can_reach": 811,
@@ -1555,23 +1555,23 @@
   {
    "step": 34,
    "seconds": {
-    "mapping": 2.185101038776338e-05,
-    "update": 0.000443523982539773,
+    "mapping": 2.0683015463873744e-05,
+    "update": 0.00044089299626648426,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1174278519465588,
-    "procedures": 0.00149847604916431,
-    "decide": 0.00019101799989584833,
-    "act": 2.97899532597512e-06
+    "query": 0.11624206794658676,
+    "procedures": 0.001291304055484943,
+    "decide": 0.00017683500482235104,
+    "act": 2.405999111942947e-06
    },
-   "total_seconds": 0.11958569998387247,
+   "total_seconds": 0.11817418901773635,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07062054800917394,
-    "tickets": 0.04833395998866763
+    "handouts": 0.06985882599838078,
+    "tickets": 0.04770302900578827
    },
    "procedure_calls": {
     "can_reach": 2134,
@@ -1602,23 +1602,23 @@
   {
    "step": 35,
    "seconds": {
-    "mapping": 2.2916996385902166e-05,
-    "update": 0.00045085900637786835,
+    "mapping": 2.1082989405840635e-05,
+    "update": 0.0004426540108397603,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08475399868621025,
-    "procedures": 0.0007733143138466403,
-    "decide": 8.136499673128128e-05,
-    "act": 2.820990630425513e-06
+    "query": 0.08194712552358396,
+    "procedures": 0.0006917044811416417,
+    "decide": 8.369299757760018e-05,
+    "act": 3.188004484400153e-06
    },
-   "total_seconds": 0.08608527499018237,
+   "total_seconds": 0.0831894480070332,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0369939519878244,
-    "tickets": 0.048608500001137145
+    "handouts": 0.035748423004406504,
+    "tickets": 0.046946511007263325
    },
    "procedure_calls": {
     "can_reach": 931,
@@ -1649,23 +1649,23 @@
   {
    "step": 36,
    "seconds": {
-    "mapping": 2.0728009985759854e-05,
-    "update": 0.00043903499317821115,
+    "mapping": 2.2680003894492984e-05,
+    "update": 0.0004447370010893792,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08425548109516967,
-    "procedures": 0.0007625759026268497,
-    "decide": 7.94020015746355e-05,
-    "act": 2.535991370677948e-06
+    "query": 0.08295623684534803,
+    "procedures": 0.0006969721725909039,
+    "decide": 8.683100168127567e-05,
+    "act": 3.6810088204219937e-06
    },
-   "total_seconds": 0.0855597579939058,
+   "total_seconds": 0.0842111380334245,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.037103416994796135,
-    "tickets": 0.047944232006557286
+    "handouts": 0.036370529007399455,
+    "tickets": 0.04732166600297205
    },
    "procedure_calls": {
     "can_reach": 931,
@@ -1696,23 +1696,23 @@
   {
    "step": 37,
    "seconds": {
-    "mapping": 2.1572996047325432e-05,
-    "update": 0.000126630999147892,
+    "mapping": 2.2665990400128067e-05,
+    "update": 0.0001366219948977232,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08983693917980418,
-    "procedures": 0.000918104822630994,
-    "decide": 9.62739868555218e-05,
-    "act": 3.1239906093105674e-06
+    "query": 0.08950300807191525,
+    "procedures": 0.0008544599259039387,
+    "decide": 0.00010253299842588603,
+    "act": 3.5520060919225216e-06
    },
-   "total_seconds": 0.09100264597509522,
+   "total_seconds": 0.09062284098763485,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04251578499679454,
-    "tickets": 0.04826922799111344
+    "handouts": 0.04247734299860895,
+    "tickets": 0.047915899005602114
    },
    "procedure_calls": {
     "can_reach": 1149,
@@ -1743,23 +1743,23 @@
   {
    "step": 38,
    "seconds": {
-    "mapping": 2.352098817937076e-05,
-    "update": 0.00043677301437128335,
+    "mapping": 2.405901614110917e-05,
+    "update": 0.00045248400419950485,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11797074727655854,
-    "procedures": 0.0016251967172138393,
-    "decide": 0.0001804670027922839,
-    "act": 2.7469941414892673e-06
+    "query": 0.11556758794176858,
+    "procedures": 0.0014049390592845157,
+    "decide": 0.00018276199989486486,
+    "act": 2.649991074576974e-06
    },
-   "total_seconds": 0.12023945199325681,
+   "total_seconds": 0.11763448201236315,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.071028712001862,
-    "tickets": 0.048602933005895466
+    "handouts": 0.07005804999789689,
+    "tickets": 0.04694902400660794
    },
    "procedure_calls": {
     "can_reach": 2137,
@@ -1790,23 +1790,23 @@
   {
    "step": 39,
    "seconds": {
-    "mapping": 2.4196007871069014e-05,
-    "update": 7.081199146341532e-05,
+    "mapping": 2.3068030714057386e-05,
+    "update": 7.424599607475102e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08163934900949243,
-    "procedures": 0.0006800849951105192,
-    "decide": 7.754699618089944e-05,
-    "act": 3.488996298983693e-06
+    "query": 0.0798035042535048,
+    "procedures": 0.0006390947382897139,
+    "decide": 7.725300383754075e-05,
+    "act": 2.3600005079060793e-06
    },
-   "total_seconds": 0.08249547799641732,
+   "total_seconds": 0.08061952602292877,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03359274900867604,
-    "tickets": 0.04877940499864053
+    "handouts": 0.033572082000318915,
+    "tickets": 0.04692703700857237
    },
    "procedure_calls": {
     "can_reach": 843,
@@ -1837,23 +1837,23 @@
   {
    "step": 40,
    "seconds": {
-    "mapping": 2.029098686762154e-05,
-    "update": 0.0001351670071016997,
+    "mapping": 2.0597988623194396e-05,
+    "update": 0.00012470998626668006,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1037617534166202,
-    "procedures": 0.001172505595604889,
-    "decide": 0.00015498499851673841,
-    "act": 3.3740070648491383e-06
+    "query": 0.09881859194138087,
+    "procedures": 0.0010068270639749244,
+    "decide": 0.0001347740035271272,
+    "act": 2.3769971448928118e-06
    },
-   "total_seconds": 0.10524807601177599,
+   "total_seconds": 0.10010787798091769,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05387618200620636,
-    "tickets": 0.05109468899900094
+    "handouts": 0.05259868899884168,
+    "tickets": 0.04725682899879757
    },
    "procedure_calls": {
     "can_reach": 1540,
@@ -1884,23 +1884,23 @@
   {
    "step": 41,
    "seconds": {
-    "mapping": 2.631099778227508e-05,
-    "update": 0.00045882101403549314,
+    "mapping": 2.405000850558281e-05,
+    "update": 0.00046118001046124846,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08405995188513771,
-    "procedures": 0.000718739116564393,
-    "decide": 7.781499880366027e-05,
-    "act": 3.01000545732677e-06
+    "query": 0.07936588833399583,
+    "procedures": 0.0006153616704978049,
+    "decide": 7.314299000427127e-05,
+    "act": 2.521992428228259e-06
    },
-   "total_seconds": 0.08534464801778086,
+   "total_seconds": 0.08054214500589296,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03644019200874027,
-    "tickets": 0.04840480200073216
+    "handouts": 0.0328990940033691,
+    "tickets": 0.04712696799833793
    },
    "procedure_calls": {
     "can_reach": 814,
@@ -1931,23 +1931,23 @@
   {
    "step": 42,
    "seconds": {
-    "mapping": 2.2057007299736142e-05,
-    "update": 0.0001324900076724589,
+    "mapping": 1.9682993297465146e-05,
+    "update": 0.00012549500388558954,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10054492014751304,
-    "procedures": 0.0010409488604636863,
-    "decide": 0.00013424499775283039,
-    "act": 3.0039955163374543e-06
+    "query": 0.09923377278028056,
+    "procedures": 0.0008938022219808772,
+    "decide": 0.00015660699864383787,
+    "act": 2.425003913231194e-06
    },
-   "total_seconds": 0.10187766501621809,
+   "total_seconds": 0.10043178500200156,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.053559445004793815,
-    "tickets": 0.048055742008727975
+    "handouts": 0.05313514999579638,
+    "tickets": 0.04702044899750035
    },
    "procedure_calls": {
     "can_reach": 1541,
@@ -1976,23 +1976,23 @@
   {
    "step": 43,
    "seconds": {
-    "mapping": 2.0301013137213886e-05,
-    "update": 0.00012354800128377974,
+    "mapping": 2.064998261630535e-05,
+    "update": 0.00012320700625423342,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08176079457916785,
-    "procedures": 0.0005619384173769504,
-    "decide": 8.035599603317678e-05,
-    "act": 3.277003997936845e-06
+    "query": 0.07993205355887767,
+    "procedures": 0.0005214244592934847,
+    "decide": 8.575500396545976e-05,
+    "act": 3.3819960663095117e-06
    },
-   "total_seconds": 0.08255021501099691,
+   "total_seconds": 0.08068647200707346,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03349237100337632,
-    "tickets": 0.0488718010019511
+    "handouts": 0.033347064003464766,
+    "tickets": 0.047150116006378084
    },
    "procedure_calls": {
     "can_reach": 848,
@@ -2023,23 +2023,23 @@
   {
    "step": 44,
    "seconds": {
-    "mapping": 2.168200444430113e-05,
-    "update": 0.00015060899022500962,
+    "mapping": 2.471300831530243e-05,
+    "update": 0.00014822000230196863,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0797970780840842,
-    "procedures": 0.0006826229218859226,
-    "decide": 7.529299182351679e-05,
-    "act": 2.492000930942595e-06
+    "query": 0.07931778505735565,
+    "procedures": 0.0006223339296411723,
+    "decide": 7.974999607540667e-05,
+    "act": 3.7749996408820152e-06
    },
-   "total_seconds": 0.0807297769933939,
+   "total_seconds": 0.08019657699333038,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03244994199485518,
-    "tickets": 0.04805922800733242
+    "handouts": 0.032663520993082784,
+    "tickets": 0.047305313011747785
    },
    "procedure_calls": {
     "can_reach": 818,
@@ -2070,23 +2070,23 @@
   {
    "step": 45,
    "seconds": {
-    "mapping": 2.0803010556846857e-05,
-    "update": 0.00015754700871184468,
+    "mapping": 2.065900480374694e-05,
+    "update": 0.0001594380009919405,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10000023701286409,
-    "procedures": 0.001169377996120602,
-    "decide": 0.00013889999536331743,
-    "act": 2.5610061129555106e-06
+    "query": 0.09944833384361118,
+    "procedures": 0.0010223201679764315,
+    "decide": 0.0001469309936510399,
+    "act": 2.2809981601312757e-06
    },
-   "total_seconds": 0.10148942602972966,
+   "total_seconds": 0.10079996300919447,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05316833699180279,
-    "tickets": 0.04803008300950751
+    "handouts": 0.05267079999612179,
+    "tickets": 0.047829353003180586
    },
    "procedure_calls": {
     "can_reach": 1546,
@@ -2115,23 +2115,23 @@
   {
    "step": 46,
    "seconds": {
-    "mapping": 1.8320002709515393e-05,
-    "update": 6.61289959680289e-05,
+    "mapping": 2.2880994947627187e-05,
+    "update": 6.819298141635954e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11730446373985615,
-    "procedures": 0.001498422265285626,
-    "decide": 0.00020452099852263927,
-    "act": 2.5420013116672635e-06
+    "query": 0.11611784072010778,
+    "procedures": 0.0013080262870062143,
+    "decide": 0.00020121000125072896,
+    "act": 2.7740024961531162e-06
    },
-   "total_seconds": 0.11909439800365362,
+   "total_seconds": 0.11772092498722486,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07099904600181617,
-    "tickets": 0.04784717599977739
+    "handouts": 0.0700846110121347,
+    "tickets": 0.047383712997543626
    },
    "procedure_calls": {
     "can_reach": 2156,
@@ -2162,23 +2162,23 @@
   {
    "step": 47,
    "seconds": {
-    "mapping": 2.232700353488326e-05,
-    "update": 0.00012719699589069933,
+    "mapping": 2.286698145326227e-05,
+    "update": 0.00012147999950684607,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.07998842399683781,
-    "procedures": 0.0006718530057696626,
-    "decide": 8.232399704866111e-05,
-    "act": 2.9229995561763644e-06
+    "query": 0.07903726026415825,
+    "procedures": 0.0006098027515690774,
+    "decide": 7.946199912112206e-05,
+    "act": 2.9039947548881173e-06
    },
-   "total_seconds": 0.08089504799863789,
+   "total_seconds": 0.07987377599056344,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03290137600561138,
-    "tickets": 0.04781747900415212
+    "handouts": 0.03248312800133135,
+    "tickets": 0.04722025999217294
    },
    "procedure_calls": {
     "can_reach": 821,
@@ -2209,23 +2209,23 @@
   {
    "step": 48,
    "seconds": {
-    "mapping": 2.2674008505418897e-05,
-    "update": 0.0004444240184966475,
+    "mapping": 2.578199200797826e-05,
+    "update": 0.0004509040154516697,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.06713212492468301,
-    "procedures": 0.0003355010849190876,
-    "decide": 1.0143994586542249e-05,
-    "act": 2.2029998945072293e-06
+    "query": 0.06610438504139893,
+    "procedures": 0.00033774596522562206,
+    "decide": 1.0547999409027398e-05,
+    "act": 2.3600005079060793e-06
    },
-   "total_seconds": 0.06794707103108522,
+   "total_seconds": 0.06693172501400113,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.019744037999771535,
-    "tickets": 0.04774989299767185
+    "handouts": 0.019511532998876646,
+    "tickets": 0.04695985400758218
    },
    "procedure_calls": {
     "can_reach": 1162,
@@ -2254,23 +2254,23 @@
   {
    "step": 49,
    "seconds": {
-    "mapping": 2.0521008991636336e-05,
-    "update": 0.00012265700206626207,
+    "mapping": 2.082499850075692e-05,
+    "update": 0.00012747400614898652,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.06730793145834468,
-    "procedures": 0.00045923654397483915,
-    "decide": 8.84200562722981e-06,
-    "act": 1.995009370148182e-06
+    "query": 0.06679155696474481,
+    "procedures": 0.0004679800331359729,
+    "decide": 8.88299837242812e-06,
+    "act": 2.167013008147478e-06
    },
-   "total_seconds": 0.0679211830283748,
+   "total_seconds": 0.0674188860139111,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.019580331005272456,
-    "tickets": 0.048198286996921524
+    "handouts": 0.01990964800643269,
+    "tickets": 0.0473616539966315
    },
    "procedure_calls": {
     "can_reach": 1163,
@@ -2295,23 +2295,23 @@
   {
    "step": 50,
    "seconds": {
-    "mapping": 1.8609018297865987e-05,
-    "update": 0.00011963701399508864,
+    "mapping": 1.9283004803583026e-05,
+    "update": 0.00012413501099217683,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11744894090224989,
-    "procedures": 0.0015136130969040096,
-    "decide": 0.00018056000408250839,
-    "act": 2.4619948817417026e-06
+    "query": 0.11697252005978953,
+    "procedures": 0.0013372419343795627,
+    "decide": 0.00017676000425126404,
+    "act": 2.7990026865154505e-06
    },
-   "total_seconds": 0.1192838220304111,
+   "total_seconds": 0.11863273901690263,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07060089100559708,
-    "tickets": 0.04837506300827954
+    "handouts": 0.07025637599872425,
+    "tickets": 0.04806550999637693
    },
    "procedure_calls": {
     "can_reach": 2161,
@@ -2340,23 +2340,23 @@
   {
    "step": 51,
    "seconds": {
-    "mapping": 2.2887004888616502e-05,
-    "update": 6.772699998691678e-05,
+    "mapping": 2.3530999897047877e-05,
+    "update": 6.85319973854348e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09051998260838445,
-    "procedures": 0.0007851573900552467,
-    "decide": 9.996599692385644e-05,
-    "act": 2.3989996407181025e-06
+    "query": 0.08886605597217567,
+    "procedures": 0.000737877024221234,
+    "decide": 9.984899952542037e-05,
+    "act": 2.754997694864869e-06
    },
-   "total_seconds": 0.09149811899987981,
+   "total_seconds": 0.08979859999089967,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.042601698005455546,
-    "tickets": 0.04876191999937873
+    "handouts": 0.04200008499901742,
+    "tickets": 0.04766684900096152
    },
    "procedure_calls": {
     "can_reach": 1164,
@@ -2385,23 +2385,23 @@
   {
    "step": 52,
    "seconds": {
-    "mapping": 2.6847992558032274e-05,
-    "update": 0.00015101800090633333,
+    "mapping": 3.387598553672433e-05,
+    "update": 0.00019817400607280433,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12124318732821848,
-    "procedures": 0.0015264676767401397,
-    "decide": 0.00020150300406385213,
-    "act": 4.6679924707859755e-06
+    "query": 0.11939900765719358,
+    "procedures": 0.0013710863422602415,
+    "decide": 0.00020930799655616283,
+    "act": 3.998007741756737e-06
    },
-   "total_seconds": 0.12315369199495763,
+   "total_seconds": 0.12121544999536127,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07342045799305197,
-    "tickets": 0.04939656300120987
+    "handouts": 0.0724371929973131,
+    "tickets": 0.04837911900540348
    },
    "procedure_calls": {
     "can_reach": 2164,
@@ -2430,23 +2430,23 @@
   {
    "step": 53,
    "seconds": {
-    "mapping": 2.547698386479169e-05,
-    "update": 7.513798482250422e-05,
+    "mapping": 2.4343011318705976e-05,
+    "update": 7.911901047918946e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12602527262060903,
-    "procedures": 0.0015308713918784633,
-    "decide": 0.0001763909967849031,
-    "act": 2.8460053727030754e-06
+    "query": 0.11951835482614115,
+    "procedures": 0.0013408641825662926,
+    "decide": 0.00017824099631980062,
+    "act": 2.5220069801434875e-06
    },
-   "total_seconds": 0.1278359959833324,
+   "total_seconds": 0.12114344403380528,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07278153700463008,
-    "tickets": 0.054846152997924946
+    "handouts": 0.07190771000750829,
+    "tickets": 0.04903082600503694
    },
    "procedure_calls": {
     "can_reach": 2166,
@@ -2475,23 +2475,23 @@
   {
    "step": 54,
    "seconds": {
-    "mapping": 2.157498965971172e-05,
-    "update": 7.37049849703908e-05,
+    "mapping": 2.2895008441992104e-05,
+    "update": 7.676999666728079e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0821496159187518,
-    "procedures": 0.0005941450799582526,
-    "decide": 0.00010635099897626787,
-    "act": 2.8130016289651394e-06
+    "query": 0.0813092256867094,
+    "procedures": 0.000529038326931186,
+    "decide": 8.728000102564692e-05,
+    "act": 2.7240021154284477e-06
    },
-   "total_seconds": 0.0829482049739454,
+   "total_seconds": 0.08202793302189093,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03411795299325604,
-    "tickets": 0.048691725998651236
+    "handouts": 0.03359471999283414,
+    "tickets": 0.04830107599264011
    },
    "procedure_calls": {
     "can_reach": 828,
@@ -2520,23 +2520,23 @@
   {
    "step": 55,
    "seconds": {
-    "mapping": 2.2705004084855318e-05,
-    "update": 0.0005095270025776699,
+    "mapping": 2.2537002223543823e-05,
+    "update": 0.0005101670103613287,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12085829331772402,
-    "procedures": 0.001524178689578548,
-    "decide": 0.00018049600475933403,
-    "act": 3.0710070859640837e-06
+    "query": 0.11898055621713866,
+    "procedures": 0.001339655791525729,
+    "decide": 0.0002006450085900724,
+    "act": 2.66499409917742e-06
    },
-   "total_seconds": 0.12309827102581039,
+   "total_seconds": 0.1210562260239385,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07327124199946411,
-    "tickets": 0.04915328900096938
+    "handouts": 0.07165910500043537,
+    "tickets": 0.04870844099787064
    },
    "procedure_calls": {
     "can_reach": 2169,
@@ -2565,23 +2565,23 @@
   {
    "step": 56,
    "seconds": {
-    "mapping": 2.3791988496668637e-05,
-    "update": 0.0007863829814596102,
+    "mapping": 2.3927015718072653e-05,
+    "update": 0.0008254870044765994,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08272972053964622,
-    "procedures": 0.0005960054550087079,
-    "decide": 7.770900265313685e-05,
-    "act": 2.5280023692175746e-06
+    "query": 0.08234819302742835,
+    "procedures": 0.0005699599714716896,
+    "decide": 8.146199979819357e-05,
+    "act": 2.525004674680531e-06
    },
-   "total_seconds": 0.08421613796963356,
+   "total_seconds": 0.08385155402356759,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03460987198923249,
-    "tickets": 0.04877110300003551
+    "handouts": 0.034313716998440214,
+    "tickets": 0.04867629300861154
    },
    "procedure_calls": {
     "can_reach": 860,
@@ -2610,23 +2610,23 @@
   {
    "step": 57,
    "seconds": {
-    "mapping": 2.213499101344496e-05,
-    "update": 0.00012243998935446143,
+    "mapping": 2.2095002350397408e-05,
+    "update": 0.00012987898662686348,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08144452318083495,
-    "procedures": 0.0005890858155908063,
-    "decide": 7.051500142551959e-05,
-    "act": 2.172004315070808e-06
+    "query": 0.08065911378071178,
+    "procedures": 0.00056398322340101,
+    "decide": 7.387201185338199e-05,
+    "act": 2.8400099836289883e-06
    },
-   "total_seconds": 0.08225087098253425,
+   "total_seconds": 0.08145178301492706,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03296638598840218,
-    "tickets": 0.04909940200741403
+    "handouts": 0.03312269500747789,
+    "tickets": 0.04813545400975272
    },
    "procedure_calls": {
     "can_reach": 832,
@@ -2655,23 +2655,23 @@
   {
    "step": 58,
    "seconds": {
-    "mapping": 1.9641986000351608e-05,
-    "update": 0.0004283909947844222,
+    "mapping": 1.999801315832883e-05,
+    "update": 0.0004454289883142337,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08603886487253476,
-    "procedures": 0.0006313451303867623,
-    "decide": 9.984899952542037e-05,
-    "act": 3.359004040248692e-06
+    "query": 0.08387402279186063,
+    "procedures": 0.0005626891943393275,
+    "decide": 8.661599713377655e-05,
+    "act": 2.4939945433288813e-06
    },
-   "total_seconds": 0.08722145098727196,
+   "total_seconds": 0.08499124897934962,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03709854499902576,
-    "tickets": 0.049601274004089646
+    "handouts": 0.03609125400544144,
+    "tickets": 0.04837664800288621
    },
    "procedure_calls": {
     "can_reach": 954,
@@ -2702,23 +2702,23 @@
   {
    "step": 59,
    "seconds": {
-    "mapping": 2.058300015050918e-05,
-    "update": 0.0010381359898019582,
+    "mapping": 1.9978004274889827e-05,
+    "update": 0.0010106859990628436,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08264175750082359,
-    "procedures": 0.0007180565007729456,
-    "decide": 7.981200178619474e-05,
-    "act": 2.4509936338290572e-06
+    "query": 0.0813893230370013,
+    "procedures": 0.0006696109630865976,
+    "decide": 8.560900459997356e-05,
+    "act": 4.174988134764135e-06
    },
-   "total_seconds": 0.08450079598696902,
+   "total_seconds": 0.08317938199616037,
    "statements_inserted": 9,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0343042599997716,
-    "tickets": 0.04909471800783649
+    "handouts": 0.033900435009854846,
+    "tickets": 0.04819128599774558
    },
    "procedure_calls": {
     "can_reach": 861,
@@ -2747,23 +2747,23 @@
   {
    "step": 60,
    "seconds": {
-    "mapping": 1.924901152960956e-05,
-    "update": 0.0007348360086325556,
+    "mapping": 2.0247985958121717e-05,
+    "update": 0.0007236070086946711,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1201390068163164,
-    "procedures": 0.0015290731826098636,
-    "decide": 0.00018504100444260985,
-    "act": 2.3930042516440153e-06
+    "query": 0.12169583841750864,
+    "procedures": 0.0013798885920550674,
+    "decide": 0.0001860329939518124,
+    "act": 2.4949986254796386e-06
    },
-   "total_seconds": 0.12260959902778268,
+   "total_seconds": 0.12400810999679379,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07225075300084427,
-    "tickets": 0.04944632700062357
+    "handouts": 0.0751194629992824,
+    "tickets": 0.04798688799201045
    },
    "procedure_calls": {
     "can_reach": 2177,
@@ -2792,23 +2792,23 @@
   {
    "step": 61,
    "seconds": {
-    "mapping": 2.346799010410905e-05,
-    "update": 0.0001245760067831725,
+    "mapping": 2.430599124636501e-05,
+    "update": 0.00013043099897913635,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08241074634133838,
-    "procedures": 0.0005851896421518177,
-    "decide": 7.077600457705557e-05,
-    "act": 2.1890009520575404e-06
+    "query": 0.08112774907203857,
+    "procedures": 0.0005281349294818938,
+    "decide": 7.631299376953393e-05,
+    "act": 2.458997187204659e-06
    },
-   "total_seconds": 0.0832169449859066,
+   "total_seconds": 0.0818893929827027,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.034218903005239554,
-    "tickets": 0.04883301199879497
+    "handouts": 0.033666867995634675,
+    "tickets": 0.04804786099703051
    },
    "procedure_calls": {
     "can_reach": 864,
@@ -2837,23 +2837,23 @@
   {
    "step": 62,
    "seconds": {
-    "mapping": 1.915001485031098e-05,
-    "update": 6.210601713974029e-05,
+    "mapping": 2.108598710037768e-05,
+    "update": 6.849000055808574e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08169296295091044,
-    "procedures": 0.0005951920466031879,
-    "decide": 7.492399890907109e-05,
-    "act": 2.2269960027188063e-06
+    "query": 0.08073989376134705,
+    "procedures": 0.0005291842244332656,
+    "decide": 7.688200275879353e-05,
+    "act": 2.296001184731722e-06
    },
-   "total_seconds": 0.08244656202441547,
+   "total_seconds": 0.0814378319773823,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03323592800006736,
-    "tickets": 0.04908103900379501
+    "handouts": 0.033182243001647294,
+    "tickets": 0.048119154991582036
    },
    "procedure_calls": {
     "can_reach": 836,
@@ -2882,23 +2882,23 @@
   {
    "step": 63,
    "seconds": {
-    "mapping": 1.97930057765916e-05,
-    "update": 6.160499469842762e-05,
+    "mapping": 1.9440005416981876e-05,
+    "update": 6.775499787181616e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0817248639796162,
-    "procedures": 0.0005907910090172663,
-    "decide": 7.089700375217944e-05,
-    "act": 2.215005224570632e-06
+    "query": 0.08158309184364043,
+    "procedures": 0.0005375671607907861,
+    "decide": 7.521800580434501e-05,
+    "act": 2.4229957489296794e-06
    },
-   "total_seconds": 0.08247016499808524,
+   "total_seconds": 0.08228549500927329,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03409617400029674,
-    "tickets": 0.04824767800164409
+    "handouts": 0.03408896400651429,
+    "tickets": 0.04806413200276438
    },
    "procedure_calls": {
     "can_reach": 866,
@@ -2929,23 +2929,23 @@
   {
    "step": 64,
    "seconds": {
-    "mapping": 2.0657971617765725e-05,
-    "update": 0.0007304290047613904,
+    "mapping": 2.2823020117357373e-05,
+    "update": 0.0007346990023506805,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08117717920686118,
-    "procedures": 0.0007265377935254946,
-    "decide": 7.320100849028677e-05,
-    "act": 2.3989996407181025e-06
+    "query": 0.08073966820666101,
+    "procedures": 0.0006510738021461293,
+    "decide": 7.509300485253334e-05,
+    "act": 2.8149952413514256e-06
    },
-   "total_seconds": 0.08273040398489684,
+   "total_seconds": 0.08222617203136906,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.033341804999508895,
-    "tickets": 0.04858814999170136
+    "handouts": 0.0333039459947031,
+    "tickets": 0.0481156669993652
    },
    "procedure_calls": {
     "can_reach": 836,
@@ -2974,23 +2974,23 @@
   {
    "step": 65,
    "seconds": {
-    "mapping": 2.01789807761088e-05,
-    "update": 0.0007240840059239417,
+    "mapping": 2.3011976736597717e-05,
+    "update": 0.0007412069971906021,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11915519172907807,
-    "procedures": 0.0016384352638851851,
-    "decide": 0.00017182400915771723,
-    "act": 2.935994416475296e-06
+    "query": 0.11805631390598137,
+    "procedures": 0.0014435180928558111,
+    "decide": 0.0001994379999814555,
+    "act": 3.3840042306110263e-06
    },
-   "total_seconds": 0.1217126499832375,
+   "total_seconds": 0.12046687297697645,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07188525899255183,
-    "tickets": 0.04893550599808805
+    "handouts": 0.07116857499931939,
+    "tickets": 0.0483629079972161
    },
    "procedure_calls": {
     "can_reach": 2178,
@@ -3021,23 +3021,23 @@
   {
    "step": 66,
    "seconds": {
-    "mapping": 1.9817001884803176e-05,
-    "update": 6.670699804089963e-05,
+    "mapping": 2.5303990696556866e-05,
+    "update": 7.491200813092291e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08122812816873193,
-    "procedures": 0.0007029048429103568,
-    "decide": 7.269300112966448e-05,
-    "act": 2.439992385916412e-06
+    "query": 0.08058528613764793,
+    "procedures": 0.0006537888548336923,
+    "decide": 8.218899893108755e-05,
+    "act": 2.3510074242949486e-06
    },
-   "total_seconds": 0.08209269000508357,
+   "total_seconds": 0.08142383099766448,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.033590876002563164,
-    "tickets": 0.0483903039857978
+    "handouts": 0.033619036999880336,
+    "tickets": 0.04767608399561141
    },
    "procedure_calls": {
     "can_reach": 836,
@@ -3066,23 +3066,23 @@
   {
    "step": 67,
    "seconds": {
-    "mapping": 1.915599568746984e-05,
-    "update": 5.992698424961418e-05,
+    "mapping": 2.365501131862402e-05,
+    "update": 7.301400182768703e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11837214378465433,
-    "procedures": 0.0016681602137396112,
-    "decide": 0.00017205999756697565,
-    "act": 2.244996721856296e-06
+    "query": 0.11837863641267177,
+    "procedures": 0.0014319375768536702,
+    "decide": 0.00017789698904380202,
+    "act": 2.6070047169923782e-06
    },
-   "total_seconds": 0.12029369197261985,
+   "total_seconds": 0.12008774699643254,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07098900500568561,
-    "tickets": 0.04907780099892989
+    "handouts": 0.07111138399341144,
+    "tickets": 0.048731003000284545
    },
    "procedure_calls": {
     "can_reach": 2180,
@@ -3113,23 +3113,23 @@
   {
    "step": 68,
    "seconds": {
-    "mapping": 1.8134000129066408e-05,
-    "update": 0.0007197970116976649,
+    "mapping": 2.070399932563305e-05,
+    "update": 0.0007309209904633462,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08519887439615559,
-    "procedures": 0.0007478286133846268,
-    "decide": 7.886601088102907e-05,
-    "act": 2.315995516255498e-06
+    "query": 0.0842007919709431,
+    "procedures": 0.0007069020211929455,
+    "decide": 8.264300413429737e-05,
+    "act": 2.1900050342082977e-06
    },
-   "total_seconds": 0.08676581602776423,
+   "total_seconds": 0.08574415199109353,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03643909300444648,
-    "tickets": 0.04955876599706244
+    "handouts": 0.03688994300318882,
+    "tickets": 0.04807724599959329
    },
    "procedure_calls": {
     "can_reach": 960,
@@ -3160,23 +3160,23 @@
   {
    "step": 69,
    "seconds": {
-    "mapping": 2.126302570104599e-05,
-    "update": 6.5202999394387e-05,
+    "mapping": 2.3458997020497918e-05,
+    "update": 7.623799319844693e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08223381814605091,
-    "procedures": 0.0005894548521609977,
-    "decide": 8.039500971790403e-05,
-    "act": 3.031003871001303e-06
+    "query": 0.08125188812846318,
+    "procedures": 0.0005312968569342047,
+    "decide": 7.957100751809776e-05,
+    "act": 2.3669999791309237e-06
    },
-   "total_seconds": 0.08299316503689624,
+   "total_seconds": 0.08196481998311356,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.033767964006983675,
-    "tickets": 0.04908906600030605
+    "handouts": 0.033571519001270644,
+    "tickets": 0.048244794001220725
    },
    "procedure_calls": {
     "can_reach": 867,
@@ -3205,23 +3205,23 @@
   {
    "step": 70,
    "seconds": {
-    "mapping": 2.3239015717990696e-05,
-    "update": 0.0004423950013006106,
+    "mapping": 2.397899515926838e-05,
+    "update": 0.0004433689755387604,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11975212254037615,
-    "procedures": 0.0016155964694917202,
-    "decide": 0.00018762399849947542,
-    "act": 2.8669892344623804e-06
+    "query": 0.11740653622837272,
+    "procedures": 0.0014502727863145992,
+    "decide": 0.00019121299555990845,
+    "act": 2.5370100047439337e-06
    },
-   "total_seconds": 0.12202384401462041,
+   "total_seconds": 0.11951790699095,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0728858369984664,
-    "tickets": 0.04851551400497556
+    "handouts": 0.07065620399953332,
+    "tickets": 0.048230247004539706
    },
    "procedure_calls": {
     "can_reach": 2186,
@@ -3250,23 +3250,23 @@
   {
    "step": 71,
    "seconds": {
-    "mapping": 2.4271997972391546e-05,
-    "update": 0.00012807600433006883,
+    "mapping": 2.2216991055756807e-05,
+    "update": 0.00012520900054369122,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08544286996766459,
-    "procedures": 0.0007838590390747413,
-    "decide": 8.371200237888843e-05,
-    "act": 2.344997483305633e-06
+    "query": 0.08417883158836048,
+    "procedures": 0.0007083784294081852,
+    "decide": 8.642599277663976e-05,
+    "act": 2.664004568941891e-06
    },
-   "total_seconds": 0.08646513400890399,
+   "total_seconds": 0.0851237260067137,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03695774600782897,
-    "tickets": 0.04932400200050324
+    "handouts": 0.036466852005105466,
+    "tickets": 0.04847703799896408
    },
    "procedure_calls": {
     "can_reach": 962,
@@ -3297,23 +3297,23 @@
   {
    "step": 72,
    "seconds": {
-    "mapping": 2.2370993974618614e-05,
-    "update": 0.00048154298565350473,
+    "mapping": 2.3486005375161767e-05,
+    "update": 0.0004949350113747641,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08232510705420282,
-    "procedures": 0.0007260059501277283,
-    "decide": 7.021400961093605e-05,
-    "act": 2.4339969968423247e-06
+    "query": 0.08037661580601707,
+    "procedures": 0.0006477722054114565,
+    "decide": 7.385399658232927e-05,
+    "act": 2.9479997465386987e-06
    },
-   "total_seconds": 0.08362767499056645,
+   "total_seconds": 0.08161961102450732,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.033567985010449775,
-    "tickets": 0.04951278000953607
+    "handouts": 0.03307065399712883,
+    "tickets": 0.04798480900353752
    },
    "procedure_calls": {
     "can_reach": 840,
@@ -3344,23 +3344,23 @@
   {
    "step": 73,
    "seconds": {
-    "mapping": 2.2781008738093078e-05,
-    "update": 0.000430635001976043,
+    "mapping": 2.1426982129924e-05,
+    "update": 0.00044673599768429995,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10255186125868931,
-    "procedures": 0.0011761797504732385,
-    "decide": 0.00012665201211348176,
-    "act": 2.619010047055781e-06
+    "query": 0.10110535912099294,
+    "procedures": 0.0010664848814485595,
+    "decide": 0.00013435599976219237,
+    "act": 2.4450127966701984e-06
    },
-   "total_seconds": 0.10431072804203723,
+   "total_seconds": 0.10277680799481459,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05432027600181755,
-    "tickets": 0.04943516799539793
+    "handouts": 0.05386869198991917,
+    "tickets": 0.04833029200381134
    },
    "procedure_calls": {
     "can_reach": 1564,
@@ -3389,23 +3389,23 @@
   {
    "step": 74,
    "seconds": {
-    "mapping": 2.205300552304834e-05,
-    "update": 0.00043489701056387275,
+    "mapping": 2.061401028186083e-05,
+    "update": 0.0004293730016797781,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10298370837699622,
-    "procedures": 0.0010594636260066181,
-    "decide": 0.000125528997159563,
-    "act": 2.1559972083196044e-06
+    "query": 0.10039827956643421,
+    "procedures": 0.0008916704246075824,
+    "decide": 0.00013250600022729486,
+    "act": 2.439002855680883e-06
    },
-   "total_seconds": 0.10462780701345764,
+   "total_seconds": 0.10187488200608641,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05413984500046354,
-    "tickets": 0.04994231498858426
+    "handouts": 0.05288630501308944,
+    "tickets": 0.0484483820036985
    },
    "procedure_calls": {
     "can_reach": 1564,
@@ -3434,23 +3434,23 @@
   {
    "step": 75,
    "seconds": {
-    "mapping": 2.0809995476156473e-05,
-    "update": 0.0004421089979587123,
+    "mapping": 2.128600317519158e-05,
+    "update": 0.0004394660209072754,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08584240693016909,
-    "procedures": 0.0006539860623888671,
-    "decide": 9.64579958235845e-05,
-    "act": 3.4859986044466496e-06
+    "query": 0.08355351109639741,
+    "procedures": 0.0005796348996227607,
+    "decide": 8.998501289170235e-05,
+    "act": 2.4600012693554163e-06
    },
-   "total_seconds": 0.08705925598042086,
+   "total_seconds": 0.0846863430342637,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.037100967005244456,
-    "tickets": 0.04943925200495869
+    "handouts": 0.036102041995036416,
+    "tickets": 0.04807602800428867
    },
    "procedure_calls": {
     "can_reach": 965,
@@ -3479,23 +3479,23 @@
   {
    "step": 76,
    "seconds": {
-    "mapping": 2.06729891942814e-05,
-    "update": 0.0007458320178557187,
+    "mapping": 2.033199416473508e-05,
+    "update": 0.0007371729880105704,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12255478966108058,
-    "procedures": 0.0014862603275105357,
-    "decide": 0.0001864950027083978,
-    "act": 4.140005330555141e-06
+    "query": 0.11753580081858672,
+    "procedures": 0.0012834261870011687,
+    "decide": 0.00018092300160788,
+    "act": 2.6799971237778664e-06
    },
-   "total_seconds": 0.12499819000368007,
+   "total_seconds": 0.11976033498649485,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07200903899502009,
-    "tickets": 0.05207439299556427
+    "handouts": 0.07045378698967397,
+    "tickets": 0.04839745399658568
    },
    "procedure_calls": {
     "can_reach": 2192,
@@ -3524,23 +3524,23 @@
   {
    "step": 77,
    "seconds": {
-    "mapping": 2.114700328093022e-05,
-    "update": 0.0004408710228744894,
+    "mapping": 2.259699977003038e-05,
+    "update": 0.00043911501416005194,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.06635534176893998,
-    "procedures": 0.00025820023438427597,
-    "decide": 1.0895993909798563e-05,
-    "act": 3.398003173060715e-06
+    "query": 0.066175310043036,
+    "procedures": 0.000267172945314087,
+    "decide": 1.1816999176517129e-05,
+    "act": 3.1899980967864394e-06
    },
-   "total_seconds": 0.06708985402656253,
+   "total_seconds": 0.06691920199955348,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.01761027699103579,
-    "tickets": 0.04905969800893217
+    "handouts": 0.017741379007929936,
+    "tickets": 0.04876656700798776
    },
    "procedure_calls": {
     "can_reach": 842,
@@ -3571,23 +3571,23 @@
   {
    "step": 78,
    "seconds": {
-    "mapping": 1.965097908396274e-05,
-    "update": 0.00012480400619097054,
+    "mapping": 2.277601743116975e-05,
+    "update": 0.00013780599692836404,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.06621251822798513,
-    "procedures": 0.0003817047836491838,
-    "decide": 8.189992513507605e-06,
-    "act": 2.173997927457094e-06
+    "query": 0.06523533788276836,
+    "procedures": 0.0003826741158263758,
+    "decide": 7.123002433218062e-06,
+    "act": 2.019995008595288e-06
    },
-   "total_seconds": 0.06674904198735021,
+   "total_seconds": 0.06578773701039609,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.017459194001276046,
-    "tickets": 0.04914730500604492
+    "handouts": 0.01772523100953549,
+    "tickets": 0.047906057006912306
    },
    "procedure_calls": {
     "can_reach": 872,
@@ -3612,23 +3612,23 @@
   {
    "step": 79,
    "seconds": {
-    "mapping": 2.0542996935546398e-05,
-    "update": 6.381199636962265e-05,
+    "mapping": 2.322001091670245e-05,
+    "update": 6.656700861640275e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08229357209347654,
-    "procedures": 0.0005923219141550362,
-    "decide": 7.708001066930592e-05,
-    "act": 3.130000550299883e-06
+    "query": 0.08141162477841135,
+    "procedures": 0.0005488282185979187,
+    "decide": 7.819000165909529e-05,
+    "act": 2.3239990696310997e-06
    },
-   "total_seconds": 0.08305045901215635,
+   "total_seconds": 0.0821307540172711,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03389479499310255,
-    "tickets": 0.04900208600156475
+    "handouts": 0.03394543299509678,
+    "tickets": 0.04802579199895263
    },
    "procedure_calls": {
     "can_reach": 872,
@@ -3657,23 +3657,23 @@
   {
    "step": 80,
    "seconds": {
-    "mapping": 2.0983003196306527e-05,
-    "update": 0.0004427189996931702,
+    "mapping": 2.1173007553443313e-05,
+    "update": 0.00045048601168673486,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08621961635071784,
-    "procedures": 0.0006669686554232612,
-    "decide": 8.3585997344926e-05,
-    "act": 2.9410002753138542e-06
+    "query": 0.08397034009976778,
+    "procedures": 0.0005809819122077897,
+    "decide": 8.55249963933602e-05,
+    "act": 3.0469964258372784e-06
    },
-   "total_seconds": 0.08743681400665082,
+   "total_seconds": 0.08511155302403495,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03751555198687129,
-    "tickets": 0.04939995599852409
+    "handouts": 0.03640285199799109,
+    "tickets": 0.04817664000438526
    },
    "procedure_calls": {
     "can_reach": 967,
@@ -3704,23 +3704,23 @@
   {
    "step": 81,
    "seconds": {
-    "mapping": 2.3903019609861076e-05,
-    "update": 0.0004876509919995442,
+    "mapping": 2.7362984837964177e-05,
+    "update": 0.00047861499479040504,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08614808341371827,
-    "procedures": 0.0007761465822113678,
-    "decide": 8.519300899934024e-05,
-    "act": 2.586995833553374e-06
+    "query": 0.0841428653075127,
+    "procedures": 0.0007099926879163831,
+    "decide": 8.548199548386037e-05,
+    "act": 2.4699984351173043e-06
    },
-   "total_seconds": 0.08752356401237193,
+   "total_seconds": 0.08544678796897642,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03742850599519443,
-    "tickets": 0.049527812996529974
+    "handouts": 0.03685830600443296,
+    "tickets": 0.04802585799188819
    },
    "procedure_calls": {
     "can_reach": 969,
@@ -3751,23 +3751,23 @@
   {
    "step": 82,
    "seconds": {
-    "mapping": 2.500099071767181e-05,
-    "update": 0.00012544401397462934,
+    "mapping": 2.036799560301006e-05,
+    "update": 0.00012351101031526923,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0823686660733074,
-    "procedures": 0.0007337499264394864,
-    "decide": 7.569999434053898e-05,
-    "act": 2.3839966161176562e-06
+    "query": 0.0814273302530637,
+    "procedures": 0.0006772747437935323,
+    "decide": 7.289099448826164e-05,
+    "act": 2.715998562052846e-06
    },
-   "total_seconds": 0.08333094499539584,
+   "total_seconds": 0.08232409099582583,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03403954399982467,
-    "tickets": 0.04909406098886393
+    "handouts": 0.033551583997905254,
+    "tickets": 0.04858356999466196
    },
    "procedure_calls": {
     "can_reach": 846,
@@ -3796,23 +3796,23 @@
   {
    "step": 83,
    "seconds": {
-    "mapping": 1.9679995602928102e-05,
-    "update": 0.0001227369939442724,
+    "mapping": 2.0662002498283982e-05,
+    "update": 0.00012612200225703418,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08244404502329417,
-    "procedures": 0.0006075309793232009,
-    "decide": 7.059299969114363e-05,
-    "act": 2.9039947548881173e-06
+    "query": 0.08137276588240638,
+    "procedures": 0.0005263361235847697,
+    "decide": 7.121299859136343e-05,
+    "act": 2.525004674680531e-06
    },
-   "total_seconds": 0.0832674899866106,
+   "total_seconds": 0.08211962401401252,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.033478538010967895,
-    "tickets": 0.04960083699552342
+    "handouts": 0.03323690099932719,
+    "tickets": 0.04869117199268658
    },
    "procedure_calls": {
     "can_reach": 847,
@@ -3843,23 +3843,23 @@
   {
    "step": 84,
    "seconds": {
-    "mapping": 2.2302003344520926e-05,
-    "update": 0.0004375610005808994,
+    "mapping": 2.3961998522281647e-05,
+    "update": 0.0004445080121513456,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0857729009585455,
-    "procedures": 0.0007733650272712111,
-    "decide": 8.795601024758071e-05,
-    "act": 2.829998265951872e-06
+    "query": 0.08428243051457684,
+    "procedures": 0.0007033464789856225,
+    "decide": 8.705099753569812e-05,
+    "act": 2.876011421903968e-06
    },
-   "total_seconds": 0.08709691499825567,
+   "total_seconds": 0.0855441740131937,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03702727898780722,
-    "tickets": 0.049546921989531256
+    "handouts": 0.03648758999770507,
+    "tickets": 0.04852833099721465
    },
    "procedure_calls": {
     "can_reach": 972,
@@ -3890,23 +3890,23 @@
   {
    "step": 85,
    "seconds": {
-    "mapping": 2.174900146201253e-05,
-    "update": 6.737498915754259e-05,
+    "mapping": 2.0812003640457988e-05,
+    "update": 7.066399848554283e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08202005190833006,
-    "procedures": 0.0005920450785197318,
-    "decide": 7.693300722166896e-05,
-    "act": 2.3830070858821273e-06
+    "query": 0.08112489878840279,
+    "procedures": 0.0005497932288562879,
+    "decide": 8.197200077120215e-05,
+    "act": 3.4469994716346264e-06
    },
-   "total_seconds": 0.0827805369917769,
+   "total_seconds": 0.08185158701962791,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03355876800196711,
-    "tickets": 0.04908376499952283
+    "handouts": 0.03340153400495183,
+    "tickets": 0.04830633400706574
    },
    "procedure_calls": {
     "can_reach": 875,
@@ -3937,23 +3937,23 @@
   {
    "step": 86,
    "seconds": {
-    "mapping": 2.077499812003225e-05,
-    "update": 0.0007198159873951226,
+    "mapping": 2.1019004634581506e-05,
+    "update": 0.0007273969968082383,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10227894280978944,
-    "procedures": 0.001054349195328541,
-    "decide": 0.0001302579912589863,
-    "act": 2.6080087991431355e-06
+    "query": 0.10191429319093004,
+    "procedures": 0.0009287748107453808,
+    "decide": 0.00014943399582989514,
+    "act": 2.89799936581403e-06
    },
-   "total_seconds": 0.10420674899069127,
+   "total_seconds": 0.10374381599831395,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05390130799787585,
-    "tickets": 0.0494595640047919
+    "handouts": 0.05338086499250494,
+    "tickets": 0.049494097009301186
    },
    "procedure_calls": {
     "can_reach": 1574,
@@ -3982,23 +3982,23 @@
   {
    "step": 87,
    "seconds": {
-    "mapping": 2.0110004697926342e-05,
-    "update": 0.0001260390126844868,
+    "mapping": 2.2806983906775713e-05,
+    "update": 0.0001420720072928816,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08227385047939606,
-    "procedures": 0.0005762095242971554,
-    "decide": 7.665800512768328e-05,
-    "act": 2.362008672207594e-06
+    "query": 0.0821514611307066,
+    "procedures": 0.0005219398735789582,
+    "decide": 8.008700388018042e-05,
+    "act": 2.692991984076798e-06
    },
-   "total_seconds": 0.08307522903487552,
+   "total_seconds": 0.08292105999134947,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.033854239009087905,
-    "tickets": 0.04903776200080756
+    "handouts": 0.034054356001433916,
+    "tickets": 0.04867356699833181
    },
    "procedure_calls": {
     "can_reach": 876,
@@ -4029,23 +4029,23 @@
   {
    "step": 88,
    "seconds": {
-    "mapping": 1.8699996871873736e-05,
-    "update": 0.0004258390108589083,
+    "mapping": 2.074097574222833e-05,
+    "update": 0.0004520189977483824,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08335917207296006,
-    "procedures": 0.0007258879340952262,
-    "decide": 7.28919985704124e-05,
-    "act": 3.463996108621359e-06
+    "query": 0.08245301713759545,
+    "procedures": 0.0006441568693844602,
+    "decide": 7.883900252636522e-05,
+    "act": 2.2140011424198747e-06
    },
-   "total_seconds": 0.0846059550094651,
+   "total_seconds": 0.08365098698413931,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03475483899819665,
-    "tickets": 0.04935731001023669
+    "handouts": 0.03407646699633915,
+    "tickets": 0.04904855300264899
    },
    "procedure_calls": {
     "can_reach": 876,
@@ -4076,23 +4076,23 @@
   {
    "step": 89,
    "seconds": {
-    "mapping": 2.2537002223543823e-05,
-    "update": 0.0004724119935417548,
+    "mapping": 2.1332030883058906e-05,
+    "update": 0.00048316200263798237,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11999313248088583,
-    "procedures": 0.0015506195195484906,
-    "decide": 0.00019296999380458146,
-    "act": 2.5810004444792867e-06
+    "query": 0.11990486492868513,
+    "procedures": 0.0013620050740428269,
+    "decide": 0.00020566700550261885,
+    "act": 2.7030037017539144e-06
    },
-   "total_seconds": 0.12223425199044868,
+   "total_seconds": 0.12197973404545337,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07228373100224417,
-    "tickets": 0.04928773100255057
+    "handouts": 0.07196750000002794,
+    "tickets": 0.049333317001583055
    },
    "procedure_calls": {
     "can_reach": 2211,
@@ -4123,23 +4123,23 @@
   {
    "step": 90,
    "seconds": {
-    "mapping": 2.1936008124612272e-05,
-    "update": 0.0004364569904282689,
+    "mapping": 2.4907029001042247e-05,
+    "update": 0.0004709310014732182,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12083893807721324,
-    "procedures": 0.0016701979038771242,
-    "decide": 0.00018124099005945027,
-    "act": 3.545996150933206e-06
+    "query": 0.12071521797042806,
+    "procedures": 0.0014796290342928842,
+    "decide": 0.00018500900478102267,
+    "act": 2.5339977582916617e-06
    },
-   "total_seconds": 0.12315231596585363,
+   "total_seconds": 0.12287822803773452,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07252115198934916,
-    "tickets": 0.05005941100534983
+    "handouts": 0.07306351700390223,
+    "tickets": 0.04919601499568671
    },
    "procedure_calls": {
     "can_reach": 2211,
@@ -4168,23 +4168,23 @@
   {
    "step": 91,
    "seconds": {
-    "mapping": 2.730199776124209e-05,
-    "update": 0.00016909399710129946,
+    "mapping": 2.397400385234505e-05,
+    "update": 0.0001643990253796801,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09231932152761146,
-    "procedures": 0.000826914474600926,
-    "decide": 0.00010022500646300614,
-    "act": 2.7260102797299623e-06
+    "query": 0.09115336586546618,
+    "procedures": 0.0007618191302753985,
+    "decide": 0.00010375499550718814,
+    "act": 2.8840004233643413e-06
    },
-   "total_seconds": 0.09344558301381767,
+   "total_seconds": 0.09221019702090416,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04361624601006042,
-    "tickets": 0.04959159700956661
+    "handouts": 0.042970435999450274,
+    "tickets": 0.04900431100395508
    },
    "procedure_calls": {
     "can_reach": 1190,
@@ -4215,23 +4215,23 @@
   {
    "step": 92,
    "seconds": {
-    "mapping": 2.3182976292446256e-05,
-    "update": 0.00043546500091906637,
+    "mapping": 2.0646999473683536e-05,
+    "update": 0.00044601601257454604,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0832278028537985,
-    "procedures": 0.000715953137842007,
-    "decide": 8.015900675673038e-05,
-    "act": 2.877000952139497e-06
+    "query": 0.08200414694147184,
+    "procedures": 0.0006547680677613243,
+    "decide": 7.9549994552508e-05,
+    "act": 2.710003172978759e-06
    },
-   "total_seconds": 0.08448543997656088,
+   "total_seconds": 0.08320783801900689,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03357842200784944,
-    "tickets": 0.05040191199805122
+    "handouts": 0.03379640200000722,
+    "tickets": 0.04890031000832096
    },
    "procedure_calls": {
     "can_reach": 854,
@@ -4262,23 +4262,23 @@
   {
    "step": 93,
    "seconds": {
-    "mapping": 2.3200002033263445e-05,
-    "update": 0.00043643798562698066,
+    "mapping": 2.4388005840592086e-05,
+    "update": 0.00046564199146814644,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08305230375844985,
-    "procedures": 0.0007219402614282444,
-    "decide": 7.85020092735067e-05,
-    "act": 2.8389913495630026e-06
+    "query": 0.0826651670067804,
+    "procedures": 0.0006502669857582077,
+    "decide": 7.653799548279494e-05,
+    "act": 2.2719905246049166e-06
    },
-   "total_seconds": 0.08431522300816141,
+   "total_seconds": 0.08388427397585474,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03402361899497919,
-    "tickets": 0.0497796170093352
+    "handouts": 0.03390465299889911,
+    "tickets": 0.049439665002864785
    },
    "procedure_calls": {
     "can_reach": 854,
@@ -4309,23 +4309,23 @@
   {
    "step": 94,
    "seconds": {
-    "mapping": 2.2145992261357605e-05,
-    "update": 0.00012394299847073853,
+    "mapping": 2.3086991859599948e-05,
+    "update": 0.00013068098633084446,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.07759261548926588,
-    "procedures": 0.0007617255178047344,
-    "decide": 1.2947988579981029e-05,
-    "act": 2.3500033421441913e-06
+    "query": 0.0767380754405167,
+    "procedures": 0.0007364335615420714,
+    "decide": 1.3487006071954966e-05,
+    "act": 2.36400228459388e-06
    },
-   "total_seconds": 0.07851572798972484,
+   "total_seconds": 0.07764412798860576,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.02925668199895881,
-    "tickets": 0.0491261819988722
+    "handouts": 0.029027251002844423,
+    "tickets": 0.04847883401089348
    },
    "procedure_calls": {
     "can_reach": 2216,
@@ -4356,23 +4356,23 @@
   {
    "step": 95,
    "seconds": {
-    "mapping": 1.9597020582295954e-05,
-    "update": 0.0004338939907029271,
+    "mapping": 2.098198456224054e-05,
+    "update": 0.00045071101339999586,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08610894398589153,
-    "procedures": 0.0007975150074344128,
-    "decide": 8.633401012048125e-05,
-    "act": 3.1009985832497478e-06
+    "query": 0.08524052980646957,
+    "procedures": 0.0007383761985693127,
+    "decide": 8.97490099305287e-05,
+    "act": 2.3869943106547e-06
    },
-   "total_seconds": 0.0874493850133149,
+   "total_seconds": 0.0865427350072423,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0374524569924688,
-    "tickets": 0.04946673399535939
+    "handouts": 0.036972254994907416,
+    "tickets": 0.04902017200947739
    },
    "procedure_calls": {
     "can_reach": 981,
@@ -4403,23 +4403,23 @@
   {
    "step": 96,
    "seconds": {
-    "mapping": 2.2657986846752465e-05,
-    "update": 0.00016063200018834323,
+    "mapping": 1.996800710912794e-05,
+    "update": 0.00016007501108106226,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08333182072965428,
-    "procedures": 0.0007104302785592154,
-    "decide": 7.596200157422572e-05,
-    "act": 3.502005711197853e-06
+    "query": 0.0815371139178751,
+    "procedures": 0.0006506390782305971,
+    "decide": 7.392400584649295e-05,
+    "act": 2.2939930204302073e-06
    },
-   "total_seconds": 0.08430500500253402,
+   "total_seconds": 0.08244401401316281,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03396236999833491,
-    "tickets": 0.05012180299672764
+    "handouts": 0.033167251996928826,
+    "tickets": 0.0490530300012324
    },
    "procedure_calls": {
     "can_reach": 857,
@@ -4450,23 +4450,23 @@
   {
    "step": 97,
    "seconds": {
-    "mapping": 2.363300882279873e-05,
-    "update": 7.623000419698656e-05,
+    "mapping": 2.217400469817221e-05,
+    "update": 7.402697519864887e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08578831813065335,
-    "procedures": 0.0007809428789187223,
-    "decide": 8.445999992545694e-05,
-    "act": 3.402004949748516e-06
+    "query": 0.08437718787172344,
+    "procedures": 0.0007205891306512058,
+    "decide": 9.984499774873257e-05,
+    "act": 2.3859902285039425e-06
    },
-   "total_seconds": 0.08675698602746706,
+   "total_seconds": 0.0852962089702487,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03720626300491858,
-    "tickets": 0.04939245698915329
+    "handouts": 0.03647244600870181,
+    "tickets": 0.0486549070046749
    },
    "procedure_calls": {
     "can_reach": 983,
@@ -4495,23 +4495,23 @@
   {
    "step": 98,
    "seconds": {
-    "mapping": 2.4214008590206504e-05,
-    "update": 6.636700709350407e-05,
+    "mapping": 2.2669017198495567e-05,
+    "update": 7.235299563035369e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0780207952047931,
-    "procedures": 0.0006437827978515998,
-    "decide": 1.0550997103564441e-05,
-    "act": 2.7939968276768923e-06
+    "query": 0.07651888606778812,
+    "procedures": 0.0006149919208837673,
+    "decide": 8.400995284318924e-06,
+    "act": 2.325003151781857e-06
    },
-   "total_seconds": 0.07876850401225965,
+   "total_seconds": 0.07723962599993683,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.029145956999855116,
-    "tickets": 0.049554144992725924
+    "handouts": 0.02875375800067559,
+    "tickets": 0.048414595003123395
    },
    "procedure_calls": {
     "can_reach": 2222,
@@ -4536,23 +4536,23 @@
   {
    "step": 99,
    "seconds": {
-    "mapping": 2.3688990040682256e-05,
-    "update": 8.042399713303894e-05,
+    "mapping": 2.0835999748669565e-05,
+    "update": 7.409600948449224e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10488368834194262,
-    "procedures": 0.0010674346704035997,
-    "decide": 0.0001345000055152923,
-    "act": 2.9910006560385227e-06
+    "query": 0.10180813424813095,
+    "procedures": 0.0009243427630281076,
+    "decide": 0.00014368000847753137,
+    "act": 2.3940083337947726e-06
    },
-   "total_seconds": 0.10619272700569127,
+   "total_seconds": 0.10297348303720355,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05563313700258732,
-    "tickets": 0.05033228499814868
+    "handouts": 0.05359953100560233,
+    "tickets": 0.04914530699898023
    },
    "procedure_calls": {
     "can_reach": 1591,
@@ -4583,23 +4583,23 @@
   {
    "step": 100,
    "seconds": {
-    "mapping": 2.2200998500920832e-05,
-    "update": 7.059899508021772e-05,
+    "mapping": 2.0603998564183712e-05,
+    "update": 7.386301876977086e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08288573328172788,
-    "procedures": 0.0005926857120357454,
-    "decide": 7.73130013840273e-05,
-    "act": 2.3949978640303016e-06
+    "query": 0.08226646891853306,
+    "procedures": 0.0005298950709402561,
+    "decide": 9.115600551012903e-05,
+    "act": 2.829008735716343e-06
    },
-   "total_seconds": 0.08365092698659282,
+   "total_seconds": 0.08298481602105312,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03397842300182674,
-    "tickets": 0.04954024600738194
+    "handouts": 0.033450299000833184,
+    "tickets": 0.04940013999294024
    },
    "procedure_calls": {
     "can_reach": 859,
@@ -4630,23 +4630,23 @@
   {
    "step": 101,
    "seconds": {
-    "mapping": 2.083498111460358e-05,
-    "update": 0.00048625998897477984,
+    "mapping": 2.6000983780249953e-05,
+    "update": 0.0005163260066183284,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12120538736053277,
-    "procedures": 0.001697689644061029,
-    "decide": 0.00019508099649101496,
-    "act": 4.3239997467026114e-06
+    "query": 0.12018778944911901,
+    "procedures": 0.0014718395395902917,
+    "decide": 0.00020606799807865173,
+    "act": 3.0049995984882116e-06
    },
-   "total_seconds": 0.1236095769709209,
+   "total_seconds": 0.12241102897678502,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07304770599876065,
-    "tickets": 0.04988526900706347
+    "handouts": 0.07198577500821557,
+    "tickets": 0.04971064199344255
    },
    "procedure_calls": {
     "can_reach": 2233,
@@ -4677,23 +4677,23 @@
   {
    "step": 102,
    "seconds": {
-    "mapping": 2.016802318394184e-05,
-    "update": 0.0005172439996385947,
+    "mapping": 1.9598999642767012e-05,
+    "update": 0.0005218309815973043,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09425384239875712,
-    "procedures": 0.0009594066068530083,
-    "decide": 9.99830081127584e-05,
-    "act": 2.8260110411792994e-06
+    "query": 0.09172488027252257,
+    "procedures": 0.0008767337276367471,
+    "decide": 0.00010752100206445903,
+    "act": 2.682005288079381e-06
    },
-   "total_seconds": 0.0958534700475866,
+   "total_seconds": 0.09325324698875193,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.044213070010300726,
-    "tickets": 0.05106753400468733
+    "handouts": 0.04289778700331226,
+    "tickets": 0.04976767500920687
    },
    "procedure_calls": {
     "can_reach": 1202,
@@ -4724,23 +4724,23 @@
   {
    "step": 103,
    "seconds": {
-    "mapping": 1.9741011783480644e-05,
-    "update": 0.00044693000381812453,
+    "mapping": 2.1903004380874336e-05,
+    "update": 0.00044476499897427857,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09252790006576106,
-    "procedures": 0.0009715189371490851,
-    "decide": 0.0001141480024671182,
-    "act": 2.706990926526487e-06
+    "query": 0.09206658876792062,
+    "procedures": 0.000896528217708692,
+    "decide": 0.00010956000187434256,
+    "act": 3.44999716617167e-06
    },
-   "total_seconds": 0.0940829450119054,
+   "total_seconds": 0.09354279498802498,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04338662000373006,
-    "tickets": 0.05014796899922658
+    "handouts": 0.04309687799832318,
+    "tickets": 0.04990794499462936
    },
    "procedure_calls": {
     "can_reach": 1203,
@@ -4769,23 +4769,23 @@
   {
    "step": 104,
    "seconds": {
-    "mapping": 2.1284999093040824e-05,
-    "update": 0.0007672519859625027,
+    "mapping": 2.298700565006584e-05,
+    "update": 0.0007610520115122199,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12206833019445185,
-    "procedures": 0.0015742177929496393,
-    "decide": 0.00019599299412220716,
-    "act": 2.9650109354406595e-06
+    "query": 0.12028454689425416,
+    "procedures": 0.0013582821120508015,
+    "decide": 0.0002007870061788708,
+    "act": 3.0340015655383468e-06
    },
-   "total_seconds": 0.12463004297751468,
+   "total_seconds": 0.12263068903121166,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07336370799748693,
-    "tickets": 0.05031441799656022
+    "handouts": 0.0723182910005562,
+    "tickets": 0.04936296799860429
    },
    "procedure_calls": {
     "can_reach": 2238,
@@ -4816,23 +4816,23 @@
   {
    "step": 105,
    "seconds": {
-    "mapping": 2.2451014956459403e-05,
-    "update": 0.00016138699720613658,
+    "mapping": 2.084700099658221e-05,
+    "update": 0.00016210300964303315,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08309125383675564,
-    "procedures": 0.0007269411580637097,
-    "decide": 7.387599907815456e-05,
-    "act": 2.3600005079060793e-06
+    "query": 0.08300474143470638,
+    "procedures": 0.0006711365713272244,
+    "decide": 8.144900493789464e-05,
+    "act": 2.3269967641681433e-06
    },
-   "total_seconds": 0.08407826900656801,
+   "total_seconds": 0.08394260401837528,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0339255949947983,
-    "tickets": 0.049951695997151546
+    "handouts": 0.03410838199488353,
+    "tickets": 0.049633778995485045
    },
    "procedure_calls": {
     "can_reach": 866,
@@ -4863,23 +4863,23 @@
   {
    "step": 106,
    "seconds": {
-    "mapping": 2.0813997252844274e-05,
-    "update": 0.00047591200564056635,
+    "mapping": 2.3015018086880445e-05,
+    "update": 0.0004921369982184842,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08793765043083113,
-    "procedures": 0.0007875085575506091,
-    "decide": 9.878601122181863e-05,
-    "act": 3.330991603434086e-06
+    "query": 0.08584871956554707,
+    "procedures": 0.0007218054379336536,
+    "decide": 0.00010047700197901577,
+    "act": 2.50799348577857e-06
    },
-   "total_seconds": 0.0893240019941004,
+   "total_seconds": 0.08718866201525088,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.037584506993880495,
-    "tickets": 0.051169797996408306
+    "handouts": 0.03707564598880708,
+    "tickets": 0.0495275189896347
    },
    "procedure_calls": {
     "can_reach": 993,
@@ -4908,23 +4908,23 @@
   {
    "step": 107,
    "seconds": {
-    "mapping": 1.9797022105194628e-05,
-    "update": 7.000799814704806e-05,
+    "mapping": 2.1074985852465034e-05,
+    "update": 6.878498243167996e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09369275459903292,
-    "procedures": 0.0009414003870915622,
-    "decide": 0.0001055309985531494,
-    "act": 3.926994395442307e-06
+    "query": 0.09196231473470107,
+    "procedures": 0.0009010242647491395,
+    "decide": 0.00011936201190110296,
+    "act": 2.8080103220418096e-06
    },
-   "total_seconds": 0.09483341799932532,
+   "total_seconds": 0.0930753689899575,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04390326299471781,
-    "tickets": 0.05077408399665728
+    "handouts": 0.04317359300330281,
+    "tickets": 0.049723596006515436
    },
    "procedure_calls": {
     "can_reach": 1208,
@@ -4953,23 +4953,23 @@
   {
    "step": 108,
    "seconds": {
-    "mapping": 2.2953987354412675e-05,
-    "update": 7.291100337170064e-05,
+    "mapping": 2.272699202876538e-05,
+    "update": 7.381399336736649e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08355896807915997,
-    "procedures": 0.0006167709216242656,
-    "decide": 7.567899592686445e-05,
-    "act": 2.658009179867804e-06
+    "query": 0.08289825719839428,
+    "procedures": 0.000553154808585532,
+    "decide": 8.380600775126368e-05,
+    "act": 2.7049973141402006e-06
    },
-   "total_seconds": 0.08434994099661708,
+   "total_seconds": 0.08363446399744134,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03411326900823042,
-    "tickets": 0.05009663899545558
+    "handouts": 0.033671362994937226,
+    "tickets": 0.04981892099021934
    },
    "procedure_calls": {
     "can_reach": 868,
@@ -4998,23 +4998,23 @@
   {
    "step": 109,
    "seconds": {
-    "mapping": 2.0924038835801184e-05,
-    "update": 0.000738300004741177,
+    "mapping": 2.0993975340388715e-05,
+    "update": 0.000718483017408289,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10343143026693724,
-    "procedures": 0.0010489017295185477,
-    "decide": 0.00014139199629426003,
-    "act": 2.521992428228259e-06
+    "query": 0.10255482436332386,
+    "procedures": 0.0009281296224799007,
+    "decide": 0.0001568709994899109,
+    "act": 2.849992597475648e-06
    },
-   "total_seconds": 0.10538347002875526,
+   "total_seconds": 0.10438215197063982,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05406142400170211,
-    "tickets": 0.05044854299922008
+    "handouts": 0.053912073009996675,
+    "tickets": 0.04960219298664015
    },
    "procedure_calls": {
     "can_reach": 1598,
@@ -5043,23 +5043,23 @@
   {
    "step": 110,
    "seconds": {
-    "mapping": 1.9719998817890882e-05,
-    "update": 0.0004353910044301301,
+    "mapping": 2.28709977818653e-05,
+    "update": 0.0004509170103119686,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10348834212345537,
-    "procedures": 0.0010462248756084591,
-    "decide": 0.00013767799828201532,
-    "act": 2.3479951778426766e-06
+    "query": 0.10314200901484583,
+    "procedures": 0.0009372549684485421,
+    "decide": 0.0001572339970152825,
+    "act": 2.4369946913793683e-06
    },
-   "total_seconds": 0.1051297039957717,
+   "total_seconds": 0.10471272298309486,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.054221074999077246,
-    "tickets": 0.05035329998645466
+    "handouts": 0.05436036099854391,
+    "tickets": 0.04976647500006948
    },
    "procedure_calls": {
     "can_reach": 1598,
@@ -5090,23 +5090,23 @@
   {
    "step": 111,
    "seconds": {
-    "mapping": 2.0970968762412667e-05,
-    "update": 0.00047248098417185247,
+    "mapping": 2.3990985937416553e-05,
+    "update": 0.0004961590020684525,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09254438418429345,
-    "procedures": 0.0008147198241204023,
-    "decide": 0.00010225499863736331,
-    "act": 2.9040093068033457e-06
+    "query": 0.09215199676691554,
+    "procedures": 0.0007548462162958458,
+    "decide": 0.00011587201151996851,
+    "act": 2.7650094125419855e-06
    },
-   "total_seconds": 0.09395771496929228,
+   "total_seconds": 0.09354562999214977,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04310746199917048,
-    "tickets": 0.050293791995500214
+    "handouts": 0.043056388007244095,
+    "tickets": 0.04989656100224238
    },
    "procedure_calls": {
     "can_reach": 1212,
@@ -5137,23 +5137,23 @@
   {
    "step": 112,
    "seconds": {
-    "mapping": 2.0630992366932333e-05,
-    "update": 0.0004307740164222196,
+    "mapping": 2.2029009414836764e-05,
+    "update": 0.00043986500531900674,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09834876694367267,
-    "procedures": 0.001089299054001458,
-    "decide": 0.00010400899918749928,
-    "act": 2.796004991978407e-06
+    "query": 0.09200553665868938,
+    "procedures": 0.0008822323434287682,
+    "decide": 0.00011299100879114121,
+    "act": 2.4040054995566607e-06
    },
-   "total_seconds": 0.09999627601064276,
+   "total_seconds": 0.09346505803114269,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04900737300340552,
-    "tickets": 0.05047865099913906
+    "handouts": 0.04328559800342191,
+    "tickets": 0.04963796501397155
    },
    "procedure_calls": {
     "can_reach": 1214,
@@ -5184,23 +5184,23 @@
   {
    "step": 113,
    "seconds": {
-    "mapping": 2.1186016965657473e-05,
-    "update": 0.00048184899787884206,
+    "mapping": 2.176797715947032e-05,
+    "update": 0.0004842490016017109,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10408499893674161,
-    "procedures": 0.0012089690717402846,
-    "decide": 0.0001511269947513938,
-    "act": 2.6719935704022646e-06
+    "query": 0.1033676970837405,
+    "procedures": 0.0010638619132805616,
+    "decide": 0.00014870699669700116,
+    "act": 2.6249908842146397e-06
    },
-   "total_seconds": 0.10595080201164819,
+   "total_seconds": 0.10508890796336345,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.054891717998543754,
-    "tickets": 0.0504413110029418
+    "handouts": 0.05461928198928945,
+    "tickets": 0.04984934900130611
    },
    "procedure_calls": {
     "can_reach": 1600,
@@ -5231,23 +5231,23 @@
   {
    "step": 114,
    "seconds": {
-    "mapping": 2.182500611525029e-05,
-    "update": 6.858901178929955e-05,
+    "mapping": 2.3899992811493576e-05,
+    "update": 7.672599167563021e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08500176180677954,
-    "procedures": 0.0007513642049161717,
-    "decide": 8.307700045406818e-05,
-    "act": 2.425003913231194e-06
+    "query": 0.0839347241417272,
+    "procedures": 0.0007232138596009463,
+    "decide": 8.297899330500513e-05,
+    "act": 3.1710078474134207e-06
    },
-   "total_seconds": 0.08592904203396756,
+   "total_seconds": 0.08484471398696769,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03471100599563215,
-    "tickets": 0.0510926489951089
+    "handouts": 0.03452341700904071,
+    "tickets": 0.05018155099241994
    },
    "procedure_calls": {
     "can_reach": 894,
@@ -5278,23 +5278,23 @@
   {
    "step": 115,
    "seconds": {
-    "mapping": 2.0366001990623772e-05,
-    "update": 0.0007326109916903079,
+    "mapping": 2.3654007236473262e-05,
+    "update": 0.0007461659843102098,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09394168009748682,
-    "procedures": 0.0008317149040522054,
-    "decide": 0.00013741500151809305,
-    "act": 3.2990064937621355e-06
+    "query": 0.09263370513508562,
+    "procedures": 0.0007519008795497939,
+    "decide": 0.00011221598833799362,
+    "act": 2.509012119844556e-06
    },
-   "total_seconds": 0.09566708600323182,
+   "total_seconds": 0.09427015100663994,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04297597000550013,
-    "tickets": 0.05183199899329338
+    "handouts": 0.04337913100607693,
+    "tickets": 0.050038667002809234
    },
    "procedure_calls": {
     "can_reach": 1216,
@@ -5325,23 +5325,23 @@
   {
    "step": 116,
    "seconds": {
-    "mapping": 2.5303990696556866e-05,
-    "update": 8.313100261148065e-05,
+    "mapping": 2.2634005290456116e-05,
+    "update": 7.280099089257419e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08797901682555676,
-    "procedures": 0.0008030301687540486,
-    "decide": 9.282398968935013e-05,
-    "act": 2.617991412989795e-06
+    "query": 0.0862013538426254,
+    "procedures": 0.0007237841637106612,
+    "decide": 9.16680000955239e-05,
+    "act": 2.649001544341445e-06
    },
-   "total_seconds": 0.08898592396872118,
+   "total_seconds": 0.08711489000415895,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03810980200069025,
-    "tickets": 0.05071516300085932
+    "handouts": 0.03762571299739648,
+    "tickets": 0.04933876600989606
    },
    "procedure_calls": {
     "can_reach": 1000,
@@ -5372,23 +5372,23 @@
   {
    "step": 117,
    "seconds": {
-    "mapping": 2.0399005734361708e-05,
-    "update": 0.00016109799616970122,
+    "mapping": 2.0453997422009706e-05,
+    "update": 0.0001602529955562204,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0919961240288103,
-    "procedures": 0.0008133569644996896,
-    "decide": 0.00010596000356599689,
-    "act": 3.1170056900009513e-06
+    "query": 0.09126995505357627,
+    "procedures": 0.000732226952095516,
+    "decide": 0.0001134750054916367,
+    "act": 2.464003046043217e-06
    },
-   "total_seconds": 0.09310005500447005,
+   "total_seconds": 0.0922988280071877,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04211289300292265,
-    "tickets": 0.050732458010315895
+    "handouts": 0.04221003501152154,
+    "tickets": 0.04982865099736955
    },
    "procedure_calls": {
     "can_reach": 1219,
@@ -5419,23 +5419,23 @@
   {
    "step": 118,
    "seconds": {
-    "mapping": 2.1593994460999966e-05,
-    "update": 0.0004585550050251186,
+    "mapping": 2.2405991330742836e-05,
+    "update": 0.00044243498996365815,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.07837131411361042,
-    "procedures": 0.0007712348888162524,
-    "decide": 7.480994099751115e-06,
-    "act": 2.072003553621471e-06
+    "query": 0.0766412644443335,
+    "procedures": 0.000722876560757868,
+    "decide": 8.408009307458997e-06,
+    "act": 1.934997271746397e-06
    },
-   "total_seconds": 0.07963225099956617,
+   "total_seconds": 0.07783932499296498,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0293108579935506,
-    "tickets": 0.04987290299322922
+    "handouts": 0.02853540900105145,
+    "tickets": 0.048866971003008075
    },
    "procedure_calls": {
     "can_reach": 2251,
@@ -5460,23 +5460,23 @@
   {
    "step": 119,
    "seconds": {
-    "mapping": 1.882300421129912e-05,
-    "update": 0.0004246300086379051,
+    "mapping": 2.0261970348656178e-05,
+    "update": 0.0004398270102683455,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08809293613012414,
-    "procedures": 0.0006634538585785776,
-    "decide": 0.000108022999484092,
-    "act": 3.837994881905615e-06
+    "query": 0.08699607699236367,
+    "procedures": 0.0006053890101611614,
+    "decide": 9.675799810793251e-05,
+    "act": 2.4579931050539017e-06
    },
-   "total_seconds": 0.08931170399591792,
+   "total_seconds": 0.08816077097435482,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0376587990031112,
-    "tickets": 0.05111148100695573
+    "handouts": 0.03699001600034535,
+    "tickets": 0.05062250100309029
    },
    "procedure_calls": {
     "can_reach": 1004,
@@ -5507,23 +5507,23 @@
   {
    "step": 120,
    "seconds": {
-    "mapping": 2.360001963097602e-05,
-    "update": 0.0004980520025128499,
+    "mapping": 2.2211999748833477e-05,
+    "update": 0.00048680500185582787,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09453918691724539,
-    "procedures": 0.0008299900800921023,
-    "decide": 0.0001190189941553399,
-    "act": 3.106004442088306e-06
+    "query": 0.09254731691908091,
+    "procedures": 0.0007605910795973614,
+    "decide": 0.00011880500824190676,
+    "act": 3.268010914325714e-06
    },
-   "total_seconds": 0.09601295401807874,
+   "total_seconds": 0.09393899801943917,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.044286677992204204,
-    "tickets": 0.051124012999935076
+    "handouts": 0.043476655991980806,
+    "tickets": 0.04986365399963688
    },
    "procedure_calls": {
     "can_reach": 1221,
@@ -5554,23 +5554,23 @@
   {
    "step": 121,
    "seconds": {
-    "mapping": 2.081402635667473e-05,
-    "update": 0.0007731340156169608,
+    "mapping": 2.2499996703118086e-05,
+    "update": 0.0007620899850735441,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08818282120046206,
-    "procedures": 0.0007899137999629602,
-    "decide": 9.016500553116202e-05,
-    "act": 3.5019911592826247e-06
+    "query": 0.0870851947547635,
+    "procedures": 0.0007558442302979529,
+    "decide": 9.974499698728323e-05,
+    "act": 3.555003786459565e-06
    },
-   "total_seconds": 0.0898603500390891,
+   "total_seconds": 0.08872892896761186,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.037833024995052256,
-    "tickets": 0.0511764279945055
+    "handouts": 0.037424504989758134,
+    "tickets": 0.05045611200330313
    },
    "procedure_calls": {
     "can_reach": 1006,
@@ -5601,23 +5601,23 @@
   {
    "step": 122,
    "seconds": {
-    "mapping": 2.3222019081003964e-05,
-    "update": 0.00012277200585231185,
+    "mapping": 2.6217021513730288e-05,
+    "update": 0.0001427710085408762,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08406940002168994,
-    "procedures": 0.0006020579749019817,
-    "decide": 7.928699778858572e-05,
-    "act": 3.426001057960093e-06
+    "query": 0.0842490400391398,
+    "procedures": 0.0005672379484167323,
+    "decide": 9.339899406768382e-05,
+    "act": 3.287001163698733e-06
    },
-   "total_seconds": 0.08490016502037179,
+   "total_seconds": 0.08508195201284252,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03375762300856877,
-    "tickets": 0.050947936993907206
+    "handouts": 0.03391094598919153,
+    "tickets": 0.05095730499306228
    },
    "procedure_calls": {
     "can_reach": 875,
@@ -5648,23 +5648,23 @@
   {
    "step": 123,
    "seconds": {
-    "mapping": 2.0701001631096005e-05,
-    "update": 0.000494565989356488,
+    "mapping": 2.437399234622717e-05,
+    "update": 0.0005015779897803441,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12443457037443295,
-    "procedures": 0.0017009696166496724,
-    "decide": 0.00019884698849637061,
-    "act": 3.4919939935207367e-06
+    "query": 0.12211525441671256,
+    "procedures": 0.0015509435761487111,
+    "decide": 0.0002287800016347319,
+    "act": 2.67800351139158e-06
    },
-   "total_seconds": 0.1268531459645601,
+   "total_seconds": 0.12442360798013397,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07497662999958266,
-    "tickets": 0.0511940010037506
+    "handouts": 0.07286696799565107,
+    "tickets": 0.05083625399856828
    },
    "procedure_calls": {
     "can_reach": 2261,
@@ -5693,23 +5693,23 @@
   {
    "step": 124,
    "seconds": {
-    "mapping": 2.1185987861827016e-05,
-    "update": 7.299600110854954e-05,
+    "mapping": 2.1097002900205553e-05,
+    "update": 7.121599628590047e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08510921029665042,
-    "procedures": 0.0006281097012106329,
-    "decide": 8.73709941515699e-05,
-    "act": 2.939006662927568e-06
+    "query": 0.0844210530485725,
+    "procedures": 0.0005632569518638775,
+    "decide": 8.339800115209073e-05,
+    "act": 2.6799971237778664e-06
    },
-   "total_seconds": 0.08592181198764592,
+   "total_seconds": 0.08516270099789836,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03426261000277009,
-    "tickets": 0.0515338969998993
+    "handouts": 0.03433664800832048,
+    "tickets": 0.0507080809911713
    },
    "procedure_calls": {
     "can_reach": 878,
@@ -5738,23 +5738,23 @@
   {
    "step": 125,
    "seconds": {
-    "mapping": 2.2545980755239725e-05,
-    "update": 0.00014178699348121881,
+    "mapping": 2.044800203293562e-05,
+    "update": 0.0001289090287173167,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09558905041194521,
-    "procedures": 0.0008314465812873095,
-    "decide": 0.00010908499825745821,
-    "act": 2.5850022211670876e-06
+    "query": 0.09418452237150632,
+    "procedures": 0.0007837576267775148,
+    "decide": 0.00011860400263685733,
+    "act": 2.833010512404144e-06
    },
-   "total_seconds": 0.0966964999679476,
+   "total_seconds": 0.09523907404218335,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04452570500143338,
-    "tickets": 0.05192885600263253
+    "handouts": 0.043991867001750506,
+    "tickets": 0.051008491005632095
    },
    "procedure_calls": {
     "can_reach": 1227,
@@ -5785,23 +5785,23 @@
   {
    "step": 126,
    "seconds": {
-    "mapping": 2.1947009372524917e-05,
-    "update": 0.00073957399581559,
+    "mapping": 2.2211999748833477e-05,
+    "update": 0.0007269140041898936,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08773753707646392,
-    "procedures": 0.0007987499120645225,
-    "decide": 9.382898861076683e-05,
-    "act": 3.0890078051015735e-06
+    "query": 0.08682763097749557,
+    "procedures": 0.0007297460251720622,
+    "decide": 0.00010165199637413025,
+    "act": 2.7049973141402006e-06
    },
-   "total_seconds": 0.08939472599013243,
+   "total_seconds": 0.08841086000029463,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.037446426998940296,
-    "tickets": 0.05112796800676733
+    "handouts": 0.03722218101029284,
+    "tickets": 0.050374116995953955
    },
    "procedure_calls": {
     "can_reach": 1010,
@@ -5832,23 +5832,23 @@
   {
    "step": 127,
    "seconds": {
-    "mapping": 2.321902138646692e-05,
-    "update": 0.00045998099085409194,
+    "mapping": 2.5018001906573772e-05,
+    "update": 0.0004545440024230629,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0939089431631146,
-    "procedures": 0.0009790198382688686,
-    "decide": 0.00011599800200201571,
-    "act": 2.8109934646636248e-06
+    "query": 0.09292119466408622,
+    "procedures": 0.0009156623418675736,
+    "decide": 0.00011846898996736854,
+    "act": 2.478001988492906e-06
    },
-   "total_seconds": 0.0954899720090907,
+   "total_seconds": 0.09443736600223929,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.043881805991986766,
-    "tickets": 0.051037904995610006
+    "handouts": 0.04377996799303219,
+    "tickets": 0.05009095800051
    },
    "procedure_calls": {
     "can_reach": 1229,
@@ -5877,23 +5877,23 @@
   {
    "step": 128,
    "seconds": {
-    "mapping": 2.3069980670697987e-05,
-    "update": 0.00043232698226347566,
+    "mapping": 2.2730979253537953e-05,
+    "update": 0.00044408200483303517,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08822049220907502,
-    "procedures": 0.0006823847943451256,
-    "decide": 8.990200876723975e-05,
-    "act": 2.4120090529322624e-06
+    "query": 0.08756885162438266,
+    "procedures": 0.0006136523734312505,
+    "decide": 9.66160005191341e-05,
+    "act": 2.3790053091943264e-06
    },
-   "total_seconds": 0.08945058798417449,
+   "total_seconds": 0.08874831198772881,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03778966100071557,
-    "tickets": 0.05114942300133407
+    "handouts": 0.0376628929952858,
+    "tickets": 0.05055679701035842
    },
    "procedure_calls": {
     "can_reach": 1012,
@@ -5924,23 +5924,23 @@
   {
    "step": 129,
    "seconds": {
-    "mapping": 2.0193008822388947e-05,
-    "update": 0.0004713569796876982,
+    "mapping": 2.0597013644874096e-05,
+    "update": 0.0004819339810637757,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.2638480490859365,
-    "procedures": 0.0007000698969932273,
-    "decide": 0.00010894199658650905,
-    "act": 4.032001015730202e-06
+    "query": 0.2645571415196173,
+    "procedures": 0.0006554894789587706,
+    "decide": 0.00010663499415386468,
+    "act": 3.44500585924834e-06
    },
-   "total_seconds": 0.26515264296904206,
+   "total_seconds": 0.2658252419932978,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.21220501599600539,
-    "tickets": 0.052402207991690375
+    "handouts": 0.21364921299391426,
+    "tickets": 0.05162248999113217
    },
    "procedure_calls": {
     "can_reach": 1013,
@@ -5971,23 +5971,23 @@
   {
    "step": 130,
    "seconds": {
-    "mapping": 2.577700070105493e-05,
-    "update": 7.892398571129888e-05,
+    "mapping": 2.462400880176574e-05,
+    "update": 7.976900087669492e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0899132615304552,
-    "procedures": 0.0006836374814156443,
-    "decide": 9.817199315875769e-05,
-    "act": 3.164997906424105e-06
+    "query": 0.08868972593336366,
+    "procedures": 0.000635483069345355,
+    "decide": 0.00010201700206380337,
+    "act": 2.5919871404767036e-06
    },
-   "total_seconds": 0.09080293698934838,
+   "total_seconds": 0.08953421100159176,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.038590910990023986,
-    "tickets": 0.052045446005649865
+    "handouts": 0.03802001499570906,
+    "tickets": 0.05134726400137879
    },
    "procedure_calls": {
     "can_reach": 1014,
@@ -6018,23 +6018,23 @@
   {
    "step": 131,
    "seconds": {
-    "mapping": 2.1561994799412787e-05,
-    "update": 0.00044243698357604444,
+    "mapping": 2.4176013539545238e-05,
+    "update": 0.00045541799045167863,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10643156668811571,
-    "procedures": 0.001102085312595591,
-    "decide": 0.00015574198914691806,
-    "act": 2.99699604511261e-06
+    "query": 0.10492818489728961,
+    "procedures": 0.0009759241074789315,
+    "decide": 0.00016249400505330414,
+    "act": 2.505999873392284e-06
    },
-   "total_seconds": 0.10815638996427879,
+   "total_seconds": 0.10654870301368646,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05610298200917896,
-    "tickets": 0.051472860999638215
+    "handouts": 0.055375151001499034,
+    "tickets": 0.05056804099876899
    },
    "procedure_calls": {
     "can_reach": 1615,
@@ -6063,23 +6063,23 @@
   {
    "step": 132,
    "seconds": {
-    "mapping": 2.2263004211708903e-05,
-    "update": 0.0007607659936184064,
+    "mapping": 2.113202936016023e-05,
+    "update": 0.0007628489984199405,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09495853816042654,
-    "procedures": 0.0008431438327534124,
-    "decide": 0.00011436700879130512,
-    "act": 2.578002749942243e-06
+    "query": 0.09448500510188751,
+    "procedures": 0.0007842979102861136,
+    "decide": 0.00012428400805220008,
+    "act": 2.4610053515061736e-06
    },
-   "total_seconds": 0.09670165600255132,
+   "total_seconds": 0.09618002905335743,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.044446412997785956,
-    "tickets": 0.05140294499869924
+    "handouts": 0.04429541299759876,
+    "tickets": 0.051028079993557185
    },
    "procedure_calls": {
     "can_reach": 1231,
@@ -6110,23 +6110,23 @@
   {
    "step": 133,
    "seconds": {
-    "mapping": 2.3006999981589615e-05,
-    "update": 0.000443675002316013,
+    "mapping": 2.24909745156765e-05,
+    "update": 0.000466969984699972,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1061619375977898,
-    "procedures": 0.0010442504135426134,
-    "decide": 0.00018260799697600305,
-    "act": 3.1709932954981923e-06
+    "query": 0.10510953598713968,
+    "procedures": 0.0009828210168052465,
+    "decide": 0.00015887200424913317,
+    "act": 3.3859978429973125e-06
    },
-   "total_seconds": 0.10785864900390152,
+   "total_seconds": 0.1067440759652527,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.055466296995291486,
-    "tickets": 0.05178591801086441
+    "handouts": 0.05508179200114682,
+    "tickets": 0.05105609398742672
    },
    "procedure_calls": {
     "can_reach": 1615,
@@ -6157,23 +6157,23 @@
   {
    "step": 134,
    "seconds": {
-    "mapping": 2.574101381469518e-05,
-    "update": 8.018300286494195e-05,
+    "mapping": 2.2463005734607577e-05,
+    "update": 7.503399683628231e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10618351232551504,
-    "procedures": 0.0010481266654096544,
-    "decide": 0.00017664099868852645,
-    "act": 3.363005816936493e-06
+    "query": 0.10329972046019975,
+    "procedures": 0.0009620735363569111,
+    "decide": 0.00016517900803592056,
+    "act": 2.497996320016682e-06
    },
-   "total_seconds": 0.1075175670121098,
+   "total_seconds": 0.10452696800348349,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05518080299952999,
-    "tickets": 0.05213991399796214
+    "handouts": 0.054022038995753974,
+    "tickets": 0.05029044600087218
    },
    "procedure_calls": {
     "can_reach": 1617,
@@ -6204,23 +6204,23 @@
   {
    "step": 135,
    "seconds": {
-    "mapping": 2.4438981199637055e-05,
-    "update": 7.835800352040678e-05,
+    "mapping": 2.4042004952207208e-05,
+    "update": 7.574900519102812e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10813107807189226,
-    "procedures": 0.0012345429277047515,
-    "decide": 0.00017591100186109543,
-    "act": 3.37399251293391e-06
+    "query": 0.10730164159031119,
+    "procedures": 0.0011483184061944485,
+    "decide": 0.00014508399181067944,
+    "act": 2.8850045055150986e-06
    },
-   "total_seconds": 0.10964770297869109,
+   "total_seconds": 0.10869772000296507,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05789793199801352,
-    "tickets": 0.051536019003833644
+    "handouts": 0.05791005499486346,
+    "tickets": 0.05059163199621253
    },
    "procedure_calls": {
     "can_reach": 2276,
@@ -6249,23 +6249,23 @@
   {
    "step": 136,
    "seconds": {
-    "mapping": 2.2610998712480068e-05,
-    "update": 0.00017814099555835128,
+    "mapping": 2.1050014765933156e-05,
+    "update": 0.00017007699352689087,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.07257114815001842,
-    "procedures": 0.00038059485086705536,
-    "decide": 1.190599869005382e-05,
-    "act": 3.836001269519329e-06
+    "query": 0.07039604110468645,
+    "procedures": 0.0003758039092645049,
+    "decide": 7.68400786910206e-06,
+    "act": 1.9869912648573518e-06
    },
-   "total_seconds": 0.07316823699511588,
+   "total_seconds": 0.07097264302137773,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.021369422000134364,
-    "tickets": 0.051675522001460195
+    "handouts": 0.02081186100258492,
+    "tickets": 0.05000658499193378
    },
    "procedure_calls": {
     "can_reach": 1234,
@@ -6290,23 +6290,23 @@
   {
    "step": 137,
    "seconds": {
-    "mapping": 2.581799344625324e-05,
-    "update": 8.370699652004987e-05,
+    "mapping": 2.426101127639413e-05,
+    "update": 7.042499782983214e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08715935776126571,
-    "procedures": 0.0006342932319967076,
-    "decide": 0.0001231339992955327,
-    "act": 3.706998541019857e-06
+    "query": 0.08477761704125442,
+    "procedures": 0.0005534609517781064,
+    "decide": 9.8998993053101e-05,
+    "act": 2.8380018193274736e-06
    },
-   "total_seconds": 0.08803001698106527,
+   "total_seconds": 0.08552760099701118,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03532485700270627,
-    "tickets": 0.05248657499032561
+    "handouts": 0.0347633869969286,
+    "tickets": 0.05057957900862675
    },
    "procedure_calls": {
     "can_reach": 887,
@@ -6335,23 +6335,23 @@
   {
    "step": 138,
    "seconds": {
-    "mapping": 2.546800533309579e-05,
-    "update": 0.000544078997336328,
+    "mapping": 2.2503998479805887e-05,
+    "update": 0.0004940280196024105,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09814727066259366,
-    "procedures": 0.0008789243292994797,
-    "decide": 0.0001520990044809878,
-    "act": 5.651003448292613e-06
+    "query": 0.09396620596817229,
+    "procedures": 0.0007876970339566469,
+    "decide": 0.0001239340053871274,
+    "act": 2.8719950933009386e-06
    },
-   "total_seconds": 0.09975349200249184,
+   "total_seconds": 0.09539724102069158,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.045313921000342816,
-    "tickets": 0.053775694002979435
+    "handouts": 0.04376104599214159,
+    "tickets": 0.05102845099463593
    },
    "procedure_calls": {
     "can_reach": 1237,
@@ -6380,23 +6380,23 @@
   {
    "step": 139,
    "seconds": {
-    "mapping": 2.7375033823773265e-05,
-    "update": 0.0001848110114224255,
+    "mapping": 2.334199962206185e-05,
+    "update": 0.0001604389981366694,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10973067495797295,
-    "procedures": 0.0011368300474714488,
-    "decide": 0.0001996100036194548,
-    "act": 4.8309884732589126e-06
+    "query": 0.105037703178823,
+    "procedures": 0.0009593618160579354,
+    "decide": 0.0001555030030431226,
+    "act": 3.612003638409078e-06
    },
-   "total_seconds": 0.11128413204278331,
+   "total_seconds": 0.10633996099932119,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05689280400110874,
-    "tickets": 0.05405221998807974
+    "handouts": 0.054595576992142014,
+    "tickets": 0.051443739008391276
    },
    "procedure_calls": {
     "can_reach": 1622,
@@ -6425,23 +6425,23 @@
   {
    "step": 140,
    "seconds": {
-    "mapping": 2.74680060101673e-05,
-    "update": 0.000810377998277545,
+    "mapping": 2.06720142159611e-05,
+    "update": 0.0007468960102414712,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09856567469250876,
-    "procedures": 0.0009106383076868951,
-    "decide": 0.00015193001308944076,
-    "act": 4.946006811223924e-06
+    "query": 0.09430347479064949,
+    "procedures": 0.0007987822027644143,
+    "decide": 0.00011892399925272912,
+    "act": 2.4679902708157897e-06
    },
-   "total_seconds": 0.10047103502438404,
+   "total_seconds": 0.09599121700739488,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04592038299597334,
-    "tickets": 0.05365138500928879
+    "handouts": 0.04399445299350191,
+    "tickets": 0.05116447700129356
    },
    "procedure_calls": {
     "can_reach": 1239,
@@ -6470,23 +6470,23 @@
   {
    "step": 141,
    "seconds": {
-    "mapping": 2.881098771467805e-05,
-    "update": 0.0005528320034500211,
+    "mapping": 2.5300993002019823e-05,
+    "update": 0.0004889310075668618,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08900677523342893,
-    "procedures": 0.0006404937739716843,
-    "decide": 0.00012055000115651637,
-    "act": 4.279005224816501e-06
+    "query": 0.08563228492857888,
+    "procedures": 0.0005829530855407938,
+    "decide": 0.00011572400399018079,
+    "act": 3.1420058803632855e-06
    },
-   "total_seconds": 0.09035374100494664,
+   "total_seconds": 0.0868483360245591,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03602515900274739,
-    "tickets": 0.05370320999645628
+    "handouts": 0.03490498900646344,
+    "tickets": 0.05135895199782681
    },
    "procedure_calls": {
     "can_reach": 913,
@@ -6517,23 +6517,23 @@
   {
    "step": 142,
    "seconds": {
-    "mapping": 2.9853006708435714e-05,
-    "update": 0.0004886149981757626,
+    "mapping": 2.6093999622389674e-05,
+    "update": 0.0004658490215661004,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09233451174804941,
-    "procedures": 0.0008532502397429198,
-    "decide": 0.00011884501145686954,
-    "act": 4.729998181574047e-06
+    "query": 0.08932245407777373,
+    "procedures": 0.0008106889144983143,
+    "decide": 0.00010118600039277226,
+    "act": 3.564986400306225e-06
    },
-   "total_seconds": 0.09382980500231497,
+   "total_seconds": 0.09072983700025361,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.039457676000893116,
-    "tickets": 0.05379323099623434
+    "handouts": 0.03869878999830689,
+    "tickets": 0.05147976799344178
    },
    "procedure_calls": {
     "can_reach": 1024,
@@ -6564,23 +6564,23 @@
   {
    "step": 143,
    "seconds": {
-    "mapping": 2.2603009711019695e-05,
-    "update": 7.692100189160556e-05,
+    "mapping": 2.1949992515146732e-05,
+    "update": 7.44199933251366e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10729279700899497,
-    "procedures": 0.0012283220130484551,
-    "decide": 0.00017715799913275987,
-    "act": 3.6510027712211013e-06
+    "query": 0.10479880857747048,
+    "procedures": 0.0010867554228752851,
+    "decide": 0.00016633199993520975,
+    "act": 2.6070047169923782e-06
    },
-   "total_seconds": 0.10880145203555003,
+   "total_seconds": 0.10615087299083825,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05552240498946048,
-    "tickets": 0.05305498099187389
+    "handouts": 0.05464613900403492,
+    "tickets": 0.0512745489977533
    },
    "procedure_calls": {
     "can_reach": 1623,
@@ -6611,23 +6611,23 @@
   {
    "step": 144,
    "seconds": {
-    "mapping": 2.5048007955774665e-05,
-    "update": 0.0005299850163282827,
+    "mapping": 2.18669738387689e-05,
+    "update": 0.0004963590181432664,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12674477419932373,
-    "procedures": 0.0016221458063228056,
-    "decide": 0.000234783990890719,
-    "act": 4.082001396454871e-06
+    "query": 0.12372821015014779,
+    "procedures": 0.0014247748476918787,
+    "decide": 0.00022441499459091574,
+    "act": 2.6990019250661135e-06
    },
-   "total_seconds": 0.12916081902221777,
+   "total_seconds": 0.12589832498633768,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0751675319916103,
-    "tickets": 0.05326664200401865
+    "handouts": 0.07377968399669044,
+    "tickets": 0.05142447000253014
    },
    "procedure_calls": {
     "can_reach": 2287,
@@ -6658,23 +6658,23 @@
   {
    "step": 145,
    "seconds": {
-    "mapping": 2.6281995815224946e-05,
-    "update": 0.00018519599689170718,
+    "mapping": 2.1272004232741892e-05,
+    "update": 0.00015694499597884715,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08852171404578257,
-    "procedures": 0.0006174709560582414,
-    "decide": 0.00010386299982201308,
-    "act": 3.812994691543281e-06
+    "query": 0.08453415879921522,
+    "procedures": 0.0005509221809916198,
+    "decide": 8.664799679536372e-05,
+    "act": 2.9529910534620285e-06
    },
-   "total_seconds": 0.0894583389890613,
+   "total_seconds": 0.08535289896826725,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.035360201000003144,
-    "tickets": 0.05387818400049582
+    "handouts": 0.033851526997750625,
+    "tickets": 0.05129504299839027
    },
    "procedure_calls": {
     "can_reach": 895,
@@ -6705,23 +6705,23 @@
   {
    "step": 146,
    "seconds": {
-    "mapping": 2.565501199569553e-05,
-    "update": 8.60739964991808e-05,
+    "mapping": 2.248499367851764e-05,
+    "update": 7.376499706879258e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12746828178933356,
-    "procedures": 0.0016337342094630003,
-    "decide": 0.0002481300034560263,
-    "act": 3.838009433820844e-06
+    "query": 0.12331979110604152,
+    "procedures": 0.0014093118952587247,
+    "decide": 0.0002249550016131252,
+    "act": 2.9779912438243628e-06
    },
-   "total_seconds": 0.12946571302018128,
+   "total_seconds": 0.1250532859849045,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07481095599359833,
-    "tickets": 0.05435623601078987
+    "handouts": 0.07349699900078122,
+    "tickets": 0.05126408999785781
    },
    "procedure_calls": {
     "can_reach": 2293,
@@ -6750,23 +6750,23 @@
   {
    "step": 147,
    "seconds": {
-    "mapping": 2.93560151476413e-05,
-    "update": 8.933599747251719e-05,
+    "mapping": 2.2971013095229864e-05,
+    "update": 7.597700459882617e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12698395643383265,
-    "procedures": 0.0016536375624127686,
-    "decide": 0.0002545789902796969,
-    "act": 3.1109957490116358e-06
+    "query": 0.1226920778863132,
+    "procedures": 0.001393443119013682,
+    "decide": 0.00021313900651875883,
+    "act": 2.5240005925297737e-06
    },
-   "total_seconds": 0.12901397599489428,
+   "total_seconds": 0.12440013203013223,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07505961100105196,
-    "tickets": 0.05367126999772154
+    "handouts": 0.07272876500792336,
+    "tickets": 0.051427141996100545
    },
    "procedure_calls": {
     "can_reach": 2297,
@@ -6795,23 +6795,23 @@
   {
    "step": 148,
    "seconds": {
-    "mapping": 2.699898323044181e-05,
-    "update": 0.0005287919921102002,
+    "mapping": 2.4046021280810237e-05,
+    "update": 0.0004989099834347144,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08828840852947906,
-    "procedures": 0.0006365684675984085,
-    "decide": 0.0001004650112008676,
-    "act": 5.053007043898106e-06
+    "query": 0.08485458794166334,
+    "procedures": 0.000553839054191485,
+    "decide": 9.376399975735694e-05,
+    "act": 2.69600423052907e-06
    },
-   "total_seconds": 0.08958628599066287,
+   "total_seconds": 0.08602784300455824,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03493796399561688,
-    "tickets": 0.0540915129968198
+    "handouts": 0.034433587003150024,
+    "tickets": 0.05104284000117332
    },
    "procedure_calls": {
     "can_reach": 896,
@@ -6842,23 +6842,23 @@
   {
    "step": 149,
    "seconds": {
-    "mapping": 2.4878987460397184e-05,
-    "update": 8.290598634630442e-05,
+    "mapping": 2.09949939744547e-05,
+    "update": 7.156701758503914e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08857906788762193,
-    "procedures": 0.0006496941059594974,
-    "decide": 9.873999806586653e-05,
-    "act": 3.8869911804795265e-06
+    "query": 0.08481836479040794,
+    "procedures": 0.000567096212762408,
+    "decide": 8.877000072970986e-05,
+    "act": 3.0170049285516143e-06
    },
-   "total_seconds": 0.08943917395663448,
+   "total_seconds": 0.0855698100203881,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.035833030997309834,
-    "tickets": 0.05344493899610825
+    "handouts": 0.03445775099680759,
+    "tickets": 0.05096028400294017
    },
    "procedure_calls": {
     "can_reach": 918,
@@ -6889,23 +6889,23 @@
   {
    "step": 150,
    "seconds": {
-    "mapping": 2.2034015273675323e-05,
-    "update": 0.0007581380050396547,
+    "mapping": 2.134400710929185e-05,
+    "update": 0.0007535659824497998,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10687532662996091,
-    "procedures": 0.0011075843794969842,
-    "decide": 0.00016287399921566248,
-    "act": 4.308007191866636e-06
+    "query": 0.10567155557509977,
+    "procedures": 0.000967453423072584,
+    "decide": 0.000162765005370602,
+    "act": 3.597000613808632e-06
    },
-   "total_seconds": 0.10893026503617875,
+   "total_seconds": 0.10758028099371586,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.055612092997762375,
-    "tickets": 0.05242272400937509
+    "handouts": 0.05502884699671995,
+    "tickets": 0.051655082002980635
    },
    "procedure_calls": {
     "can_reach": 1627,
@@ -6936,23 +6936,23 @@
   {
    "step": 151,
    "seconds": {
-    "mapping": 2.5082015781663358e-05,
-    "update": 0.0004573450132738799,
+    "mapping": 2.3966989829204977e-05,
+    "update": 0.0004660300037357956,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10708724800497293,
-    "procedures": 0.0010587669967208058,
-    "decide": 9.894996765069664e-06,
-    "act": 2.5369954528287053e-06
+    "query": 0.10210106185695622,
+    "procedures": 0.0009102221374632791,
+    "decide": 7.837996236048639e-06,
+    "act": 2.191998646594584e-06
    },
-   "total_seconds": 0.10864087402296718,
+   "total_seconds": 0.10351131098286714,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.055922593994182535,
-    "tickets": 0.052293733999249525
+    "handouts": 0.05366296699503437,
+    "tickets": 0.049394783010939136
    },
    "procedure_calls": {
     "can_reach": 1627,
@@ -6977,23 +6977,23 @@
   {
    "step": 152,
    "seconds": {
-    "mapping": 2.6496985810808837e-05,
-    "update": 0.0004672019713325426,
+    "mapping": 2.372699964325875e-05,
+    "update": 0.00045528401096817106,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09781853866297752,
-    "procedures": 0.0008730253321118653,
-    "decide": 0.0001346789940726012,
-    "act": 3.0950031941756606e-06
+    "query": 0.09941280282509979,
+    "procedures": 0.000805034171207808,
+    "decide": 0.00013512400619219989,
+    "act": 3.326000296510756e-06
    },
-   "total_seconds": 0.09932303694949951,
+   "total_seconds": 0.10083529801340774,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04518572000961285,
-    "tickets": 0.05356727199978195
+    "handouts": 0.04452191200107336,
+    "tickets": 0.05576141600613482
    },
    "procedure_calls": {
     "can_reach": 1253,
@@ -7022,23 +7022,23 @@
   {
    "step": 153,
    "seconds": {
-    "mapping": 2.6502995751798153e-05,
-    "update": 0.0004604419955285266,
+    "mapping": 2.3844011593610048e-05,
+    "update": 0.0004637480160454288,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08796600726782344,
-    "procedures": 0.000639195743133314,
-    "decide": 0.00010654999641701579,
-    "act": 3.7600111681967974e-06
+    "query": 0.08563032015808858,
+    "procedures": 0.0005693838465958834,
+    "decide": 8.841398812364787e-05,
+    "act": 3.302004188299179e-06
    },
-   "total_seconds": 0.0892024580098223,
+   "total_seconds": 0.08677901202463545,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03479390399297699,
-    "tickets": 0.05387645099835936
+    "handouts": 0.034382871992420405,
+    "tickets": 0.051864338005543686
    },
    "procedure_calls": {
     "can_reach": 896,
@@ -7069,23 +7069,23 @@
   {
    "step": 154,
    "seconds": {
-    "mapping": 2.6142995920963585e-05,
-    "update": 0.0008001660171430558,
+    "mapping": 2.309899718966335e-05,
+    "update": 0.000741071009542793,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10873455037653912,
-    "procedures": 0.0011132786312373355,
-    "decide": 0.0001809599925763905,
-    "act": 5.289999535307288e-06
+    "query": 0.10498838208150119,
+    "procedures": 0.0009626399114495143,
+    "decide": 0.00016460500773973763,
+    "act": 3.844004822894931e-06
    },
-   "total_seconds": 0.11086038801295217,
+   "total_seconds": 0.10688364101224579,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.056428429001243785,
-    "tickets": 0.05346994200954214
+    "handouts": 0.05450906000623945,
+    "tickets": 0.051473592000547796
    },
    "procedure_calls": {
     "can_reach": 1627,
@@ -7116,23 +7116,23 @@
   {
    "step": 155,
    "seconds": {
-    "mapping": 2.5505010853521526e-05,
-    "update": 8.048498420976102e-05,
+    "mapping": 2.117999247275293e-05,
+    "update": 7.228901085909456e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12875006545800716,
-    "procedures": 0.0016591595340287313,
-    "decide": 0.00022122100926935673,
-    "act": 4.429995897226036e-06
+    "query": 0.12400286419142503,
+    "procedures": 0.0014368908014148474,
+    "decide": 0.00019048400281462818,
+    "act": 3.031993401236832e-06
    },
-   "total_seconds": 0.13074086599226575,
+   "total_seconds": 0.1257267399923876,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0762395350029692,
-    "tickets": 0.05426207299751695
+    "handouts": 0.07383731500885915,
+    "tickets": 0.05166736399405636
    },
    "procedure_calls": {
     "can_reach": 2304,
@@ -7163,23 +7163,23 @@
   {
    "step": 156,
    "seconds": {
-    "mapping": 2.977998519781977e-05,
-    "update": 0.00015423900913447142,
+    "mapping": 2.3954999051056802e-05,
+    "update": 0.00013162499817553908,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10883973599993624,
-    "procedures": 0.001242568003362976,
-    "decide": 0.00016618199879303575,
-    "act": 3.697001375257969e-06
+    "query": 0.10566622309852391,
+    "procedures": 0.0010884668881772086,
+    "decide": 0.00014376699982676655,
+    "act": 2.8570066206157207e-06
    },
-   "total_seconds": 0.1104362019977998,
+   "total_seconds": 0.1070568939903751,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05649991000245791,
-    "tickets": 0.053688604006310925
+    "handouts": 0.05538245399657171,
+    "tickets": 0.05143748900445644
    },
    "procedure_calls": {
     "can_reach": 1628,
@@ -7210,23 +7210,23 @@
   {
    "step": 157,
    "seconds": {
-    "mapping": 2.2945008822716773e-05,
-    "update": 0.0007656700181541964,
+    "mapping": 2.461101394146681e-05,
+    "update": 0.0007620749966008589,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10903119506838266,
-    "procedures": 0.0010991789313266054,
-    "decide": 0.00018011000065598637,
-    "act": 4.97099244967103e-06
+    "query": 0.1061415224103257,
+    "procedures": 0.0009664265817264095,
+    "decide": 0.0001464870001655072,
+    "act": 3.2340030884370208e-06
    },
-   "total_seconds": 0.11110407001979183,
+   "total_seconds": 0.10804435600584839,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05635443999199197,
-    "tickets": 0.053853703997447155
+    "handouts": 0.05516942399844993,
+    "tickets": 0.052005903009558097
    },
    "procedure_calls": {
     "can_reach": 1628,
@@ -7257,23 +7257,23 @@
   {
    "step": 158,
    "seconds": {
-    "mapping": 3.398701664991677e-05,
-    "update": 9.764998685568571e-05,
+    "mapping": 2.5708999601192772e-05,
+    "update": 7.664899749215692e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12790412666799966,
-    "procedures": 0.001634879328776151,
-    "decide": 0.00022359601280186325,
-    "act": 3.6860001273453236e-06
+    "query": 0.12392295814061072,
+    "procedures": 0.0014121148560661823,
+    "decide": 0.00020469000446610153,
+    "act": 2.629996743053198e-06
    },
-   "total_seconds": 0.12989792501321062,
+   "total_seconds": 0.1256447509949794,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07605064500239678,
-    "tickets": 0.053562685003271326
+    "handouts": 0.07350165300886147,
+    "tickets": 0.05189262400381267
    },
    "procedure_calls": {
     "can_reach": 2311,
@@ -7302,23 +7302,23 @@
   {
    "step": 159,
    "seconds": {
-    "mapping": 2.4825989385135472e-05,
-    "update": 8.057800005190074e-05,
+    "mapping": 2.4469016352668405e-05,
+    "update": 7.335601549129933e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08866534507251345,
-    "procedures": 0.000636994926026091,
-    "decide": 0.00010819300950970501,
-    "act": 3.6410056054592133e-06
+    "query": 0.08528959592513274,
+    "procedures": 0.0005632140673696995,
+    "decide": 8.908800373319536e-05,
+    "act": 2.5030021788552403e-06
    },
-   "total_seconds": 0.08951957800309174,
+   "total_seconds": 0.08604222603025846,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.035432666991255246,
-    "tickets": 0.05397841001104098
+    "handouts": 0.03452223900239915,
+    "tickets": 0.051399895004578866
    },
    "procedure_calls": {
     "can_reach": 899,
@@ -7349,23 +7349,23 @@
   {
    "step": 160,
    "seconds": {
-    "mapping": 2.5941000785678625e-05,
-    "update": 0.0004921430081594735,
+    "mapping": 2.324300294276327e-05,
+    "update": 0.00045750802382826805,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10834121667721774,
-    "procedures": 0.0010942973312921822,
-    "decide": 0.00016437200247310102,
-    "act": 3.819004632532597e-06
+    "query": 0.10517305722169112,
+    "procedures": 0.0009509417868684977,
+    "decide": 0.0001491820003138855,
+    "act": 2.9890070436522365e-06
    },
-   "total_seconds": 0.11012178902456071,
+   "total_seconds": 0.10675692104268819,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.055721258991979994,
-    "tickets": 0.0537658579996787
+    "handouts": 0.05438679600774776,
+    "tickets": 0.05177320999791846
    },
    "procedure_calls": {
     "can_reach": 1630,
@@ -7396,23 +7396,23 @@
   {
    "step": 161,
    "seconds": {
-    "mapping": 2.5226996513083577e-05,
-    "update": 0.0005168770003365353,
+    "mapping": 2.739299088716507e-05,
+    "update": 0.0005172280216356739,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10881279240129516,
-    "procedures": 0.0011088905885117128,
-    "decide": 0.00015411899948958308,
-    "act": 4.315006663091481e-06
+    "query": 0.10577992221806198,
+    "procedures": 0.0009549677924951538,
+    "decide": 0.00014073599595576525,
+    "act": 2.7429923648014665e-06
    },
-   "total_seconds": 0.11062222099280916,
+   "total_seconds": 0.10742299001140054,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05670525900495704,
-    "tickets": 0.05329748199437745
+    "handouts": 0.054769837006460875,
+    "tickets": 0.05202019200078212
    },
    "procedure_calls": {
     "can_reach": 1631,
@@ -7443,23 +7443,23 @@
   {
    "step": 162,
    "seconds": {
-    "mapping": 2.2612002794630826e-05,
-    "update": 0.00016914198931772262,
+    "mapping": 2.033199416473508e-05,
+    "update": 0.0001621000119484961,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08689748623874038,
-    "procedures": 0.0006622527580475435,
-    "decide": 8.053000783547759e-05,
-    "act": 3.541994374245405e-06
+    "query": 0.08406575469416566,
+    "procedures": 0.0006016213301336393,
+    "decide": 6.423098966479301e-05,
+    "act": 3.0410010367631912e-06
    },
-   "total_seconds": 0.08783556499111,
+   "total_seconds": 0.08491708002111409,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03428821299166884,
-    "tickets": 0.05335138499503955
+    "handouts": 0.03294397200806998,
+    "tickets": 0.051768844001344405
    },
    "procedure_calls": {
     "can_reach": 1261,
@@ -7490,23 +7490,23 @@
   {
    "step": 163,
    "seconds": {
-    "mapping": 2.5218003429472446e-05,
-    "update": 0.0005321820062818006,
+    "mapping": 2.216199936810881e-05,
+    "update": 0.0004837419983232394,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11022196730482392,
-    "procedures": 0.001237577700521797,
-    "decide": 0.00017734899302013218,
-    "act": 4.404995706863701e-06
+    "query": 0.10441568664100487,
+    "procedures": 0.0010790743544930592,
+    "decide": 0.00013621000107377768,
+    "act": 2.5659974198788404e-06
    },
-   "total_seconds": 0.11219869900378399,
+   "total_seconds": 0.10613944099168293,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.056900313997175545,
-    "tickets": 0.054616890993202105
+    "handouts": 0.05428904699510895,
+    "tickets": 0.051233568010502495
    },
    "procedure_calls": {
     "can_reach": 1633,
@@ -7537,23 +7537,23 @@
   {
    "step": 164,
    "seconds": {
-    "mapping": 3.1428033253178e-05,
-    "update": 9.184400551021099e-05,
+    "mapping": 2.3160013370215893e-05,
+    "update": 7.298901618923992e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10910657524073031,
-    "procedures": 0.0011024317500414327,
-    "decide": 0.00016596999194007367,
-    "act": 6.634989404119551e-06
+    "query": 0.10441685697878711,
+    "procedures": 0.0009541340114083141,
+    "decide": 0.00013659900287166238,
+    "act": 2.4659966584295034e-06
    },
-   "total_seconds": 0.11050488401087932,
+   "total_seconds": 0.10560620501928497,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.056312689994229004,
-    "tickets": 0.05397585600439925
+    "handouts": 0.05399777200364042,
+    "tickets": 0.051417383991065435
    },
    "procedure_calls": {
     "can_reach": 1635,
@@ -7584,23 +7584,23 @@
   {
    "step": 165,
    "seconds": {
-    "mapping": 3.177000326104462e-05,
-    "update": 9.807100286707282e-05,
+    "mapping": 2.229200617875904e-05,
+    "update": 7.21420074114576e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08982450106122997,
-    "procedures": 0.0006721069366903976,
-    "decide": 0.00010106299305334687,
-    "act": 4.589994205161929e-06
+    "query": 0.08518094915780239,
+    "procedures": 0.000590391835430637,
+    "decide": 8.405900734942406e-05,
+    "act": 2.4170003598555923e-06
    },
-   "total_seconds": 0.09073210199130699,
+   "total_seconds": 0.08595225101453252,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03626259000157006,
-    "tickets": 0.05432598800689448
+    "handouts": 0.03462315599608701,
+    "tickets": 0.05119298199133482
    },
    "procedure_calls": {
     "can_reach": 927,
@@ -7631,23 +7631,23 @@
   {
    "step": 166,
    "seconds": {
-    "mapping": 2.7660978958010674e-05,
-    "update": 0.00015390798216685653,
+    "mapping": 2.162701275665313e-05,
+    "update": 0.00012458099809009582,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.07514224901387934,
-    "procedures": 0.00041273198439739645,
-    "decide": 1.1037001968361437e-05,
-    "act": 3.0709925340488553e-06
+    "query": 0.07028156403976027,
+    "procedures": 0.0003908419603249058,
+    "decide": 7.251001079566777e-06,
+    "act": 1.9059953046962619e-06
    },
-   "total_seconds": 0.07575065795390401,
+   "total_seconds": 0.07082777100731619,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.02178142699995078,
-    "tickets": 0.0538451430038549
+    "handouts": 0.020633813997847028,
+    "tickets": 0.05007131899765227
    },
    "procedure_calls": {
     "can_reach": 1265,
@@ -7672,23 +7672,23 @@
   {
    "step": 167,
    "seconds": {
-    "mapping": 2.623400359880179e-05,
-    "update": 0.0005425209965324029,
+    "mapping": 2.0652994862757623e-05,
+    "update": 0.0004928250127704814,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11016353161539882,
-    "procedures": 0.0011672983964672312,
-    "decide": 0.00017057399963960052,
-    "act": 4.702000296674669e-06
+    "query": 0.10562514288176317,
+    "procedures": 0.0009623301157262176,
+    "decide": 0.00013832499098498374,
+    "act": 3.1139934435486794e-06
    },
-   "total_seconds": 0.11207486101193354,
+   "total_seconds": 0.10724238998955116,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05725474799692165,
-    "tickets": 0.05409873199823778
+    "handouts": 0.05492075000074692,
+    "tickets": 0.051680743010365404
    },
    "procedure_calls": {
     "can_reach": 1638,
@@ -7717,23 +7717,23 @@
   {
    "step": 168,
    "seconds": {
-    "mapping": 2.3347005480900407e-05,
-    "update": 0.0004684849991463125,
+    "mapping": 2.151999797206372e-05,
+    "update": 0.00043805601308122277,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08907123882090673,
-    "procedures": 0.0006413081719074398,
-    "decide": 9.870000940281898e-05,
-    "act": 3.7389982026070356e-06
+    "query": 0.08528586613829248,
+    "procedures": 0.0005551708745770156,
+    "decide": 8.217600407078862e-05,
+    "act": 2.4379987735301256e-06
    },
-   "total_seconds": 0.09030681800504681,
+   "total_seconds": 0.0863852270267671,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03515447799873073,
-    "tickets": 0.054633819992886856
+    "handouts": 0.03438101000210736,
+    "tickets": 0.05150374199729413
    },
    "procedure_calls": {
     "can_reach": 905,
@@ -7764,23 +7764,23 @@
   {
    "step": 169,
    "seconds": {
-    "mapping": 2.775198663584888e-05,
-    "update": 0.00014697799633722752,
+    "mapping": 2.0278006559237838e-05,
+    "update": 0.0001212539937114343,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09228306793374941,
-    "procedures": 0.0008780870703049004,
-    "decide": 0.00012278699432499707,
-    "act": 3.6829878808930516e-06
+    "query": 0.09039047197438776,
+    "procedures": 0.0008041280234465376,
+    "decide": 0.00011516299855429679,
+    "act": 2.9410002753138542e-06
    },
-   "total_seconds": 0.09346235496923327,
+   "total_seconds": 0.09145423599693459,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03929576399968937,
-    "tickets": 0.05392167199170217
+    "handouts": 0.03857493499526754,
+    "tickets": 0.052666464005596936
    },
    "procedure_calls": {
     "can_reach": 1047,
@@ -7811,23 +7811,23 @@
   {
    "step": 170,
    "seconds": {
-    "mapping": 2.437799412291497e-05,
-    "update": 0.0001807450025808066,
+    "mapping": 2.3721004254184663e-05,
+    "update": 0.00017235599807463586,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09259009527158923,
-    "procedures": 0.0007496557373087853,
-    "decide": 0.00011606099724303931,
-    "act": 4.63899050373584e-06
+    "query": 0.09002679330296814,
+    "procedures": 0.000664732709992677,
+    "decide": 9.769499592948705e-05,
+    "act": 2.5209883460775018e-06
    },
-   "total_seconds": 0.09366557399334852,
+   "total_seconds": 0.0909878189995652,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.039416565996361896,
-    "tickets": 0.05399708199547604
+    "handouts": 0.038424204001785256,
+    "tickets": 0.05231249799544457
    },
    "procedure_calls": {
     "can_reach": 1049,
@@ -7858,23 +7858,23 @@
   {
    "step": 171,
    "seconds": {
-    "mapping": 2.8932990971952677e-05,
-    "update": 0.0001484680105932057,
+    "mapping": 2.3868997232057154e-05,
+    "update": 0.00013074098387733102,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09251034006592818,
-    "procedures": 0.0007411729457089677,
-    "decide": 0.0001208520116051659,
-    "act": 4.769011866301298e-06
+    "query": 0.08938038459746167,
+    "procedures": 0.000651624402962625,
+    "decide": 9.199300257023424e-05,
+    "act": 2.5429908419027925e-06
    },
-   "total_seconds": 0.09355453503667377,
+   "total_seconds": 0.09028115497494582,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.038964232997386716,
-    "tickets": 0.054350570993847214
+    "handouts": 0.038174538989551365,
+    "tickets": 0.05189732598955743
    },
    "procedure_calls": {
     "can_reach": 1051,
@@ -7905,23 +7905,23 @@
   {
    "step": 172,
    "seconds": {
-    "mapping": 2.5733999791555107e-05,
-    "update": 0.0004801559989573434,
+    "mapping": 2.180298906750977e-05,
+    "update": 0.00044694099051412195,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.12842776958132163,
-    "procedures": 0.001780563427018933,
-    "decide": 0.0002500020054867491,
-    "act": 4.646004526875913e-06
+    "query": 0.12501039273047354,
+    "procedures": 0.0015411552594741806,
+    "decide": 0.00019598299695644528,
+    "act": 2.692002453841269e-06
    },
-   "total_seconds": 0.13096887101710308,
+   "total_seconds": 0.12721896696893964,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07570806400326546,
-    "tickets": 0.05456392400083132
+    "handouts": 0.0745207330037374,
+    "tickets": 0.05206826799258124
    },
    "procedure_calls": {
     "can_reach": 2328,
@@ -7950,23 +7950,23 @@
   {
    "step": 173,
    "seconds": {
-    "mapping": 2.4322987883351743e-05,
-    "update": 0.0004858250031247735,
+    "mapping": 2.2321997676044703e-05,
+    "update": 0.0004484289966057986,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09819046425400302,
-    "procedures": 0.0008942127460613847,
-    "decide": 0.00013758499699179083,
-    "act": 4.8309884732589126e-06
+    "query": 0.09495309632620774,
+    "procedures": 0.0008114716620184481,
+    "decide": 0.00010883600043598562,
+    "act": 3.208988346159458e-06
    },
-   "total_seconds": 0.09973724097653758,
+   "total_seconds": 0.09634736397129018,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04567972000222653,
-    "tickets": 0.05350206099683419
+    "handouts": 0.04436364900902845,
+    "tickets": 0.05146458600938786
    },
    "procedure_calls": {
     "can_reach": 1273,
@@ -7997,23 +7997,23 @@
   {
    "step": 174,
    "seconds": {
-    "mapping": 2.9835995519533753e-05,
-    "update": 8.5528998170048e-05,
+    "mapping": 2.621699240989983e-05,
+    "update": 7.198101957328618e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.13012290696497075,
-    "procedures": 0.001840030017774552,
-    "decide": 0.0002450090105412528,
-    "act": 4.782996256835759e-06
+    "query": 0.12420590232068207,
+    "procedures": 0.0015433206863235682,
+    "decide": 0.00020450199372135103,
+    "act": 2.8220092644914985e-06
    },
-   "total_seconds": 0.13232809398323298,
+   "total_seconds": 0.12605474502197467,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07718480098992586,
-    "tickets": 0.05484523400082253
+    "handouts": 0.07420998699672054,
+    "tickets": 0.05157785500341561
    },
    "procedure_calls": {
     "can_reach": 2332,
@@ -8042,23 +8042,23 @@
   {
    "step": 175,
    "seconds": {
-    "mapping": 2.9292990802787244e-05,
-    "update": 9.144599607679993e-05,
+    "mapping": 2.2786000045016408e-05,
+    "update": 7.776198617648333e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11006628059840295,
-    "procedures": 0.0011224633926758543,
-    "decide": 0.00017471998580731452,
-    "act": 3.912995452992618e-06
+    "query": 0.10547957904054783,
+    "procedures": 0.0009608039690647274,
+    "decide": 0.0001503609964856878,
+    "act": 2.5109911803156137e-06
    },
-   "total_seconds": 0.1114881159592187,
+   "total_seconds": 0.10669380298350006,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05675943801179528,
-    "tickets": 0.05452869500732049
+    "handouts": 0.054682639995007776,
+    "tickets": 0.05181935599830467
    },
    "procedure_calls": {
     "can_reach": 1644,
@@ -8087,23 +8087,23 @@
   {
    "step": 176,
    "seconds": {
-    "mapping": 2.529300400055945e-05,
-    "update": 0.0004909539857180789,
+    "mapping": 2.264100476168096e-05,
+    "update": 0.00046259499504230917,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08917795363231562,
-    "procedures": 0.0006754543574061245,
-    "decide": 0.00010338099673390388,
-    "act": 4.905989044345915e-06
+    "query": 0.08579733075748663,
+    "procedures": 0.0005873012414667755,
+    "decide": 8.074101060628891e-05,
+    "act": 2.3419997887685895e-06
    },
-   "total_seconds": 0.09047794196521863,
+   "total_seconds": 0.08695295100915246,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03543608599284198,
-    "tickets": 0.05450257001211867
+    "handouts": 0.03421266301302239,
+    "tickets": 0.05222389400296379
    },
    "procedure_calls": {
     "can_reach": 912,
@@ -8134,23 +8134,23 @@
   {
    "step": 177,
    "seconds": {
-    "mapping": 2.598897845018655e-05,
-    "update": 0.00014513199857901782,
+    "mapping": 2.3039989173412323e-05,
+    "update": 0.00012775900540873408,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09338584287615959,
-    "procedures": 0.0008775821188464761,
-    "decide": 0.00012344299466349185,
-    "act": 4.039000486955047e-06
+    "query": 0.08986057400761638,
+    "procedures": 0.000771850987803191,
+    "decide": 0.00010130899318028241,
+    "act": 3.602996002882719e-06
    },
-   "total_seconds": 0.09456202796718571,
+   "total_seconds": 0.09088813597918488,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0396129029977601,
-    "tickets": 0.05471569199289661
+    "handouts": 0.03825516400684137,
+    "tickets": 0.05241069100156892
    },
    "procedure_calls": {
     "can_reach": 1054,
@@ -8181,23 +8181,23 @@
   {
    "step": 178,
    "seconds": {
-    "mapping": 2.8546986868605018e-05,
-    "update": 0.0004900959902442992,
+    "mapping": 2.3935004719533026e-05,
+    "update": 0.00044862600043416023,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10963454324519262,
-    "procedures": 0.00114021374611184,
-    "decide": 0.0001649939949857071,
-    "act": 5.696987500414252e-06
+    "query": 0.10624914104118943,
+    "procedures": 0.000961091966019012,
+    "decide": 0.00014253699919208884,
+    "act": 3.05499997921288e-06
    },
-   "total_seconds": 0.11146409095090348,
+   "total_seconds": 0.10782838601153344,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.056351284991251305,
-    "tickets": 0.05448807100765407
+    "handouts": 0.055231380989425816,
+    "tickets": 0.052020208997419104
    },
    "procedure_calls": {
     "can_reach": 1645,
@@ -8226,23 +8226,23 @@
   {
    "step": 179,
    "seconds": {
-    "mapping": 2.5612011086195707e-05,
-    "update": 0.00047329200606327504,
+    "mapping": 2.0710998796857893e-05,
+    "update": 0.0004346729983808473,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.13005008434993215,
-    "procedures": 0.0016733096417738125,
-    "decide": 0.00023777299793437123,
-    "act": 4.330999217927456e-06
+    "query": 0.1256431408401113,
+    "procedures": 0.0014446311542997137,
+    "decide": 0.0002030729956459254,
+    "act": 2.4420005502179265e-06
    },
-   "total_seconds": 0.13246440200600773,
+   "total_seconds": 0.12774867098778486,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07667791399580892,
-    "tickets": 0.05512686198926531
+    "handouts": 0.07500613799493294,
+    "tickets": 0.052131527991150506
    },
    "procedure_calls": {
     "can_reach": 2338,
@@ -8271,23 +8271,23 @@
   {
    "step": 180,
    "seconds": {
-    "mapping": 2.948300971183926e-05,
-    "update": 9.424201562069356e-05,
+    "mapping": 2.6034002075903118e-05,
+    "update": 7.041098433546722e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08966750495892484,
-    "procedures": 0.0006877570413053036,
-    "decide": 9.246599802281708e-05,
-    "act": 4.718996933661401e-06
+    "query": 0.0862848112010397,
+    "procedures": 0.0005895228096051142,
+    "decide": 8.341499778907746e-05,
+    "act": 2.344007953070104e-06
    },
-   "total_seconds": 0.09057617202051915,
+   "total_seconds": 0.08705653800279833,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.035730855001020245,
-    "tickets": 0.054738910010200925
+    "handouts": 0.0344732249941444,
+    "tickets": 0.05246246900060214
    },
    "procedure_calls": {
     "can_reach": 914,
@@ -8316,23 +8316,23 @@
   {
    "step": 181,
    "seconds": {
-    "mapping": 2.675900759641081e-05,
-    "update": 8.706901280675083e-05,
+    "mapping": 2.5483997887931764e-05,
+    "update": 7.738599379081279e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.0994662231678376,
-    "procedures": 0.000895552831934765,
-    "decide": 0.00013274898810777813,
-    "act": 3.904991899617016e-06
+    "query": 0.09643771362607367,
+    "procedures": 0.0007953563763294369,
+    "decide": 0.00012296700151637197,
+    "act": 3.0049995984882116e-06
    },
-   "total_seconds": 0.10061225800018292,
+   "total_seconds": 0.09746191199519671,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.045265134001965635,
-    "tickets": 0.055147840990684927
+    "handouts": 0.0447314990015002,
+    "tickets": 0.05254421799327247
    },
    "procedure_calls": {
     "can_reach": 1280,
@@ -8361,23 +8361,23 @@
   {
    "step": 182,
    "seconds": {
-    "mapping": 2.6156005333177745e-05,
-    "update": 0.00048231601249426603,
+    "mapping": 2.2920998162589967e-05,
+    "update": 0.00046366600145120174,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09431930536811706,
-    "procedures": 0.0007576336211059242,
-    "decide": 0.00011761300265789032,
-    "act": 4.1439925553277135e-06
+    "query": 0.09065728759742342,
+    "procedures": 0.0006591954006580636,
+    "decide": 9.241000225301832e-05,
+    "act": 3.096007276326418e-06
    },
-   "total_seconds": 0.09570716800226364,
+   "total_seconds": 0.09189857600722462,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.039669667996349744,
-    "tickets": 0.055497040986665525
+    "handouts": 0.03909317000943702,
+    "tickets": 0.052268633007770404
    },
    "procedure_calls": {
     "can_reach": 1056,
@@ -8406,23 +8406,23 @@
   {
    "step": 183,
    "seconds": {
-    "mapping": 2.9575996450148523e-05,
-    "update": 0.00015548800001852214,
+    "mapping": 2.3909989977255464e-05,
+    "update": 0.00013065100938547403,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09374312726140488,
-    "procedures": 0.0007497617334593087,
-    "decide": 0.00012833400978706777,
-    "act": 4.1330058593302965e-06
+    "query": 0.09028821204265114,
+    "procedures": 0.0006366049638018012,
+    "decide": 9.32240072870627e-05,
+    "act": 2.244007191620767e-06
    },
-   "total_seconds": 0.09481042000697926,
+   "total_seconds": 0.09117484602029435,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.039592554996488616,
-    "tickets": 0.05497235999791883
+    "handouts": 0.03841391499736346,
+    "tickets": 0.05254782699921634
    },
    "procedure_calls": {
     "can_reach": 1058,
@@ -8451,23 +8451,23 @@
   {
    "step": 184,
    "seconds": {
-    "mapping": 2.86650174530223e-05,
-    "update": 0.0005567429907387123,
+    "mapping": 2.357899211347103e-05,
+    "update": 0.0004827599914278835,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09075387664779555,
-    "procedures": 0.0007008103711996228,
-    "decide": 9.696099732536823e-05,
-    "act": 4.391011316329241e-06
+    "query": 0.08586873298918363,
+    "procedures": 0.0005816940101794899,
+    "decide": 8.378399070352316e-05,
+    "act": 2.9420043574646115e-06
    },
-   "total_seconds": 0.0921414470358286,
+   "total_seconds": 0.08704349197796546,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03575633399304934,
-    "tickets": 0.05577107401040848
+    "handouts": 0.034178870992036536,
+    "tickets": 0.05230939999455586
    },
    "procedure_calls": {
     "can_reach": 917,
@@ -8496,23 +8496,23 @@
   {
    "step": 185,
    "seconds": {
-    "mapping": 2.9562012059614062e-05,
-    "update": 0.00014663601177744567,
+    "mapping": 2.2772015654481947e-05,
+    "update": 0.00012755600619129837,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10941105485835578,
-    "procedures": 0.001142966139013879,
-    "decide": 0.00015951000386849046,
-    "act": 3.7819991121068597e-06
+    "query": 0.10570582895888947,
+    "procedures": 0.0009851790528045967,
+    "decide": 0.0001352580002276227,
+    "act": 2.4420005502179265e-06
    },
-   "total_seconds": 0.11089351102418732,
+   "total_seconds": 0.10697903603431769,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.055669751003733836,
-    "tickets": 0.05493866800679825
+    "handouts": 0.05426929199893493,
+    "tickets": 0.05245562001073267
    },
    "procedure_calls": {
     "can_reach": 1648,
@@ -8541,23 +8541,23 @@
   {
    "step": 186,
    "seconds": {
-    "mapping": 2.3730011889711022e-05,
-    "update": 0.0007719209970673546,
+    "mapping": 2.1772008039988577e-05,
+    "update": 0.000759317001211457,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.08855679589032661,
-    "procedures": 0.0006806601013522595,
-    "decide": 0.00010518501221667975,
-    "act": 4.025001544505358e-06
+    "query": 0.08569889965292532,
+    "procedures": 0.0005795393517473713,
+    "decide": 8.379999781027436e-05,
+    "act": 2.977001713588834e-06
    },
-   "total_seconds": 0.09014231701439712,
+   "total_seconds": 0.087146305013448,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.035392060002777725,
-    "tickets": 0.053918506993795745
+    "handouts": 0.03471783100394532,
+    "tickets": 0.0516079009976238
    },
    "procedure_calls": {
     "can_reach": 919,
@@ -8588,23 +8588,23 @@
   {
    "step": 187,
    "seconds": {
-    "mapping": 2.744101220741868e-05,
-    "update": 0.0008145860192598775,
+    "mapping": 2.2346997866407037e-05,
+    "update": 0.0007876810122979805,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.094719534215983,
-    "procedures": 0.0008753327856538817,
-    "decide": 0.00011618899588938802,
-    "act": 3.455003025010228e-06
+    "query": 0.09024836804019287,
+    "procedures": 0.000781977956648916,
+    "decide": 9.359000250697136e-05,
+    "act": 2.348999259993434e-06
    },
-   "total_seconds": 0.09655653803201858,
+   "total_seconds": 0.09193631300877314,
    "statements_inserted": 7,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04028954099339899,
-    "tickets": 0.05536203600058798
+    "handouts": 0.038783401003456675,
+    "tickets": 0.0522796430013841
    },
    "procedure_calls": {
     "can_reach": 1062,
@@ -8635,23 +8635,23 @@
   {
    "step": 188,
    "seconds": {
-    "mapping": 3.319699317216873e-05,
-    "update": 0.0005591440130956471,
+    "mapping": 3.0340015655383468e-05,
+    "update": 0.0005439579981612042,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.11115023565071169,
-    "procedures": 0.0012917513377033174,
-    "decide": 0.0002109769993694499,
-    "act": 4.322995664551854e-06
+    "query": 0.10798253100074362,
+    "procedures": 0.0011671339889289811,
+    "decide": 0.00016702499124221504,
+    "act": 2.798988134600222e-06
    },
-   "total_seconds": 0.11324962798971683,
+   "total_seconds": 0.109893786982866,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.05755979100649711,
-    "tickets": 0.0549541900109034
+    "handouts": 0.05634419900889043,
+    "tickets": 0.05285686400020495
    },
    "procedure_calls": {
     "can_reach": 1650,
@@ -8680,23 +8680,23 @@
   {
    "step": 189,
    "seconds": {
-    "mapping": 2.9527975129894912e-05,
-    "update": 8.915300713852048e-05,
+    "mapping": 2.3557993699796498e-05,
+    "update": 7.401700713671744e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09011232493503485,
-    "procedures": 0.0006994960713200271,
-    "decide": 0.0001063189993146807,
-    "act": 4.124987754039466e-06
+    "query": 0.08665418288728688,
+    "procedures": 0.0006021641165716574,
+    "decide": 8.842399984132499e-05,
+    "act": 2.28799763135612e-06
    },
-   "total_seconds": 0.09104094597569201,
+   "total_seconds": 0.08744463400216773,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03626380399509799,
-    "tickets": 0.05463450899696909
+    "handouts": 0.03536092600552365,
+    "tickets": 0.051954223003122024
    },
    "procedure_calls": {
     "can_reach": 921,
@@ -8725,23 +8725,23 @@
   {
    "step": 190,
    "seconds": {
-    "mapping": 2.6977999368682504e-05,
-    "update": 0.0005287469975883141,
+    "mapping": 2.199600567109883e-05,
+    "update": 0.0005069439939688891,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09430314916244242,
-    "procedures": 0.0007495028403354809,
-    "decide": 0.00014764300431124866,
-    "act": 4.23500023316592e-06
+    "query": 0.09124463605985511,
+    "procedures": 0.0006754749338142574,
+    "decide": 0.00010812099208123982,
+    "act": 2.900007530115545e-06
    },
-   "total_seconds": 0.09576025500427932,
+   "total_seconds": 0.09256007199292071,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.04060711798956618,
-    "tickets": 0.054514624003786594
+    "handouts": 0.039130474004196,
+    "tickets": 0.05282722400443163
    },
    "procedure_calls": {
     "can_reach": 1066,
@@ -8770,23 +8770,23 @@
   {
    "step": 191,
    "seconds": {
-    "mapping": 2.7143003535456955e-05,
-    "update": 0.0005238229932729155,
+    "mapping": 2.5237997760996222e-05,
+    "update": 0.000496790002216585,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.10037545519298874,
-    "procedures": 0.0008974738157121465,
-    "decide": 0.000132048997329548,
-    "act": 3.9430015021935105e-06
+    "query": 0.09627595495840069,
+    "procedures": 0.0008006260322872549,
+    "decide": 0.00011859799269586802,
+    "act": 2.2550084395334125e-06
    },
-   "total_seconds": 0.101959887004341,
+   "total_seconds": 0.09771946199180093,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.046914726990507916,
-    "tickets": 0.05443684398778714
+    "handouts": 0.044746908999513835,
+    "tickets": 0.05237327799841296
    },
    "procedure_calls": {
     "can_reach": 1289,
@@ -8815,23 +8815,23 @@
   {
    "step": 192,
    "seconds": {
-    "mapping": 2.4715991457924247e-05,
-    "update": 8.213298860937357e-05,
+    "mapping": 2.0835999748669565e-05,
+    "update": 7.28690210962668e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09438032170874067,
-    "procedures": 0.0007578822842333466,
-    "decide": 0.0001480329956393689,
-    "act": 4.005007212981582e-06
+    "query": 0.09094634850043803,
+    "procedures": 0.0006599704938707873,
+    "decide": 0.00011073100904468447,
+    "act": 2.496002707630396e-06
    },
-   "total_seconds": 0.09539709097589366,
+   "total_seconds": 0.09181325102690607,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.0398025559989037,
-    "tickets": 0.05542977000004612
+    "handouts": 0.03884571600065101,
+    "tickets": 0.05280464199313428
    },
    "procedure_calls": {
     "can_reach": 1068,
@@ -8860,23 +8860,23 @@
   {
    "step": 193,
    "seconds": {
-    "mapping": 3.0131981475278735e-05,
-    "update": 0.0004917770129395649,
+    "mapping": 2.5519009795971215e-05,
+    "update": 0.00045779600623063743,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09112802868185099,
-    "procedures": 0.0006780223193345591,
-    "decide": 0.0001155380014097318,
-    "act": 5.128997145220637e-06
+    "query": 0.08754980642697774,
+    "procedures": 0.0006117045704741031,
+    "decide": 8.332199649885297e-05,
+    "act": 2.46299896389246e-06
    },
-   "total_seconds": 0.09244862699415535,
+   "total_seconds": 0.0887306110089412,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.036332247997052036,
-    "tickets": 0.05556307500228286
+    "handouts": 0.035055558997555636,
+    "tickets": 0.05314983500284143
    },
    "procedure_calls": {
     "can_reach": 947,
@@ -8905,23 +8905,23 @@
   {
    "step": 194,
    "seconds": {
-    "mapping": 2.846401184797287e-05,
-    "update": 9.033699461724609e-05,
+    "mapping": 2.2207997972145677e-05,
+    "update": 7.271100184880197e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.091729960826342,
-    "procedures": 0.0007082861848175526,
-    "decide": 0.00012418400729075074,
-    "act": 5.5589916883036494e-06
+    "query": 0.08715522314014379,
+    "procedures": 0.0005974258529022336,
+    "decide": 8.719100151211023e-05,
+    "act": 2.3070024326443672e-06
    },
-   "total_seconds": 0.09268679101660382,
+   "total_seconds": 0.08793706599681173,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03679314999317285,
-    "tickets": 0.055715271999360994
+    "handouts": 0.034882822990766726,
+    "tickets": 0.05290312301076483
    },
    "procedure_calls": {
     "can_reach": 926,
@@ -8950,23 +8950,23 @@
   {
    "step": 195,
    "seconds": {
-    "mapping": 2.691200643312186e-05,
-    "update": 0.00018372799968346953,
+    "mapping": 2.3143002181313932e-05,
+    "update": 0.0001636870001675561,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.1300509408902144,
-    "procedures": 0.0016516221076017246,
-    "decide": 0.00025704200379550457,
-    "act": 3.789988113567233e-06
+    "query": 0.12639180816768203,
+    "procedures": 0.0014535778318531811,
+    "decide": 0.00020727999799419194,
+    "act": 2.30100704357028e-06
    },
-   "total_seconds": 0.1321740349958418,
+   "total_seconds": 0.12824179700692184,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07654899900080636,
-    "tickets": 0.05522215999371838
+    "handouts": 0.07465438800863922,
+    "tickets": 0.05323328300437424
    },
    "procedure_calls": {
     "can_reach": 2361,
@@ -8995,23 +8995,23 @@
   {
    "step": 196,
    "seconds": {
-    "mapping": 2.5380999431945384e-05,
-    "update": 0.000495579995913431,
+    "mapping": 2.2750988136976957e-05,
+    "update": 0.000451354993856512,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.13224054720194545,
-    "procedures": 0.0016694777878001332,
-    "decide": 0.00023911098833195865,
-    "act": 5.15900319442153e-06
+    "query": 0.12647856172407046,
+    "procedures": 0.001432085278793238,
+    "decide": 0.00023626199981663376,
+    "act": 2.531000063754618e-06
    },
-   "total_seconds": 0.13467525597661734,
+   "total_seconds": 0.12862354598473758,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07847342001332436,
-    "tickets": 0.05555472199921496
+    "handouts": 0.07502688000386115,
+    "tickets": 0.05295440400368534
    },
    "procedure_calls": {
     "can_reach": 2361,
@@ -9040,23 +9040,23 @@
   {
    "step": 197,
    "seconds": {
-    "mapping": 2.4935012334026396e-05,
-    "update": 0.0004933400050504133,
+    "mapping": 2.3703018086962402e-05,
+    "update": 0.00045502898865379393,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.09105538412404712,
-    "procedures": 0.0006859668792458251,
-    "decide": 0.00010970399307552725,
-    "act": 3.969005774706602e-06
+    "query": 0.08694184682099149,
+    "procedures": 0.0006074251723475754,
+    "decide": 8.487999730277807e-05,
+    "act": 2.36899359151721e-06
    },
-   "total_seconds": 0.09237329901952762,
+   "total_seconds": 0.08811525299097411,
    "statements_inserted": 5,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.03669964800064918,
-    "tickets": 0.05515580499195494
+    "handouts": 0.03516678999585565,
+    "tickets": 0.052455694996751845
    },
    "procedure_calls": {
     "can_reach": 949,
@@ -9085,23 +9085,23 @@
   {
    "step": 198,
    "seconds": {
-    "mapping": 2.6825000531971455e-05,
-    "update": 0.00018357299268245697,
+    "mapping": 2.0154999219812453e-05,
+    "update": 0.00016203499399125576,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.13314501542481594,
-    "procedures": 0.001645946569624357,
-    "decide": 0.00025267199089284986,
-    "act": 4.51300002168864e-06
+    "query": 0.12666722701396793,
+    "procedures": 0.0014008419966557994,
+    "decide": 0.00021321899839676917,
+    "act": 2.672997652553022e-06
    },
-   "total_seconds": 0.13525854497856926,
+   "total_seconds": 0.12846615099988412,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.07975047999934759,
-    "tickets": 0.05510836499161087
+    "handouts": 0.07537913600390311,
+    "tickets": 0.05272956698900089
    },
    "procedure_calls": {
     "can_reach": 2369,
@@ -9130,23 +9130,23 @@
   {
    "step": 199,
    "seconds": {
-    "mapping": 3.0259019695222378e-05,
-    "update": 9.13700059754774e-05,
+    "mapping": 2.4905995815061033e-05,
+    "update": 7.284300227183849e-05,
     "reasoning": 0.0,
     "push": 0.0,
-    "query": 0.07981614157324657,
-    "procedures": 0.0004601814434863627,
-    "decide": 4.9977999879047275e-05,
-    "act": 3.4959957702085376e-06
+    "query": 0.07797978245071135,
+    "procedures": 0.0004294015379855409,
+    "decide": 4.110998997930437e-05,
+    "act": 3.5090051824226975e-06
    },
-   "total_seconds": 0.08045142603805289,
+   "total_seconds": 0.07855155198194552,
    "statements_inserted": 3,
    "statements_deleted": 0,
    "round_trips": 0,
    "reasoner_calls": 0,
    "decision_seconds": {
-    "handouts": 0.025692511000670493,
-    "tickets": 0.05470040898944717
+    "handouts": 0.024728175994823687,
+    "tickets": 0.05374964598740917
    },
    "procedure_calls": {
     "can_reach": 951,

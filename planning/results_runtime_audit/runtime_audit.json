@@ -1,0 +1,3193 @@
+{
+  "experiment": "runtime_audit",
+  "arguments": {
+    "seeds": "0,1,2,3,4",
+    "steps": 200,
+    "events_per_step": 3,
+    "checkpoints": "0,10,50,100,200",
+    "results_dir": "/work/results/aamas27/runtime_audit-20261007",
+    "work_dir": "/scratch/work",
+    "nemo_binary": "/opt/nemo/nmo",
+    "machine": "the machine of the main run",
+    "container": "runtime-audit (image krrood-aamas27-dev 2f701278fade, docker --cpuset-cpus=12-17 --memory=16g --user 1000:1000)",
+    "note": "other experiments ran on the machine at the same time"
+  },
+  "seeds": {
+    "0": {
+      "scenario_sha256": "c762db19d0ceb9ea9a58e89ebb06a3f5a2cf824b851105abc0654fd183c53c09",
+      "timing_run_scenario": "results/aamas27/agent_loop-20261008-seed0-200steps/scenario.json",
+      "same_scenario_as_timing_run": true,
+      "raw_input_serialisation_check": {
+        "facts_from_rdfxml": 1424360,
+        "facts_from_ntriples": 1424360,
+        "equal": true
+      },
+      "nemo_version": "nemo-cli 0.10.1",
+      "loop": {
+        "setup": {
+          "seconds": {
+            "load_and_reasoning": 7.8186483749886975,
+            "application_data": 0.003413517028093338
+          },
+          "total_seconds": 7.822061892016791,
+          "individuals": 3667,
+          "after_last_step": {}
+        },
+        "steps_run": 200,
+        "step_seconds_total": 21.878738970292034,
+        "statements_inserted": 858,
+        "wall_seconds_including_audits": 190.95027810300235
+      },
+      "wall_seconds": 245.15542378099053,
+      "checkpoints": [
+        {
+          "steps": 0,
+          "events": 0,
+          "event_kinds": {},
+          "individuals": 3667,
+          "new_people": 0,
+          "facts": {
+            "krrood": 1424360,
+            "reference": 1424360,
+            "matching": 1424360,
+            "missing": 0,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17558,
+              "candidate": 17558,
+              "matching": 17558,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1385869,
+              "candidate": 1385869,
+              "matching": 1385869,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {},
+          "on_demand_class_answers": {},
+          "audit_seconds": 31.655242033011746
+        },
+        {
+          "steps": 10,
+          "events": 30,
+          "event_kinds": {
+            "course_taking": 17,
+            "enrollment": 11,
+            "cricket_enthusiasm": 2
+          },
+          "individuals": 3678,
+          "new_people": 11,
+          "facts": {
+            "krrood": 1424548,
+            "reference": 1424556,
+            "matching": 1424548,
+            "missing": 8,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17588,
+              "candidate": 17580,
+              "matching": 17580,
+              "missing": 8,
+              "extra": 0,
+              "missing_by_name": {
+                "PeopleWithHobby": 2,
+                "T20CricketFan": 2,
+                "SportsLover": 2,
+                "SportsFan": 2
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1386035,
+              "candidate": 1386035,
+              "matching": 1386035,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 2
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 2
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 2
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 2,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 2
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1374,
+              "stored": 1372,
+              "missing_stored": 2,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 2,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010800728021422401
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 172,
+              "stored": 170,
+              "missing_stored": 2,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 2,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010948687006020918
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 349,
+              "stored": 347,
+              "missing_stored": 2,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 2,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010820322000654414
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 22,
+              "stored": 20,
+              "missing_stored": 2,
+              "axiom_query_answers": 22,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 2,
+              "on_demand": 22,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.04901322300429456
+            }
+          },
+          "audit_seconds": 32.46777409000788
+        },
+        {
+          "steps": 50,
+          "events": 150,
+          "event_kinds": {
+            "course_taking": 98,
+            "enrollment": 28,
+            "cricket_enthusiasm": 24
+          },
+          "individuals": 3695,
+          "new_people": 28,
+          "facts": {
+            "krrood": 1424948,
+            "reference": 1425034,
+            "matching": 1424948,
+            "missing": 86,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17700,
+              "candidate": 17614,
+              "matching": 17614,
+              "missing": 86,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 24,
+                "SportsFan": 24,
+                "SportsLover": 23,
+                "PeopleWithHobby": 15
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1386401,
+              "candidate": 1386401,
+              "matching": 1386401,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 15
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 24
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 23
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 24,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 24
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1387,
+              "stored": 1372,
+              "missing_stored": 15,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 15,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010872694023419172
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 194,
+              "stored": 170,
+              "missing_stored": 24,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 24,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010877592023462057
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 370,
+              "stored": 347,
+              "missing_stored": 23,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 23,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010885294992476702
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 44,
+              "stored": 20,
+              "missing_stored": 24,
+              "axiom_query_answers": 44,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 24,
+              "on_demand": 44,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.050214679999044165
+            }
+          },
+          "audit_seconds": 31.110607924987562
+        },
+        {
+          "steps": 100,
+          "events": 300,
+          "event_kinds": {
+            "course_taking": 195,
+            "enrollment": 62,
+            "cricket_enthusiasm": 43
+          },
+          "individuals": 3729,
+          "new_people": 62,
+          "facts": {
+            "krrood": 1425612,
+            "reference": 1425760,
+            "matching": 1425612,
+            "missing": 148,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17830,
+              "candidate": 17682,
+              "matching": 17682,
+              "missing": 148,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 43,
+                "SportsFan": 42,
+                "SportsLover": 39,
+                "PeopleWithHobby": 24
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1386997,
+              "candidate": 1386997,
+              "matching": 1386997,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 24
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 42
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 39
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 43,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 43
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1396,
+              "stored": 1372,
+              "missing_stored": 24,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 24,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011232317017856985
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 212,
+              "stored": 170,
+              "missing_stored": 42,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 42,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010961753985611722
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 386,
+              "stored": 347,
+              "missing_stored": 39,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 39,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010988722991896793
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 63,
+              "stored": 20,
+              "missing_stored": 43,
+              "axiom_query_answers": 63,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 43,
+              "on_demand": 63,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.05151127700810321
+            }
+          },
+          "audit_seconds": 31.42145159901702
+        },
+        {
+          "steps": 200,
+          "events": 600,
+          "event_kinds": {
+            "course_taking": 378,
+            "enrollment": 129,
+            "cricket_enthusiasm": 93
+          },
+          "individuals": 3796,
+          "new_people": 129,
+          "facts": {
+            "krrood": 1426947,
+            "reference": 1427272,
+            "matching": 1426947,
+            "missing": 325,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 18141,
+              "candidate": 17816,
+              "matching": 17816,
+              "missing": 325,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 93,
+                "SportsFan": 92,
+                "SportsLover": 86,
+                "PeopleWithHobby": 54
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1388198,
+              "candidate": 1388198,
+              "matching": 1388198,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 54
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 92
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 86
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 93,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 93
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1426,
+              "stored": 1372,
+              "missing_stored": 54,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 54,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011103222001111135
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 262,
+              "stored": 170,
+              "missing_stored": 92,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 92,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011088300991104916
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 433,
+              "stored": 347,
+              "missing_stored": 86,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 86,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011087830003816634
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 113,
+              "stored": 20,
+              "missing_stored": 93,
+              "axiom_query_answers": 113,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 93,
+              "on_demand": 113,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.05366372101707384
+            }
+          },
+          "audit_seconds": 32.580999341997085
+        }
+      ]
+    },
+    "1": {
+      "scenario_sha256": "5dbaa7b52805ae6887fb759b0d61ccef3bd0067beec8d684977840f46f7ba9b1",
+      "timing_run_scenario": "results/aamas27/agent_loop-20261008-seed1-200steps/scenario.json",
+      "same_scenario_as_timing_run": null,
+      "raw_input_serialisation_check": {
+        "facts_from_rdfxml": 1424360,
+        "facts_from_ntriples": 1424360,
+        "equal": true
+      },
+      "nemo_version": "nemo-cli 0.10.1",
+      "loop": {
+        "setup": {
+          "seconds": {
+            "load_and_reasoning": 7.733166249003261,
+            "application_data": 0.0034159329952672124
+          },
+          "total_seconds": 7.7365821819985285,
+          "individuals": 3667,
+          "after_last_step": {}
+        },
+        "steps_run": 200,
+        "step_seconds_total": 19.101405060995603,
+        "statements_inserted": 900,
+        "wall_seconds_including_audits": 190.12752880100743
+      },
+      "wall_seconds": 243.26931719999993,
+      "checkpoints": [
+        {
+          "steps": 0,
+          "events": 0,
+          "event_kinds": {},
+          "individuals": 3667,
+          "new_people": 0,
+          "facts": {
+            "krrood": 1424360,
+            "reference": 1424360,
+            "matching": 1424360,
+            "missing": 0,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17558,
+              "candidate": 17558,
+              "matching": 17558,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1385869,
+              "candidate": 1385869,
+              "matching": 1385869,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {},
+          "on_demand_class_answers": {},
+          "audit_seconds": 31.313914559985278
+        },
+        {
+          "steps": 10,
+          "events": 30,
+          "event_kinds": {
+            "cricket_enthusiasm": 3,
+            "course_taking": 15,
+            "enrollment": 12
+          },
+          "individuals": 3679,
+          "new_people": 12,
+          "facts": {
+            "krrood": 1424564,
+            "reference": 1424575,
+            "matching": 1424564,
+            "missing": 11,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17593,
+              "candidate": 17582,
+              "matching": 17582,
+              "missing": 11,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 3,
+                "SportsFan": 3,
+                "SportsLover": 3,
+                "PeopleWithHobby": 2
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1386049,
+              "candidate": 1386049,
+              "matching": 1386049,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 2
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 3
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 3
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 3,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 3
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1374,
+              "stored": 1372,
+              "missing_stored": 2,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 2,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010807762009790167
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 173,
+              "stored": 170,
+              "missing_stored": 3,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 3,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010690148017602041
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 350,
+              "stored": 347,
+              "missing_stored": 3,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 3,
+              "on_demand_extra": 0,
+              "query_seconds": 0.01083065097918734
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 23,
+              "stored": 20,
+              "missing_stored": 3,
+              "axiom_query_answers": 23,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 3,
+              "on_demand": 23,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.04883061599684879
+            }
+          },
+          "audit_seconds": 32.714242728980025
+        },
+        {
+          "steps": 50,
+          "events": 150,
+          "event_kinds": {
+            "cricket_enthusiasm": 24,
+            "course_taking": 88,
+            "enrollment": 38
+          },
+          "individuals": 3705,
+          "new_people": 38,
+          "facts": {
+            "krrood": 1425089,
+            "reference": 1425164,
+            "matching": 1425089,
+            "missing": 75,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17709,
+              "candidate": 17634,
+              "matching": 17634,
+              "missing": 75,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 24,
+                "SportsFan": 21,
+                "SportsLover": 20,
+                "PeopleWithHobby": 10
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1386522,
+              "candidate": 1386522,
+              "matching": 1386522,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 10
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 21
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 20
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 24,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 24
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1382,
+              "stored": 1372,
+              "missing_stored": 10,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 10,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010784576996229589
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 191,
+              "stored": 170,
+              "missing_stored": 21,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 21,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010786111990455538
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 367,
+              "stored": 347,
+              "missing_stored": 20,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 20,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010746954008936882
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 44,
+              "stored": 20,
+              "missing_stored": 24,
+              "axiom_query_answers": 44,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 24,
+              "on_demand": 44,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 1.0890500840032473
+            }
+          },
+          "audit_seconds": 32.119965758989565
+        },
+        {
+          "steps": 100,
+          "events": 300,
+          "event_kinds": {
+            "cricket_enthusiasm": 44,
+            "course_taking": 184,
+            "enrollment": 72
+          },
+          "individuals": 3739,
+          "new_people": 72,
+          "facts": {
+            "krrood": 1425754,
+            "reference": 1425895,
+            "matching": 1425754,
+            "missing": 141,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17843,
+              "candidate": 17702,
+              "matching": 17702,
+              "missing": 141,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 44,
+                "SportsFan": 39,
+                "SportsLover": 37,
+                "PeopleWithHobby": 21
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1387119,
+              "candidate": 1387119,
+              "matching": 1387119,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 21
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 39
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 37
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 44,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 44
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1393,
+              "stored": 1372,
+              "missing_stored": 21,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 21,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011085779988206923
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 209,
+              "stored": 170,
+              "missing_stored": 39,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 39,
+              "on_demand_extra": 0,
+              "query_seconds": 0.0109661289898213
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 384,
+              "stored": 347,
+              "missing_stored": 37,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 37,
+              "on_demand_extra": 0,
+              "query_seconds": 0.01084352598991245
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 64,
+              "stored": 20,
+              "missing_stored": 44,
+              "axiom_query_answers": 64,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 44,
+              "on_demand": 64,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.0508353250043001
+            }
+          },
+          "audit_seconds": 31.818953517999034
+        },
+        {
+          "steps": 200,
+          "events": 600,
+          "event_kinds": {
+            "cricket_enthusiasm": 90,
+            "course_taking": 360,
+            "enrollment": 150
+          },
+          "individuals": 3817,
+          "new_people": 150,
+          "facts": {
+            "krrood": 1427235,
+            "reference": 1427519,
+            "matching": 1427235,
+            "missing": 284,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 18142,
+              "candidate": 17858,
+              "matching": 17858,
+              "missing": 284,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 90,
+                "SportsFan": 82,
+                "SportsLover": 76,
+                "PeopleWithHobby": 36
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1388444,
+              "candidate": 1388444,
+              "matching": 1388444,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 36
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 82
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 76
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 90,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 90
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1408,
+              "stored": 1372,
+              "missing_stored": 36,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 36,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011140198999783024
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 252,
+              "stored": 170,
+              "missing_stored": 82,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 82,
+              "on_demand_extra": 0,
+              "query_seconds": 0.01123546200687997
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 423,
+              "stored": 347,
+              "missing_stored": 76,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 76,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011145330005092546
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 110,
+              "stored": 20,
+              "missing_stored": 90,
+              "axiom_query_answers": 110,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 90,
+              "on_demand": 110,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.05305738901370205
+            }
+          },
+          "audit_seconds": 33.317059011984384
+        }
+      ]
+    },
+    "2": {
+      "scenario_sha256": "e66b3039a1f9dddc52219ad4999d0e03f1c639af3cfde4471036fd9c1031f83c",
+      "timing_run_scenario": "results/aamas27/agent_loop-20261008-seed2-200steps/scenario.json",
+      "same_scenario_as_timing_run": null,
+      "raw_input_serialisation_check": {
+        "facts_from_rdfxml": 1424360,
+        "facts_from_ntriples": 1424360,
+        "equal": true
+      },
+      "nemo_version": "nemo-cli 0.10.1",
+      "loop": {
+        "setup": {
+          "seconds": {
+            "load_and_reasoning": 7.742254207987571,
+            "application_data": 0.0033938050037249923
+          },
+          "total_seconds": 7.745648012991296,
+          "individuals": 3667,
+          "after_last_step": {}
+        },
+        "steps_run": 200,
+        "step_seconds_total": 19.338046503224177,
+        "statements_inserted": 946,
+        "wall_seconds_including_audits": 188.32597865298158
+      },
+      "wall_seconds": 241.8196990280121,
+      "checkpoints": [
+        {
+          "steps": 0,
+          "events": 0,
+          "event_kinds": {},
+          "individuals": 3667,
+          "new_people": 0,
+          "facts": {
+            "krrood": 1424360,
+            "reference": 1424360,
+            "matching": 1424360,
+            "missing": 0,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17558,
+              "candidate": 17558,
+              "matching": 17558,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1385869,
+              "candidate": 1385869,
+              "matching": 1385869,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {},
+          "on_demand_class_answers": {},
+          "audit_seconds": 31.434810134000145
+        },
+        {
+          "steps": 10,
+          "events": 30,
+          "event_kinds": {
+            "course_taking": 17,
+            "enrollment": 11,
+            "cricket_enthusiasm": 2
+          },
+          "individuals": 3678,
+          "new_people": 11,
+          "facts": {
+            "krrood": 1424548,
+            "reference": 1424555,
+            "matching": 1424548,
+            "missing": 7,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17587,
+              "candidate": 17580,
+              "matching": 17580,
+              "missing": 7,
+              "extra": 0,
+              "missing_by_name": {
+                "SportsFan": 2,
+                "T20CricketFan": 2,
+                "SportsLover": 2,
+                "PeopleWithHobby": 1
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1386035,
+              "candidate": 1386035,
+              "matching": 1386035,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 1
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 2
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 2
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 2,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 2
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1373,
+              "stored": 1372,
+              "missing_stored": 1,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 1,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010753946990007535
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 172,
+              "stored": 170,
+              "missing_stored": 2,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 2,
+              "on_demand_extra": 0,
+              "query_seconds": 0.01056252300622873
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 349,
+              "stored": 347,
+              "missing_stored": 2,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 2,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010806216014316306
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 22,
+              "stored": 20,
+              "missing_stored": 2,
+              "axiom_query_answers": 22,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 2,
+              "on_demand": 22,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.04912181000690907
+            }
+          },
+          "audit_seconds": 32.545696001994656
+        },
+        {
+          "steps": 50,
+          "events": 150,
+          "event_kinds": {
+            "course_taking": 90,
+            "enrollment": 42,
+            "cricket_enthusiasm": 18
+          },
+          "individuals": 3709,
+          "new_people": 42,
+          "facts": {
+            "krrood": 1425132,
+            "reference": 1425197,
+            "matching": 1425132,
+            "missing": 65,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17707,
+              "candidate": 17642,
+              "matching": 17642,
+              "missing": 65,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 18,
+                "SportsFan": 17,
+                "SportsLover": 17,
+                "PeopleWithHobby": 13
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1386557,
+              "candidate": 1386557,
+              "matching": 1386557,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 13
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 17
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 17
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 18,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 18
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1385,
+              "stored": 1372,
+              "missing_stored": 13,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 13,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010628724994603544
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 187,
+              "stored": 170,
+              "missing_stored": 17,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 17,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010648418014170602
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 364,
+              "stored": 347,
+              "missing_stored": 17,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 17,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010635093989549205
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 38,
+              "stored": 20,
+              "missing_stored": 18,
+              "axiom_query_answers": 38,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 18,
+              "on_demand": 38,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.04928032401949167
+            }
+          },
+          "audit_seconds": 30.634234272991307
+        },
+        {
+          "steps": 100,
+          "events": 300,
+          "event_kinds": {
+            "course_taking": 178,
+            "enrollment": 86,
+            "cricket_enthusiasm": 36
+          },
+          "individuals": 3753,
+          "new_people": 86,
+          "facts": {
+            "krrood": 1425934,
+            "reference": 1426057,
+            "matching": 1425934,
+            "missing": 123,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17853,
+              "candidate": 17730,
+              "matching": 17730,
+              "missing": 123,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 36,
+                "SportsFan": 34,
+                "SportsLover": 33,
+                "PeopleWithHobby": 20
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1387271,
+              "candidate": 1387271,
+              "matching": 1387271,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 20
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 34
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 33
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 36,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 36
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1392,
+              "stored": 1372,
+              "missing_stored": 20,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 20,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010954334982670844
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 204,
+              "stored": 170,
+              "missing_stored": 34,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 34,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010779116011690348
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 380,
+              "stored": 347,
+              "missing_stored": 33,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 33,
+              "on_demand_extra": 0,
+              "query_seconds": 0.01108428998850286
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 56,
+              "stored": 20,
+              "missing_stored": 36,
+              "axiom_query_answers": 56,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 36,
+              "on_demand": 56,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.050808519998099655
+            }
+          },
+          "audit_seconds": 33.02215194000746
+        },
+        {
+          "steps": 200,
+          "events": 600,
+          "event_kinds": {
+            "course_taking": 356,
+            "enrollment": 173,
+            "cricket_enthusiasm": 71
+          },
+          "individuals": 3840,
+          "new_people": 173,
+          "facts": {
+            "krrood": 1427521,
+            "reference": 1427756,
+            "matching": 1427521,
+            "missing": 235,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 18139,
+              "candidate": 17904,
+              "matching": 17904,
+              "missing": 235,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 71,
+                "SportsFan": 68,
+                "SportsLover": 65,
+                "PeopleWithHobby": 31
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1388684,
+              "candidate": 1388684,
+              "matching": 1388684,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 31
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 68
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 65
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 71,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 71
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1403,
+              "stored": 1372,
+              "missing_stored": 31,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 31,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011151208978844807
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 238,
+              "stored": 170,
+              "missing_stored": 68,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 68,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011263677995884791
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 412,
+              "stored": 347,
+              "missing_stored": 65,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 65,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011023880011634901
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 91,
+              "stored": 20,
+              "missing_stored": 71,
+              "axiom_query_answers": 91,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 71,
+              "on_demand": 91,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.05293726598029025
+            }
+          },
+          "audit_seconds": 31.600136865017703
+        }
+      ]
+    },
+    "3": {
+      "scenario_sha256": "29e45e05b3bbdaf20a750a4d025e1d8621aa5c58465a5d84565ba47d87eb5308",
+      "timing_run_scenario": "results/aamas27/agent_loop-20261008-seed3-200steps/scenario.json",
+      "same_scenario_as_timing_run": null,
+      "raw_input_serialisation_check": {
+        "facts_from_rdfxml": 1424360,
+        "facts_from_ntriples": 1424360,
+        "equal": true
+      },
+      "nemo_version": "nemo-cli 0.10.1",
+      "loop": {
+        "setup": {
+          "seconds": {
+            "load_and_reasoning": 7.783907859993633,
+            "application_data": 0.0034442300093360245
+          },
+          "total_seconds": 7.787352090002969,
+          "individuals": 3667,
+          "after_last_step": {}
+        },
+        "steps_run": 200,
+        "step_seconds_total": 23.867394343891647,
+        "statements_inserted": 898,
+        "wall_seconds_including_audits": 189.53891095600557
+      },
+      "wall_seconds": 243.01722484297352,
+      "checkpoints": [
+        {
+          "steps": 0,
+          "events": 0,
+          "event_kinds": {},
+          "individuals": 3667,
+          "new_people": 0,
+          "facts": {
+            "krrood": 1424360,
+            "reference": 1424360,
+            "matching": 1424360,
+            "missing": 0,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17558,
+              "candidate": 17558,
+              "matching": 17558,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1385869,
+              "candidate": 1385869,
+              "matching": 1385869,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {},
+          "on_demand_class_answers": {},
+          "audit_seconds": 31.626280357013457
+        },
+        {
+          "steps": 10,
+          "events": 30,
+          "event_kinds": {
+            "course_taking": 17,
+            "enrollment": 10,
+            "cricket_enthusiasm": 3
+          },
+          "individuals": 3677,
+          "new_people": 10,
+          "facts": {
+            "krrood": 1424536,
+            "reference": 1424546,
+            "matching": 1424536,
+            "missing": 10,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17588,
+              "candidate": 17578,
+              "matching": 17578,
+              "missing": 10,
+              "extra": 0,
+              "missing_by_name": {
+                "SportsFan": 3,
+                "T20CricketFan": 3,
+                "SportsLover": 2,
+                "PeopleWithHobby": 2
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1386025,
+              "candidate": 1386025,
+              "matching": 1386025,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 2
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 3
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 2
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 3,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 3
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1374,
+              "stored": 1372,
+              "missing_stored": 2,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 2,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010570868995273486
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 173,
+              "stored": 170,
+              "missing_stored": 3,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 3,
+              "on_demand_extra": 0,
+              "query_seconds": 0.01051983900833875
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 349,
+              "stored": 347,
+              "missing_stored": 2,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 2,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010718200996052474
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 23,
+              "stored": 20,
+              "missing_stored": 3,
+              "axiom_query_answers": 23,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 3,
+              "on_demand": 23,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.048997415986377746
+            }
+          },
+          "audit_seconds": 32.538060860999394
+        },
+        {
+          "steps": 50,
+          "events": 150,
+          "event_kinds": {
+            "course_taking": 82,
+            "enrollment": 43,
+            "cricket_enthusiasm": 25
+          },
+          "individuals": 3710,
+          "new_people": 43,
+          "facts": {
+            "krrood": 1425161,
+            "reference": 1425249,
+            "matching": 1425161,
+            "missing": 88,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17732,
+              "candidate": 17644,
+              "matching": 17644,
+              "missing": 88,
+              "extra": 0,
+              "missing_by_name": {
+                "SportsFan": 25,
+                "T20CricketFan": 25,
+                "SportsLover": 23,
+                "PeopleWithHobby": 15
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1386584,
+              "candidate": 1386584,
+              "matching": 1386584,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 15
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 25
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 23
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 25,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 25
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1387,
+              "stored": 1372,
+              "missing_stored": 15,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 15,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010579937981674448
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 195,
+              "stored": 170,
+              "missing_stored": 25,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 25,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010806386999320239
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 370,
+              "stored": 347,
+              "missing_stored": 23,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 23,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010583018010947853
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 45,
+              "stored": 20,
+              "missing_stored": 25,
+              "axiom_query_answers": 45,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 25,
+              "on_demand": 45,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.050514679023763165
+            }
+          },
+          "audit_seconds": 30.65877366499626
+        },
+        {
+          "steps": 100,
+          "events": 300,
+          "event_kinds": {
+            "course_taking": 178,
+            "enrollment": 80,
+            "cricket_enthusiasm": 42
+          },
+          "individuals": 3747,
+          "new_people": 80,
+          "facts": {
+            "krrood": 1425863,
+            "reference": 1426007,
+            "matching": 1425863,
+            "missing": 144,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17862,
+              "candidate": 17718,
+              "matching": 17718,
+              "missing": 144,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 42,
+                "SportsFan": 42,
+                "SportsLover": 40,
+                "PeopleWithHobby": 20
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1387212,
+              "candidate": 1387212,
+              "matching": 1387212,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 20
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 42
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 40
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 42,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 42
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1392,
+              "stored": 1372,
+              "missing_stored": 20,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 20,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011635269998805597
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 212,
+              "stored": 170,
+              "missing_stored": 42,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 42,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010902538982918486
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 387,
+              "stored": 347,
+              "missing_stored": 40,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 40,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010886155010666698
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 62,
+              "stored": 20,
+              "missing_stored": 42,
+              "axiom_query_answers": 62,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 42,
+              "on_demand": 62,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.05105785498744808
+            }
+          },
+          "audit_seconds": 30.189636054012226
+        },
+        {
+          "steps": 200,
+          "events": 600,
+          "event_kinds": {
+            "course_taking": 373,
+            "enrollment": 149,
+            "cricket_enthusiasm": 78
+          },
+          "individuals": 3816,
+          "new_people": 149,
+          "facts": {
+            "krrood": 1427198,
+            "reference": 1427459,
+            "matching": 1427198,
+            "missing": 261,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 18117,
+              "candidate": 17856,
+              "matching": 17856,
+              "missing": 261,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 78,
+                "SportsFan": 75,
+                "SportsLover": 72,
+                "PeopleWithHobby": 36
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1388409,
+              "candidate": 1388409,
+              "matching": 1388409,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 36
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 75
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 72
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 78,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 78
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1408,
+              "stored": 1372,
+              "missing_stored": 36,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 36,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010899184999288991
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 245,
+              "stored": 170,
+              "missing_stored": 75,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 75,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011124248005216941
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 419,
+              "stored": 347,
+              "missing_stored": 72,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 72,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010905703995376825
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 98,
+              "stored": 20,
+              "missing_stored": 78,
+              "axiom_query_answers": 98,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 78,
+              "on_demand": 98,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.05312175798462704
+            }
+          },
+          "audit_seconds": 30.89467126800446
+        }
+      ]
+    },
+    "4": {
+      "scenario_sha256": "9b783e8f1958dedf12c00e902c39412aec96de20ebc770b22744e23e649856ea",
+      "timing_run_scenario": "results/aamas27/agent_loop-20261008-seed4-200steps/scenario.json",
+      "same_scenario_as_timing_run": null,
+      "raw_input_serialisation_check": {
+        "facts_from_rdfxml": 1424360,
+        "facts_from_ntriples": 1424360,
+        "equal": true
+      },
+      "nemo_version": "nemo-cli 0.10.1",
+      "loop": {
+        "setup": {
+          "seconds": {
+            "load_and_reasoning": 7.810362290998455,
+            "application_data": 0.0033559500006958842
+          },
+          "total_seconds": 7.813718240999151,
+          "individuals": 3667,
+          "after_last_step": {}
+        },
+        "steps_run": 200,
+        "step_seconds_total": 19.390884680236923,
+        "statements_inserted": 902,
+        "wall_seconds_including_audits": 188.07144517399138
+      },
+      "wall_seconds": 241.42804416298168,
+      "checkpoints": [
+        {
+          "steps": 0,
+          "events": 0,
+          "event_kinds": {},
+          "individuals": 3667,
+          "new_people": 0,
+          "facts": {
+            "krrood": 1424360,
+            "reference": 1424360,
+            "matching": 1424360,
+            "missing": 0,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17558,
+              "candidate": 17558,
+              "matching": 17558,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1385869,
+              "candidate": 1385869,
+              "matching": 1385869,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {},
+          "on_demand_class_answers": {},
+          "audit_seconds": 30.84191565500805
+        },
+        {
+          "steps": 10,
+          "events": 30,
+          "event_kinds": {
+            "course_taking": 17,
+            "cricket_enthusiasm": 9,
+            "enrollment": 4
+          },
+          "individuals": 3671,
+          "new_people": 4,
+          "facts": {
+            "krrood": 1424464,
+            "reference": 1424493,
+            "matching": 1424464,
+            "missing": 29,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17595,
+              "candidate": 17566,
+              "matching": 17566,
+              "missing": 29,
+              "extra": 0,
+              "missing_by_name": {
+                "SportsFan": 9,
+                "T20CricketFan": 9,
+                "SportsLover": 9,
+                "PeopleWithHobby": 2
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1385965,
+              "candidate": 1385965,
+              "matching": 1385965,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 2
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 9
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 9
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 9,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 9
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1374,
+              "stored": 1372,
+              "missing_stored": 2,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 2,
+              "on_demand_extra": 0,
+              "query_seconds": 0.01066514101694338
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 179,
+              "stored": 170,
+              "missing_stored": 9,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 9,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010505265003303066
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 356,
+              "stored": 347,
+              "missing_stored": 9,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 9,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011132709012599662
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 29,
+              "stored": 20,
+              "missing_stored": 9,
+              "axiom_query_answers": 29,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 9,
+              "on_demand": 29,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.04868363501736894
+            }
+          },
+          "audit_seconds": 32.15118315498694
+        },
+        {
+          "steps": 50,
+          "events": 150,
+          "event_kinds": {
+            "course_taking": 93,
+            "cricket_enthusiasm": 25,
+            "enrollment": 32
+          },
+          "individuals": 3699,
+          "new_people": 32,
+          "facts": {
+            "krrood": 1425006,
+            "reference": 1425088,
+            "matching": 1425006,
+            "missing": 82,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17704,
+              "candidate": 17622,
+              "matching": 17622,
+              "missing": 82,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 25,
+                "SportsFan": 24,
+                "SportsLover": 23,
+                "PeopleWithHobby": 10
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1386451,
+              "candidate": 1386451,
+              "matching": 1386451,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 10
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 24
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 23
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 25,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 25
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1382,
+              "stored": 1372,
+              "missing_stored": 10,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 10,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010721124010160565
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 194,
+              "stored": 170,
+              "missing_stored": 24,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 24,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010541177005507052
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 370,
+              "stored": 347,
+              "missing_stored": 23,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 23,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010562442010268569
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 45,
+              "stored": 20,
+              "missing_stored": 25,
+              "axiom_query_answers": 45,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 25,
+              "on_demand": 45,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.04962176000117324
+            }
+          },
+          "audit_seconds": 32.005239392019575
+        },
+        {
+          "steps": 100,
+          "events": 300,
+          "event_kinds": {
+            "course_taking": 180,
+            "cricket_enthusiasm": 47,
+            "enrollment": 73
+          },
+          "individuals": 3740,
+          "new_people": 73,
+          "facts": {
+            "krrood": 1425774,
+            "reference": 1425934,
+            "matching": 1425774,
+            "missing": 160,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 17864,
+              "candidate": 17704,
+              "matching": 17704,
+              "missing": 160,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 47,
+                "SportsFan": 46,
+                "SportsLover": 44,
+                "PeopleWithHobby": 23
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1387137,
+              "candidate": 1387137,
+              "matching": 1387137,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 23
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 46
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 44
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 47,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 47
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1395,
+              "stored": 1372,
+              "missing_stored": 23,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 23,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010749478999059647
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 216,
+              "stored": 170,
+              "missing_stored": 46,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 46,
+              "on_demand_extra": 0,
+              "query_seconds": 0.01103707097354345
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 391,
+              "stored": 347,
+              "missing_stored": 44,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 44,
+              "on_demand_extra": 0,
+              "query_seconds": 0.010761415003798902
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 67,
+              "stored": 20,
+              "missing_stored": 47,
+              "axiom_query_answers": 67,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 47,
+              "on_demand": 67,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.051261740998597816
+            }
+          },
+          "audit_seconds": 31.0745291490166
+        },
+        {
+          "steps": 200,
+          "events": 600,
+          "event_kinds": {
+            "course_taking": 359,
+            "cricket_enthusiasm": 90,
+            "enrollment": 151
+          },
+          "individuals": 3818,
+          "new_people": 151,
+          "facts": {
+            "krrood": 1427250,
+            "reference": 1427552,
+            "matching": 1427250,
+            "missing": 302,
+            "extra": 0
+          },
+          "kinds": {
+            "class": {
+              "reference": 18162,
+              "candidate": 17860,
+              "matching": 17860,
+              "missing": 302,
+              "extra": 0,
+              "missing_by_name": {
+                "T20CricketFan": 90,
+                "SportsFan": 88,
+                "SportsLover": 84,
+                "PeopleWithHobby": 40
+              },
+              "extra_by_name": {}
+            },
+            "object": {
+              "reference": 1388457,
+              "candidate": 1388457,
+              "matching": 1388457,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            },
+            "data": {
+              "reference": 20933,
+              "candidate": 20933,
+              "matching": 20933,
+              "missing": 0,
+              "extra": 0,
+              "missing_by_name": {},
+              "extra_by_name": {}
+            }
+          },
+          "missing_class_justifications": {
+            "PeopleWithHobby": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(likes, Interest)) + cax-sco": 40
+            },
+            "SportsFan": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(isCrazyAbout, Sports)) + cax-sco": 88
+            },
+            "SportsLover": {
+              "cls-int1 intersectionOf(Person, cls-svf1 someValuesFrom(loves, Sports)) + cax-sco": 84
+            },
+            "T20CricketFan": {
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-eqc": 90,
+              "cls-hv2 hasValue(isCrazyAbout, T20Cricket) + cax-sco": 90
+            }
+          },
+          "on_demand_class_answers": {
+            "PeopleWithHobby": {
+              "axiom_classes_queried": [
+                "PeopleWithHobby"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "PeopleWithHobby"
+              ],
+              "reference": 1412,
+              "stored": 1372,
+              "missing_stored": 40,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 1372,
+              "on_demand_missing": 40,
+              "on_demand_extra": 0,
+              "query_seconds": 0.01118632999714464
+            },
+            "SportsFan": {
+              "axiom_classes_queried": [
+                "SportsFan"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsFan"
+              ],
+              "reference": 258,
+              "stored": 170,
+              "missing_stored": 88,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 170,
+              "on_demand_missing": 88,
+              "on_demand_extra": 0,
+              "query_seconds": 0.01103261299431324
+            },
+            "SportsLover": {
+              "axiom_classes_queried": [
+                "SportsLover"
+              ],
+              "axiom_classes_testing_types_attribute": [
+                "SportsLover"
+              ],
+              "reference": 431,
+              "stored": 347,
+              "missing_stored": 84,
+              "axiom_query_answers": 0,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 0,
+              "on_demand": 347,
+              "on_demand_missing": 84,
+              "on_demand_extra": 0,
+              "query_seconds": 0.011009089997969568
+            },
+            "T20CricketFan": {
+              "axiom_classes_queried": [
+                "T20CricketFan"
+              ],
+              "axiom_classes_testing_types_attribute": [],
+              "reference": 110,
+              "stored": 20,
+              "missing_stored": 90,
+              "axiom_query_answers": 110,
+              "axiom_query_answers_not_in_reference": 0,
+              "missing_answered_by_axiom_query": 90,
+              "on_demand": 110,
+              "on_demand_missing": 0,
+              "on_demand_extra": 0,
+              "query_seconds": 0.05284031800692901
+            }
+          },
+          "audit_seconds": 32.8060648929968
+        }
+      ]
+    }
+  },
+  "wall_seconds": 1214.6950517820078
+}

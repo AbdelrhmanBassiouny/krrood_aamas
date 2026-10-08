@@ -1,0 +1,9 @@
+{
+ "create_repository_seconds": 0.0038427310064435005,
+ "load_and_reasoning_seconds": 1265.408175924007,
+ "statements": {
+  "explicit": 54901,
+  "total": 1467912
+ },
+ "loaded_by": "graphdb"
+}

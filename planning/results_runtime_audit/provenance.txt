@@ -1,0 +1,19 @@
+Runtime closure audit of the KRROOD agent loop (scripts/aamas27/run_runtime_audit.py)
+date (UTC): started 2026-10-07T21:27:00+00:00, finished 2026-10-07T21:47:15+00:00
+wall time: 1215 s
+machine: the machine of the main run; CPU 13th Gen Intel(R) Core(TM) i7-13700, 24 logical CPUs, MemTotal 65619720 kB; Linux-6.8.0-40-generic-x86_64-with-glibc2.39
+container: runtime-audit (image krrood-aamas27-dev 2f701278fade, docker --cpuset-cpus=12-17 --memory=16g --user 1000:1000); cgroup cpuset 12-17, cgroup memory.max 17179869184 bytes
+python: /opt/venvs/earlier/bin/python 3.12.3
+commit: 226b6d4fda18871a46858b4acc9c5afce0398cee (branch aamas27-review6)
+working tree: the audit's own files (src/krrood_experiments/aamas27/runtime_audit.py, scripts/aamas27/run_runtime_audit.py, tests/aamas27/test_runtime_audit.py) were not committed yet; git status --porcelain:
+    ?? lubm_and_owl2bench.zip
+    ?? scripts/aamas27/aggregate_agent_loop_seeds.py
+    ?? scripts/aamas27/run_runtime_audit.py
+    ?? scripts/inheritance_graph.svg
+    ?? src/krrood_experiments/aamas27/runtime_audit.py
+    ?? src/krrood_experiments/owl2bench/ontomatic/tree
+    ?? src/krrood_experiments/owl2bench/ontomatic/tree.pdf
+    ?? tests/aamas27/test_runtime_audit.py
+nemo: nemo-cli 0.10.1
+arguments: {"seeds": "0,1,2,3,4", "steps": 200, "events_per_step": 3, "checkpoints": "0,10,50,100,200", "results_dir": "/work/results/aamas27/runtime_audit-20261007", "work_dir": "/scratch/work", "nemo_binary": "/opt/nemo/nmo", "machine": "the machine of the main run", "container": "runtime-audit (image krrood-aamas27-dev 2f701278fade, docker --cpuset-cpus=12-17 --memory=16g --user 1000:1000)", "note": "other experiments ran on the machine at the same time"}
+concurrency: other experiments ran on the machine at the same time
