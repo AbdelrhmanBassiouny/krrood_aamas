@@ -4,6 +4,7 @@
 \documentclass[sigconf,anonymous]{aamas}
 
 \usepackage{balance} % for balancing columns on the final page
+\usepackage{flafter} % floats never precede their first reference
 \usepackage[nolist]{acronym}
 \usepackage{listings}
 \usepackage{comment}
@@ -118,7 +119,6 @@ Robots and other autonomous agents are often built on cognitive architectures, w
   tabsize=2
 }
 
-
 \lstdefinestyle{eql}{
   language=Python,
   basicstyle=\ttfamily\footnotesize,
@@ -161,7 +161,7 @@ This paper argues that this knowledge can instead be \emph{represented explicitl
 \item ORMatic, which generates a relational schema from the same classes as the agent's long-term memory, in which episodes are stored, recalled and queried, and translates a subset of \ac{eql} to SQL (Section~\ref{sec:ormatic}).
 \end{enumerate}
 
-Our evaluation asks whether this unification is faithful and viable (Section~\ref{sec:experiments}). On the OWL2Bench benchmark~\cite{singh2020owl2bench}, we compare \ac{krrood}'s knowledge base and answers with those of OWL~2~RL reasoners, after loading and while an agent asserts facts, measure what loading, recalling and querying cost against established OWL and RDF systems, and run the perceive--decide--act loop of a delivery robot built with \ac{krrood}, with GraphDB and with Nemo.\footnote{Source code, experiment scripts and the full formalization of \ac{eql} are in the anonymized supplementary material.}
+Our evaluation asks whether this unification is faithful and comes at an acceptable cost (Section~\ref{sec:experiments}). On the OWL2Bench benchmark~\cite{singh2020owl2bench}, we compare \ac{krrood}'s knowledge base and answers with those of OWL~2~RL reasoners, after loading and while an agent asserts facts, measure what loading, recalling and querying cost against established OWL and RDF systems, and run the perceive--decide--act loop of a delivery robot built with \ac{krrood}, with GraphDB and with Nemo.\footnote{Source code, experiment scripts and the full formalization of \ac{eql} are in the anonymized supplementary material.}
 
 \begin{figure}[t]
   \centering
@@ -352,6 +352,8 @@ The supplementary material proves both statements. An assignment applies every a
 
 An agent also keeps knowledge beyond the lifetime of its process, such as an episodic memory of what it has done~\cite{beetz2025robot}, often more than fits in working memory. ORMatic, \ac{krrood}'s persistence layer, is the agent's long-term memory. From the TBox's classes, it generates a relational schema, data access objects (DAOs) and conversions between objects and DAOs, so the domain model remains the single definition of the agent's knowledge, free of persistence code. Working memory and reasoning stay in the program's objects; the database is not a mirror of them and does not reason. It keeps what the agent chooses to store, such as an episode of a task with its inferences, for later use: the agent recalls it as objects, queries it without loading it, and learning components read its tables. The database adds indexes and a query optimizer~\cite{selinger1979access}.
 
+An \ac{eql} query is a symbolic expression separate from its evaluation, so it can be evaluated in working memory or translated to SQL (Listing~\ref{lst:ormatic}). The translator maps a variable to the table of its class and an attribute chain to joins, here of \texttt{Student} with \texttt{Person} on the role taker. Every object property that Ontomatic generates is collection-valued, and such an attribute is stored as rows of an association table: ranging over its elements becomes a join, and membership and existential quantification become correlated \texttt{EXISTS} subqueries. Universal quantification, predicates and functions, which run Python code, and rules, which create objects, are rejected rather than answered differently. Asked to select identifiers, the translator returns the answers' IRIs instead of objects and joins only the tables a query needs: a variable or collection element is the foreign-key column that already holds its id, a table is joined only to read a column it declares, such as the IRI, or to restrict a variable to its class, and a membership test becomes a join of the association table. We translated all 18 benchmark queries and evaluated them in PostgreSQL over the objects built from the benchmark's OWL~2~RL closure: every translation returns the same answers as \ac{eql} and GraphDB (Section~\ref{ssec:querying}).
+
 \begin{lstlisting}[style=eql, float=t, caption={One \acs{eql} query evaluated in working memory and, translated by ORMatic, in long-term memory.}, label={lst:ormatic}]
 s = variable(Student, domain=students)
 over_25 = an(entity(s).where(s.has_age > 25))  # via role taker
@@ -359,12 +361,29 @@ in_memory = list(over_25.evaluate())              # working memory
 stored = eql_to_sql(over_25, session).evaluate()  # long-term memory
 \end{lstlisting}
 
-An \ac{eql} query is a symbolic expression separate from its evaluation, so it can be evaluated in working memory or translated to SQL (Listing~\ref{lst:ormatic}). The translator maps a variable to the table of its class and an attribute chain to joins, here of \texttt{Student} with \texttt{Person} on the role taker. Every object property that Ontomatic generates is collection-valued, and such an attribute is stored as rows of an association table: ranging over its elements becomes a join, and membership and existential quantification become correlated \texttt{EXISTS} subqueries. Universal quantification, predicates and functions, which run Python code, and rules, which create objects, are rejected rather than answered differently. Asked to select identifiers, the translator returns the answers' database ids instead of objects and joins only the tables a query needs: a variable or collection element is the foreign-key column that already holds its id, a table is joined only to read a column it declares or to restrict a variable to its class, and a membership test becomes a join of the association table. We translated all 18 benchmark queries and evaluated them in PostgreSQL over the objects built from the benchmark's OWL~2~RL closure: every translation returns the same answers as \ac{eql} and GraphDB (Table~\ref{tab:queries}).
-
 \section{Experiments}
 \label{sec:experiments}
 
-We evaluate \ac{krrood} with knowledge compiled from an OWL~2~RL ontology. Correctness (Section~\ref{ssec:correctness}) tests whether the program's knowledge base is the one OWL~2~RL entails, so that reasoning in the program can replace a reasoner; loading (Section~\ref{ssec:loading}) and querying (Section~\ref{ssec:querying}) whether working and long-term memory cost about as much as established systems, so that the design is viable; and the agent loop (Section~\ref{ssec:agent_loop}) what a single world model saves an agent that reasons and computes.
+We evaluate \ac{krrood} with knowledge compiled from an OWL~2~RL ontology. Correctness (Section~\ref{ssec:correctness}) tests whether the program's knowledge base is the one OWL~2~RL entails, so that reasoning in the program can replace a reasoner; loading (Section~\ref{ssec:loading}) and querying (Section~\ref{ssec:querying}) test whether working and long-term memory cost about as much as established systems, so that the cost of the design is acceptable; and the agent loop (Section~\ref{ssec:agent_loop}) measures what a single world model saves an agent that reasons and computes.
+
+\paragraph{Setup}
+We use the OWL~2~RL profile of OWL2Bench~\cite{singh2020owl2bench}, a benchmark of logical reasoning, with one university: 3,667 individuals and 54,901 explicit statements. Its closure, computed by GraphDB, has 1,431,635 statements and is the pre-reasoned input, knowledge whose inferences are already computed, as when an agent recalls what it stored. We run all 18 queries of the RL profile. Ontomatic generates the model from the ontology with our \texttt{roleFor} markers, and ORMatic stores the loaded objects in PostgreSQL.
+
+We compare against GraphDB 11.2 Free, limited to one core, with its OWL~2~RL ruleset, whose answers are the reference; RDFLib 7.4 with the \texttt{owlrl} reasoner; the in-memory Datalog engine Nemo 0.10.1~\cite{ivliev2024nemo} with the OWL~2~RL/RDF rules, which we wrote for it; reasonable 0.4.4, an OWL~2~RL reasoner in Rust; and Owlready2 0.49 and Protégé 5.6.7, both with Pellet. All experiments ran on Ubuntu 24.04 with an Intel Core i7-13700 and 64\,GB of RAM, in Docker containers, except Protégé, a desktop application that we ran by hand.\footnote{The supplement's code, data and Docker set-up run every experiment but Protégé's.} Each query runs 10 times in one process; we report the median without the first run, which includes warm-up. GraphDB, RDFLib and Protégé load once; RDFLib is stopped after three hours. Memory is the increase of the peak resident set size of the process tree, or of the Java heap in use for GraphDB (8\,GB heap, separate load) and Protégé (28\,GB heap).
+
+\subsection{Correctness}
+\label{ssec:correctness}
+
+We normalized each system's answers to sets of tuples of IRIs and literals and compared them with GraphDB's. RDFLib, Owlready2, \ac{eql} and SQL translated from \ac{eql} return answer sets identical to GraphDB's on all 18 queries. Protégé returns GraphDB's numbers of answers on the 16 queries it completes; it does not finish Q20 and raises an error on Q9. We also compared the knowledge base produced by Ontomatic with GraphDB's OWL~2~RL closure, assertion by assertion: for all 3,667 individuals, the class memberships and the object- and data-property assertions, 1.42 million in all, coincide, with none missing or extra. So does Nemo's closure; reasonable's differs by 70,248 assertions, as its release 0.4.4 does not implement the property-chain rule \texttt{prp-spo2} and it wrongly merges the 21 heads of organizations. From the raw data of 2, 4 and 8 universities, \ac{krrood}'s knowledge base equals Nemo's closure as well, up to 142 million facts. Although OWL2Bench declares functional and inverse-functional properties, the check of Section~\ref{sec:ontomatic} finds no equality and no inconsistency, so the unique-name assumption is entailed. This confirms Propositions~\ref{prop:soundness} and~\ref{prop:completeness} on the benchmark, to which they do not apply directly: OWL2Bench uses 47 IRIs both as classes and as individuals, and our \texttt{roleFor} markers lie outside OWL~2~RL, though they extend it conservatively (supplement).
+
+While the robot of Section~\ref{ssec:agent_loop} runs, we compared the knowledge base after 0, 10, 50, 100 and 200 steps of five seeds with Nemo's closure of the raw data and the facts perceived so far. No fact is extra, and the property assertions coincide at every checkpoint, as Proposition~\ref{prop:runtime} states. As class memberships are not derived at runtime (Section~\ref{sec:ontomatic}), the knowledge base lacks those that new \texttt{isCrazyAbout} facts entail, 235 to 325 per seed: of \texttt{T20CricketFan}, which the robot queries through its axiom and so finds every fan, and of three classes whose axioms are evaluated only when loading.
+
+Q12 shows the limit of roles: OWL2Bench entails that its 7 research groups are persons, which no marker anticipates, so \ac{krrood} gives each a second object, a \texttt{Person} with an \texttt{Employee} role, sharing only the IRI. Q12 still returns GraphDB's answers, but \ac{eql}'s answers follow the semantics of Section~\ref{ssec:eql_semantics} only where an individual is denoted by one object and its roles, as every other individual is. So the program's knowledge base is the benchmark's closure, and its property assertions stay closed at runtime.
+
+\subsection{Loading and Reasoning}
+\label{ssec:loading}
+
+Holding the closure in objects costs time when loading and memory while held. Table~\ref{tab:baselines} loads two inputs: the raw data, which each system must reason over, and the pre-reasoned data. From raw data, \ac{krrood} is within a factor of two of Nemo and Protégé, which reason in memory, and two orders of magnitude faster than GraphDB, disk-based and on one core. Pre-reasoned data takes \ac{krrood} longer than raw data, as it assigns each of the 1.4 million facts through its descriptor, but less time than GraphDB. Storing all objects in long-term memory with ORMatic adds 21 to 25\,s. \ac{krrood} holds every fact in memory, GraphDB on disk. Step~5 matters on this benchmark: the 1.3 million pairs of the symmetric, transitive \texttt{hasSameHomeTownWith}, 92\% of the closure, relate the 1,145 persons sharing a home town, and without step~5, eager chaining derives them with work cubic in that number and loading takes over two hours. The same pairs exhaust Nemo's and reasonable's memory on the pre-reasoned data.
 
 \begin{table}[t]
   \centering
@@ -375,6 +394,8 @@ We evaluate \ac{krrood} with knowledge compiled from an OWL~2~RL ontology. Corre
   \input{tables/loading_table.tex}
 \end{table}
 
+Table~\ref{tab:scaling} grows the raw data to eight universities and a closure of 142 million facts. \ac{krrood}'s time and memory grow with the closure as Nemo's do; its time is lower than Nemo's from four universities on, and its memory at eight, while reasonable exceeds 24\,GB from two universities on and GraphDB does not finish four universities in six hours. So the closure fits in objects at a cost comparable to in-memory reasoners; memory bounds the working memory, and what exceeds it belongs in long-term memory.
+
 \begin{table}[t]
   \centering
   \caption{Loading and reasoning from the raw data of 1 to 8 universities (``Raw'': explicit statements): time (s; mean of 3 runs, GraphDB one run on 2 cores) and memory increase. At every size \ac{krrood}'s knowledge base equals Nemo's closure. ``Out of mem.'': stopped at 24\,GB; ``--'': not run; ``$>$'': stopped after 6\,h.}
@@ -384,52 +405,38 @@ We evaluate \ac{krrood} with knowledge compiled from an OWL~2~RL ontology. Corre
   \input{tables/scaling_table.tex}
 \end{table}
 
+\subsection{Querying}
+\label{ssec:querying}
+
+The 18 queries test \ac{eql} over the program's objects and, through ORMatic's translation, over long-term memory (Table~\ref{tab:queries}). The systems return different things: \ac{eql} objects of application code, GraphDB IRIs parsed from JSON over HTTP, and the translated SQL the answers' IRIs, read from the database. \ac{eql}'s geometric mean is 1.8 times GraphDB's and below RDFLib's and Owlready2's. \ac{eql} is fast on queries with few answers and slower on joins such as Q22. The translated SQL is the fastest on 14 queries, GraphDB on Q22, and \ac{eql} on three queries with at most 55 answers. So \ac{eql} answers within the range of established systems, and long-term memory answers the same queries through translation, with the same answers.
+
 \begin{table}[t]
   \centering
-  \caption{OWL2Bench query times in ms (median of 10 runs without the first): geometric mean over the 18 queries (lowest in bold), queries on which a system is fastest, Q20 (1.3 million answers), Q22 (Listing~\ref{lst:q22}), and queries answered as by GraphDB. $^{\dagger}$Separate run (Section~\ref{sec:ormatic}). Per-query times are in the supplement.}
+  \caption{OWL2Bench query times in ms (median of 10 runs without the first): geometric mean over the 18 queries (lowest in bold), queries on which a system is fastest, Q20 (1.3 million answers), Q22 (Listing~\ref{lst:q22}), and queries answered as by GraphDB. Protégé, timed once by hand, did not complete Q9 and Q20 and is left out. $^{\dagger}$Measured in a separate run, over a database holding only the classes and properties that the queries use. Per-query times, Protégé's included, are in the supplement.}
   \label{tab:queries}
   \footnotesize
   \setlength{\tabcolsep}{4pt}
   \input{tables/query_summary.tex}
 \end{table}
 
-\paragraph{Setup}
-We use the OWL~2~RL profile of OWL2Bench~\cite{singh2020owl2bench}, a benchmark of logical reasoning, with one university: 3,667 individuals and 54,901 explicit statements. Its closure, computed by GraphDB, has 1,431,635 statements and is the pre-reasoned input, knowledge whose inferences are already computed, as when an agent recalls what it stored. We run all 18 queries of the RL profile. Ontomatic generates the model from the ontology with our \texttt{roleFor} markers, and ORMatic stores the loaded objects in PostgreSQL.
-
-We compare against GraphDB 11.2 Free, limited to one core, with its OWL~2~RL ruleset, whose answers are the reference; RDFLib 7.4 with the \texttt{owlrl} reasoner; the in-memory Datalog engine Nemo 0.10.1~\cite{ivliev2024nemo} with the OWL~2~RL/RDF rules, which we wrote for it; reasonable 0.4.4, an OWL~2~RL reasoner in Rust; and Owlready2 0.49 and Protégé 5.6.7, both with Pellet. All experiments ran on Ubuntu 24.04 with an Intel Core i7-13700 and 64\,GB of RAM, in Docker containers, except Protégé, a desktop application that we ran by hand.\footnote{The supplement's code, data and Docker set-up run every experiment but Protégé's.} Each query runs 10 times in one process; we report the median without the first run, which includes warm-up. GraphDB, RDFLib and Protégé load once; RDFLib is stopped after three hours. Memory is the increase of the peak resident set size of the process tree, or of the Java heap in use for GraphDB (8\,GB heap, separate load) and Protégé (28\,GB heap).
-
-\subsection{Correctness}
-\label{ssec:correctness}
-
-We normalized each system's answers to sets of tuples of IRIs and literals and compared them with GraphDB's. RDFLib, Owlready2, \ac{eql} and SQL translated from \ac{eql} return answer sets identical to GraphDB's on all 18 queries. Protégé returns GraphDB's numbers of answers on the 16 queries it completes; it does not finish Q20 and raises an error on Q9. We also compared the knowledge base produced by Ontomatic with GraphDB's OWL~2~RL closure, assertion by assertion: for all 3,667 individuals, the class memberships and the object- and data-property assertions, 1.42 million in all, coincide, with none missing or extra. So does Nemo's closure; reasonable's differs by 70,248 assertions, as it derives no property chains and wrongly merges the 21 heads of organizations. From the raw data of 2, 4 and 8 universities, \ac{krrood}'s knowledge base equals Nemo's closure as well, up to 142 million facts. Although OWL2Bench declares functional and inverse-functional properties, the check of Section~\ref{sec:ontomatic} finds no equality and no inconsistency, so the unique-name assumption is entailed. This confirms Propositions~\ref{prop:soundness} and~\ref{prop:completeness} on the benchmark, to which they do not apply directly: OWL2Bench uses 47 IRIs both as classes and as individuals, and our \texttt{roleFor} markers lie outside OWL~2~RL, though they extend it conservatively (supplement).
-
-While the robot of Section~\ref{ssec:agent_loop} runs, we compared the knowledge base after 0, 10, 50, 100 and 200 steps of five seeds with Nemo's closure of the raw data and the facts perceived so far. No fact is extra, and the property assertions coincide at every checkpoint, as Proposition~\ref{prop:runtime} states. Missing are the class memberships that new \texttt{isCrazyAbout} facts entail, 235 to 325 per seed: \texttt{T20CricketFan}, which its axiom answers, and three classes whose axioms are evaluated only when loading.
-
-Q12 shows the limit of roles: OWL2Bench entails that its 7 research groups are persons, which no marker anticipates, so \ac{krrood} gives each a second object, a \texttt{Person} with an \texttt{Employee} role, sharing only the IRI. Q12 still returns GraphDB's answers, but \ac{eql}'s answers are those of Section~\ref{ssec:eql_semantics} only where every individual is denoted by one object and its roles, as for all others. So the program's knowledge base is the benchmark's closure, and its property assertions stay closed at runtime.
-
-\subsection{Loading and Reasoning}
-\label{ssec:loading}
-
-Holding the closure in objects costs time when loading and memory while held. Table~\ref{tab:baselines} loads raw data, which includes reasoning, and pre-reasoned data. From raw data, \ac{krrood} is within a factor of two of Nemo and Protégé, which reason in memory, and two orders of magnitude faster than GraphDB, disk-based and on one core. Pre-reasoned data takes \ac{krrood} longer than raw data, as it assigns each of the 1.4 million facts through its descriptor, but less time than GraphDB. Storing all objects in long-term memory with ORMatic adds 21 to 25\,s. \ac{krrood} holds every fact in memory, GraphDB on disk. Step~5 matters on this benchmark: the 1.3 million pairs of the symmetric, transitive \texttt{hasSameHomeTownWith}, 92\% of the closure, relate the 1,145 persons sharing a home town, and without step~5 eager chaining derives them with work cubic in that number, and loading takes over two hours. The same pairs exhaust Nemo's and reasonable's memory on the pre-reasoned data.
-
-Table~\ref{tab:scaling} grows the raw data to eight universities and a closure of 142 million facts. \ac{krrood}'s time and memory grow with the closure as Nemo's do, and are lower than Nemo's at eight universities, while reasonable exceeds 24\,GB from two universities on and GraphDB does not finish four universities in six hours. So the closure fits in objects at a cost comparable to in-memory reasoners; memory bounds the working memory, and what exceeds it belongs in long-term memory.
-
-\subsection{Querying}
-\label{ssec:querying}
-
-The 18 queries test \ac{eql} over the program's objects and long-term memory through ORMatic's translation (Table~\ref{tab:queries}). The systems return different things: \ac{eql} objects of application code, GraphDB IRIs parsed from JSON over HTTP, and the translated SQL the database ids of the answers, in a separate run over the part of the model that the queries use. \ac{eql}'s geometric mean is 1.8 times GraphDB's and below RDFLib's and Owlready2's. \ac{eql} is fast on queries with few answers and slowest on joins such as Q22, as it evaluates conditions in the order written. The translated SQL is the fastest on every query, as each reads one or a few association tables of the database and builds no objects; it answers Q22 in 0.6\,ms, so \ac{eql}'s gap there lies in how it evaluates joins, not in the object model. So \ac{eql} answers within the range of established systems, and long-term memory answers the same queries through translation, with the same answers.
-
 \subsection{An Agent Loop}
 \label{ssec:agent_loop}
 
+\paragraph{Purpose and scenario}
+An agent changes its knowledge every step and decides with knowledge that is partly inferred and partly computed by its own procedures. This experiment asks whether such an agent can work with one world model in \ac{krrood}, and what the usual second world model in a reasoner costs in code, writes, round trips and time when all builds decide the same (Table~\ref{tab:integration}). A delivery robot drives on the OWL2Bench campus, to which a map, one per seed, adds rooms and charging docks. In each of 200 steps of five seeds, it perceives three new facts, each an enrolment, a course taken or a new T20 cricket fan, and decides. A handout goes to a student of a requested college who takes a course in a room the robot can reach; membership in the college is inferred by the chain $\texttt{enrollIn}\circ\texttt{isPartOf}\sqsubseteq\texttt{isMemberOf}$. A ticket goes to a \texttt{T20CricketFan} (Listing~\ref{lst:axiom}) whose mailbox the robot can reach. The robot drives to the nearest candidate or to a dock. Reachability, to the room and on to a dock with the remaining battery, and driving time come from its path planner, Dijkstra's algorithm, and change as it moves.
+
 \begin{table}[t]
   \centering
-  \caption{The delivery robot built in four ways, all deciding alike in every step. Rows above follow from \ac{eql}'s semantics, rows below from the implementation (defined in Section~\ref{ssec:agent_loop}). Per step: medians; step: median over the 1,000 steps of five seeds (range of the seeds' medians). Nemo from its own run, which starts one Nemo process per step.}
+  \caption{The delivery robot built in four ways, all deciding alike in every step. Rows are grouped by whether they follow from \ac{eql}'s semantics or from the implementation (Section~\ref{ssec:agent_loop}). Per-step rows: medians; step time: median over the 1,000 steps of five seeds (range of the seeds' medians). Nemo from its own run, which starts one Nemo process per step.}
   \label{tab:integration}
   \footnotesize
   \setlength{\tabcolsep}{1.4pt}
   \input{tables/integration_table.tex}
 \end{table}
+
+
+\paragraph{Builds}
+With \ac{krrood} (Listing~\ref{lst:agent}, Figure~\ref{fig:builds}), perceiving is an assignment, whose property rules apply the chain at once, and each decision is one \ac{eql} query whose predicate \texttt{CanReach} and function \texttt{travel\_time} call the planner during evaluation. With GraphDB, a SPARQL update mirrors each step's facts into the store, which infers incrementally, and the IRIs that a SPARQL query returns are mapped back to objects and filtered with the planner. With GraphDB ``push'', SPARQL decides alone, so the planner's results for every room are written into the store before each query. Nemo, which cannot update a closure it has computed, recomputes the closure from the raw data and a file of the perceived facts each step, and Datalog rules select the candidates. The supplementary material gives the code of every build.
 
 \begin{figure}[t]
   \centering
@@ -438,7 +445,7 @@ The 18 queries test \ac{eql} over the program's objects and long-term memory thr
   \label{fig:builds}
 \end{figure}
 
-\begin{lstlisting}[style=eql, float=t, caption={The robot's planner as a predicate (top; the full code is in the supplement); a step that perceives by assignment and decides by a query (bottom).}, label={lst:agent}]
+\begin{lstlisting}[style=eql, float=t, caption={The robot's planner as a predicate, \texttt{CanReach} (full code in the supplement), and a step that perceives by assignment and decides by a query.}, label={lst:agent}]
 @dataclass
 class CanReach(Predicate):
     robot: Robot
@@ -458,22 +465,16 @@ handouts = an(set_of(s, c, t).where(
     CanReach(robot, c.taught_in)))
 \end{lstlisting}
 
-\paragraph{Purpose and scenario}
-An agent changes its knowledge every step and decides with knowledge that is partly inferred and partly computed by its own procedures. This experiment asks whether such an agent can work with one world model in \ac{krrood}, and what the usual second world model in a reasoner costs in code, writes, round trips and time when all builds decide the same. A delivery robot drives on the OWL2Bench campus, to which a map, one per seed, adds rooms and charging docks. In each of 200 steps of five seeds, it perceives three new facts, each an enrolment, a course taken or a new T20 cricket fan, and decides. A handout goes to a student of a requested college who takes a course in a room the robot can reach; membership in the college is inferred by the chain $\texttt{enrollIn}\circ\texttt{isPartOf}\sqsubseteq\texttt{isMemberOf}$. A ticket goes to a \texttt{T20CricketFan} (Listing~\ref{lst:axiom}) whose mailbox the robot can reach. The robot drives to the nearest candidate or to a dock. Reachability, to the room and on to a dock with the remaining battery, and driving time come from its path planner, Dijkstra's algorithm, and change as it moves.
-
-\paragraph{Builds}
-With \ac{krrood} (Listing~\ref{lst:agent}, Figure~\ref{fig:builds}), perceiving is an assignment, whose property rules apply the chain at once, and each decision is one \ac{eql} query whose predicate \texttt{CanReach} and function \texttt{travel\_time} call the planner during evaluation. With GraphDB, a SPARQL update mirrors each step's facts into the store, which infers incrementally, and the IRIs that a SPARQL query returns are mapped back to objects and filtered with the planner. With GraphDB ``push'', SPARQL decides alone, so the planner's results for every room are written into the store before each query. Nemo, which has no incremental mode, recomputes the closure from the raw data and a file of the perceived facts each step, and Datalog rules select the candidates. The supplementary material gives the code of every build.
-
 \paragraph{Measures}
-The rows of Table~\ref{tab:integration} that follow from \ac{eql}'s semantics are the \emph{world models} that must agree, where the \emph{planner runs} relative to the query, the \emph{writes} per step into a second world model and the \emph{synchronization lines}, code that only keeps two world models in agreement. The rows that follow from the implementation are the \emph{languages} the developer writes, the \emph{processes} holding knowledge, the \emph{round trips} between them per step, \emph{mapping lines}, which translate between objects and IRIs, \emph{procedure lines}, which wrap the planner for a query or filter answers with it, and the \emph{step time}. 
+The rows of Table~\ref{tab:integration} that follow from \ac{eql}'s semantics are the \emph{world models} that must agree, where the \emph{planner runs} relative to the query, the \emph{writes} per step into a second world model and the \emph{synchronization lines}, code that only keeps two world models in agreement. The rows that follow from the implementation are the \emph{languages} the developer writes, the \emph{processes} holding knowledge, the \emph{round trips} between them per step, and the \emph{step time}.
 
 \paragraph{Results}
-All builds take the same action in every step of every seed. \ac{krrood} needs one world model and no synchronization; GraphDB needs a second world model, with synchronization code, writes and round trips every step, and letting SPARQL decide alone multiplies the writes a hundredfold. A wrapper generating SPARQL or an embedded store could reduce the languages and processes to one, but not the world models. \ac{krrood} and GraphDB have comparable step times, spent querying and updating (89\,ms per update, 38\,ms if empty). Nemo spends its step recomputing the closure; reasonable, which returns its whole closure every step, takes 4.6\,s and misses every handout for lack of property chains, and Owlready2 would run Pellet, 39\,s, every step. So with \ac{krrood} the robot decides alike with one world model, no synchronization code and a comparable step time.
+All builds take the same action in every step of every seed. \ac{krrood} needs one world model and no synchronization; GraphDB needs a second world model, with synchronization code, writes and round trips every step, and letting SPARQL decide alone multiplies the writes a hundredfold. A wrapper generating SPARQL or an embedded store could reduce the languages and processes to one, but not the world models. \ac{krrood} and GraphDB have comparable step times, 90 and 96\,ms: \ac{krrood}'s is spent in its query, GraphDB's in its update (89\,ms; 38\,ms when empty). Nemo spends its step recomputing the closure; reasonable, which returns its whole closure every step, takes 4.6\,s and misses every handout, as it does not apply the chain that infers college membership, and Owlready2 would run Pellet, 39\,s, every step. So with \ac{krrood} the robot decides alike with one world model, no synchronization code and a step time comparable to GraphDB's.
 
 \section{Discussion and Conclusion}
 \label{sec:discussion_conclusion}
 
-\ac{krrood} unifies an agent's object-oriented program with its knowledge base: classes, objects and procedures are the terminology, assertions and computed predicates of a knowledge base with formal semantics, OWL~2~RL ontologies compile into it with guarantees, and ORMatic keeps what the agent stores in long-term memory. On OWL2Bench, it equals an OWL~2~RL reasoner's closure at viable costs, and a robot built on it needs one world model and decides like one built on GraphDB or Nemo.
+\ac{krrood} unifies an agent's object-oriented program with its knowledge base: classes, objects and procedures are the terminology, assertions and computed predicates of a knowledge base with formal semantics, OWL~2~RL ontologies compile into it with guarantees, and ORMatic keeps what the agent stores in long-term memory. On OWL2Bench, it equals an OWL~2~RL reasoner's closure from one to eight universities, at costs comparable to established systems, and a robot built on it needs one world model and decides like one built on GraphDB or Nemo.
 
 \paragraph{Limitations}
 \ac{krrood} adopts the closed-world and unique-name assumptions, so where Proposition~\ref{prop:completeness} does not apply, an answer can contradict OWL entailment, and partial, noisy observation challenges this reading. At runtime, class memberships are not derived, axioms of class expressions other than \texttt{hasValue} are not yet evaluated, and inferred facts are not retracted; changing state, such as a robot's pose, can be computed by predicates instead. \ac{eql}'s rules are not recursive, and it has no query planner. Ontomatic covers part of OWL~2~RL (Section~\ref{sec:ontomatic}), roles need markers, and an unforeseen multiple classification splits an individual. We evaluated one benchmark, up to eight universities, and one agent.
