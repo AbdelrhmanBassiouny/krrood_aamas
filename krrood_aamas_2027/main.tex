@@ -169,6 +169,7 @@ Our evaluation asks whether this unification is faithful and comes at an accepta
   \includegraphics[width=0.58\columnwidth]{figures/overview.pdf}
   \caption{\acs{krrood} overview. The agent's program is its knowledge base: classes and objects form the working memory, Ontomatic compiles OWL ontologies into it, \acs{eql} queries it and calls the agent's procedures as predicates, and ORMatic stores it as long-term memory, queried through SQL.}
   \label{fig:arch}
+  \Description{Block diagram: the agent's program, with classes and objects as working memory, at the center; Ontomatic compiles OWL ontologies into it, EQL queries it and calls the agent's procedures, and ORMatic stores it in a relational database as long-term memory.}
 \end{figure}
 
 \section{Related Work}
@@ -433,6 +434,7 @@ The 18 queries of the RL profile test \ac{eql} over the program's objects and, t
   \input{figures/agent_loop_builds.tex}
   \caption{One step of the robot with \acs{krrood}, GraphDB, Nemo and Owlready2. Blue: the agent's Python process; orange: a second process holding a second world model. Red arrows cross a process boundary, numbered by request.}
   \label{fig:builds}
+  \Description{Four lanes, one per build, each showing one step from perception to the planner. KRROOD stays inside the agent's Python process. GraphDB sends an update and a query to a server holding a second model. Nemo and Owlready2 start a new process every step, Nemo to recompute the closure and Owlready2 to run Pellet on the exported quadstore, and the planner filters the returned answers.}
 \end{figure}
 
 \begin{lstlisting}[style=eql, float=t, caption={The robot's planner as a predicate, \texttt{CanReach}, and a step that perceives by assignment and decides by a query.}, label={lst:agent}]
