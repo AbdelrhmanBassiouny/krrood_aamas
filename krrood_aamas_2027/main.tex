@@ -276,25 +276,6 @@ fan = inference(T20CricketFan)(role_taker=p)
 fans = an(entity(fan).where(T20CricketFan.axiom(p)))
 \end{lstlisting}
 
-\paragraph{A step of the agent}
-Listing~\ref{lst:agent} shows a step of the delivery robot of Section~\ref{ssec:agent_loop}. Perceiving an enrolment is an assignment, from which the chain $\texttt{enrollIn}\circ\texttt{isPartOf}$ makes the student a member of the department's college. The query selects the students of a college, the courses they take whose rooms the robot can reach, and the driving times, calling the robot's path planner, which reads its pose and battery when the query is evaluated.
-
-\begin{lstlisting}[style=eql, caption={A step of the delivery robot: perceive by assignment, then decide with a query that calls the robot's planner.}, label={lst:agent}]
-@dataclass
-class CanReach(Predicate):
-    robot: Robot
-    room: Place
-    def __call__(self):  # shortest paths on the map
-        return can_reach(self.robot, self.room)
-student.enroll_in.add(department)  # perceive
-s = variable(Student)              # decide
-c = flat_variable(s.takes_course)
-t = travel_time(robot, c.taught_in)  # function
-handouts = an(set_of(s, c, t).where(
-    contains(s.is_member_of, college),
-    CanReach(robot, c.taught_in)))
-\end{lstlisting}
-
 \subsection{Semantics}
 \label{ssec:eql_semantics}
 
@@ -471,7 +452,24 @@ SQLAlchemy is the fastest on 14 queries; \ac{eql}'s geometric mean is 1.8 times 
   \input{tables/integration_table.tex}
 \end{table}
 
-We built one delivery robot on the OWL2Bench campus in three ways (Table~\ref{tab:integration}). A map adds rooms and charging docks; the robot's path planner, Dijkstra's algorithm, backs a predicate (the robot can reach a room and then a dock on its battery) and a function (the driving time), as in Listing~\ref{lst:agent}. In each of 200 steps, the robot perceives three new facts (an enrolment, a course taken, a T20 cricket fan; never a removal), decides with two queries that call the planner, for handouts to the students of a requested college, which need the chain, and for tickets to T20 cricket fans, which need the axiom of Listing~\ref{lst:axiom}, and drives to the nearest candidate or to a dock. Each of five seeds has its own map and facts. With \ac{krrood}, perceiving applies the property rules in under a millisecond. With GraphDB, it keeps a second world model in a server: it mirrors each step's facts with a SPARQL update, 89\,ms (38\,ms when empty), maps the answers' IRIs back to its objects and runs the planner on them. For SPARQL alone to decide, the planner's results must be written into the store. A wrapper generating SPARQL or an embedded store could also give one language and one process, but keeps two world models; the upper rows follow from evaluating queries over the program's objects. All three decide alike in every step of every seed. Step times are comparable: \ac{krrood}'s is spent querying (74\,ms with a join order chosen by hand), GraphDB's updating. Recomputing the closure each step, Nemo takes 5.7\,s and decides alike, and reasonable 4.6\,s, missing every handout for lack of property chains; Owlready2 would run Pellet, 39\,s, every step.
+\begin{lstlisting}[style=eql, float=t, caption={The robot's planner as a predicate (top); a step that perceives by assignment and decides by a query (bottom).}, label={lst:agent}]
+@dataclass
+class CanReach(Predicate):
+    robot: Robot
+    room: Place
+    def __call__(self):  # shortest paths on the map
+        return can_reach(self.robot, self.room)
+
+student.enroll_in.add(department)  # perceive
+s = variable(Student)              # decide
+c = flat_variable(s.takes_course)
+t = travel_time(robot, c.taught_in)
+handouts = an(set_of(s, c, t).where(
+    contains(s.is_member_of, college),
+    CanReach(robot, c.taught_in)))
+\end{lstlisting}
+
+We built one delivery robot on the OWL2Bench campus in three ways (Table~\ref{tab:integration}). A map, one per seed, adds rooms and charging docks, and the robot's path planner, Dijkstra's algorithm, backs a predicate, which holds if the robot can reach a room and then a dock on its battery, and a function, the driving time (Listing~\ref{lst:agent}, top); both read the robot's pose and battery when called. In each of 200 steps of five seeds, the robot perceives three new facts (an enrolment, a course taken, a T20 cricket fan; never a removal), decides with two queries that call the planner, and drives to the nearest candidate or to a dock. Perceiving an enrolment is an assignment, from which the chain $\texttt{enrollIn}\circ\texttt{isPartOf}$ makes the student a member of the department's college, as the handout query requires (Listing~\ref{lst:agent}, bottom). The ticket query selects the T20 cricket fans of Listing~\ref{lst:axiom}. With \ac{krrood}, perceiving applies the property rules in under a millisecond. With GraphDB, it keeps a second world model in a server: it mirrors each step's facts with a SPARQL update, 89\,ms (38\,ms when empty), maps the answers' IRIs back to its objects and runs the planner on them. For SPARQL alone to decide, the planner's results must be written into the store. A wrapper generating SPARQL or an embedded store could also give one language and one process, but keeps two world models; the upper rows follow from evaluating queries over the program's objects. All three decide alike in every step of every seed. Step times are comparable: \ac{krrood}'s is spent querying (74\,ms with a join order chosen by hand), GraphDB's updating. Recomputing the closure each step, Nemo takes 5.7\,s and decides alike, and reasonable 4.6\,s, missing every handout for lack of property chains; Owlready2 would run Pellet, 39\,s, every step.
 
 \section{Discussion and Conclusion}
 \label{sec:discussion_conclusion}
