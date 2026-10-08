@@ -5,8 +5,8 @@ warm-up; the summary gives, per system, its geometric mean over the 18 queries, 
 fastest, its slowest query, and on how many queries its answer set equals GraphDB's.
 
 With a third argument, the results of ORMatic's translation of the 18 queries (ormatic_translation.json, a separate
-run over the part of the model the queries use), a row "SQL translated from EQL" follows SQLAlchemy's; it is the
-fastest on a query only if it beats all other systems.
+run over the part of the model the queries use), a row "SQL translated from EQL" follows EQL's and takes part in the
+count of the fastest system. The hand-written SQLAlchemy queries of the main run are not shown.
 
 Usage: python3 planning/query_summary.py planning/results/aamas27/run/queries krrood_aamas_2027/tables/query_summary.tex
     [planning/results_ormatic_translation/ormatic_translation.json]
@@ -17,8 +17,7 @@ import statistics
 import sys
 from pathlib import Path
 
-SYSTEMS = [("eql", "EQL"), ("sqlalchemy", "SQLAlchemy"), ("graphdb", "GraphDB"), ("rdflib", "RDFLib"),
-           ("owlready2", "Owlready2")]
+SYSTEMS = [("eql", "EQL"), ("graphdb", "GraphDB"), ("rdflib", "RDFLib"), ("owlready2", "Owlready2")]
 
 
 def median_without_first(entry: dict) -> float:
@@ -34,24 +33,26 @@ times = {name: {q: median_without_first(e) for q, e in json.loads((directory / f
                 ["queries"].items()} for name, _ in SYSTEMS}
 check = json.loads((directory / "answer_check.json").read_text())["queries"]
 queries = sorted(times["graphdb"], key=int)
-fastest = {name: 0 for name, _ in SYSTEMS}
+labels = dict(SYSTEMS)
+equal_of = {name: {q: name == "graphdb" or bool(check[q][name]["equal"]) for q in queries} for name, _ in SYSTEMS}
+order = [name for name, _ in SYSTEMS]
+if len(sys.argv) > 3:
+    translation = {str(r["query"]): r for r in json.loads(Path(sys.argv[3]).read_text())["queries"]}
+    times["translated"] = {q: translation[q]["execute_median_ms"] for q in queries}
+    equal_of["translated"] = {q: translation[q]["equal_to_graphdb"]["equal"]
+                              if isinstance(translation[q]["equal_to_graphdb"], dict)
+                              else bool(translation[q]["equal_to_graphdb"]) for q in queries}
+    labels["translated"] = r"SQL translated from EQL$^{\dagger}$"
+    order.insert(1, "translated")
+fastest = {name: 0 for name in order}
 for q in queries:
-    fastest[min(SYSTEMS, key=lambda s: times[s[0]][q])[0]] += 1
+    fastest[min(order, key=lambda name: times[name][q])] += 1
 rows = []
-for name, label in SYSTEMS:
+for name in order:
     values = [times[name][q] for q in queries]
     geometric = math.exp(sum(map(math.log, values)) / len(values))
-    equal = len(queries) if name == "graphdb" else sum(check[q][name]["equal"] for q in queries)
-    rows.append((label, geometric, fastest[name], format_ms(times[name]["20"]), format_ms(times[name]["22"]), equal))
-    if name == "sqlalchemy" and len(sys.argv) > 3:
-        translation = {str(r["query"]): r for r in json.loads(Path(sys.argv[3]).read_text())["queries"]}
-        translated = {q: translation[q]["execute_median_ms"] for q in queries}
-        geometric = math.exp(sum(math.log(translated[q]) for q in queries) / len(queries))
-        wins = sum(translated[q] < min(times[s][q] for s, _ in SYSTEMS) for q in queries)
-        equal = sum(translation[q]["equal_to_graphdb"]["equal"] if isinstance(translation[q]["equal_to_graphdb"], dict)
-                    else bool(translation[q]["equal_to_graphdb"]) for q in queries)
-        rows.append((r"SQL translated from EQL$^{\dagger}$", geometric, wins, format_ms(translated["20"]),
-                     format_ms(translated["22"]), equal))
+    rows.append((labels[name], geometric, fastest[name], format_ms(times[name]["20"]), format_ms(times[name]["22"]),
+                 sum(equal_of[name].values())))
 best = min(row[1] for row in rows)
 lines = [r"\begin{tabular}{@{}lrrrrr@{}}", r"\toprule",
          r"\textbf{System} & \textbf{Geo.\ mean} & \textbf{Fastest} & \textbf{Q20} & \textbf{Q22} & \textbf{Equal}\\",

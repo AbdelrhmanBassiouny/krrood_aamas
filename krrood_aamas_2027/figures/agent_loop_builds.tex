@@ -1,0 +1,65 @@
+% One step of the delivery robot (Section "An Agent Loop") built three ways.
+% Input inside a figure environment:  \centering\input{figures/agent_loop_builds.tex}
+% Needs only \usepackage{tikz} in the preamble (no TikZ libraries); xcolor comes with acmart.
+% Suggested caption:
+%   One step of the delivery robot with KRROOD, GraphDB and Nemo. Blue: the agent's Python process;
+%   orange: a second process holding a second world model. Red arrows cross a process boundary;
+%   the numbers on them count requests to the server per step (one update, two queries). GraphDB with push (Table~\ref{tab:integration})
+%   instead runs the planner before the query, for every room, and writes its results into the store.
+\begin{tikzpicture}[x=1cm, y=1cm, >=stealth, font=\footnotesize,
+  agent/.style={draw=blue!60!black, fill=blue!6, rounded corners=2pt, line width=0.5pt},
+  other/.style={draw=orange!75!black, fill=orange!10, rounded corners=2pt, line width=0.5pt},
+  boxlabel/.style={font=\scriptsize\itshape, anchor=north west, inner sep=1.5pt},
+  op/.style={draw=black!60, fill=white, rounded corners=1.5pt, align=center, inner sep=1.5pt,
+    minimum height=0.62cm, font=\footnotesize},
+  flow/.style={->, line width=0.5pt},
+  cross/.style={->, line width=0.9pt, draw=red!70!black},
+  rt/.style={circle, fill=red!70!black, text=white, inner sep=0pt, minimum size=8pt, font=\tiny\bfseries},
+  rowname/.style={anchor=west, align=left, inner sep=0pt},
+  head/.style={font=\scriptsize\bfseries, text=black!70},
+]
+% column headers
+\node[head] at (2.2,3.4) {perceive};
+\node[head] at (4.72,3.4) {knowledge, inference, query};
+\node[head] at (7.32,3.4) {planner};
+
+% ---------------------------------------------------------------- KRROOD
+\node[rowname] at (0,2.6) {\textbf{KRROOD}\\[-1pt]{\scriptsize 0 round trips}};
+\draw[agent] (1.25,2.05) rectangle (8.4,3.15);
+\node[boxlabel, text=blue!60!black] at (1.25,3.15) {agent process (Python): the one world model};
+\node[op, text width=1.7cm] (k1) at (2.2,2.48) {assignment;\\rules fire};
+\node[op, text width=2.3cm] (k2) at (4.72,2.48) {objects are the KB;\\EQL query};
+\node[op, text width=1.7cm] (k3) at (7.32,2.48) {a predicate\\in the query};
+\draw[flow] (k1) -- (k2);
+\draw[flow, <->] (k2) -- (k3);
+
+% ---------------------------------------------------------------- GraphDB
+\node[rowname] at (0,1.3) {\textbf{GraphDB}\\[-1pt]{\scriptsize 3 round trips}};
+\draw[agent] (1.25,0.75) rectangle (3.15,1.85);
+\node[boxlabel, text=blue!60!black] at (1.25,1.85) {agent};
+\draw[other] (3.4,0.75) rectangle (6.05,1.85);
+\node[boxlabel, text=orange!60!black] at (3.4,1.85) {GraphDB server: 2nd model};
+\draw[agent] (6.3,0.75) rectangle (8.4,1.85);
+\node[boxlabel, text=blue!60!black] at (6.3,1.85) {agent};
+\node[op, text width=1.7cm] (g1) at (2.2,1.18) {facts as\\SPARQL update};
+\node[op, text width=1.2cm] (g2) at (4.1,1.18) {triples;\\OWL 2 RL};
+\node[op, text width=0.95cm] (g3) at (5.45,1.18) {SPARQL\\query};
+\node[op, text width=1.85cm] (g4) at (7.35,1.18) {IRIs mapped;\\on the answers};
+\draw[cross] (g1) -- node[rt, above=1.5pt] {1} (g2);
+\draw[flow] (g2) -- (g3);
+\draw[cross] (g3) -- node[rt, above=1.5pt] {2} (g4);
+
+% ---------------------------------------------------------------- Nemo
+\node[rowname] at (0,0) {\textbf{Nemo}\\[-1pt]{\scriptsize no server,}\\[-1pt]{\scriptsize new process}};
+\draw[agent] (1.25,-0.55) rectangle (3.15,0.55);
+\node[boxlabel, text=blue!60!black] at (1.25,0.55) {agent};
+\draw[other] (3.4,-0.55) rectangle (6.05,0.55);
+\node[boxlabel, text=orange!60!black] at (3.4,0.55) {Nemo, every step: 2nd model};
+\draw[agent] (6.3,-0.55) rectangle (8.4,0.55);
+\node[boxlabel, text=blue!60!black] at (6.3,0.55) {agent};
+\node[op, text width=1.7cm] (n1) at (2.2,-0.12) {facts appended\\to a file};
+\node[op, text width=2.3cm] (n2) at (4.72,-0.12) {closure from scratch;\\decision rules};
+\node[op, text width=1.85cm] (n3) at (7.35,-0.12) {IRIs mapped;\\on the answers};
+\draw[cross] (n1) -- (n2);
+\draw[cross] (n2) -- (n3);
+\end{tikzpicture}

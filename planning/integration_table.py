@@ -21,19 +21,23 @@ synchronized), or the implementation (one language and one process, which a wrap
 embedded store could also give while keeping two world models).
 * Step time: median over all steps of all seeds, with the range of the per-seed medians.
 
+* Nemo: from its own run (results_agentloop_nemo/agent_loop_seeds.json, third argument). Its knowledge is the
+  program's objects plus a file of the perceived facts, and each step starts one Nemo process instead of a request
+  to a server, shown as "1 run" among the round trips.
+
 Usage: python3 planning/integration_table.py planning/results_agentloop_seeds/agent_loop_seeds.json \
-           krrood_aamas_2027/tables/integration_table.tex
+           krrood_aamas_2027/tables/integration_table.tex planning/results_agentloop_nemo/agent_loop_seeds.json
 """
 import json
 import sys
 from pathlib import Path
 
-COLUMNS = [("krrood", "KRROOD"), ("graphdb", "GraphDB"), ("graphdb_push", "GraphDB, push")]
+COLUMNS = [("krrood", "KRROOD"), ("graphdb", "GraphDB"), ("graphdb_push", "GraphDB, push"), ("nemo", "Nemo")]
 STRUCTURE = {
-    "Languages": {"krrood": "1", "graphdb": "2", "graphdb_push": "2"},
-    "Processes": {"krrood": "1", "graphdb": "2", "graphdb_push": "2"},
-    "World models": {"krrood": "1", "graphdb": "2", "graphdb_push": "2"},
-    "Planner runs": {"krrood": "in query", "graphdb": "on answers", "graphdb_push": "before query"},
+    "Languages": {"krrood": "1", "graphdb": "2", "graphdb_push": "2", "nemo": "2"},
+    "Processes": {"krrood": "1", "graphdb": "2", "graphdb_push": "2", "nemo": "2"},
+    "World models": {"krrood": "1", "graphdb": "2", "graphdb_push": "2", "nemo": "2"},
+    "Planner runs": {"krrood": "in query", "graphdb": "on answers", "graphdb_push": "before query", "nemo": "on answers"},
 }
 
 
@@ -42,6 +46,7 @@ def number(value: float) -> str:
 
 
 summary = json.loads(Path(sys.argv[1]).read_text())["variants"]
+summary["nemo"] = json.loads(Path(sys.argv[3]).read_text())["variants"]["nemo"]
 
 
 def lines_of(key: str, category: str) -> str:
@@ -56,16 +61,16 @@ semantics.append(["Writes / step"] + [
 semantics.append(["Synchronization lines"] + [lines_of(key, "synchronization") for key, _ in COLUMNS])
 implementation = [[label] + [STRUCTURE[label][key] for key, _ in COLUMNS] for label in ("Languages", "Processes")]
 implementation.append(["Round trips / step"] + [
-    number(summary[key]["median_per_step"]["round_trips"]) for key, _ in COLUMNS])
+    "1 run" if key == "nemo" else number(summary[key]["median_per_step"]["round_trips"]) for key, _ in COLUMNS])
 implementation.append(["Mapping/procedure lines"] + [
     f"{lines_of(key, 'mapping')}/{lines_of(key, 'procedure_integration')}" for key, _ in COLUMNS])
 implementation.append(["Step [ms]"] + [
-    f"{summary[key]['median_step_ms']:.0f} ({min(summary[key]['per_seed_median_step_ms']):.0f}--"
-    f"{max(summary[key]['per_seed_median_step_ms']):.0f})" for key, _ in COLUMNS])
-lines = [r"\begin{tabular}{@{}lrrr@{}}", r"\toprule",
+    f"{summary[key]['median_step_ms']:,.0f} ({min(summary[key]['per_seed_median_step_ms']):,.0f}--"
+    f"{max(summary[key]['per_seed_median_step_ms']):,.0f})".replace(",", "{,}") for key, _ in COLUMNS])
+lines = [r"\begin{tabular}{@{}lrrrr@{}}", r"\toprule",
          " & ".join([""] + [f"\\textbf{{{label}}}" for _, label in COLUMNS]) + r"\\", r"\midrule"]
 for title, rows in (("From the semantics", semantics), ("From the implementation", implementation)):
-    lines.append(f"\\multicolumn{{4}}{{@{{}}l}}{{\\emph{{{title}}}}}\\\\")
+    lines.append(f"\\multicolumn{{5}}{{@{{}}l}}{{\\emph{{{title}}}}}\\\\")
     lines += [" & ".join(row) + r"\\" for row in rows]
 lines += [r"\bottomrule", r"\end{tabular}"]
 Path(sys.argv[2]).write_text("\n".join(lines) + "\n")
