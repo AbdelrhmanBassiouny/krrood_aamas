@@ -1,8 +1,8 @@
-% One step of the delivery robot (Section "An Agent Loop") built three ways.
+% One step of the delivery robot (Section "An Agent Loop") built four ways.
 % Input inside a figure environment:  \centering\input{figures/agent_loop_builds.tex}
 % Needs only \usepackage{tikz} in the preamble (no TikZ libraries); xcolor comes with acmart.
 % Suggested caption:
-%   One step of the delivery robot with KRROOD, GraphDB and Nemo. Blue: the agent's Python process;
+%   One step of the delivery robot with KRROOD, GraphDB, Nemo and Owlready2. Blue: the agent's Python process;
 %   orange: a second process holding a second world model. Red arrows cross a process boundary;
 %   the numbers on them count requests to the server per step (one update, two queries). GraphDB with push (Table~\ref{tab:integration})
 %   instead runs the planner before the query, for every room, and writes its results into the store.
@@ -18,10 +18,6 @@
   rowname/.style={anchor=west, align=left, inner sep=0pt},
   head/.style={font=\scriptsize\bfseries, text=black!70},
 ]
-% column headers
-\node[head] at (2.2,3.4) {perceive};
-\node[head] at (4.72,3.4) {knowledge, inference, query};
-\node[head] at (7.32,3.4) {planner};
 
 % ---------------------------------------------------------------- KRROOD
 \node[rowname] at (0,2.6) {\textbf{KRROOD}\\[-1pt]{\scriptsize 0 round trips}};
@@ -62,4 +58,17 @@
 \node[op, text width=1.85cm] (n3) at (7.35,-0.12) {IRIs mapped;\\on the answers};
 \draw[cross] (n1) -- (n2);
 \draw[cross] (n2) -- (n3);
+% ---------------------------------------------------------------- Owlready2
+\node[rowname] at (0,-1.3) {\textbf{Owlready2}\\[-1pt]{\scriptsize no server,}\\[-1pt]{\scriptsize new process}};
+\draw[agent] (1.25,-1.85) rectangle (3.15,-0.75);
+\node[boxlabel, text=blue!60!black] at (1.25,-0.75) {agent: quadstore};
+\draw[other] (3.4,-1.85) rectangle (6.05,-0.75);
+\node[boxlabel, text=orange!60!black] at (3.4,-0.75) {Pellet, every step: 2nd model};
+\draw[agent] (6.3,-1.85) rectangle (8.4,-0.75);
+\node[boxlabel, text=blue!60!black] at (6.3,-0.75) {agent: quadstore};
+\node[op, text width=1.7cm] (o1) at (2.2,-1.42) {assignment;\\no inference};
+\node[op, text width=2.3cm] (o2) at (4.72,-1.42) {store exported;\\inferences back};
+\node[op, text width=1.85cm] (o3) at (7.35,-1.42) {search;\\on the answers};
+\draw[cross] (o1) -- (o2);
+\draw[cross] (o2) -- (o3);
 \end{tikzpicture}

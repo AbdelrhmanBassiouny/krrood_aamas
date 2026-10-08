@@ -1,0 +1,28 @@
+Agent loop with Owlready2 0.49 + Pellet, seed 0, 200 steps.
+
+Code: krrood_experiments commit b5d7483 (owlready2_variant.py). Image krrood-aamas27-dev, venv /opt/venvs/earlier,
+OpenJDK 21.0.9 for Pellet (Java heap 8000 MB). Container pinned to CPUs 0-5 (docker --cpuset-cpus=0-5) with 28 GB,
+on the machine of the main run (Intel Core i7-13700, 64 GB RAM, Ubuntu 24.04), with nothing else running.
+Command: run_agent_loop.py --variants krrood,owlready2 --steps 200 --seed 0 --results-dir seed0
+KRROOD is run alongside as the reference of the agreement check; its step times here are not the paper's (those
+come from the main run).
+Started 2026-10-08T20:15:57Z, finished 2026-10-08T22:07:18Z (seed0/started.txt, seed0/finished.txt).
+
+The build: facts asserted on Owlready2's objects (no inference); every step the previous inferences are deleted
+(ontology.destroy()) and Pellet is run again with sync_reasoner_pellet(infer_property_values=True), which exports the
+world and writes the inferences back into an ontology of their own; candidates by world.search; the planner runs in
+Python on the answers, once per distinct room.
+
+Result: Owlready2 made KRROOD's decisions and returned its candidate sets in all 200 steps. Median step 32.99 s
+(95th percentile 33.96 s), nearly all of it the reasoning phase (deleting the previous inferences, about 2 s, and
+Pellet's run, about 31 s; agent_loop_owlready2.json, setup.after_last_step.pellet_steps). Per step, a median of
+1,358,555 inferences are deleted and 1,358,558 statements inserted (the step's asserted facts and the inferences
+written back). Boundary lines: 8 synchronization (deleting the inferences and running Pellet), 15 mapping, 2 procedure
+integration. Setup (loading the raw data and the first Pellet run): 34.6 s. Peak resident set size of the worker:
+9.7 GB.
+
+agent_loop_seeds.json: scripts/aamas27/aggregate_agent_loop_seeds.py over seed0 (one seed).
+
+The candidate files (*_candidates.json.gz) are left out for size: decompressed, Owlready2's and KRROOD's are
+identical, and equal to KRROOD's in agent_loop/ (seed 0). MD5 of the decompressed files:
+  seed0 krrood adb8cabb49325b0fe5a2ed1acf18fcb1 owlready2 adb8cabb49325b0fe5a2ed1acf18fcb1

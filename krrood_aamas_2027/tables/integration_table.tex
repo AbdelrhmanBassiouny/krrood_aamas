@@ -1,17 +1,17 @@
-\begin{tabular}{@{}lrrrr@{}}
+\begin{tabular}{@{}lrrrrr@{}}
 \toprule
- & \textbf{KRROOD} & \textbf{GraphDB} & \textbf{GraphDB, push} & \textbf{Nemo}\\
+ & \textbf{KRROOD} & \textbf{GraphDB} & \textbf{push} & \textbf{Nemo} & \textbf{Owlready2}\\
 \midrule
-\multicolumn{5}{@{}l}{\emph{From the semantics}}\\
-World models & 1 & 2 & 2 & 2\\
-Planner runs & in query & on answers & before query & on answers\\
-Writes / step & 0 & 4 & 405 & 4\\
-Synchronization lines & 0 & 16 & 44 & 22\\
-\multicolumn{5}{@{}l}{\emph{From the implementation}}\\
-Languages & 1 & 2 & 2 & 2\\
-Processes & 1 & 2 & 2 & 2\\
-Round trips / step & 0 & 3 & 4 & 1 run\\
-All boundary lines & 19 & 27 & 59 & 33\\
-Step [ms] & 90 (88--90) & 96 (93--100) & 162 (150--166) & 5{,}683 (5{,}653--5{,}690)\\
+\multicolumn{6}{@{}l}{\emph{From the semantics}}\\
+World models & 1 & 2 & 2 & 2 & 2\\
+Planner vs.\ query & inside & after & before & after & after\\
+Writes & 0 & 4 & 405 & 4 & 2.7\,M\\
+Sync.\ lines & 0 & 16 & 44 & 22 & 8\\
+\multicolumn{6}{@{}l}{\emph{From the implementation}}\\
+Languages & 1 & 2 & 2 & 2 & 1\\
+Processes & 1 & 2 & 2 & 2 & 2\\
+Round trips & 0 & 3 & 4 & 1 run & 1 run\\
+Boundary lines & 19 & 27 & 59 & 33 & 25\\
+Step [ms] & 90 & 96 & 162 & 5{,}683 & 32{,}986\\
 \bottomrule
 \end{tabular}
