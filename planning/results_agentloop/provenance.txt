@@ -1,15 +1,29 @@
-The agent loop of Section 7.4 (the delivery robot), measured on 2026-10-07 on the machine of the main run (Intel
-Core i7-13700, 64 GB RAM, Ubuntu 24.04), in a container of the Docker image of the bundle plus reasonable 0.4.4,
-limited to 6 CPUs and 16 GB, with GraphDB 11.2 Free (one core) in the same container. Code: experiments commit
-c4aede2 (src/krrood_experiments/aamas27/agent_loop/), seed 0, 200 steps, 3 perceived additions per step. One run per
-variant. Other experiments ran on the machine at the same time.
+The agent loop of Section 7.4 (the delivery robot), five seeds, measured on 2026-10-07/08 on the machine of the
+main run (Intel Core i7-13700, 64 GB RAM, Ubuntu 24.04), in a container of the Docker image of the bundle plus
+reasonable 0.4.4, pinned to CPUs 0-5 (docker --cpuset-cpus=0-5) with 16 GB, with GraphDB 11.2 Free (one core, 6 GB
+heap) in the same container. Seeds 0-4, 200 steps each, 3 perceived additions per step; variants krrood,
+krrood_navigation, graphdb and graphdb_push for every seed, reasonable for seed 0 only (about 17 GB and 1 s per
+step; it derives no property chains). One run per variant and seed.
 
-The variants krrood, graphdb, graphdb_push and reasonable were run first (run200.log); krrood_navigation was added
-afterwards with --resume (run200_resume.log), which kept the other variants' results. Between the runs the code
-changed only in ways that do not affect what was measured: reasonable's variant frees its previous closure before
-the final full materialization (its first attempt ran out of memory there), an unused import, the table header,
-the --resume option and the tests.
+Seeds 0 and 1 ran while other experiments ran on the machine: the reproduction run of the supplement (about one
+core busy) and, for part of seed 0, the runtime audit (CPUs 12-17). Seeds 2-4 and the update-cost measurement ran
+after these had finished, with nothing else running. The load average at the start and end of each seed is in
+machine_load.log.
 
-GraphDB's repository was loaded once (raw data, OWL 2 RL, about 23 minutes); after the graphdb variant, the
-statements it had written were deleted and the explicit and total statement counts checked to equal those after
-loading, before graphdb_push used the repository.
+Code: experiments commit 226b6d4 for seeds 0 and 1, 814740e for seed 2, and b5424f1 for seeds 3 and 4. The two later
+commits change only how run_agent_loop.py keeps GraphDB's repository between runs (--resume keeps a copied state
+file; --keep-graphdb-repository does not delete the repository at the end); nothing that is measured changed.
+GraphDB's repository was loaded by seeds 0-3 (raw data, OWL 2 RL, about 21-22 minutes each) and reused by seed 4;
+after each GraphDB variant, the statements it had written were deleted and the statement counts checked to equal
+those after loading ("restore" in each agent_loop.json). Seed 1 ended at 22:22 UTC; the driver's wait for it
+missed its end, which only delayed seed 2.
+
+Afterwards, on the repository kept by seed 4, graphdb_update_cost.py (fixed in commit after b5424f1 to use the
+client that sends updates) measured the cost of GraphDB's updates for the first 30
+steps of seed 0 (graphdb_update_cost.json).
+
+reasonable (seed 0) ran out of the container's 16 GB, shared with GraphDB's heap, in its final materialization after
+step 199 (run.log); it was run again on its own with --resume in a container of the same image with 28 GB and CPUs
+0-5, after all other runs had finished (run_reasonable.log), which kept the other variants' results.
+
+agent_loop_seeds.json combines the seeds (scripts/aamas27/aggregate_agent_loop_seeds.py).

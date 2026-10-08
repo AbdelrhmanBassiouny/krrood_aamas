@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-10-07T21:14:18.234338",
+  "timestamp": "2026-10-08T01:13:16.401544",
   "hostname": "eaec42722c1d",
   "cpu_model": "13th Gen Intel(R) Core(TM) i7-13700",
   "cpu_count_logical": 24,
   "cpu_count_physical": 16,
   "ram_total_gib": 62.58,
-  "ram_available_gib_at_start": 47.43,
+  "ram_available_gib_at_start": 51.83,
   "swap_total_gib": 8.0,
   "os": "Ubuntu 24.04.3 LTS",
   "kernel": "6.8.0-40-generic",
@@ -29,12 +29,10 @@
   "git": {
     "krrood_experiments": {
       "path": "/work",
-      "commit": "67de8c3d1e4bae83c55d8699911d24f24994e8f8",
-      "branch": "aamas27-review5",
-      "dirty": true,
-      "dirty_files": [
-        "M supplement/make_supplement.py"
-      ]
+      "commit": "814740e20bfd9b9b513579fdd3ff930929787b1b",
+      "branch": "aamas27-review6",
+      "dirty": false,
+      "dirty_files": []
     },
     "krrood": {
       "path": "/opt/aamas27/code/earlier/krrood/src/krrood",

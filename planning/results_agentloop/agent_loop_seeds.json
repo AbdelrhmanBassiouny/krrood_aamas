@@ -1,0 +1,434 @@
+{
+ "seeds": {
+  "agentloop_staged": 0,
+  "seed1": 1,
+  "seed2": 2,
+  "seed3": 3,
+  "seed4": 4
+ },
+ "steps_per_seed": {
+  "agentloop_staged": 200,
+  "seed1": 200,
+  "seed2": 200,
+  "seed3": 200,
+  "seed4": 200
+ },
+ "variants": {
+  "graphdb": {
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "steps": 1000,
+   "median_step_ms": 95.9336619998794,
+   "median_step_ms_95ci": [
+    92.77520899195224,
+    99.11539599124808
+   ],
+   "per_seed_median_step_ms": [
+    94.3786059942795,
+    92.59571603615768,
+    100.08432301401626,
+    95.64295453310478,
+    99.14699698856566
+   ],
+   "p95_step_ms": 182.59390221792273,
+   "median_phase_ms": {
+    "mapping": 0.12300250818952918,
+    "update": 88.89620249101426,
+    "reasoning": 0.0,
+    "push": 0.0,
+    "query": 7.5409724086057395,
+    "procedures": 0.08814556349534541,
+    "decide": 0.11176848784089088,
+    "act": 0.0033545074984431267
+   },
+   "all_agree": true,
+   "equal_actions": 1000,
+   "steps_compared": 1000,
+   "median_per_step": {
+    "round_trips": 3.0,
+    "statements_inserted": 4.0,
+    "statements_deleted": 0.0,
+    "reasoner_calls": 0.0
+   },
+   "boundary_lines": {
+    "total": 27,
+    "per_category": {
+     "synchronization": 16,
+     "mapping": 9,
+     "procedure_integration": 2
+    },
+    "per_function": {
+     "GraphDBMirror._application_data": {
+      "category": "mapping",
+      "lines": 4
+     },
+     "GraphDBVariant._handout_rows": {
+      "category": "mapping",
+      "lines": 2
+     },
+     "GraphDBVariant._reachable_driving_times": {
+      "category": "procedure_integration",
+      "lines": 2
+     },
+     "GraphDBVariant._ticket_rows": {
+      "category": "mapping",
+      "lines": 3
+     },
+     "rdf_mirror.event_triples": {
+      "category": "synchronization",
+      "lines": 11
+     },
+     "rdf_mirror.insert_data": {
+      "category": "synchronization",
+      "lines": 3
+     },
+     "rdf_mirror.object_term": {
+      "category": "synchronization",
+      "lines": 2
+     }
+    }
+   },
+   "setup_seconds": [
+    1319.9781856859918,
+    1330.593500012037,
+    1268.9215110379737,
+    1265.4122483470128,
+    1265.4122539510136
+   ]
+  },
+  "graphdb_push": {
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "steps": 1000,
+   "median_step_ms": 162.45776145660784,
+   "median_step_ms_95ci": [
+    157.5728110037744,
+    165.90377449756488
+   ],
+   "per_seed_median_step_ms": [
+    150.40350799972657,
+    160.13981599826366,
+    165.6098435196327,
+    166.07612803636584,
+    164.09197344910353
+   ],
+   "p95_step_ms": 248.19647242693463,
+   "median_phase_ms": {
+    "mapping": 0.5622194730676711,
+    "update": 87.22410051268525,
+    "reasoning": 0.0,
+    "push": 63.0136318213772,
+    "query": 15.520727989496663,
+    "procedures": 0.20439420768525451,
+    "decide": 0.09681798110250384,
+    "act": 0.004461995558813214
+   },
+   "all_agree": true,
+   "equal_actions": 1000,
+   "steps_compared": 1000,
+   "median_per_step": {
+    "round_trips": 4.0,
+    "statements_inserted": 204.0,
+    "statements_deleted": 201.0,
+    "reasoner_calls": 0.0
+   },
+   "boundary_lines": {
+    "total": 59,
+    "per_category": {
+     "synchronization": 44,
+     "mapping": 15,
+     "procedure_integration": 0
+    },
+    "per_function": {
+     "GraphDBMirror._application_data": {
+      "category": "mapping",
+      "lines": 4
+     },
+     "GraphDBPushVariant._application_triples": {
+      "category": "synchronization",
+      "lines": 14
+     },
+     "GraphDBPushVariant._handout_records": {
+      "category": "mapping",
+      "lines": 5
+     },
+     "GraphDBPushVariant._knowledge_triples": {
+      "category": "synchronization",
+      "lines": 8
+     },
+     "GraphDBPushVariant._procedure_results": {
+      "category": "synchronization",
+      "lines": 6
+     },
+     "GraphDBPushVariant._ticket_records": {
+      "category": "mapping",
+      "lines": 2
+     },
+     "rdf_mirror.event_triples": {
+      "category": "synchronization",
+      "lines": 11
+     },
+     "rdf_mirror.insert_data": {
+      "category": "synchronization",
+      "lines": 3
+     },
+     "rdf_mirror.object_term": {
+      "category": "synchronization",
+      "lines": 2
+     },
+     "rdf_mirror.place_identifier": {
+      "category": "mapping",
+      "lines": 2
+     },
+     "rdf_mirror.place_iri": {
+      "category": "mapping",
+      "lines": 2
+     }
+    }
+   },
+   "setup_seconds": [
+    1320.140785763011,
+    1330.7683667530364,
+    1269.0767866469687,
+    1265.5665180959913,
+    1265.5509378770075
+   ]
+  },
+  "krrood": {
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "steps": 1000,
+   "median_step_ms": 89.59844702621922,
+   "median_step_ms_95ci": [
+    88.37209502235055,
+    90.58646400808357
+   ],
+   "per_seed_median_step_ms": [
+    88.99537597608287,
+    89.78030347498134,
+    89.7337975766277,
+    88.17350203753449,
+    90.17610798764508
+   ],
+   "p95_step_ms": 124.5153086449136,
+   "median_phase_ms": {
+    "mapping": 0.02144246536772698,
+    "update": 0.42689399560913444,
+    "reasoning": 0.0,
+    "push": 0.0,
+    "query": 88.33171319565736,
+    "procedures": 0.7261464052135125,
+    "decide": 0.09449500066693872,
+    "act": 0.0026505003916099668
+   },
+   "all_agree": null,
+   "equal_actions": null,
+   "steps_compared": null,
+   "median_per_step": {
+    "round_trips": 0.0,
+    "statements_inserted": 5.0,
+    "statements_deleted": 0.0,
+    "reasoner_calls": 0.0
+   },
+   "boundary_lines": {
+    "total": 19,
+    "per_category": {
+     "synchronization": 0,
+     "mapping": 12,
+     "procedure_integration": 7
+    },
+    "per_function": {
+     "KrroodVariant._attach_application_data": {
+      "category": "mapping",
+      "lines": 8
+     },
+     "KrroodVariant._register": {
+      "category": "mapping",
+      "lines": 2
+     },
+     "KrroodVariant._resolve": {
+      "category": "mapping",
+      "lines": 2
+     },
+     "krrood_variant.CanReach": {
+      "category": "procedure_integration",
+      "lines": 5
+     },
+     "krrood_variant.travel_time": {
+      "category": "procedure_integration",
+      "lines": 2
+     }
+    }
+   },
+   "setup_seconds": [
+    8.281682279004599,
+    8.260817967995536,
+    8.253006388025824,
+    8.249429791001603,
+    8.333078594994731
+   ]
+  },
+  "krrood_navigation": {
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "steps": 1000,
+   "median_step_ms": 73.93767649773508,
+   "median_step_ms_95ci": [
+    73.12842701503541,
+    74.50883802084718
+   ],
+   "per_seed_median_step_ms": [
+    73.78320099087432,
+    74.71896550850943,
+    73.70006847486366,
+    72.87839651689865,
+    74.29474347736686
+   ],
+   "p95_step_ms": 83.07338874583365,
+   "median_phase_ms": {
+    "mapping": 0.021036990801803768,
+    "update": 0.42231551196891814,
+    "reasoning": 0.0,
+    "push": 0.0,
+    "query": 72.85948419303168,
+    "procedures": 0.6355474033625796,
+    "decide": 0.08800400246400386,
+    "act": 0.0026534980861470103
+   },
+   "all_agree": true,
+   "equal_actions": 1000,
+   "steps_compared": 1000,
+   "median_per_step": {
+    "round_trips": 0.0,
+    "statements_inserted": 5.0,
+    "statements_deleted": 0.0,
+    "reasoner_calls": 0.0
+   },
+   "boundary_lines": {
+    "total": 19,
+    "per_category": {
+     "synchronization": 0,
+     "mapping": 12,
+     "procedure_integration": 7
+    },
+    "per_function": {
+     "KrroodVariant._attach_application_data": {
+      "category": "mapping",
+      "lines": 8
+     },
+     "KrroodVariant._register": {
+      "category": "mapping",
+      "lines": 2
+     },
+     "KrroodVariant._resolve": {
+      "category": "mapping",
+      "lines": 2
+     },
+     "krrood_variant.CanReach": {
+      "category": "procedure_integration",
+      "lines": 5
+     },
+     "krrood_variant.travel_time": {
+      "category": "procedure_integration",
+      "lines": 2
+     }
+    }
+   },
+   "setup_seconds": [
+    8.208230309013743,
+    8.342910109000513,
+    8.318708355014678,
+    8.213926894968608,
+    8.303124557976844
+   ]
+  },
+  "reasonable": {
+   "seeds": [
+    0
+   ],
+   "steps": 200,
+   "median_step_ms": 4578.828786485246,
+   "median_step_ms_95ci": null,
+   "per_seed_median_step_ms": [
+    4578.828786485246
+   ],
+   "p95_step_ms": 4853.067018097499,
+   "median_phase_ms": {
+    "mapping": 0.04172400804236531,
+    "update": 0.9643024968681857,
+    "reasoning": 3638.061851510429,
+    "push": 0.0,
+    "query": 922.6993660122389,
+    "procedures": 0.019380502635613084,
+    "decide": 0.013024502550251782,
+    "act": 0.00238850770983845
+   },
+   "all_agree": false,
+   "equal_actions": 104,
+   "steps_compared": 200,
+   "median_per_step": {
+    "round_trips": 0.0,
+    "statements_inserted": 4.0,
+    "statements_deleted": 0.0,
+    "reasoner_calls": 2.0
+   },
+   "boundary_lines": {
+    "total": 28,
+    "per_category": {
+     "synchronization": 17,
+     "mapping": 9,
+     "procedure_integration": 2
+    },
+    "per_function": {
+     "ReasonableVariant._application_data": {
+      "category": "mapping",
+      "lines": 4
+     },
+     "ReasonableVariant._handout_rows": {
+      "category": "mapping",
+      "lines": 2
+     },
+     "ReasonableVariant._rdf_triples": {
+      "category": "synchronization",
+      "lines": 6
+     },
+     "ReasonableVariant._reachable_driving_times": {
+      "category": "procedure_integration",
+      "lines": 2
+     },
+     "ReasonableVariant._ticket_rows": {
+      "category": "mapping",
+      "lines": 3
+     },
+     "rdf_mirror.event_triples": {
+      "category": "synchronization",
+      "lines": 11
+     }
+    }
+   },
+   "setup_seconds": [
+    76.51804038797854
+   ]
+  }
+ }
+}

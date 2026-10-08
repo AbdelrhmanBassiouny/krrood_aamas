@@ -1,15 +1,16 @@
 {
   "experiment": "agent_loop",
   "arguments": {
-    "results_dir": "/work/results/aamas27/agent_loop-20261007-seed0-200steps",
+    "results_dir": "/work/results/aamas27/agent_loop-20261008-seed0-200steps",
     "steps": 200,
     "seed": 0,
     "events_per_step": 3,
-    "variants": "krrood,krrood_navigation",
+    "variants": "krrood,reasonable",
     "graphdb_url": null,
     "raw_file": "/work/resources/owl2bench_statements_unreasoned.rdf",
     "timeout_seconds": 21600,
-    "resume": true
+    "resume": true,
+    "keep_graphdb_repository": false
   },
   "scenario": {
     "places": 379,
@@ -30,43 +31,43 @@
       "description": "KRROOD objects are the knowledge base: descriptor assignment with forward chaining, EQL queries that call the robot's predicate and function on the live objects.",
       "setup": {
         "seconds": {
-          "load_and_reasoning": 12.935439457010943,
-          "application_data": 0.005389062003814615
+          "load_and_reasoning": 8.278426085002138,
+          "application_data": 0.0032561940024606884
         },
-        "total_seconds": 12.940828519014758,
+        "total_seconds": 8.281682279004599,
         "individuals": 3667,
         "after_last_step": {},
-        "import_seconds": 1.234483601001557,
+        "import_seconds": 0.8773203650052892,
         "follows_reference_actions": false
       },
       "steps": {
         "total_seconds": {
           "count": 200,
-          "total": 20.700941000250168,
-          "mean": 0.10350470500125084,
-          "median": 0.09482191900315229,
-          "p95": 0.1528420399990864,
-          "min": 0.06674904198735021,
-          "max": 0.26515264296904206
+          "total": 19.09465474044555,
+          "mean": 0.09547327370222775,
+          "median": 0.08899537597608287,
+          "p95": 0.1250532859849045,
+          "min": 0.06578773701039609,
+          "max": 0.2658252419932978
         },
         "phases": {
           "mapping": {
             "count": 200,
-            "total": 0.005003668295103125,
-            "mean": 2.5018341475515626e-05,
-            "median": 2.3616514226887375e-05,
-            "p95": 3.819999983534217e-05,
-            "min": 1.8134000129066408e-05,
-            "max": 4.8739006160758436e-05
+            "total": 0.004541876056464389,
+            "mean": 2.2709380282321945e-05,
+            "median": 2.2653497580904514e-05,
+            "p95": 2.6000983780249953e-05,
+            "min": 1.9283004803583026e-05,
+            "max": 3.387598553672433e-05
           },
           "update": {
             "count": 200,
-            "total": 0.07233743088727351,
-            "mean": 0.0003616871544363676,
-            "median": 0.00042711500282166526,
-            "p95": 0.0008267150114988908,
-            "min": 5.992698424961418e-05,
-            "max": 0.0014146969915600494
+            "total": 0.06562577829754446,
+            "mean": 0.0003281288914877223,
+            "median": 0.000436364505731035,
+            "p95": 0.0007610520115122199,
+            "min": 6.656700861640275e-05,
+            "max": 0.001034802000503987
           },
           "reasoning": {
             "count": 200,
@@ -88,59 +89,59 @@
           },
           "query": {
             "count": 200,
-            "total": 20.40420592551527,
-            "mean": 0.10202102962757635,
-            "median": 0.0937179409302189,
-            "p95": 0.1506448847358115,
-            "min": 0.06621251822798513,
-            "max": 0.2638480490859365
+            "total": 18.835424117089133,
+            "mean": 0.09417712058544567,
+            "median": 0.08784356566320639,
+            "p95": 0.12331979110604152,
+            "min": 0.06523533788276836,
+            "max": 0.2645571415196173
           },
           "procedures": {
             "count": 200,
-            "total": 0.19317574356682599,
-            "mean": 0.0009658787178341299,
-            "median": 0.0008315807426697575,
-            "p95": 0.0016536375624127686,
-            "min": 0.00025820023438427597,
-            "max": 0.0024568100925534964
+            "total": 0.16580973695090506,
+            "mean": 0.0008290486847545253,
+            "median": 0.0007267650944413617,
+            "p95": 0.0014325840747915208,
+            "min": 0.000267172945314087,
+            "max": 0.0015509435761487111
           },
           "decide": {
             "count": 200,
-            "total": 0.025508463033474982,
-            "mean": 0.0001275423151673749,
-            "median": 0.00011822900705737993,
-            "p95": 0.000234783990890719,
-            "min": 7.480994099751115e-06,
-            "max": 0.0003491440002107993
+            "total": 0.022697274005622603,
+            "mean": 0.00011348637002811301,
+            "median": 0.00010016300075221807,
+            "p95": 0.00020566700550261885,
+            "min": 7.123002433218062e-06,
+            "max": 0.00023626199981663376
           },
           "act": {
             "count": 200,
-            "total": 0.000709768952219747,
-            "mean": 3.548844761098735e-06,
-            "median": 3.3860051189549267e-06,
-            "p95": 5.186011549085379e-06,
-            "min": 1.995009370148182e-06,
-            "max": 7.467999239452183e-06
+            "total": 0.0005559580458793789,
+            "mean": 2.7797902293968947e-06,
+            "median": 2.6790003175847232e-06,
+            "p95": 3.612003638409078e-06,
+            "min": 1.9059953046962619e-06,
+            "max": 5.623995093628764e-06
           }
         },
         "decisions": {
           "handouts": {
             "count": 200,
-            "total": 9.749936577878543,
-            "mean": 0.048749682889392715,
-            "median": 0.04278883400547784,
-            "p95": 0.07550478698976804,
-            "min": 0.017459194001276046,
-            "max": 0.21220501599600539
+            "total": 9.11264891103201,
+            "mean": 0.04556324455516005,
+            "median": 0.03841905949957436,
+            "p95": 0.07350165300886147,
+            "min": 0.01772523100953549,
+            "max": 0.21364921299391426
           },
           "tickets": {
             "count": 200,
-            "total": 10.85888392101333,
-            "mean": 0.05429441960506665,
-            "median": 0.05109366899705492,
-            "p95": 0.09095085400622338,
-            "min": 0.047249149007257074,
-            "max": 0.09183194101206027
+            "total": 9.896832993079443,
+            "mean": 0.04948416496539721,
+            "median": 0.049350867004250176,
+            "p95": 0.052666464005596936,
+            "min": 0.0456340319942683,
+            "max": 0.05576141600613482
           }
         },
         "statements_inserted": {
@@ -279,33 +280,317 @@
           "--variant",
           "krrood",
           "--scenario",
-          "/scratch/run200/scenario.json",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/scenario.json",
           "--results-dir",
-          "/scratch/run200"
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps"
         ],
-        "wall_seconds": 36.67314782200265,
-        "peak_rss_bytes": 399843328,
+        "wall_seconds": 29.995080020002206,
+        "peak_rss_bytes": 400285696,
         "return_code": 0,
         "timed_out": false,
         "memory_limit_exceeded": false,
-        "samples": 728,
-        "stderr_tail": "/opt/aamas27/code/earlier/krrood/src/krrood/ormatic/utils.py:101: SyntaxWarning: invalid escape sequence '\\ '\n  \"\"\"\n[krrood] step 0: 0.1571 s\n[krrood] step 20: 0.1020 s\n[krrood] step 40: 0.1052 s\n[krrood] step 60: 0.1226 s\n[krrood] step 80: 0.0874 s\n[krrood] step 100: 0.0837 s\n[krrood] step 120: 0.0960 s\n[krrood] step 140: 0.1005 s\n[krrood] step 160: 0.1101 s\n[krrood] step 180: 0.0906 s\n[krrood] step 199: 0.0805 s",
-        "peak_rss_mib": 381.3203125
+        "samples": 597,
+        "stderr_tail": "/opt/aamas27/code/earlier/krrood/src/krrood/ormatic/utils.py:101: SyntaxWarning: invalid escape sequence '\\ '\n  \"\"\"\n[krrood] step 0: 0.0837 s\n[krrood] step 20: 0.0989 s\n[krrood] step 40: 0.1001 s\n[krrood] step 60: 0.1240 s\n[krrood] step 80: 0.0851 s\n[krrood] step 100: 0.0830 s\n[krrood] step 120: 0.0939 s\n[krrood] step 140: 0.0960 s\n[krrood] step 160: 0.1068 s\n[krrood] step 180: 0.0871 s\n[krrood] step 199: 0.0786 s",
+        "peak_rss_mib": 381.7421875
       },
       "files": {
         "steps": "agent_loop_krrood.json",
         "candidates": "agent_loop_krrood_candidates.json.gz"
       }
     },
+    "krrood_navigation": {
+      "description": "KRROOD as in krrood, but the handout query starts from the requested college (its has_student values) instead of scanning all students.",
+      "setup": {
+        "seconds": {
+          "load_and_reasoning": 8.204818522004643,
+          "application_data": 0.0034117870090994984
+        },
+        "total_seconds": 8.208230309013743,
+        "individuals": 3667,
+        "after_last_step": {},
+        "import_seconds": 0.8670308959990507,
+        "follows_reference_actions": true
+      },
+      "steps": {
+        "total_seconds": {
+          "count": 200,
+          "total": 15.216842813126277,
+          "mean": 0.07608421406563139,
+          "median": 0.07378320099087432,
+          "p95": 0.08279106300324202,
+          "min": 0.05180319801729638,
+          "max": 0.2624772260169266
+        },
+        "phases": {
+          "mapping": {
+            "count": 200,
+            "total": 0.004546145937638357,
+            "mean": 2.2730729688191788e-05,
+            "median": 2.2211002942640334e-05,
+            "p95": 2.668498200364411e-05,
+            "min": 1.823298225644976e-05,
+            "max": 3.947601362597197e-05
+          },
+          "update": {
+            "count": 200,
+            "total": 0.06554519610654097,
+            "mean": 0.00032772598053270485,
+            "median": 0.0004273375088814646,
+            "p95": 0.0007470019772881642,
+            "min": 6.503199983853847e-05,
+            "max": 0.0010226119920844212
+          },
+          "reasoning": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "push": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "query": {
+            "count": 200,
+            "total": 15.004109813948162,
+            "mean": 0.07502054906974082,
+            "median": 0.07251836551586166,
+            "p95": 0.08174442914605606,
+            "min": 0.051364495302550495,
+            "max": 0.2614458891330287
+          },
+          "procedures": {
+            "count": 200,
+            "total": 0.12411112511472311,
+            "mean": 0.0006205556255736155,
+            "median": 0.0006197428519953974,
+            "p95": 0.0008083227003226057,
+            "min": 0.00023356705787591636,
+            "max": 0.0009091747197089717
+          },
+          "decide": {
+            "count": 200,
+            "total": 0.01792569695680868,
+            "mean": 8.96284847840434e-05,
+            "median": 8.899199747247621e-05,
+            "p95": 0.00012704399705398828,
+            "min": 7.5360003393143415e-06,
+            "max": 0.0001607710000826046
+          },
+          "act": {
+            "count": 200,
+            "total": 0.0006048350624041632,
+            "mean": 3.024175312020816e-06,
+            "median": 2.8955037123523653e-06,
+            "p95": 4.089990397915244e-06,
+            "min": 2.1239975467324257e-06,
+            "max": 4.952002200298011e-06
+          }
+        },
+        "decisions": {
+          "handouts": {
+            "count": 200,
+            "total": 5.007932013948448,
+            "mean": 0.02503966006974224,
+            "median": 0.022131224504846614,
+            "p95": 0.030584342996007763,
+            "min": 0.005242619998170994,
+            "max": 0.20449345499218907
+          },
+          "tickets": {
+            "count": 200,
+            "total": 10.127218751978944,
+            "mean": 0.050636093759894724,
+            "median": 0.049531943994225,
+            "p95": 0.05333005200373009,
+            "min": 0.04553463699994609,
+            "max": 0.2325224700034596
+          }
+        },
+        "statements_inserted": {
+          "count": 200,
+          "total": 858,
+          "mean": 4.29,
+          "median": 5.0,
+          "p95": 7,
+          "min": 3,
+          "max": 9
+        },
+        "statements_deleted": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "round_trips": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "reasoner_calls": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "procedure_calls": {
+          "can_reach": {
+            "count": 200,
+            "total": 197026,
+            "mean": 985.13,
+            "median": 929.0,
+            "p95": 1237,
+            "min": 771,
+            "max": 1289
+          },
+          "travel_seconds": {
+            "count": 200,
+            "total": 184442,
+            "mean": 922.21,
+            "median": 911.0,
+            "p95": 1227,
+            "min": 6,
+            "max": 1289
+          }
+        },
+        "handout_candidates": {
+          "count": 200,
+          "total": 172027,
+          "mean": 860.135,
+          "median": 819.0,
+          "p95": 1144,
+          "min": 0,
+          "max": 1180
+        },
+        "ticket_candidates": {
+          "count": 200,
+          "total": 12415,
+          "mean": 62.075,
+          "median": 56.5,
+          "p95": 106,
+          "min": 6,
+          "max": 111
+        },
+        "actions": {
+          "deliver_ticket": 96,
+          "deliver_handouts": 96,
+          "charge": 8
+        }
+      },
+      "code": {
+        "boundary_lines": {
+          "total": 19,
+          "per_category": {
+            "synchronization": 0,
+            "mapping": 12,
+            "procedure_integration": 7
+          },
+          "per_function": {
+            "KrroodVariant._attach_application_data": {
+              "category": "mapping",
+              "lines": 8
+            },
+            "KrroodVariant._register": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "KrroodVariant._resolve": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "krrood_variant.CanReach": {
+              "category": "procedure_integration",
+              "lines": 5
+            },
+            "krrood_variant.travel_time": {
+              "category": "procedure_integration",
+              "lines": 2
+            }
+          }
+        },
+        "queries": {
+          "handouts": {
+            "language": "eql",
+            "text": "student = variable(model.Student, domain=college.has_student)\ncourse = variable_from(student.takes_course)\ndriving_time = travel_time(self.robot, course.taught_in)\nquery = an(set_of(student, course, driving_time).where(CanReach(self.robot, course.taught_in)))",
+            "tokens": 61,
+            "lines": 4,
+            "characters": 256
+          },
+          "tickets": {
+            "language": "eql",
+            "text": "person = variable(model.Person, domain=None)\ndriving_time = travel_time(self.robot, person.mailbox)\nquery = an(\n    set_of(person, driving_time).where(\n        *model.T20CricketFan.axiom(person),\n        CanReach(self.robot, person.mailbox),\n    )\n)",
+            "tokens": 60,
+            "lines": 8,
+            "characters": 218
+          }
+        }
+      },
+      "process": {
+        "command": [
+          "/opt/venvs/earlier/bin/python",
+          "-m",
+          "krrood_experiments.aamas27.agent_loop.worker",
+          "--variant",
+          "krrood_navigation",
+          "--scenario",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/scenario.json",
+          "--results-dir",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps",
+          "--reference-steps",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/agent_loop_krrood.json"
+        ],
+        "wall_seconds": 25.672369092993904,
+        "peak_rss_bytes": 396562432,
+        "return_code": 0,
+        "timed_out": false,
+        "memory_limit_exceeded": false,
+        "samples": 511,
+        "stderr_tail": "/opt/aamas27/code/earlier/krrood/src/krrood/ormatic/utils.py:101: SyntaxWarning: invalid escape sequence '\\ '\n  \"\"\"\n[krrood_navigation] step 0: 0.0713 s\n[krrood_navigation] step 20: 0.0671 s\n[krrood_navigation] step 40: 0.0684 s\n[krrood_navigation] step 60: 0.0772 s\n[krrood_navigation] step 80: 0.0723 s\n[krrood_navigation] step 100: 0.0710 s\n[krrood_navigation] step 120: 0.0821 s\n[krrood_navigation] step 140: 0.0823 s\n[krrood_navigation] step 160: 0.0731 s\n[krrood_navigation] step 180: 0.0749 s\n[krrood_navigation] step 199: 0.0641 s",
+        "peak_rss_mib": 378.19140625
+      },
+      "files": {
+        "steps": "agent_loop_krrood_navigation.json",
+        "candidates": "agent_loop_krrood_navigation_candidates.json.gz"
+      },
+      "agreement": {
+        "reference": "krrood",
+        "steps": 200,
+        "steps_compared": 200,
+        "equal_actions": 200,
+        "equal_candidate_sets": 200,
+        "all_agree": true,
+        "known_cause": null,
+        "first_disagreements": [],
+        "disagreeing_steps": []
+      }
+    },
     "graphdb": {
       "description": "Python objects + GraphDB 11.2 (owl2-rl-optimized): facts mirrored with SPARQL INSERT DATA, SPARQL returns candidate IRIs, mapped back to objects, the procedures run in Python on the candidates.",
       "setup": {
         "seconds": {
-          "create_repository": 0.016774187999544665,
-          "load_and_reasoning": 1401.7790373160096,
-          "application_data": 0.0002729989937506616
+          "create_repository": 0.2269038569938857,
+          "load_and_reasoning": 1319.7510540469957,
+          "application_data": 0.00022778200218454003
         },
-        "total_seconds": 1401.796084503003,
+        "total_seconds": 1319.9781856859918,
         "repository_reused": false,
         "statements_after_loading": {
           "explicit": 54901,
@@ -348,7 +633,7 @@
             "total": 1472445
           },
           "restore": {
-            "seconds": 46.382870265006204,
+            "seconds": 46.88942642501206,
             "statements": {
               "explicit": 54901,
               "total": 1467912
@@ -356,37 +641,37 @@
             "clean": true
           }
         },
-        "import_seconds": 0.036227678996510804,
+        "import_seconds": 0.022538068995345384,
         "follows_reference_actions": true
       },
       "steps": {
         "total_seconds": {
           "count": 200,
-          "total": 15.63596429694735,
-          "mean": 0.07817982148473675,
-          "median": 0.09230706249945797,
-          "p95": 0.1606526819523424,
-          "min": 0.03101191300083883,
-          "max": 0.27224342500267085
+          "total": 15.559475053916685,
+          "mean": 0.07779737526958343,
+          "median": 0.0943786059942795,
+          "p95": 0.16777149500558153,
+          "min": 0.0324760960356798,
+          "max": 0.2212350709887687
         },
         "phases": {
           "mapping": {
             "count": 200,
-            "total": 0.020026336002047174,
-            "mean": 0.00010013168001023587,
-            "median": 9.906399645842612e-05,
-            "p95": 0.0001258810079889372,
-            "min": 6.813200889155269e-05,
-            "max": 0.0001778129953891039
+            "total": 0.02008102263789624,
+            "mean": 0.0001004051131894812,
+            "median": 9.86529776128009e-05,
+            "p95": 0.00012965098721906543,
+            "min": 6.615603342652321e-05,
+            "max": 0.00017404797836206853
           },
           "update": {
             "count": 200,
-            "total": 14.24105474598764,
-            "mean": 0.07120527372993819,
-            "median": 0.08532124100020155,
-            "p95": 0.15427626398741268,
-            "min": 0.02616967400535941,
-            "max": 0.2627667499909876
+            "total": 14.06302079395391,
+            "mean": 0.07031510396976955,
+            "median": 0.08744529950490687,
+            "p95": 0.16073318998678587,
+            "min": 0.02647254997282289,
+            "max": 0.21320646701497026
           },
           "reasoning": {
             "count": 200,
@@ -408,59 +693,59 @@
           },
           "query": {
             "count": 200,
-            "total": 1.3386454771389253,
-            "mean": 0.006693227385694627,
-            "median": 0.006326991453533992,
-            "p95": 0.010600059089483693,
-            "min": 0.004679690930061042,
-            "max": 0.015907830034848303
+            "total": 1.4375140429765452,
+            "mean": 0.007187570214882726,
+            "median": 0.006679759520920925,
+            "p95": 0.01032063813181594,
+            "min": 0.005170464020920917,
+            "max": 0.02818977108108811
           },
           "procedures": {
             "count": 200,
-            "total": 0.018682720692595467,
-            "mean": 9.341360346297734e-05,
-            "median": 4.3612002627924085e-05,
-            "p95": 0.00017257893341593444,
-            "min": 2.6405949029140174e-05,
-            "max": 0.0004466509708436206
+            "total": 0.019863743480527773,
+            "mean": 9.931871740263887e-05,
+            "median": 4.700936551671475e-05,
+            "p95": 0.00025974592426791787,
+            "min": 2.8827867936342955e-05,
+            "max": 0.000296732789138332
           },
           "decide": {
             "count": 200,
-            "total": 0.01702346712409053,
-            "mean": 8.511733562045265e-05,
-            "median": 8.502700075041503e-05,
-            "p95": 0.00011307300883345306,
-            "min": 6.603004294447601e-06,
-            "max": 0.00017335799930151552
+            "total": 0.018405071983579546,
+            "mean": 9.202535991789773e-05,
+            "median": 8.769599662628025e-05,
+            "p95": 0.00015358798555098474,
+            "min": 6.688002031296492e-06,
+            "max": 0.00021223601652309299
           },
           "act": {
             "count": 200,
-            "total": 0.0005315500020515174,
-            "mean": 2.657750010257587e-06,
-            "median": 2.435001078993082e-06,
-            "p95": 3.5819975892081857e-06,
-            "min": 1.8199934856966138e-06,
-            "max": 5.605004844255745e-06
+            "total": 0.0005903788842260838,
+            "mean": 2.951894421130419e-06,
+            "median": 2.847504219971597e-06,
+            "p95": 4.142988473176956e-06,
+            "min": 1.8260034266859293e-06,
+            "max": 5.89000410400331e-06
           }
         },
         "decisions": {
           "handouts": {
             "count": 200,
-            "total": 1.0194923990784446,
-            "mean": 0.005097461995392223,
-            "median": 0.004849051496421453,
-            "p95": 0.007768146999296732,
-            "min": 0.0034730409970507026,
-            "max": 0.013878947007469833
+            "total": 1.091390443063574,
+            "mean": 0.00545695221531787,
+            "median": 0.005056994006736204,
+            "p95": 0.008424957981333137,
+            "min": 0.00386948898085393,
+            "max": 0.025182523007970303
           },
           "tickets": {
             "count": 200,
-            "total": 0.3679933930252446,
-            "mean": 0.001839966965126223,
-            "median": 0.001725697009533178,
-            "p95": 0.002512366001610644,
-            "min": 0.0013824789930367842,
-            "max": 0.004121021993341856
+            "total": 0.39623934909468517,
+            "mean": 0.001981196745473426,
+            "median": 0.0019084244995610788,
+            "p95": 0.002668658009497449,
+            "min": 0.0014824649842921644,
+            "max": 0.0036402939877007157
           }
         },
         "statements_inserted": {
@@ -607,22 +892,22 @@
           "--variant",
           "graphdb",
           "--scenario",
-          "/scratch/run200/scenario.json",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/scenario.json",
           "--results-dir",
-          "/scratch/run200",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps",
           "--reference-steps",
-          "/scratch/run200/agent_loop_krrood.json",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/agent_loop_krrood.json",
           "--graphdb-state",
-          "/scratch/run200/graphdb_repository_state.json"
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/graphdb_repository_state.json"
         ],
-        "wall_seconds": 1466.196708094998,
-        "peak_rss_bytes": 92676096,
+        "wall_seconds": 1384.6277106160123,
+        "peak_rss_bytes": 92925952,
         "return_code": 0,
         "timed_out": false,
         "memory_limit_exceeded": false,
-        "samples": 29102,
-        "stderr_tail": "[graphdb] step 0: 0.1938 s\n[graphdb] step 20: 0.0410 s\n[graphdb] step 40: 0.0374 s\n[graphdb] step 60: 0.1588 s\n[graphdb] step 80: 0.0930 s\n[graphdb] step 100: 0.0431 s\n[graphdb] step 120: 0.0956 s\n[graphdb] step 140: 0.1560 s\n[graphdb] step 160: 0.0944 s\n[graphdb] step 180: 0.0331 s\n[graphdb] step 199: 0.0310 s",
-        "peak_rss_mib": 88.3828125
+        "samples": 27502,
+        "stderr_tail": "[graphdb] step 0: 0.2098 s\n[graphdb] step 20: 0.0492 s\n[graphdb] step 40: 0.0516 s\n[graphdb] step 60: 0.1756 s\n[graphdb] step 80: 0.1084 s\n[graphdb] step 100: 0.0475 s\n[graphdb] step 120: 0.1104 s\n[graphdb] step 140: 0.1767 s\n[graphdb] step 160: 0.1102 s\n[graphdb] step 180: 0.0344 s\n[graphdb] step 199: 0.0465 s",
+        "peak_rss_mib": 88.62109375
       },
       "files": {
         "steps": "agent_loop_graphdb.json",
@@ -644,12 +929,12 @@
       "description": "GraphDB with pushed procedure results: every step the driving time to every reachable room is written into GraphDB (after deleting the previous values), and one SPARQL query per decision selects and orders.",
       "setup": {
         "seconds": {
-          "create_repository": 0.016774187999544665,
-          "load_and_reasoning": 1401.7790373160096,
-          "application_data": 0.00024114499683491886,
-          "application_data_push": 0.1577457319945097
+          "create_repository": 0.2269038569938857,
+          "load_and_reasoning": 1319.7510540469957,
+          "application_data": 0.00021996701252646744,
+          "application_data_push": 0.16260789200896397
         },
-        "total_seconds": 1401.9537983810005,
+        "total_seconds": 1320.140785763011,
         "repository_reused": true,
         "statements_after_loading": {
           "explicit": 54901,
@@ -692,7 +977,7 @@
             "total": 1476494
           },
           "restore": {
-            "seconds": 45.881235270993784,
+            "seconds": 45.95116093498655,
             "statements": {
               "explicit": 54901,
               "total": 1467912
@@ -700,37 +985,37 @@
             "clean": true
           }
         },
-        "import_seconds": 0.02337792399339378,
+        "import_seconds": 0.02334084699396044,
         "follows_reference_actions": true
       },
       "steps": {
         "total_seconds": {
           "count": 200,
-          "total": 28.340262038298533,
-          "mean": 0.14170131019149268,
-          "median": 0.14330888550466625,
-          "p95": 0.23502042198379058,
-          "min": 0.07841453800210729,
-          "max": 0.2785617629851913
+          "total": 29.450111922458746,
+          "mean": 0.14725055961229372,
+          "median": 0.15040350799972657,
+          "p95": 0.2360791289829649,
+          "min": 0.07761350099463016,
+          "max": 0.2976925020047929
         },
         "phases": {
           "mapping": {
             "count": 200,
-            "total": 0.11275612082681619,
-            "mean": 0.0005637806041340809,
-            "median": 0.0005255990035948344,
-            "p95": 0.0006872540106996894,
-            "min": 1.1953001376241446e-05,
-            "max": 0.0075837880140170455
+            "total": 0.11535613401792943,
+            "mean": 0.0005767806700896472,
+            "median": 0.000525866518728435,
+            "p95": 0.000711516011506319,
+            "min": 1.3936019968241453e-05,
+            "max": 0.008583436021581292
           },
           "update": {
             "count": 200,
-            "total": 13.716658586883568,
-            "mean": 0.06858329293441784,
-            "median": 0.0840503625004203,
-            "p95": 0.1583164490002673,
-            "min": 0.026016193005489185,
-            "max": 0.2073866410064511
+            "total": 14.16652042590431,
+            "mean": 0.07083260212952154,
+            "median": 0.08492408899473958,
+            "p95": 0.15857069101184607,
+            "min": 0.02611594699556008,
+            "max": 0.2208746710093692
           },
           "reasoning": {
             "count": 200,
@@ -743,68 +1028,68 @@
           },
           "push": {
             "count": 200,
-            "total": 11.804467544177896,
-            "mean": 0.05902233772088948,
-            "median": 0.059460241594933905,
-            "p95": 0.06830117091885768,
-            "min": 0.039295849041081965,
-            "max": 0.0749892841122346
+            "total": 12.361657172848936,
+            "mean": 0.06180828586424468,
+            "median": 0.06044361581734847,
+            "p95": 0.07843243723618798,
+            "min": 0.042017238010885194,
+            "max": 0.08424977006507106
           },
           "query": {
             "count": 200,
-            "total": 2.657072209971375,
-            "mean": 0.013285361049856875,
-            "median": 0.012507160507084336,
-            "p95": 0.017030283008352853,
-            "min": 0.003928345002350397,
-            "max": 0.054607643993222155
+            "total": 2.7604505567869637,
+            "mean": 0.013802252783934819,
+            "median": 0.013087431972962804,
+            "p95": 0.0171286610129755,
+            "min": 0.004123735008761287,
+            "max": 0.06614360798266716
           },
           "procedures": {
             "count": 200,
-            "total": 0.02961184660671279,
-            "mean": 0.00014805923303356394,
-            "median": 9.816192323341966e-05,
-            "p95": 0.0002299969783052802,
-            "min": 6.51839654892683e-05,
-            "max": 0.0003824198938673362
+            "total": 0.026623648940585554,
+            "mean": 0.00013311824470292776,
+            "median": 8.385241380892694e-05,
+            "p95": 0.00020961783593520522,
+            "min": 5.893319030292332e-05,
+            "max": 0.00038253411184996367
           },
           "decide": {
             "count": 200,
-            "total": 0.018789877896779217,
-            "mean": 9.394938948389608e-05,
-            "median": 9.199450141750276e-05,
-            "p95": 0.0001239400007762015,
-            "min": 9.522002073936164e-06,
-            "max": 0.00020844700338784605
+            "total": 0.018579341936856508,
+            "mean": 9.289670968428255e-05,
+            "median": 8.815649198368192e-05,
+            "p95": 0.00014474301133304834,
+            "min": 8.265022188425064e-06,
+            "max": 0.00023629399947822094
           },
           "act": {
             "count": 200,
-            "total": 0.0009058519353857264,
-            "mean": 4.529259676928632e-06,
-            "median": 4.496505425777286e-06,
-            "p95": 5.793990567326546e-06,
-            "min": 2.3850006982684135e-06,
-            "max": 6.710004527121782e-06
+            "total": 0.000924642023164779,
+            "mean": 4.623210115823895e-06,
+            "median": 4.5900087570771575e-06,
+            "p95": 5.920999683439732e-06,
+            "min": 2.122018486261368e-06,
+            "max": 9.996001608669758e-06
           }
         },
         "decisions": {
           "handouts": {
             "count": 200,
-            "total": 2.3683567878906615,
-            "mean": 0.011841783939453308,
-            "median": 0.011158572502608877,
-            "p95": 0.015334360010456294,
-            "min": 0.0023712620022706687,
-            "max": 0.0523064770095516
+            "total": 2.457999032922089,
+            "mean": 0.012289995164610445,
+            "median": 0.011517053499119356,
+            "p95": 0.0159270349831786,
+            "min": 0.002542011992773041,
+            "max": 0.06330916300066747
           },
           "tickets": {
             "count": 200,
-            "total": 0.4123151620296994,
-            "mean": 0.0020615758101484973,
-            "median": 0.0020004040052299388,
-            "p95": 0.0025415100099053234,
-            "min": 0.0014864550030324608,
-            "max": 0.0031088160030776635
+            "total": 0.4280953300767578,
+            "mean": 0.002140476650383789,
+            "median": 0.002104555009282194,
+            "p95": 0.002691009023692459,
+            "min": 0.0015287279966287315,
+            "max": 0.0033623119816184044
           }
         },
         "statements_inserted": {
@@ -974,22 +1259,22 @@
           "--variant",
           "graphdb_push",
           "--scenario",
-          "/scratch/run200/scenario.json",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/scenario.json",
           "--results-dir",
-          "/scratch/run200",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps",
           "--reference-steps",
-          "/scratch/run200/agent_loop_krrood.json",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/agent_loop_krrood.json",
           "--graphdb-state",
-          "/scratch/run200/graphdb_repository_state.json"
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/graphdb_repository_state.json"
         ],
-        "wall_seconds": 76.47323000499455,
-        "peak_rss_bytes": 107634688,
+        "wall_seconds": 77.68244575499557,
+        "peak_rss_bytes": 108367872,
         "return_code": 0,
         "timed_out": false,
         "memory_limit_exceeded": false,
-        "samples": 1523,
-        "stderr_tail": "[graphdb_push] step 0: 0.2483 s\n[graphdb_push] step 20: 0.0798 s\n[graphdb_push] step 40: 0.0993 s\n[graphdb_push] step 60: 0.2326 s\n[graphdb_push] step 80: 0.1599 s\n[graphdb_push] step 100: 0.1023 s\n[graphdb_push] step 120: 0.1730 s\n[graphdb_push] step 140: 0.2552 s\n[graphdb_push] step 160: 0.1716 s\n[graphdb_push] step 180: 0.1012 s\n[graphdb_push] step 199: 0.0881 s",
-        "peak_rss_mib": 102.6484375
+        "samples": 1544,
+        "stderr_tail": "[graphdb_push] step 0: 0.2399 s\n[graphdb_push] step 20: 0.0864 s\n[graphdb_push] step 40: 0.1018 s\n[graphdb_push] step 60: 0.2273 s\n[graphdb_push] step 80: 0.1613 s\n[graphdb_push] step 100: 0.0984 s\n[graphdb_push] step 120: 0.1742 s\n[graphdb_push] step 140: 0.2427 s\n[graphdb_push] step 160: 0.1677 s\n[graphdb_push] step 180: 0.1178 s\n[graphdb_push] step 199: 0.1228 s",
+        "peak_rss_mib": 103.34765625
       },
       "files": {
         "steps": "agent_loop_graphdb_push.json",
@@ -1011,60 +1296,60 @@
       "description": "Python objects + reasonable 0.4.4 (in-memory OWL 2 RL): facts added with from_graph, reason() every step, candidates by filtering the returned closure, the procedures run in Python on the candidates.",
       "setup": {
         "seconds": {
-          "parse": 1.2213921639922773,
-          "load": 0.18963194999378175,
-          "reasoning": 97.62299884599634,
-          "application_data": 0.0026387969992356375
+          "parse": 1.2083938060095534,
+          "load": 0.19314919799217023,
+          "reasoning": 75.11624241198297,
+          "application_data": 0.0002549719938542694
         },
-        "total_seconds": 99.03666175698163,
+        "total_seconds": 76.51804038797854,
         "explicit_statements": 54902,
         "closure_statements": 1488568,
-        "full_materialisation_seconds": 97.62299884599634,
+        "full_materialisation_seconds": 75.11624241198297,
         "reasonable_version": "0.4.4",
         "after_last_step": {
-          "full_rematerialisation_seconds": 95.79677366600663,
+          "full_rematerialisation_seconds": 74.60678525501862,
           "closure_statements": 1491975
         },
-        "import_seconds": 0.022184590008691885,
+        "import_seconds": 0.022327680984744802,
         "follows_reference_actions": true
       },
       "steps": {
         "total_seconds": {
           "count": 200,
-          "total": 942.7483621672727,
-          "mean": 4.713741810836364,
-          "median": 4.692616933985846,
-          "p95": 5.022815429983893,
-          "min": 4.306880964970333,
-          "max": 5.373332717004814
+          "total": 916.3658205084212,
+          "mean": 4.581829102542105,
+          "median": 4.578828786485246,
+          "p95": 4.8361931390245445,
+          "min": 4.273474981018808,
+          "max": 4.987385718006408
         },
         "phases": {
           "mapping": {
             "count": 200,
-            "total": 0.00957384705543518,
-            "mean": 4.78692352771759e-05,
-            "median": 4.7171000915113837e-05,
-            "p95": 7.161601388361305e-05,
-            "min": 2.119300188496709e-05,
-            "max": 0.00010168898734264076
+            "total": 0.008443533151876181,
+            "mean": 4.2217665759380905e-05,
+            "median": 4.172400804236531e-05,
+            "p95": 6.066201603971422e-05,
+            "min": 2.07390112336725e-05,
+            "max": 6.435299292206764e-05
           },
           "update": {
             "count": 200,
-            "total": 1.3055746360332705,
-            "mean": 0.006527873180166352,
-            "median": 0.009545551009068731,
-            "p95": 0.009837589008384384,
-            "min": 0.0007224899891298264,
-            "max": 0.010867706994758919
+            "total": 0.1806230456859339,
+            "mean": 0.0009031152284296695,
+            "median": 0.0009643024968681857,
+            "p95": 0.0010670149931684136,
+            "min": 0.0002637839934322983,
+            "max": 0.0010995689954143018
           },
           "reasoning": {
             "count": 200,
-            "total": 741.1130047179759,
-            "mean": 3.7055650235898794,
-            "median": 3.725881311002013,
-            "p95": 3.8968440119933803,
-            "min": 3.357512300994131,
-            "max": 4.026240513994708
+            "total": 723.0544505339931,
+            "mean": 3.6152722526699654,
+            "median": 3.638061851510429,
+            "p95": 3.74934503500117,
+            "min": 3.366897528001573,
+            "max": 3.829097483016085
           },
           "push": {
             "count": 200,
@@ -1077,59 +1362,59 @@
           },
           "query": {
             "count": 200,
-            "total": 200.29247562782257,
-            "mean": 1.0014623781391128,
-            "median": 0.9482305069905124,
-            "p95": 1.3186165010120021,
-            "min": 0.9334618640132248,
-            "max": 1.396198257949436
+            "total": 193.10377133302973,
+            "mean": 0.9655188566651486,
+            "median": 0.9226993660122389,
+            "p95": 1.245012250059517,
+            "min": 0.89751080100541,
+            "max": 1.252563599991845
           },
           "procedures": {
             "count": 200,
-            "total": 0.024185212154407054,
-            "mean": 0.00012092606077203527,
-            "median": 2.144354220945388e-05,
-            "p95": 0.0001660319830989465,
-            "min": 1.4572025975212455e-05,
-            "max": 0.008856710948748514
+            "total": 0.015283605316653848,
+            "mean": 7.641802658326924e-05,
+            "median": 1.9380502635613084e-05,
+            "p95": 0.0001625780132599175,
+            "min": 1.2384902220219374e-05,
+            "max": 0.0002778570051304996
           },
           "decide": {
             "count": 200,
-            "total": 0.002958407101687044,
-            "mean": 1.4792035508435219e-05,
-            "median": 1.4362500223796815e-05,
-            "p95": 1.964099647011608e-05,
-            "min": 9.198993211612105e-06,
-            "max": 2.689400571398437e-05
+            "total": 0.002729419182287529,
+            "mean": 1.3647095911437646e-05,
+            "median": 1.3024502550251782e-05,
+            "p95": 1.776099088601768e-05,
+            "min": 7.624999852851033e-06,
+            "max": 2.6224006433039904e-05
           },
           "act": {
             "count": 200,
-            "total": 0.0005897191294934601,
-            "mean": 2.9485956474673005e-06,
-            "median": 2.7700079954229295e-06,
-            "p95": 4.008004907518625e-06,
-            "min": 2.025990397669375e-06,
-            "max": 1.9069004338234663e-05
+            "total": 0.0005190380616113544,
+            "mean": 2.5951903080567717e-06,
+            "median": 2.38850770983845e-06,
+            "p95": 3.4410040825605392e-06,
+            "min": 1.869979314506054e-06,
+            "max": 1.568201696500182e-05
           }
         },
         "decisions": {
           "handouts": {
             "count": 200,
-            "total": 200.28820284713584,
-            "mean": 1.001441014235679,
-            "median": 0.9482226195032126,
-            "p95": 1.3186142119957367,
-            "min": 0.9334534009976778,
-            "max": 1.396165572994505
+            "total": 193.09985050567775,
+            "mean": 0.9654992525283888,
+            "median": 0.9226904629904311,
+            "p95": 1.2449846119852737,
+            "min": 0.8975075769994874,
+            "max": 1.2525344660098199
           },
           "tickets": {
             "count": 200,
-            "total": 0.04146795997803565,
-            "mean": 0.00020733979989017825,
-            "median": 0.00014289300452219322,
-            "p95": 0.00026283400075044483,
-            "min": 5.6810997193679214e-05,
-            "max": 0.008910775010008365
+            "total": 0.031015279120765626,
+            "mean": 0.00015507639560382813,
+            "median": 0.0001277745031984523,
+            "p95": 0.00026011999580077827,
+            "min": 5.1699025789275765e-05,
+            "max": 0.00032299800659529865
           }
         },
         "statements_inserted": {
@@ -1278,20 +1563,20 @@
           "--variant",
           "reasonable",
           "--scenario",
-          "/scratch/run200/scenario.json",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/scenario.json",
           "--results-dir",
-          "/scratch/run200",
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps",
           "--reference-steps",
-          "/scratch/run200/agent_loop_krrood.json"
+          "/work/results/aamas27/agent_loop-20261008-seed0-200steps/agent_loop_krrood.json"
         ],
-        "wall_seconds": 1137.997078542001,
-        "peak_rss_bytes": 17132142592,
+        "wall_seconds": 1067.8673657700128,
+        "peak_rss_bytes": 19046617088,
         "return_code": 0,
         "timed_out": false,
         "memory_limit_exceeded": false,
-        "samples": 22622,
-        "stderr_tail": "[reasonable] step 0: 4.7347 s\n[reasonable] step 20: 4.6091 s\n[reasonable] step 40: 4.6783 s\n[reasonable] step 60: 4.5215 s\n[reasonable] step 80: 4.6771 s\n[reasonable] step 100: 5.1431 s\n[reasonable] step 120: 4.9700 s\n[reasonable] step 140: 4.5368 s\n[reasonable] step 160: 4.6227 s\n[reasonable] step 180: 4.5140 s\n[reasonable] step 199: 4.5312 s",
-        "peak_rss_mib": 16338.484375
+        "samples": 21241,
+        "stderr_tail": "[reasonable] step 0: 4.6529 s\n[reasonable] step 20: 4.5249 s\n[reasonable] step 40: 4.5738 s\n[reasonable] step 60: 4.4758 s\n[reasonable] step 80: 4.5294 s\n[reasonable] step 100: 4.8540 s\n[reasonable] step 120: 4.6888 s\n[reasonable] step 140: 4.3932 s\n[reasonable] step 160: 4.6330 s\n[reasonable] step 180: 4.4173 s\n[reasonable] step 199: 4.4211 s",
+        "peak_rss_mib": 18164.26953125
       },
       "files": {
         "steps": "agent_loop_reasonable.json",
@@ -2150,303 +2435,19 @@
           199
         ]
       }
-    },
-    "krrood_navigation": {
-      "description": "KRROOD as in krrood, but the handout query starts from the requested college (its has_student values) instead of scanning all students.",
-      "setup": {
-        "seconds": {
-          "load_and_reasoning": 8.226681162006571,
-          "application_data": 0.0032208030024776235
-        },
-        "total_seconds": 8.229901965009049,
-        "individuals": 3667,
-        "after_last_step": {},
-        "import_seconds": 0.9577622859942494,
-        "follows_reference_actions": true
-      },
-      "steps": {
-        "total_seconds": {
-          "count": 200,
-          "total": 15.116213010958745,
-          "mean": 0.07558106505479373,
-          "median": 0.07301671499590157,
-          "p95": 0.08172158298839349,
-          "min": 0.051912714989157394,
-          "max": 0.2604639300116105
-        },
-        "phases": {
-          "mapping": {
-            "count": 200,
-            "total": 0.0041132929909508675,
-            "mean": 2.0566464954754337e-05,
-            "median": 2.0257495634723455e-05,
-            "p95": 2.3949993192218244e-05,
-            "min": 1.696600520517677e-05,
-            "max": 3.486298373900354e-05
-          },
-          "update": {
-            "count": 200,
-            "total": 0.06280374983907677,
-            "mean": 0.00031401874919538385,
-            "median": 0.0004015874947072007,
-            "p95": 0.0007356080022873357,
-            "min": 5.8434990933164954e-05,
-            "max": 0.0010334959952160716
-          },
-          "reasoning": {
-            "count": 200,
-            "total": 0.0,
-            "mean": 0.0,
-            "median": 0.0,
-            "p95": 0.0,
-            "min": 0.0,
-            "max": 0.0
-          },
-          "push": {
-            "count": 200,
-            "total": 0.0,
-            "mean": 0.0,
-            "median": 0.0,
-            "p95": 0.0,
-            "min": 0.0,
-            "max": 0.0
-          },
-          "query": {
-            "count": 200,
-            "total": 14.90836940454028,
-            "mean": 0.0745418470227014,
-            "median": 0.07208689967228565,
-            "p95": 0.08042805297009181,
-            "min": 0.0514928867778508,
-            "max": 0.25951121041725855
-          },
-          "procedures": {
-            "count": 200,
-            "total": 0.12328904955938924,
-            "mean": 0.0006164452477969462,
-            "median": 0.0006178134281071834,
-            "p95": 0.0008083748980425298,
-            "min": 0.00022999418433755636,
-            "max": 0.0008724161598365754
-          },
-          "decide": {
-            "count": 200,
-            "total": 0.017128849038272165,
-            "mean": 8.564424519136082e-05,
-            "median": 8.451450412394479e-05,
-            "p95": 0.00011542299762368202,
-            "min": 6.6250067902728915e-06,
-            "max": 0.00014210300287231803
-          },
-          "act": {
-            "count": 200,
-            "total": 0.0005086649907752872,
-            "mean": 2.5433249538764356e-06,
-            "median": 2.3625034373253584e-06,
-            "p95": 3.6840065149590373e-06,
-            "min": 1.767999492585659e-06,
-            "max": 4.779009032063186e-06
-          }
-        },
-        "decisions": {
-          "handouts": {
-            "count": 200,
-            "total": 4.822886038949946,
-            "mean": 0.02411443019474973,
-            "median": 0.021915012497629505,
-            "p95": 0.030404342993278988,
-            "min": 0.005391600003349595,
-            "max": 0.2083968829974765
-          },
-          "tickets": {
-            "count": 200,
-            "total": 10.214838483923813,
-            "mean": 0.051074192419619066,
-            "median": 0.04925437049678294,
-            "p95": 0.05264372499368619,
-            "min": 0.04560045000107493,
-            "max": 0.22653387299214955
-          }
-        },
-        "statements_inserted": {
-          "count": 200,
-          "total": 858,
-          "mean": 4.29,
-          "median": 5.0,
-          "p95": 7,
-          "min": 3,
-          "max": 9
-        },
-        "statements_deleted": {
-          "count": 200,
-          "total": 0,
-          "mean": 0.0,
-          "median": 0.0,
-          "p95": 0,
-          "min": 0,
-          "max": 0
-        },
-        "round_trips": {
-          "count": 200,
-          "total": 0,
-          "mean": 0.0,
-          "median": 0.0,
-          "p95": 0,
-          "min": 0,
-          "max": 0
-        },
-        "reasoner_calls": {
-          "count": 200,
-          "total": 0,
-          "mean": 0.0,
-          "median": 0.0,
-          "p95": 0,
-          "min": 0,
-          "max": 0
-        },
-        "procedure_calls": {
-          "can_reach": {
-            "count": 200,
-            "total": 197026,
-            "mean": 985.13,
-            "median": 929.0,
-            "p95": 1237,
-            "min": 771,
-            "max": 1289
-          },
-          "travel_seconds": {
-            "count": 200,
-            "total": 184442,
-            "mean": 922.21,
-            "median": 911.0,
-            "p95": 1227,
-            "min": 6,
-            "max": 1289
-          }
-        },
-        "handout_candidates": {
-          "count": 200,
-          "total": 172027,
-          "mean": 860.135,
-          "median": 819.0,
-          "p95": 1144,
-          "min": 0,
-          "max": 1180
-        },
-        "ticket_candidates": {
-          "count": 200,
-          "total": 12415,
-          "mean": 62.075,
-          "median": 56.5,
-          "p95": 106,
-          "min": 6,
-          "max": 111
-        },
-        "actions": {
-          "deliver_ticket": 96,
-          "deliver_handouts": 96,
-          "charge": 8
-        }
-      },
-      "code": {
-        "boundary_lines": {
-          "total": 19,
-          "per_category": {
-            "synchronization": 0,
-            "mapping": 12,
-            "procedure_integration": 7
-          },
-          "per_function": {
-            "KrroodVariant._attach_application_data": {
-              "category": "mapping",
-              "lines": 8
-            },
-            "KrroodVariant._register": {
-              "category": "mapping",
-              "lines": 2
-            },
-            "KrroodVariant._resolve": {
-              "category": "mapping",
-              "lines": 2
-            },
-            "krrood_variant.CanReach": {
-              "category": "procedure_integration",
-              "lines": 5
-            },
-            "krrood_variant.travel_time": {
-              "category": "procedure_integration",
-              "lines": 2
-            }
-          }
-        },
-        "queries": {
-          "handouts": {
-            "language": "eql",
-            "text": "student = variable(model.Student, domain=college.has_student)\ncourse = variable_from(student.takes_course)\ndriving_time = travel_time(self.robot, course.taught_in)\nquery = an(set_of(student, course, driving_time).where(CanReach(self.robot, course.taught_in)))",
-            "tokens": 61,
-            "lines": 4,
-            "characters": 256
-          },
-          "tickets": {
-            "language": "eql",
-            "text": "person = variable(model.Person, domain=None)\ndriving_time = travel_time(self.robot, person.mailbox)\nquery = an(\n    set_of(person, driving_time).where(\n        *model.T20CricketFan.axiom(person),\n        CanReach(self.robot, person.mailbox),\n    )\n)",
-            "tokens": 60,
-            "lines": 8,
-            "characters": 218
-          }
-        }
-      },
-      "process": {
-        "command": [
-          "/opt/venvs/earlier/bin/python",
-          "-m",
-          "krrood_experiments.aamas27.agent_loop.worker",
-          "--variant",
-          "krrood_navigation",
-          "--scenario",
-          "/work/results/aamas27/agent_loop-20261007-seed0-200steps/scenario.json",
-          "--results-dir",
-          "/work/results/aamas27/agent_loop-20261007-seed0-200steps",
-          "--reference-steps",
-          "/work/results/aamas27/agent_loop-20261007-seed0-200steps/agent_loop_krrood.json"
-        ],
-        "wall_seconds": 25.67497991399432,
-        "peak_rss_bytes": 394850304,
-        "return_code": 0,
-        "timed_out": false,
-        "memory_limit_exceeded": false,
-        "samples": 510,
-        "stderr_tail": "/opt/aamas27/code/earlier/krrood/src/krrood/ormatic/utils.py:101: SyntaxWarning: invalid escape sequence '\\ '\n  \"\"\"\n[krrood_navigation] step 0: 0.0714 s\n[krrood_navigation] step 20: 0.0661 s\n[krrood_navigation] step 40: 0.0676 s\n[krrood_navigation] step 60: 0.0777 s\n[krrood_navigation] step 80: 0.0722 s\n[krrood_navigation] step 100: 0.2480 s\n[krrood_navigation] step 120: 0.0814 s\n[krrood_navigation] step 140: 0.0826 s\n[krrood_navigation] step 160: 0.0724 s\n[krrood_navigation] step 180: 0.0735 s\n[krrood_navigation] step 199: 0.0638 s",
-        "peak_rss_mib": 376.55859375
-      },
-      "files": {
-        "steps": "agent_loop_krrood_navigation.json",
-        "candidates": "agent_loop_krrood_navigation_candidates.json.gz"
-      },
-      "agreement": {
-        "reference": "krrood",
-        "steps": 200,
-        "steps_compared": 200,
-        "equal_actions": 200,
-        "equal_candidate_sets": 200,
-        "all_agree": true,
-        "known_cause": null,
-        "first_disagreements": [],
-        "disagreeing_steps": []
-      }
     }
   },
   "previous_arguments": [
     {
-      "results_dir": "/scratch/run200",
+      "results_dir": "/work/results/aamas27/agent_loop-20261008-seed0-200steps",
       "steps": 200,
       "seed": 0,
       "events_per_step": 3,
-      "variants": "krrood,graphdb,graphdb_push,reasonable",
+      "variants": "krrood,krrood_navigation,graphdb,graphdb_push,reasonable",
       "graphdb_url": null,
       "raw_file": "/work/resources/owl2bench_statements_unreasoned.rdf",
       "timeout_seconds": 21600,
-      "resume": true
+      "resume": false
     }
   ]
 }
