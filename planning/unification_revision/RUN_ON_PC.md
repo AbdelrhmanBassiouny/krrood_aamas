@@ -98,7 +98,7 @@ cd $EXP/supplement
 cp $PAPER/planning/unification_revision/supplement/README.md README.md
 cp $PAPER/planning/unification_revision/supplement/formalization/eql_formalization.tex formalization/
 cp $PAPER/planning/unification_revision/supplement/formalization/unification_proofs.tex formalization/
-# listings/ormatic/test_ormatic_listing.py: use eql_to_sql(..., select_identifiers=True, identifying_attribute="uri")
+cp $PAPER/planning/unification_revision/supplement/listings/ormatic/test_ormatic_listing.py listings/ormatic/
 python make_supplement.py <out> --results $PAPER/planning/results/aamas27/run --code-from <dirs as before>
 pytest -q listings/test_listings.py listings/ormatic/test_ormatic_listing.py
 ```
@@ -117,4 +117,5 @@ Add the new results folders (KRROOD rerun, M1, translation rerun) to the bundle'
   can_reach 1,124 calls per step (median).
 - Paper builds (`latexmk -pdf main.tex`); main text ends on page 9 (about 40 column lines over).
 - Formalization builds with `unification_proofs.tex`, no undefined references.
-- Not run: the listing tests of the supplement (they need the bundle's current-version env and data).
+- Supplement listing tests against the patched current version: `test_listings.py` + `test_formalization_examples.py`
+  25 passed; `listings/ormatic/test_ormatic_listing.py` (identifier mode, Listing 6) 1 passed.
