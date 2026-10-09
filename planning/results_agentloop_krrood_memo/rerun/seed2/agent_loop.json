@@ -1,0 +1,332 @@
+{
+  "experiment": "agent_loop",
+  "arguments": {
+    "results_dir": "/out/seed2",
+    "steps": 200,
+    "seed": 2,
+    "events_per_step": 3,
+    "courses_per_classroom": 5,
+    "variants": "krrood",
+    "graphdb_url": null,
+    "raw_file": "/opt/aamas27/code/earlier/experiments/resources/owl2bench_statements_unreasoned.rdf",
+    "timeout_seconds": 21600,
+    "resume": false,
+    "keep_graphdb_repository": false
+  },
+  "scenario": {
+    "places": 379,
+    "edges": 381,
+    "rooms": 222,
+    "docks": 2,
+    "courses_with_room": 858,
+    "people_with_mailbox": 2660,
+    "knowledge_events": {
+      "course_taking": 356,
+      "enrollment": 173,
+      "cricket_enthusiasm": 71
+    }
+  },
+  "reference": "krrood",
+  "variants": {
+    "krrood": {
+      "description": "KRROOD objects are the knowledge base: descriptor assignment with forward chaining, EQL queries that call the robot's predicate and function on the live objects.",
+      "setup": {
+        "seconds": {
+          "load_and_reasoning": 8.253071253013331,
+          "application_data": 0.0032539500389248133
+        },
+        "total_seconds": 8.256325203052256,
+        "individuals": 3667,
+        "after_last_step": {},
+        "import_seconds": 0.8750455499975942,
+        "follows_reference_actions": false
+      },
+      "steps": {
+        "total_seconds": {
+          "count": 200,
+          "total": 23.48243183735758,
+          "mean": 0.1174121591867879,
+          "median": 0.10276767559116706,
+          "p95": 0.13964932702947408,
+          "min": 0.08083372702822089,
+          "max": 0.33080637583043426
+        },
+        "phases": {
+          "mapping": {
+            "count": 200,
+            "total": 0.00448503129882738,
+            "mean": 2.24251564941369e-05,
+            "median": 2.1955027477815747e-05,
+            "p95": 2.7510977815836668e-05,
+            "min": 1.6717996913939714e-05,
+            "max": 3.4620927181094885e-05
+          },
+          "update": {
+            "count": 200,
+            "total": 0.07980323710944504,
+            "mean": 0.0003990161855472252,
+            "median": 0.0004467560211196542,
+            "p95": 0.0007749279611743987,
+            "min": 6.869703065603971e-05,
+            "max": 0.0010520100477151573
+          },
+          "reasoning": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "push": {
+            "count": 200,
+            "total": 0.0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "query": {
+            "count": 200,
+            "total": 23.350901688390877,
+            "mean": 0.11675450844195438,
+            "median": 0.1020534879353363,
+            "p95": 0.13860235322499648,
+            "min": 0.08022504096152261,
+            "max": 0.3297723899013363
+          },
+          "procedures": {
+            "count": 200,
+            "total": 0.023446205828804523,
+            "mean": 0.00011723102914402262,
+            "median": 7.809264934621751e-05,
+            "p95": 0.00020681606838479638,
+            "min": 4.4612912461161613e-05,
+            "max": 0.000295693869702518
+          },
+          "decide": {
+            "count": 200,
+            "total": 0.023179901239927858,
+            "mean": 0.00011589950619963929,
+            "median": 9.851751383394003e-05,
+            "p95": 0.00020355201559141278,
+            "min": 8.070026524364948e-06,
+            "max": 0.0002547660260461271
+          },
+          "act": {
+            "count": 200,
+            "total": 0.0006157734896987677,
+            "mean": 3.0788674484938384e-06,
+            "median": 2.92900949716568e-06,
+            "p95": 4.356959834694862e-06,
+            "min": 1.965032424777746e-06,
+            "max": 5.965994205325842e-06
+          }
+        },
+        "decisions": {
+          "handouts": {
+            "count": 200,
+            "total": 8.994338157994207,
+            "mean": 0.044971690789971035,
+            "median": 0.037660475994925946,
+            "p95": 0.07103501900564879,
+            "min": 0.01765448704827577,
+            "max": 0.07358995801769197
+          },
+          "tickets": {
+            "count": 200,
+            "total": 14.388381929835305,
+            "mean": 0.07194190964917652,
+            "median": 0.0626372300030198,
+            "p95": 0.06912019097944722,
+            "min": 0.05728382902452722,
+            "max": 0.2822656429489143
+          }
+        },
+        "statements_inserted": {
+          "count": 200,
+          "total": 946,
+          "mean": 4.73,
+          "median": 5.0,
+          "p95": 7,
+          "min": 3,
+          "max": 9
+        },
+        "statements_deleted": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "round_trips": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "reasoner_calls": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "rows_returned": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "planner_values_pushed": {
+          "count": 200,
+          "total": 0,
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0
+        },
+        "procedure_false_results": {
+          "can_reach": {
+            "count": 200,
+            "total": 423,
+            "mean": 2.115,
+            "median": 0.0,
+            "p95": 12,
+            "min": 0,
+            "max": 68
+          }
+        },
+        "procedure_calls": {
+          "can_reach": {
+            "count": 200,
+            "total": 11739,
+            "mean": 58.695,
+            "median": 58.0,
+            "p95": 77,
+            "min": 38,
+            "max": 82
+          },
+          "travel_seconds": {
+            "count": 200,
+            "total": 11316,
+            "mean": 56.58,
+            "median": 57.0,
+            "p95": 76,
+            "min": 3,
+            "max": 82
+          }
+        },
+        "handout_candidates": {
+          "count": 200,
+          "total": 177585,
+          "mean": 887.925,
+          "median": 886.0,
+          "p95": 1169,
+          "min": 0,
+          "max": 1190
+        },
+        "ticket_candidates": {
+          "count": 200,
+          "total": 10936,
+          "mean": 54.68,
+          "median": 55.0,
+          "p95": 90,
+          "min": 7,
+          "max": 91
+        },
+        "actions": {
+          "deliver_ticket": 88,
+          "deliver_handouts": 104,
+          "charge": 8
+        }
+      },
+      "code": {
+        "boundary_lines": {
+          "total": 19,
+          "per_category": {
+            "synchronization": 0,
+            "mapping": 12,
+            "procedure_integration": 7
+          },
+          "per_function": {
+            "KrroodVariant._attach_application_data": {
+              "category": "mapping",
+              "lines": 8
+            },
+            "KrroodVariant._register": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "KrroodVariant._resolve": {
+              "category": "mapping",
+              "lines": 2
+            },
+            "krrood_variant.CanReach": {
+              "category": "procedure_integration",
+              "lines": 5
+            },
+            "krrood_variant.travel_time": {
+              "category": "procedure_integration",
+              "lines": 2
+            }
+          }
+        },
+        "queries": {
+          "handouts": {
+            "language": "eql",
+            "text": "student = variable(model.Student, domain=None)\ncourse = variable_from(student.takes_course)\ndriving_time = travel_time(self.robot, course.taught_in)\nquery = an(\n    set_of(student, course, driving_time).where(\n        contains(student.is_member_of, college),\n        CanReach(self.robot, course.taught_in),\n    )\n)",
+            "tokens": 69,
+            "lines": 9,
+            "characters": 282
+          },
+          "tickets": {
+            "language": "eql",
+            "text": "person = variable(model.Person, domain=None)\ndriving_time = travel_time(self.robot, person.mailbox)\nquery = an(\n    set_of(person, driving_time).where(\n        *model.T20CricketFan.axiom(person),\n        CanReach(self.robot, person.mailbox),\n    )\n)",
+            "tokens": 60,
+            "lines": 8,
+            "characters": 218
+          }
+        }
+      },
+      "process": {
+        "command": [
+          "/opt/venvs/earlier/bin/python",
+          "-m",
+          "krrood_experiments.aamas27.agent_loop.worker",
+          "--variant",
+          "krrood",
+          "--scenario",
+          "/out/seed2/scenario.json",
+          "--results-dir",
+          "/out/seed2"
+        ],
+        "wall_seconds": 34.02857965702424,
+        "peak_rss_bytes": 401747968,
+        "return_code": 0,
+        "timed_out": false,
+        "memory_limit_exceeded": false,
+        "samples": 677,
+        "stderr_tail": "/opt/aamas27/code/earlier/krrood/src/krrood/ormatic/utils.py:101: SyntaxWarning: invalid escape sequence '\\ '\n  \"\"\"\n[krrood] step 0: 0.0931 s\n[krrood] step 20: 0.1101 s\n[krrood] step 40: 0.0948 s\n[krrood] step 60: 0.1137 s\n[krrood] step 80: 0.1002 s\n[krrood] step 100: 0.0993 s\n[krrood] step 120: 0.0808 s\n[krrood] step 140: 0.0983 s\n[krrood] step 160: 0.1360 s\n[krrood] step 180: 0.1300 s\n[krrood] step 199: 0.1396 s",
+        "peak_rss_mib": 383.13671875
+      },
+      "files": {
+        "steps": "agent_loop_krrood.json",
+        "candidates": "agent_loop_krrood_candidates.json.gz"
+      }
+    }
+  }
+}

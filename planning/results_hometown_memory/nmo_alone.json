@@ -1,0 +1,30 @@
+{
+ "/h/inputs/reasoned_without_hometown.rdf": [
+  {
+   "exit_status": 0,
+   "max_rss_mib": 36.9375
+  },
+  {
+   "exit_status": 0,
+   "max_rss_mib": 37.43359375
+  },
+  {
+   "exit_status": 0,
+   "max_rss_mib": 37.5
+  }
+ ],
+ "/h/inputs/reasoned_without_hometown_plus_raw_hometown.rdf": [
+  {
+   "exit_status": 0,
+   "max_rss_mib": 138.1484375
+  },
+  {
+   "exit_status": 0,
+   "max_rss_mib": 140.390625
+  },
+  {
+   "exit_status": 0,
+   "max_rss_mib": 136.8359375
+  }
+ ]
+}

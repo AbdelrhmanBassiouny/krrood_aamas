@@ -1,0 +1,20 @@
+{
+  "nemo_owlrl": {
+    "import_rss_mib": [
+      16.125,
+      16.3125,
+      16.3125
+    ],
+    "max_mib": 16.3125,
+    "imports": "import krrood_experiments.aamas27.loading_worker"
+  },
+  "reasonable_owlrl": {
+    "import_rss_mib": [
+      27.9375,
+      27.75,
+      27.5625
+    ],
+    "max_mib": 27.9375,
+    "imports": "import krrood_experiments.aamas27.loading_worker, rdflib, reasonable"
+  }
+}

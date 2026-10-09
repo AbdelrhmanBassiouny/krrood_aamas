@@ -1,0 +1,37 @@
+ORMatic's translation of the 18 OWL2Bench queries, selecting IRIs, with the current KRROOD version after the
+unification-revision code changes. Run on 2026-10-09, 10:23:31-10:25:53 UTC, on the machine of the main run
+(Intel Core i7-13700, 64 GB RAM, Ubuntu 24.04).
+
+Code
+- KRROOD (current): cram2/cognitive_robot_abstract_machine branch aamas27-unification-revision = commit 9936287aac
+  (origin/claude/krrood-aamas-unification-rih3rk: f083e650c4 + 08f9178dd2 EQL memoization, 8316e4c8b8 remote_side
+  for self-typed references, 9936287aac reject a variable used as a condition). Mounted read-only at /cram_src from
+  the worktree ~/Projects/cram_unification.
+- experiments: krrood_experiments unification-revision, commit b01c3ac (run_ormatic_translation.py unchanged by it).
+- paper repo: unification-revision at 94651d0.
+
+Command (run_B.sh, run.sh; same as ../results_ormatic_translation_iris/README.md except the translator mount, the
+output directory and a NEW PostgreSQL container):
+  docker network create ormatic-net
+  docker run -d --name ormatic-postgres --network ormatic-net --cpuset-cpus=2-15 --memory=6g --shm-size=512m \
+    -e POSTGRES_USER=krrood -e POSTGRES_PASSWORD=krrood -e POSTGRES_DB=translation postgres:18.1
+  docker run --rm --network ormatic-net --cpuset-cpus=2-15 --user 1000:1000 --entrypoint bash \
+    -v ~/Projects/krrood_experiments:/work -v <runs>/translation:/s -v ~/Projects/cram_unification/krrood/src:/cram_src:ro \
+    -v ~/krrood-aamas27-final/krrood-aamas27-supplement/state:/closure:ro \
+    -v ~/Projects/krrood_aamas/planning/results/aamas27/run:/paper_run:ro \
+    -e HOME=/tmp -e OUT=/s/out krrood-aamas27-dev /s/run.sh --selection iris --translator-commit 9936287aac...
+  run.sh: --reasoned-file /closure/owl2bench_statements_reasoned.rdf --reference-answers /paper_run/check/answers/graphdb
+  --paper-sqlalchemy-times /paper_run/queries/queries_sqlalchemy.json --statements-cache (the stored run's cache)
+  --database-uri postgresql+psycopg2://krrood:krrood@ormatic-postgres:5432/translation; 10 repetitions.
+
+The closure file is the one the stored iris run mounted (~/krrood-aamas27-final/.../state, sha256 23fe9499...); it is
+not byte-identical to the paper run's reasoned file (sha256 2e359818...), but gives the same 3,664 typed IRIs and
+1,338,232 statements of the model's properties as the stored run, and the reference answers are the paper run's.
+
+Other activity on the machine: the KRROOD agent-loop control run ended at 10:23:17 (before this run); a LaTeX build
+of the paper (texlive container, CPUs 16-23) ran at about 10:25, during the end of this run.
+
+Results: 18/18 translated, 18/18 equal to EQL in working memory, 18/18 equal to GraphDB's answers of the paper run
+(summary.md). Every translated SQL statement is identical to the stored iris run's. Database rebuilt: to_dao 10.5 s,
+commit 49.0 s (stored: 9.9 s, 47.1 s). Geometric mean of the execute medians 0.91 ms (stored 0.83 ms); the queries
+under 0.5 ms (Q13-Q16, Q19) account for most of the difference; the cause was not measured.

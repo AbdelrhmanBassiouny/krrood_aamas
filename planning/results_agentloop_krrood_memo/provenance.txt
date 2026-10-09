@@ -1,0 +1,42 @@
+KRROOD-only rerun of the agent loop (Section 7.4) with the EQL memoization patch, and a control run without it.
+Run on 2026-10-09 (UTC) on the machine of the main run (Intel Core i7-13700, 64 GB RAM, Ubuntu 24.04, kernel
+6.8.0-40-generic), in containers of the Docker image krrood-aamas27-dev (earlier environment /opt/venvs/earlier,
+krrood 2.0.5), --cpuset-cpus=0-5, -m 16g, as in ../results_agentloop/provenance.txt. Seeds 0-4, 200 steps,
+variant krrood only. One run per seed and code version.
+
+rerun/             earlier KRROOD + memoization patch       10:06:43-10:09:44 UTC   (run_A.sh)
+control_unpatched/ earlier KRROOD without the patch          10:20:33-10:23:17 UTC   (run_A_control.sh)
+Load averages at start and end of each seed: */machine_load.log (1.0-2.8). The rerun ran with nothing else running.
+During the control seeds 1-4, the PostgreSQL container for the translation rerun (run B) had just been started and
+was idle (CPUs 2-15); seed 4 of the control overlapped nothing else measured.
+
+Code
+- experiments: krrood_experiments branch unification-revision, commit b01c3ac = aamas27-review6 (750c466) +
+  planning/unification_revision/experiments_m1_counters_and_memoization_tests.patch, mounted over
+  /opt/aamas27/code/earlier/experiments (the image's editable install).
+- earlier KRROOD: the image's /opt/aamas27/code/earlier/krrood copied out (commit 250273b in a local repository
+  ~/Projects/aamas27_unification_runs/earlier_krrood) + earlier_krrood_memoization.patch (commit e3f26a8), mounted
+  over /opt/aamas27/code/earlier/krrood (editable install, so no pip install was run). The control mounted 250273b.
+- paper repo: unification-revision at 94651d0. CRAM (current version) is not used by this run.
+
+Deviations from RUN_ON_PC.md
+- The patch for the experiments repository contained __pycache__ binaries; it was applied with
+  git apply --exclude='*__pycache__*'. All source files applied cleanly.
+- Instead of `pip install -e /krrood`, the patched copy was mounted over the image's editable install path.
+- Added a control run of the unpatched earlier version with the same driver, mounts and limits (not in the run book),
+  because the rerun's step time was higher than the stored run's.
+
+Tests in the image before the runs: tests/aamas27/test_procedure_results.py + tests/aamas27/test_agent_loop.py:
+19 passed, 2 skipped with the patch; test_procedure_results.py: 2 failed without the patch.
+
+Results (compare_rerun.txt, compare_control_unpatched.txt; compare_krrood_rerun.py against ../results_agentloop)
+- Rerun: 0 differing actions and 0 differing candidate digests in all 5 seeds against stored graphdb, graphdb_push
+  and krrood (all_actions_and_digests_equal: true). Median over seeds of step medians 102.6 ms; median calls per
+  step can_reach 57, travel_seconds 56.
+- Control (unpatched): also all equal; 91.1 ms; can_reach 1,124, travel_seconds 1,024.5 (stored run: 89.6 ms,
+  1,124 can_reach).
+- Per seed median step / query ms, rerun vs control: 103.3/102.7 vs 89.8/88.5; 102.4/101.9 vs 89.5/88.4;
+  102.8/102.1 vs 92.8/91.6; 100.8/100.4 vs 90.9/89.6; 103.8/103.2 vs 92.2/91.1. Median time in the planner
+  procedures per step: about 0.07-0.08 ms (rerun) vs 0.71-0.75 ms (stored run).
+- So the patched version calls the planner about 20 times less often and its step takes about 11-13 ms longer, in
+  the query phase. The cause of the longer query time was not measured.

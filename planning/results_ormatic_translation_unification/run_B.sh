@@ -1,0 +1,5 @@
+#!/bin/bash
+# Run B: 18-query translation, current KRROOD at aamas27-unification-revision (9936287aac)
+echo "start $(date -u +%FT%TZ) load $(cut -d' ' -f1-3 /proc/loadavg)" > /home/bassioun/Projects/aamas27_unification_runs/translation/machine_load.log
+sg docker -c "docker run --rm --network ormatic-net --cpuset-cpus=2-15 --user 1000:1000 --entrypoint bash   -v /home/bassioun/Projects/krrood_experiments:/work -v /home/bassioun/Projects/aamas27_unification_runs/translation:/s -v /home/bassioun/Projects/cram_unification/krrood/src:/cram_src:ro   -v /home/bassioun/krrood-aamas27-final/krrood-aamas27-supplement/state:/closure:ro   -v /home/bassioun/Projects/krrood_aamas/planning/results/aamas27/run:/paper_run:ro   -e HOME=/tmp -e OUT=/s/out krrood-aamas27-dev /s/run.sh --selection iris   --translator-commit $(git -C /home/bassioun/Projects/cram_unification rev-parse HEAD)" > /home/bassioun/Projects/aamas27_unification_runs/translation/run.log 2>&1
+echo "end $(date -u +%FT%TZ) exit $? load $(cut -d' ' -f1-3 /proc/loadavg)" >> /home/bassioun/Projects/aamas27_unification_runs/translation/machine_load.log

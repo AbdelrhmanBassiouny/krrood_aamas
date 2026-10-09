@@ -1,0 +1,41 @@
+Memory of Nemo and reasonable on OWL2Bench inputs without the hasSameHomeTownWith statements (figures cited in
+Section 7.2 of the unification revision). Run on 2026-10-09, 10:29:43-10:31 UTC (run_loading.py) and about
+10:35-10:40 UTC (nmo alone, import baselines), on the machine of the main run (Intel Core i7-13700, 64 GB RAM,
+Ubuntu 24.04), in containers of the image krrood-aamas27-dev (earlier environment: Nemo 0.10.1 = /usr/local/bin/nmo,
+reasonable 0.4.4, rdflib 7.4.0), --cpuset-cpus=6-23, -m 28g. Nothing else was running (runs A, B and the control
+had finished).
+
+Inputs (make_inputs.py, make_inputs.log; RDF/XML written by rdflib)
+- from the paper run's files: raw resources/owl2bench_statements_unreasoned.rdf (sha256 8d387e66...) and the
+  pre-reasoned ~/krrood-aamas27-supplement/state/owl2bench_statements_reasoned.rdf (sha256 2e359818..., as in
+  results/aamas27/run/loading/environment.json). rdflib reads 54,902 raw and 1,431,635 pre-reasoned statements;
+  1,413 raw and 1,311,932 pre-reasoned statements have http://benchmark/OWL2Bench#hasSameHomeTownWith.
+- reasoned_without_hometown.rdf: pre-reasoned minus all 1,311,932 such statements (119,703 statements).
+- reasoned_without_hometown_plus_raw_hometown.rdf: the same plus the 1,413 raw ones (121,116).
+- raw_without_hometown.rdf: raw minus the 1,413 (53,489).
+
+Commands
+- run_D.sh: scripts/aamas27/run_loading.py --systems <nemo_owlrl|reasonable_owlrl> --inputs <reasoned|raw>
+  --<input>-file <file> --repetitions 5 --results-dir <dir> (experiments commit b01c3ac, earlier KRROOD unpatched
+  250273b; loading_worker.py unchanged since the paper run). peak_rss_mib = peak RSS of the worker's process tree.
+- import baselines (measure_import_memory_nemo_reasonable.py): same method as
+  results/aamas27/run/memory/measure_import_memory.py, which has no entry for these two systems.
+- nmo alone (nmo_alone.py): max RSS of the nmo child process from os.wait4, 3 runs per input (/usr/bin/time is not
+  in the image).
+
+Results (MiB; the paper's tables print MiB as "MB" and GiB as "GB"; increase = peak minus import baseline)
+                                              peak (max of 5)  baseline  increase   nmo alone      load+reason
+Nemo, reasoned without hometown                     53.0        16.3       36.6     36.9-37.5       1.20 s
+Nemo, reasoned without + 1,413 raw hometown        162.6        16.3      146.3     136.8-140.4     4.54 s
+reasonable, reasoned without hometown              529.8        27.9      501.8         -           4.00 s
+reasonable, raw without hometown                   476.6        27.9      448.6         -           2.37 s
+All runs ok. Closure sizes: 167,233; 1,479,165; 171,493; 151,333 statements.
+
+Compared with the figures in main.tex (predictions from the earlier probe, measured differently):
+- Nemo without the pairs "39 MB": measured 36.6 MiB increase (37 MiB nmo alone). Consistent.
+- Nemo with the raw edges "106 MB": measured 146 MiB increase (137-140 MiB nmo alone). Differs.
+- reasonable without the pairs "0.34 GB": measured 502 MiB = 0.49 GiB increase. Differs; the sentence "Nemo and
+  reasonable load the pre-reasoned input in under 0.4 GB" does not hold for reasonable.
+- reasonable from raw data without the property "0.49 GB": measured 449 MiB = 0.44 GiB increase (477 MiB peak).
+The earlier probe's inputs and measurement method are not recorded here; the reason for the differences was not
+investigated.

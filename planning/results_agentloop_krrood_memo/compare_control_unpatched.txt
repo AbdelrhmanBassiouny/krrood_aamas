@@ -1,0 +1,23 @@
+SeedComparison(seed=0, variant='graphdb', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=0, variant='graphdb_push', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=0, variant='krrood', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=1, variant='graphdb', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=1, variant='graphdb_push', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=1, variant='krrood', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=2, variant='graphdb', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=2, variant='graphdb_push', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=2, variant='krrood', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=3, variant='graphdb', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=3, variant='graphdb_push', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=3, variant='krrood', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=4, variant='graphdb', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=4, variant='graphdb_push', steps=200, differing_actions=0, differing_digests=0)
+SeedComparison(seed=4, variant='krrood', steps=200, differing_actions=0, differing_digests=0)
+{
+ "median_step_ms": 91.08395341900177,
+ "median_calls_per_step": {
+  "can_reach": 1124.0,
+  "travel_seconds": 1024.5
+ },
+ "all_actions_and_digests_equal": true
+}
