@@ -1,0 +1,341 @@
+# KRROOD: supplementary material
+
+Code, data and scripts for the AAMAS 2027 submission "Implementing Knowledge Representation and Reasoning with
+Object Oriented Design". Everything runs in Docker.
+
+KRROOD is the paper's framework: the agent's Python program is its knowledge base. Its parts, as named in the paper,
+are EQL (a query language embedded in Python), Ontomatic (compiles OWL 2 RL ontologies into Python classes and loads
+their individuals) and ORMatic (stores the objects in a relational database and translates EQL to SQL).
+
+There are two ways to run it:
+
+| Command | Runs | Needs | Time |
+|---------|------|-------|------|
+| `quick` (the default) | the test suites, the paper's listings, the ablation on small data, the answers of EQL and SQL compared with GraphDB's, KRROOD's loading time and memory | Docker, 8 GB RAM | about 10 min, after a build of 5-15 min |
+| `full` (or `all`) | everything in the paper (Sections 7.1-7.4) and the scaling experiment | Docker, 32 GB RAM, a free GraphDB license | 18-22 h |
+
+Both end with a **report**: the results as numbered tables with titles and captions, next to the numbers of the
+paper's run. It is printed in the terminal and written to `state/results/REPORT.md`. `full` without a GraphDB
+license runs everything that does not need GraphDB, and the report lists the steps it skipped and says how to get
+a license.
+
+Our own results are in `results/` and can be read without running anything; `results/REPORT.md` is their report.
+
+## Requirements
+
+* **Docker with Compose v2** (`docker compose version` prints v2.x). On Linux, your user must be in the `docker`
+  group (`sudo usermod -aG docker $USER`, then log out and back in). On Ubuntu, `run_ubuntu.sh` does this for you.
+  Tested on Linux x86_64 (Ubuntu 24.04); the images also exist for arm64.
+* **Memory:** `quick` needs about 8 GB, `full` about 28 GB with GraphDB's default heap of 8 GB (`GRAPHDB_HEAP=4g`
+  lowers it). On Docker Desktop (macOS, Windows), raise the memory limit in Settings -> Resources accordingly.
+* **Disk:** about 15 GB free. GraphDB stops answering when less than 10 % of the disk is free.
+* **For the parts of `full` that use GraphDB, a GraphDB license file.** GraphDB 11 needs one even for its free
+  edition, and we cannot distribute ours. Request GraphDB Free on https://graphdb.ontotext.com/; the license arrives
+  by e-mail. Save it, e.g. as `~/graphdb.license`.
+
+## Quick: about 10 minutes, no license
+
+On Ubuntu, in the folder that contains the zip:
+
+```bash
+unzip -DD krrood-aamas27-supplement.zip && cd krrood-aamas27-supplement   # -DD: see Troubleshooting
+bash run_ubuntu.sh
+```
+
+On any system with Docker:
+
+```bash
+unzip -DD krrood-aamas27-supplement.zip && cd krrood-aamas27-supplement
+mkdir -p state                     # the results folder; create it yourself so that you own its files
+docker compose build               # 5-15 min the first time (downloads about 1.5 GB)
+docker compose run --rm experiments
+docker compose down
+```
+
+Quick mode:
+
+1. runs the tests of the measurement scripts (`45 passed, 2 skipped`: the two skipped tests of the agent loop need
+   GraphDB or 17 GB and are switched on by AGENT_LOOP_GRAPHDB_TESTS=1 and AGENT_LOOP_REASONABLE_TESTS=1), the paper's listings and the formalization's examples
+   (`25 passed`, then `1 passed` for the ORMatic listing of Section 6);
+2. runs eager chaining, the ablation "KRROOD without step 5", on the OWL2Bench TBox with small synthetic data
+   (`9 passed`: it terminates, derives the same facts as step 5, each fact once) and measures how its work grows
+   with the size of a group of persons who share a home town (cubically; a table of the report);
+3. loads OWL2Bench into KRROOD, runs the 18 queries in EQL (in working memory) and in SQL (over the objects that
+   ORMatic persisted in PostgreSQL), and compares each answer set with the one GraphDB returned in our run
+   (`results/check/answers/graphdb/`);
+4. measures the loading and reasoning of KRROOD and of Nemo, an in-memory Datalog engine with the OWL 2 RL/RDF
+   rules, from the raw data (5 runs each), and their memory increase.
+5. runs KRROOD's two variants of the agent loop (the delivery robot of Section 7.4) for 20 steps.
+6. audits KRROOD's knowledge base during 10 steps of the agent loop against Nemo's OWL 2 RL closure (seed 0).
+
+The run succeeded if it ends with `finished mode quick`. A failure stops it with a line starting with `FAILED:`,
+which says what went wrong, followed by the report of what was finished.
+
+## Full: everything in the paper (Sections 7.1-7.3)
+
+Run it on an otherwise idle machine: it measures time. Screen lock is fine; logging out stops it.
+
+### On Ubuntu: one command
+
+In the unpacked folder:
+
+```bash
+bash run_ubuntu.sh full        # set up, then start the full run in the background
+bash run_ubuntu.sh status      # any time: is the run going, finished steps, the end of the log
+bash run_ubuntu.sh report      # any time: the report of the results so far
+```
+
+The script (tested on Ubuntu 24.04):
+
+1. installs Docker from Ubuntu's packages if needed (it asks for your password), adds you to the `docker` group
+   and continues with the group active, so you don't need to log out;
+2. builds the image and checks that it holds this bundle's code; checks for 15 GB of free disk;
+3. finds the GraphDB license: `GRAPHDB_LICENSE` if set, else `~/graphdb.license`, `~/Downloads/graphdb.license`,
+   `~/.graphdb/work/graphdb.license`, else a `*.license` file under `~` or `/opt` with "graphdb" in its path, and
+   starts GraphDB once to check that it accepts the license. Without a license, or with one that GraphDB rejects,
+   it warns, says how to get one, and continues without GraphDB;
+4. records the machine in `state/results/aamas27/run/host/`: `host.json` (CPU, frequency governor, turbo, power
+   profile, memory, disk, OS, kernel, Docker version; no hostname or user name) and `graphdb_license.json`
+   (what the license allows, e.g. its CPU core limit; not the licensee);
+5. starts the run in the background, blocks suspend while it runs, and writes every 30 s to `host/monitor.csv`:
+   load, memory and swap, mean CPU frequency, maximum temperature, and the programs outside Docker that used at
+   least 5 % of a CPU (`busy_outside_docker`, which should stay empty).
+
+If it stops with an error, the message says what is missing or shows the end of the log. Fix it and call the
+script again: it never starts a second run, and a stopped run resumes after its last finished step.
+`bash run_ubuntu.sh --dry-run` does everything except starting the run.
+
+### On any system: by hand
+
+```bash
+export GRAPHDB_LICENSE=~/graphdb.license       # leave out without a license
+nohup docker compose run --rm -T experiments full > all.log 2>&1 &
+tail -f state/reproduce.log                    # Ctrl+C stops watching, not the run
+```
+
+`check` runs only the correctness part (Section 7.1, about 1-1.5 h with GraphDB).
+
+### What it measures
+
+With a GraphDB license, `full`:
+
+* lets GraphDB compute the OWL 2 RL closure of the raw data (repository `aamas27_rl`: 54,901 explicit and
+  1,467,912 total statements, 30-60 min); its export is the pre-reasoned input of the other systems (1,431,635
+  statements);
+* **answer-set check** (Section 7.1): for each of the 18 queries, the answers of EQL, SQL over ORMatic, RDFLib and
+  Owlready2, normalized to sets of tuples, are compared with GraphDB's; the step fails on any difference
+  (`check/answer_check.json`);
+* **knowledge base vs. closure** (Section 7.1): the knowledge base that Ontomatic loads is compared with GraphDB's
+  closure, assertion by assertion, and the OWL 2 RL rules that derive equalities or inconsistencies are checked
+  (`audit/audit.json`). The `roleFor` markers, two axioms on each of 14 of OWL2Bench's 155 classes, lie outside OWL 2
+  RL but extend the ontology conservatively: every marked class is a subclass of the marker's filler, so relating each
+  member of a marked class to itself by `roleFor` extends every model of OWL2Bench to a model of the marked ontology;
+* **query time** (Table 3, which summarizes the per-query times of the report): 18 queries x 10 repetitions, for EQL, SQL (SQLAlchemy over the ORMatic schema in
+  PostgreSQL), GraphDB, RDFLib and Owlready2 (`queries/queries.json`). The hand-written SQLAlchemy queries are measured
+  and checked here, but the paper's Table 3 reports SQL translated from EQL instead (`ormatic_translation`, below).
+  The report's table "Query times" lists the per-query times of every system side by side: those of Table 3, the
+  translated SQL among them, and those that Table 3 leaves out, the hand-written SQL and Protégé (timed once by hand;
+  it did not complete Q9 and Q20, see "Protégé (by hand)"). It also counts the queries on which each system of Table 3
+  is the fastest;
+* **loading and reasoning** (Table 1), from the raw and the pre-reasoned data: KRROOD (5 runs), KRROOD + ORMatic
+  (5 runs), Owlready2 + Pellet (5 runs), RDFLib + owlrl (1 run, 3 h limit), GraphDB (1 run), and two in-memory
+  baselines (5 runs, 24 GiB limit, `BASELINE_MEMORY_LIMIT_GIB`): Nemo 0.10.1, a Datalog engine, with the OWL 2 RL/RDF
+  rules written for it (`code/earlier/experiments/src/krrood_experiments/aamas27/owl2rl.rls`), and reasonable 0.4.4,
+  an OWL 2 RL reasoner written in Rust (`loading/loading.json`). Memory is the increase during loading: the peak resident set size of the process tree,
+  sampled every 50 ms, minus that of a fresh worker after its imports (`memory/import_memory.json`); for KRROOD +
+  ORMatic without the PostgreSQL server, which runs in its own container. GraphDB's server has a fixed heap, so
+  for GraphDB it is the increase of its Java heap in use, from its GC log (`memory/graphdb_heap.json`);
+* **the closures of Nemo and reasonable** from the raw data, compared with GraphDB's closure as KRROOD's knowledge
+  base is (`baselines/closure_comparison.json`). Nemo's equals it. reasonable 0.4.4 applies the rule prp-ifp to any
+  two subjects of an inverse-functional property, even with different objects, and so merges the heads of
+  organizations, and it derives no facts from property chains. Nemo's rules follow the specification
+  (Section 4.3 of OWL 2 Profiles) with two rewrites, commented in the file, without which Nemo did not finish:
+  rule bodies use one predicate per RDF vocabulary term instead of a single triple predicate, and transitivity is
+  written as a linear recursion. Neither changes what is derived;
+* **the agent loop** (Section 7.4), about 3 h: a delivery robot on the OWL2Bench campus, 200 steps
+  (`agent_loop/agent_loop.json`; the code is in `src/krrood_experiments/aamas27/agent_loop/`). OWL2Bench has no
+  rooms, so a seeded campus map is generated (a building per college, a floor per department, classrooms, offices,
+  two charging docks). The robot has a path planner (Dijkstra), a predicate `can_reach` (it can drive to a room and
+  on to a dock with its remaining battery) and a function `travel_seconds`; its pose and battery are read live. Each
+  step perceives three additions (a person enrolls in a department, a student takes a course, a person becomes crazy
+  about T20 cricket), decides with two queries that need inferred facts (membership of a college through the chain
+  `enrollIn` o `isPartOf`, and the class `T20CricketFan`) and call the planner, and acts (drives, delivers or
+  charges). The same robot is built seven ways: KRROOD, with the handout query scanning the students or navigating
+  from the college; Python objects mirrored into GraphDB, with SPARQL for the logical part and the planner on the
+  candidates; the same, but writing the planner's results into GraphDB so that SPARQL decides alone; Python
+  objects with reasonable, which adds the facts and returns its whole closure every step; and Python objects with Nemo, which has no incremental
+  mode and is re-run every step on the raw data and the facts perceived so far, with two decision rules
+  (`nemo_variant.py` in the same folder); and Owlready2, which asserts the facts on its Python objects, deletes its
+  inferences and runs Pellet again every step, about 33 s (`owlready2_variant.py`). The others carry out KRROOD's actions, so all see the same
+  states, and their own decisions and candidates are compared with KRROOD's in every step: both GraphDB variants
+  and Nemo agree in every step of every seed, and Owlready2 in every step of seed 0; reasonable finds no handout candidates, as it derives no property chains. Facts are never
+  removed, as KRROOD does not retract inferred facts. reasonable needs about 17 GB. Quick mode runs KRROOD's two
+  variants for 20 steps; without a license, the GraphDB variants are skipped;
+* **further seeds of the agent loop** (seeds 1-4, the same variants but reasonable; about 2 h), combined with
+  seed 0 into `agent_loop/agent_loop_seeds.json` (`scripts/aamas27/aggregate_agent_loop_seeds.py`): medians over all
+  steps of all seeds, a 95% bootstrap interval, the seeds' medians, round trips and statements written per step,
+  boundary lines per category, and agreement with KRROOD. The paper's Table 4 adds Owlready2's seed-0 run and, from the code, the world models (the objects, and for GraphDB its store; for Nemo and Owlready2 the reasoner's model, rebuilt every step), where the
+  planner runs (inside the query, on the answers, or before the query with its results written into the store), the
+  languages the developer writes (KRROOD and Owlready2: Python; GraphDB: Python and SPARQL) and the processes that hold the robot's
+  knowledge (GraphDB is a Java server reached over HTTP). It groups its rows by what they follow from: world models,
+  the planner's place, writes to another store and synchronization lines from EQL's semantics; languages, processes,
+  round trips and the step time from the implementation (see "What is unified, and what runs underneath"). Of the
+  boundary lines, Table 4 reports the synchronization lines and the total. The mapping and procedure-integration
+  lines are not shown on their own (`boundary_lines` in the results, and the report's agent-loop tables), as they do
+  not measure a second world model: the mapping lines follow from the simulated perceptions, which arrive as IRIs in every build,
+  and the procedure lines from wrapping the planner (`agent_loop/agent_loop.pdf`, "How the rows of Table 4 are
+  measured");
+* **the runtime audit** (Section 7.1; about 20 min, no license needed): KRROOD's agent loop runs unchanged for 200
+  steps of seeds 0-4, and after 0, 10, 50, 100 and 200 steps the live knowledge base is compared with Nemo's OWL 2 RL
+  closure of the raw data and the facts perceived so far, normalised as in the comparison with GraphDB's closure
+  (`runtime_audit/runtime_audit.json`, `scripts/aamas27/run_runtime_audit.py`). It tests Proposition 5.3 of the paper
+  (property rules at runtime), whose proof is in `formalization/` (section "Reasoning on Assignment"). In our run
+  nothing is extra and all object- and data-property facts are present at every checkpoint; the missing facts are
+  class memberships, which KRROOD does not derive at runtime: T20CricketFan, which its axiom answers, and SportsFan,
+  SportsLover and PeopleWithHobby, whose axioms (existential restrictions) read the `types` of the loader's proxies,
+  so this version evaluates them only when loading;
+* **the cost of GraphDB's updates in the agent loop** (`scripts/aamas27/graphdb_update_cost.py`, run by hand on the
+  loaded repository): an empty update, an update that triggers no inference, a step's update, and all steps in one
+  update, to separate the cost of a request and its commit from that of inference;
+* **Owlready2 with a larger Java heap** (Table 1; about 20 min): Pellet in Owlready2 on the pre-reasoned data with a
+  heap of 22 GB instead of Owlready2's default of 2 GB, with which it fails (`owlready2_heap/loading.json`);
+* **ORMatic's translation of the 18 queries** (Section 6 and Table 3; about 15 min, with the current version of
+  KRROOD): the objects of the part of the model that the queries use (`scripts/aamas27/ormatic_translation/`, the model
+  of the paper's ORMatic listing) are built from GraphDB's closure and stored in PostgreSQL; each query, written in the
+  current EQL, is evaluated in working memory and, translated by `eql_to_sql(query, session,
+  select_identifiers=True, identifying_attribute="uri")` (the script's `--selection iris`, its default), in the
+  database, and both answer sets are compared with GraphDB's (`ormatic_translation/ormatic_translation.json`). With
+  `select_identifiers=True` the translation returns identifiers instead of data access objects and joins only the
+  tables a query needs: a variable or collection element is the foreign-key column that already holds its id, a table
+  is joined only to read a column it declares or to restrict a variable to its class, a membership test that all
+  answers satisfy becomes a join of the association table, and an existential quantifier over a chain of collections
+  one correlated `EXISTS`. With `identifying_attribute="uri"` the identifier of every answer is its IRI, read by
+  joining the one table that declares it (`ThingDAO`), and through its role taker for a role; the returned IRIs are
+  compared with GraphDB's and EQL's answers directly, without mapping database ids. The translated statements are
+  timed as the main run times its SQL (`session.execute(statement).all()`, median of 10 runs without the first).
+  Table 3 of the paper reports these times; the main run's hand-written SQLAlchemy queries are listed in the report
+  for comparison only. In our run (`results/ormatic_translation/`, with its README), all 18 translations return
+  GraphDB's and EQL's answers, the geometric mean is 0.83 ms, and the translated SQL is the fastest system of Table 3
+  on 14 queries (EQL on Q3, Q5 and Q8, GraphDB on Q22). The same folder holds the earlier run that selected database
+  ids (`ids_run/`, `--selection identifiers`, geometric mean 0.33 ms) and the first run, which selected data access
+  objects (`first_run_objects/`). The step drops and recreates the experiments' database, so it runs last. The
+  translator's tests (`test_eql_collections.py` and `test_eql_identifier_selection.py` in the repository of the
+  current version, not in this bundle) cover the queries' shapes on a small dataset;
+* **scaling** (Table 2; about 2 h without GraphDB): the raw data of 1, 2, 4 and 8 universities, generated by OWL2Bench's
+  generator (`java -jar OWL2Bench.jar N RL`, downloaded at the commit the paper's data comes from, checked by its
+  hash; its output is deterministic) and changed as the paper's raw file is: the 23 statements the paper's file adds
+  (the T20CricketFan axiom among them) and plain instead of `xsd:string` literals
+  (`scripts/aamas27/derive_scaled_owl2bench.py`; for one university it gives the paper's file). For every size,
+  KRROOD and Nemo load and reason (3 runs, 24 GiB limit), reasonable at one and two universities (it exceeds the
+  limit at two), GraphDB loads two universities (1 run, 12 h limit; 4 and 8 universities are not run, see
+  `scaling/provenance.txt` of our results), and KRROOD's knowledge base is compared with Nemo's closure assertion by assertion
+  (`krrood_experiments.aamas27.scaling_audit`, which streams both sides and compares 64-bit hashes of the facts, as
+  the closure of 8 universities has 142 million triples). The closure grows faster than the data, as the persons
+  sharing a home town form cliques of `hasSameHomeTownWith` (`scaling/scaling.json`, `scripts/aamas27/aggregate_scaling.py`);
+* **the ablation** that replaces step 5 of Algorithm 1 by forward chaining on every assignment (raw data, 1 run,
+  2 h limit), and the same on small data as in quick mode.
+
+Without a license, it runs the test suites, the ablation, EQL and SQL (answers compared with GraphDB's of our run,
+and their query times), and the loading of KRROOD, KRROOD + ORMatic, Owlready2 and RDFLib from the raw data. The
+rest needs GraphDB (the pre-reasoned data are GraphDB's closure); the report lists it.
+
+Every mode also counts the lexical tokens of the 18 queries in EQL, SPARQL and SQLAlchemy as the benchmark writes
+them (`tools/query_size.py`, `query_size.json`, a table of the report). The paper makes no claim about query size:
+the EQL queries are about 2.4 times as long as SPARQL's in geometric mean, mostly because every variable is
+declared with its class, and shorter than SQLAlchemy's on five of the 18 queries.
+
+The run succeeded if `state/reproduce.log` ends with `finished mode full`. The LaTeX tables are written to
+`state/results/aamas27/run/tables/` (the paper names one row of the loading table differently: "KRROOD + ORMatic"
+is "KRROOD (with ORMatic)"; it leaves out "KRROOD without step 5" and states in the text that it loads for over two hours), and everything is packed into
+`state/aamas27_results.tgz`. Afterwards run `docker compose down`. Timings depend on the machine; ours are from an
+Intel Core i7-13700 with 64 GB RAM under Ubuntu 24.04.
+
+### Protégé (by hand)
+
+Protégé has a graphical interface, so it runs outside Docker, and its numbers in the paper come from one session
+each, by hand. It needs the pre-reasoned file that `full` (or `check`) writes. `results/protege/` holds our
+sessions, the scripts we used and a README, and `results/protege.json` the numbers. Its loading is in Table 1 of the
+paper; its query times, which Table 3 leaves out as Protégé did not complete Q9 and Q20, are in the report's table
+"Query times" (`results/REPORT.md`). In short:
+
+1. Protégé 5.6.7 (Linux build with its own Java 11) with the plug-ins "Pellet Reasoner Plug-in" 2.2.0 and "Snap
+   SPARQL Query" 6.0.0 from Protégé's plug-in registry (File -> Check for plugins, or copy the jars into
+   `plugins/`; `results/protege/plugins.sha256` lists their checksums). In `~/.Protege/conf/jvm.conf`:
+   `max_heap_size=28G` and `append=-Xlog:gc:file=<folder>/gc.log:time,uptime`.
+2. For the raw data (`code/earlier/experiments/resources/owl2bench_statements_unreasoned.rdf`) and then for the
+   pre-reasoned data (`state/owl2bench_statements_reasoned.rdf`), start a fresh Protégé
+   (`results/protege/measure.sh` does this and records its memory), open the file, select Reasoner -> Pellet and
+   Reasoner -> Start reasoner, and quit. Protégé's log (`~/.Protege/logs/protege.log`) gives the loading time
+   ("completed in ... ms") and Pellet's ("Ontologies processed in ... ms"); the memory is the increase of the Java
+   heap in use from the GC log (`results/protege/protege_heap_from_gc.py`).
+3. In a fresh Protégé on the pre-reasoned data, after Start reasoner, run the 18 queries of
+   `results/protege/queries_for_snap_sparql.txt` in Window -> Views -> Query views -> Snap SPARQL Query, once each,
+   with a 60 s limit. Snap SPARQL shows the number of results, and Protégé's log has its time ("Evaluated BGP in
+   ... ms"). Snap SPARQL rejects Q9, whose object `NonScience` is declared as a class.
+4. Write the numbers into `state/results/aamas27/run/protege.json` (format: `results/protege.json`), and run
+   `bash run_ubuntu.sh tables` (or `docker compose run --rm experiments tables`) to add them to the tables, the
+   report and the results archive.
+
+## Settings
+
+Set them before `docker compose run`, e.g. `GRAPHDB_HEAP=4g docker compose run --rm experiments full`:
+`GRAPHDB_HEAP` (8g), `QUERY_REPETITIONS` (10), `LOADING_REPETITIONS` (5), `RDFLIB_TIMEOUT_SECONDS` (10800),
+`ABLATION_TIMEOUT_SECONDS` (7200). The paper's numbers use the defaults.
+
+A second call of `check` or `full` resumes after the last finished step; `quick` always runs everything again.
+To start over, delete `state/`.
+
+## Troubleshooting
+
+| Message | Fix |
+|---------|-----|
+| `permission denied ... docker.sock` | Your user is not in the `docker` group yet: `sudo usermod -aG docker $USER`, then log out and back in. |
+| `WARNING: no GraphDB license` | Request GraphDB Free on https://graphdb.ontotext.com/ (the license arrives by e-mail) and set `GRAPHDB_LICENSE` to the full path of the file, in the same terminal as the `docker compose run`. Without it, the steps that need GraphDB are skipped. |
+| `bind source path does not exist` | The path in `GRAPHDB_LICENSE` does not exist; check it with `ls -l "$GRAPHDB_LICENSE"`. |
+| `GraphDB did not start` | See `state/graphdb.log` and `state/graphdb-home/logs/`. A rejected license or less than 10 % free disk are the usual causes. |
+| A step is killed, or `status: memory_limit` / `failed` with return code -9 in `loading.json` | Not enough memory: lower `GRAPHDB_HEAP`, or raise Docker Desktop's memory limit. A baseline that runs out of memory within the limits is itself a result, recorded as such. |
+| `FAILED: the code in the image does not match its BUNDLE id`, or `docker run --rm krrood-aamas27 fingerprint` prints another id than `cat environment/BUNDLE` | Docker built the image partly from files of an earlier version of this bundle: all files in the zip have the same time, so Docker takes a changed file of the same size for unchanged. Unzip with `-DD` (files get the current time), or run `docker builder prune -af`; then `docker compose build` again. |
+| `state/` belongs to root | Create `state/` yourself before the first run (`mkdir -p state`), or `sudo chown -R $USER state`. |
+
+## What is unified, and what runs underneath
+
+The paper's claim is about the representation and its semantics: the agent's classes and objects are the knowledge
+base, EQL's queries are evaluated over these objects (the interpretation of Section 4), and the robot's procedures
+are predicates of the queries. It is not a claim that everything runs in Python. In the KRROOD version of these
+experiments (`code/earlier/krrood`):
+
+* the property rules (descriptors), EQL's evaluation and Ontomatic's loading are Python code; RDFLib parses the input;
+* every object and the relations between objects are also kept, as references to the same Python objects, in a
+  graph of rustworkx (a Rust library with Python bindings), which the program never handles itself;
+* step 5 of Algorithm 1 finds the cliques of symmetric, transitive properties as the weakly connected components of
+  that graph, with rustworkx (`add_inferences_from_transitive_symmetric_relations` in
+  `ontomatic/ontology_to_python/owl_instances_loader.py`). Step 5 is what keeps loading fast on OWL2Bench (the paper's
+  ablation, "KRROOD without step 5"); connected components take linear time in any language, but we did not measure
+  a Python implementation of this step;
+* ORMatic's long-term memory is PostgreSQL, reached through SQLAlchemy; EQL queries reach it through a translation
+  to SQL, which the developer calls explicitly (`eql_to_sql`), which rejects what it cannot translate, can return the
+  answers' IRIs, and whose answers are compared with EQL's and GraphDB's.
+
+None of these is a second representation that the program keeps in sync: the graph holds references to the
+program's objects and is maintained by KRROOD, and the database holds what the agent stores. This is the line that
+Table 4 of the paper draws: one world model, the planner inside the query and no writes to another store follow from
+the semantics; one language and one process could also come from a wrapper or an embedded store.
+
+## Contents
+
+| Path | What |
+|------|------|
+| `code/earlier/krrood` | The earlier version of KRROOD: EQL, Ontomatic (Section 5, Algorithm 1) and ORMatic. All experiments (Section 7) use this version. |
+| `code/earlier/ripple_down_rules` | Rule-base library that Ontomatic's model generator uses (Section 5, TBox compilation). |
+| `code/earlier/experiments` | The experiments: the generated OWL2Bench model, the 18 queries of every system (`src/krrood_experiments/owl2bench/`), the measurement scripts (`scripts/aamas27/`) and their tests. `src/krrood_experiments/lubm/` holds a model generated from LUBM in earlier work; the paper does not evaluate LUBM, whose ontology uses class expressions outside OWL 2 RL (existential restrictions on the right-hand side of its class equivalences, such as `Chair`), and no step of this bundle uses it. |
+| `code/earlier/experiments/resources/owl2bench_statements_unreasoned.rdf` | OWL2Bench, OWL 2 RL profile, one university, with the role markers and the `T20CricketFan` definition (Section 7). |
+| `code/current/krrood` | The current version of KRROOD, which the paper's listings use. Its EQL API differs from the earlier version in the names of some constructors, and its translator from EQL to SQL (Section 6) handles collection-valued attributes and can return the answers' IRIs (`eql_to_sql(..., select_identifiers=True, identifying_attribute="uri")`). |
+| `listings/` | Executable versions of the paper's listings, as tests on the current version. `listings/ormatic/` tests the listing of Section 6 (one query in working memory and translated to SQL). |
+| `results/` | Our measured run: `REPORT.md` (its report), raw measurements (JSON), the answer-set check, the comparison with the closure, the environment record, the LaTeX tables, in `host/` the machine's details and a 30-second record of its load during the run, in `memory/` the memory after imports and GraphDB's heap from a separate load with a GC log, in `ablation_scaling/` the ablation on small data, in `protege/` the Protégé sessions, and `provenance.txt`, which says which numbers come from which run (KRROOD's loading was measured again in a clean rerun, as a browser had run during the first). Its `BUNDLE` id, `ae0b139a90267579`, differs from this bundle's because `code/current/` (the version the listing tests and ORMatic's translation use) has since changed (idempotent rules, the translator's selection of database ids and IRIs) and because `code/earlier/experiments` has since gained the in-memory baselines, the agent loop and the translation's run script; the code of every other measurement is identical. `baselines/` and `agent_loop/` hold those two experiments, each from its own run with a `provenance.txt`; `agent_loop_nemo/` and `agent_loop_owlready2/` hold the Nemo and Owlready2 variants of the agent loop, run later with KRROOD as the reference, and `ormatic_translation/`, `owlready2_heap/` and `scaling/` the experiments added after internal AI-assisted reviews of drafts, each with a `provenance.txt` or README (`ormatic_translation/` holds the paper's run, selecting IRIs, and in subfolders the earlier runs that selected database ids or data access objects); the baselines' loading runs are also merged into `loading/loading.json`. Of the answer sets, `check/answers/graphdb/` holds GraphDB's, the reference; the other systems' sets are equal to them (`check/answer_check.json`) and are left out for size. |
+| `run_ubuntu.sh` | The quick check and the full run on Ubuntu, in one command each (above). |
+| `tools/` | Scripts of the container around the measurement scripts: the report (`report.py`), the size of the queries (`query_size.py`), EQL and SQL without a GraphDB server (`queries_without_graphdb.py`), the memory after imports (`import_memory.py`), GraphDB's heap from its GC log (`graphdb_heap.py`), and the ablation on small data with its tests (`ablation/`). |
+| `Dockerfile`, `compose.yaml`, `reproduce.sh` | The container: GraphDB 11.2 (official image, Ubuntu 24.04, Java 21), Python 3.12.3 with both versions of KRROOD in separate virtual environments, and PostgreSQL 18.1 in a second container. `reproduce.sh` runs inside it. |
+| `environment/` | The exact versions of all Python packages of both environments. |
+| `formalization/` | The formalization of EQL: the full definitions of its syntax and semantics, and its complexity with references, which the paper's Section 4 summarizes (`eql_formalization.pdf`, and its LaTeX source). Its section "The OWL 2 RL/RDF Rules in Ontomatic" (`rl_rules_table.tex`) maps every one of the 78 OWL 2 RL/RDF rules to the mechanism that realizes it (Section 5 of the paper), with the forms it covers and the 6 it does not support. |
+| `agent_loop/` | The agent-loop experiment of Section 7.4 in detail (`agent_loop.pdf`, and its LaTeX source): the question, the scenario, each build (KRROOD, GraphDB, GraphDB push, Nemo, reasonable) with its knowledge representation, perception, inference, procedure calls and queries as code excerpts and one-step diagrams, and how each row of the paper's Table 4 is measured. |
+| `AI_USE.md` | How AI tools were used, as the AAMAS 2027 policy asks. |

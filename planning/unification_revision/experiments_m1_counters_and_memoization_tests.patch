@@ -1,0 +1,379 @@
+diff --git a/scripts/aamas27/__pycache__/aggregate_agent_loop_seeds.cpython-312.pyc b/scripts/aamas27/__pycache__/aggregate_agent_loop_seeds.cpython-312.pyc
+new file mode 100644
+index 0000000..75b449d
+Binary files /dev/null and b/scripts/aamas27/__pycache__/aggregate_agent_loop_seeds.cpython-312.pyc differ
+diff --git a/scripts/aamas27/__pycache__/run_agent_loop.cpython-312.pyc b/scripts/aamas27/__pycache__/run_agent_loop.cpython-312.pyc
+new file mode 100644
+index 0000000..1672dc0
+Binary files /dev/null and b/scripts/aamas27/__pycache__/run_agent_loop.cpython-312.pyc differ
+diff --git a/scripts/aamas27/aggregate_agent_loop_seeds.py b/scripts/aamas27/aggregate_agent_loop_seeds.py
+index 3d648ee..34179f4 100644
+--- a/scripts/aamas27/aggregate_agent_loop_seeds.py
++++ b/scripts/aamas27/aggregate_agent_loop_seeds.py
+@@ -68,9 +68,11 @@ def main() -> None:
+             "all_agree": None if agreements[0] is None else all(a["all_agree"] for a in agreements),
+             "equal_actions": None if agreements[0] is None else sum(a["equal_actions"] for a in agreements),
+             "steps_compared": None if agreements[0] is None else sum(a["steps_compared"] for a in agreements),
+-            "median_per_step": {counter: statistics.median(r[counter] for d in runs for r in records[d])
++            "median_per_step": {counter: statistics.median(r.get(counter, 0) for d in runs for r in records[d])
+                                 for counter in ("round_trips", "statements_inserted", "statements_deleted",
+-                                                "reasoner_calls")},
++                                                "reasoner_calls", "rows_returned", "planner_values_pushed")},
++            "median_can_reach_false_per_step": statistics.median(
++                r.get("procedure_false_results", {}).get("can_reach", 0) for d in runs for r in records[d]),
+             "boundary_lines": entry["code"]["boundary_lines"],
+             "setup_seconds": [summaries[d]["variants"][variant]["setup"].get("total_seconds") for d in runs],
+         }
+diff --git a/scripts/aamas27/run_agent_loop.py b/scripts/aamas27/run_agent_loop.py
+index a075dc2..e0e93f2 100644
+--- a/scripts/aamas27/run_agent_loop.py
++++ b/scripts/aamas27/run_agent_loop.py
+@@ -41,6 +41,7 @@ from typing import Any, Dict, List, Optional
+ 
+ from krrood_experiments.aamas27.agent_loop.graphdb_variant import REPOSITORY
+ from krrood_experiments.aamas27.agent_loop.measurement import PHASES, distribution
++from krrood_experiments.aamas27.agent_loop.campus import CampusLayout
+ from krrood_experiments.aamas27.agent_loop.scenario import generate_scenario
+ from krrood_experiments.aamas27.agent_loop.worker import GRAPHDB_VARIANTS, VARIANTS
+ from krrood_experiments.aamas27.environment import UNREASONED_FILE, resolve_results_directory, write_json
+@@ -120,6 +121,12 @@ def summarise_steps(steps: List[Dict[str, Any]]) -> Dict[str, Any]:
+     }
+     for counter in ("statements_inserted", "statements_deleted", "round_trips", "reasoner_calls"):
+         summary[counter] = distribution([s[counter] for s in steps])
++    for counter in ("rows_returned", "planner_values_pushed"):
++        summary[counter] = distribution([s.get(counter, 0) for s in steps])
++    false_procedures = sorted({name for s in steps for name in s.get("procedure_false_results", {})})
++    summary["procedure_false_results"] = {
++        name: distribution([s["procedure_false_results"].get(name, 0) for s in steps]) for name in false_procedures
++    }
+     procedures = sorted({name for s in steps for name in s["procedure_calls"]})
+     summary["procedure_calls"] = {
+         name: distribution([s["procedure_calls"].get(name, 0) for s in steps]) for name in procedures
+@@ -229,6 +236,8 @@ def main() -> int:
+     parser.add_argument("--steps", type=int, default=200)
+     parser.add_argument("--seed", type=int, default=0)
+     parser.add_argument("--events-per-step", type=int, default=3)
++    parser.add_argument("--courses-per-classroom", type=int, default=CampusLayout.courses_per_classroom,
++                        help="courses that share one classroom; fewer gives more rooms")
+     parser.add_argument("--variants", default=",".join(DEFAULT_VARIANTS),
+                         help="comma-separated, the first is the reference")
+     parser.add_argument("--graphdb-url", default=None)
+@@ -248,7 +257,13 @@ def main() -> int:
+     if unknown:
+         parser.error(f"unknown variants {unknown}, expected some of {sorted(VARIANTS)}")
+     results_directory = resolve_results_directory(arguments.results_dir, "agent_loop")
+-    scenario = generate_scenario(Path(arguments.raw_file), arguments.steps, arguments.seed, arguments.events_per_step)
++    scenario = generate_scenario(
++        Path(arguments.raw_file),
++        arguments.steps,
++        arguments.seed,
++        arguments.events_per_step,
++        layout=CampusLayout(courses_per_classroom=arguments.courses_per_classroom),
++    )
+     scenario_file = results_directory / "scenario.json"
+     summary_file = results_directory / "agent_loop.json"
+     summary: Dict[str, Any] = {
+diff --git a/src/krrood_experiments/__pycache__/__init__.cpython-312.pyc b/src/krrood_experiments/__pycache__/__init__.cpython-312.pyc
+new file mode 100644
+index 0000000..a2c494d
+Binary files /dev/null and b/src/krrood_experiments/__pycache__/__init__.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/__pycache__/__init__.cpython-312.pyc b/src/krrood_experiments/aamas27/__pycache__/__init__.cpython-312.pyc
+new file mode 100644
+index 0000000..d30aadd
+Binary files /dev/null and b/src/krrood_experiments/aamas27/__pycache__/__init__.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/__pycache__/environment.cpython-312.pyc b/src/krrood_experiments/aamas27/__pycache__/environment.cpython-312.pyc
+new file mode 100644
+index 0000000..f592e03
+Binary files /dev/null and b/src/krrood_experiments/aamas27/__pycache__/environment.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/__pycache__/graphdb.cpython-312.pyc b/src/krrood_experiments/aamas27/__pycache__/graphdb.cpython-312.pyc
+new file mode 100644
+index 0000000..21de131
+Binary files /dev/null and b/src/krrood_experiments/aamas27/__pycache__/graphdb.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/__pycache__/loading_worker.cpython-312.pyc b/src/krrood_experiments/aamas27/__pycache__/loading_worker.cpython-312.pyc
+new file mode 100644
+index 0000000..1ecb8e6
+Binary files /dev/null and b/src/krrood_experiments/aamas27/__pycache__/loading_worker.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/__pycache__/memory.cpython-312.pyc b/src/krrood_experiments/aamas27/__pycache__/memory.cpython-312.pyc
+new file mode 100644
+index 0000000..c1b3b77
+Binary files /dev/null and b/src/krrood_experiments/aamas27/__pycache__/memory.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/__init__.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/__init__.cpython-312.pyc
+new file mode 100644
+index 0000000..b0829a6
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/__init__.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/campus.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/campus.cpython-312.pyc
+new file mode 100644
+index 0000000..c9065b7
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/campus.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/events.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/events.cpython-312.pyc
+new file mode 100644
+index 0000000..ac4e71a
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/events.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/graphdb_push_variant.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/graphdb_push_variant.cpython-312.pyc
+new file mode 100644
+index 0000000..fd59009
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/graphdb_push_variant.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/graphdb_variant.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/graphdb_variant.cpython-312.pyc
+new file mode 100644
+index 0000000..83a3643
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/graphdb_variant.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/loop.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/loop.cpython-312.pyc
+new file mode 100644
+index 0000000..bafedcd
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/loop.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/measurement.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/measurement.cpython-312.pyc
+new file mode 100644
+index 0000000..f6ee09f
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/measurement.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/nemo_variant.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/nemo_variant.cpython-312.pyc
+new file mode 100644
+index 0000000..7da640d
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/nemo_variant.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/rdf_mirror.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/rdf_mirror.cpython-312.pyc
+new file mode 100644
+index 0000000..f09fcf2
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/rdf_mirror.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/robot.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/robot.cpython-312.pyc
+new file mode 100644
+index 0000000..d114ec4
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/robot.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/__pycache__/scenario.cpython-312.pyc b/src/krrood_experiments/aamas27/agent_loop/__pycache__/scenario.cpython-312.pyc
+new file mode 100644
+index 0000000..e7c1e9e
+Binary files /dev/null and b/src/krrood_experiments/aamas27/agent_loop/__pycache__/scenario.cpython-312.pyc differ
+diff --git a/src/krrood_experiments/aamas27/agent_loop/graphdb_push_variant.py b/src/krrood_experiments/aamas27/agent_loop/graphdb_push_variant.py
+index 78f4b06..d0b9215 100644
+--- a/src/krrood_experiments/aamas27/agent_loop/graphdb_push_variant.py
++++ b/src/krrood_experiments/aamas27/agent_loop/graphdb_push_variant.py
+@@ -137,6 +137,7 @@ class GraphDBPushVariant(GraphDBMirror):
+             self._send(DELETE_PROCEDURE_RESULTS + " ;\n" + insert_data(values), meter)
+         meter.statements_deleted += self.pushed_statements
+         meter.statements_inserted += len(values)
++        meter.planner_values_pushed += len(values)
+         self.pushed_statements = len(values)
+ 
+     @boundary(SYNCHRONIZATION)
+@@ -164,6 +165,13 @@ class GraphDBPushVariant(GraphDBMirror):
+             if can_reach(self.robot, room)
+         ]
+ 
++    def final_measurements(self) -> Dict[str, Any]:
++        """
++        :return: The measurements of :class:`GraphDBMirror` and the number of target rooms, whose planner results
++         are pushed every step.
++        """
++        return {**super().final_measurements(), "target_rooms": len(self.target_rooms)}
++
+     def _restore_update(self) -> str:
+         return DELETE_PROCEDURE_RESULTS + " ;\n" + super()._restore_update()
+ 
+diff --git a/src/krrood_experiments/aamas27/agent_loop/graphdb_variant.py b/src/krrood_experiments/aamas27/agent_loop/graphdb_variant.py
+index 3b9ee4b..08682f8 100644
+--- a/src/krrood_experiments/aamas27/agent_loop/graphdb_variant.py
++++ b/src/krrood_experiments/aamas27/agent_loop/graphdb_variant.py
+@@ -199,7 +199,9 @@ class GraphDBMirror(AgentVariant, ABC):
+         :return: The solutions.
+         """
+         meter.round_trips += 1
+-        return self.client.select_bindings(REPOSITORY, query, bindings)
++        rows = self.client.select_bindings(REPOSITORY, query, bindings)
++        meter.rows_returned += len(rows)
++        return rows
+ 
+     def final_measurements(self) -> Dict[str, Any]:
+         """
+diff --git a/src/krrood_experiments/aamas27/agent_loop/loop.py b/src/krrood_experiments/aamas27/agent_loop/loop.py
+index 1ee68c9..682faf1 100644
+--- a/src/krrood_experiments/aamas27/agent_loop/loop.py
++++ b/src/krrood_experiments/aamas27/agent_loop/loop.py
+@@ -192,6 +192,7 @@ def run_agent_loop(
+     for perception in variant.scenario.perceptions:
+         meter = StepMeter(robot.procedure_meter)
+         calls_before = dict(robot.procedure_meter.calls)
++        false_results_before = dict(robot.procedure_meter.false_results)
+         variant.perceive(perception, meter)
+         start = time.perf_counter()
+         handouts = variant.handout_candidates(perception.requested_college, meter)
+@@ -212,6 +213,10 @@ def run_agent_loop(
+             "procedure_calls": {
+                 name: count - calls_before.get(name, 0) for name, count in robot.procedure_meter.calls.items()
+             },
++            "procedure_false_results": {
++                name: count - false_results_before.get(name, 0)
++                for name, count in robot.procedure_meter.false_results.items()
++            },
+             "handout_candidates": len(digest["handout_rows"]),
+             "ticket_candidates": len(digest["ticket_rows"]),
+             "candidates_digest": digest["digest"],
+diff --git a/src/krrood_experiments/aamas27/agent_loop/measurement.py b/src/krrood_experiments/aamas27/agent_loop/measurement.py
+index 63b7f6a..cc2ee91 100644
+--- a/src/krrood_experiments/aamas27/agent_loop/measurement.py
++++ b/src/krrood_experiments/aamas27/agent_loop/measurement.py
+@@ -115,6 +115,14 @@ class StepMeter:
+     """
+     Calls into an in-process reasoner.
+     """
++    rows_returned: int = 0
++    """
++    Solution rows a store returned to the agent, before the agent filters them with the planner.
++    """
++    planner_values_pushed: int = 0
++    """
++    Planner results written into a store (the push variant), counted separately from perceived facts.
++    """
+ 
+     @contextmanager
+     def phase(self, name: str) -> Iterator[None]:
+@@ -151,6 +159,8 @@ class StepMeter:
+             "statements_deleted": self.statements_deleted,
+             "round_trips": self.round_trips,
+             "reasoner_calls": self.reasoner_calls,
++            "rows_returned": self.rows_returned,
++            "planner_values_pushed": self.planner_values_pushed,
+         }
+ 
+ 
+diff --git a/src/krrood_experiments/aamas27/agent_loop/robot.py b/src/krrood_experiments/aamas27/agent_loop/robot.py
+index 1ffe684..0b7cf0d 100644
+--- a/src/krrood_experiments/aamas27/agent_loop/robot.py
++++ b/src/krrood_experiments/aamas27/agent_loop/robot.py
+@@ -21,7 +21,7 @@ import math
+ import time
+ from dataclasses import dataclass, field
+ from enum import Enum
+-from typing import Dict, List, Sequence, Set, Tuple
++from typing import Any, Dict, List, Sequence, Set, Tuple
+ 
+ from .campus import CampusMap, PathPlanner, Place
+ from .scenario import RobotSpecification
+@@ -41,14 +41,21 @@ class ProcedureMeter:
+     """
+     Total wall time spent in the procedures.
+     """
++    false_results: Dict[str, int] = field(default_factory=dict)
++    """
++    Number of calls per procedure that returned false.
++    """
+ 
+-    def record(self, procedure: str, elapsed: float) -> None:
++    def record(self, procedure: str, elapsed: float, result: Any = True) -> None:
+         """
+         :param procedure: The procedure name.
+         :param elapsed: The wall time of the call.
++        :param result: The value the call returned.
+         """
+         self.calls[procedure] = self.calls.get(procedure, 0) + 1
+         self.seconds += elapsed
++        if result is False:
++            self.false_results[procedure] = self.false_results.get(procedure, 0) + 1
+ 
+     @property
+     def total_calls(self) -> int:
+@@ -143,7 +150,7 @@ def can_reach(robot: Robot, room: Place) -> bool:
+     start = time.perf_counter()
+     needed = robot.planner.distance(robot.place, room) + robot.planner.distance_to_nearest_dock(room)
+     result = needed <= robot.battery_metres
+-    robot.procedure_meter.record("can_reach", time.perf_counter() - start)
++    robot.procedure_meter.record("can_reach", time.perf_counter() - start, result)
+     return result
+ 
+ 
+diff --git a/tests/aamas27/__pycache__/__init__.cpython-312.pyc b/tests/aamas27/__pycache__/__init__.cpython-312.pyc
+new file mode 100644
+index 0000000..afa085b
+Binary files /dev/null and b/tests/aamas27/__pycache__/__init__.cpython-312.pyc differ
+diff --git a/tests/aamas27/__pycache__/test_agent_loop.cpython-312-pytest-9.1.1.pyc b/tests/aamas27/__pycache__/test_agent_loop.cpython-312-pytest-9.1.1.pyc
+new file mode 100644
+index 0000000..0fbe92c
+Binary files /dev/null and b/tests/aamas27/__pycache__/test_agent_loop.cpython-312-pytest-9.1.1.pyc differ
+diff --git a/tests/aamas27/__pycache__/test_procedure_results.cpython-312-pytest-9.1.1.pyc b/tests/aamas27/__pycache__/test_procedure_results.cpython-312-pytest-9.1.1.pyc
+new file mode 100644
+index 0000000..675710c
+Binary files /dev/null and b/tests/aamas27/__pycache__/test_procedure_results.cpython-312-pytest-9.1.1.pyc differ
+diff --git a/tests/aamas27/test_agent_loop.py b/tests/aamas27/test_agent_loop.py
+index 3442099..6777242 100644
+--- a/tests/aamas27/test_agent_loop.py
++++ b/tests/aamas27/test_agent_loop.py
+@@ -333,3 +333,15 @@ def test_nemo_decides_like_krrood(tmp_path):
+     summary = run_driver(tmp_path, "krrood,nemo", steps=3)
+     agreement = summary["variants"]["nemo"]["agreement"]
+     assert agreement["all_agree"], agreement["first_disagreements"]
++
++
++def test_procedure_meter_counts_calls_that_return_false():
++    from krrood_experiments.aamas27.agent_loop.robot import ProcedureMeter
++
++    meter = ProcedureMeter()
++    for result in (True, False, False):
++        meter.record("can_reach", 0.0, result)
++    meter.record("travel_seconds", 0.0, 12.5)
++
++    assert meter.calls == {"can_reach": 3, "travel_seconds": 1}
++    assert meter.false_results == {"can_reach": 2}
+diff --git a/tests/aamas27/test_procedure_results.py b/tests/aamas27/test_procedure_results.py
+new file mode 100644
+index 0000000..806f3ff
+--- /dev/null
++++ b/tests/aamas27/test_procedure_results.py
+@@ -0,0 +1,61 @@
++"""
++Tests that one EQL evaluation calls each predicate and symbolic function once per distinct argument object, with the
++answers unchanged (the earlier KRROOD version, patched by earlier_krrood_memoization.patch).
++"""
++
++from dataclasses import dataclass
++
++from krrood.entity_query_language.entity import entity, variable
++from krrood.entity_query_language.entity_result_processors import an
++from krrood.entity_query_language.predicate import Predicate, symbolic_function
++
++REACH = 10.0
++
++CALLS = []
++
++
++@dataclass(eq=False)
++class Place:
++    distance: float
++
++
++@dataclass(eq=False)
++class Visit:
++    place: Place
++
++
++@dataclass(eq=False)
++class IsNear(Predicate):
++    place: Place
++
++    def __call__(self):
++        CALLS.append(self.place)
++        return self.place.distance <= REACH
++
++
++@symbolic_function
++def travel_time(place):
++    CALLS.append(place)
++    return place.distance
++
++
++def visits():
++    CALLS.clear()
++    places = [Place(REACH - 1), Place(REACH), Place(REACH + 1)]
++    return [Visit(place) for place in places for _ in range(2)]
++
++
++def test_predicate_is_called_once_per_distinct_argument():
++    domain = visits()
++    v = variable(Visit, domain=domain)
++    answers = list(an(entity(v).where(IsNear(v.place))).evaluate())
++    assert answers == [visit for visit in domain if visit.place.distance <= REACH]
++    assert len(CALLS) == len({id(visit.place) for visit in domain})
++
++
++def test_symbolic_function_is_called_once_per_distinct_argument():
++    domain = visits()
++    v = variable(Visit, domain=domain)
++    answers = list(an(entity(v).where(travel_time(v.place) < REACH)).evaluate())
++    assert answers == [visit for visit in domain if visit.place.distance < REACH]
++    assert len(CALLS) == len({id(visit.place) for visit in domain})

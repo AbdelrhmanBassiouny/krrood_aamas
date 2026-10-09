@@ -1,0 +1,138 @@
+diff --git a/src/krrood/entity_query_language/symbolic.py b/src/krrood/entity_query_language/symbolic.py
+index 0d2afd9..405e77b 100644
+--- a/src/krrood/entity_query_language/symbolic.py
++++ b/src/krrood/entity_query_language/symbolic.py
+@@ -8,6 +8,7 @@ comparison operators) and the evaluation mechanics.
+ from __future__ import annotations
+ 
+ import operator
++from contextvars import ContextVar
+ import typing
+ from abc import abstractmethod, ABC
+ from collections import UserDict
+@@ -29,6 +30,7 @@ from typing_extensions import (
+     List,
+     Tuple,
+     Callable,
++    Iterator,
+     Self,
+     Set,
+ )
+@@ -451,7 +453,14 @@ class ResultProcessor(CanBehaveLikeAVariable[T], ABC):
+         This is the exposed evaluation method for users.
+         """
+         SymbolGraph().remove_dead_instances()
+-        yield from map(self._child_._process_result_, self._evaluate__())
++        is_outermost = _procedure_results.get() is None
++        if is_outermost:
++            _procedure_results.set(ProcedureResults())
++        try:
++            yield from map(self._child_._process_result_, self._evaluate__())
++        finally:
++            if is_outermost:
++                _procedure_results.set(None)
+ 
+     @cached_property
+     def _all_variable_instances_(self) -> List[Variable]:
+@@ -1326,12 +1335,26 @@ class Variable(CanBehaveLikeAVariable[T]):
+         """
+         Create new instances of the variable type and using as keyword arguments the child variables values.
+         """
++        procedure_results = _procedure_results.get()
+         for kwargs in self._generate_combinations_for_child_vars_values_(sources):
+             # Build once: unwrapped hashed kwargs for already provided child vars
+             bound_kwargs = {k: v[self._child_vars_[k]._id_] for k, v in kwargs.items()}
+-            instance = self._type_(**bound_kwargs)
++            if procedure_results is None or not self._calls_procedure_:
++                instance = self._type_(**bound_kwargs)
++            else:
++                instance = procedure_results.value_of(
++                    self._type_, bound_kwargs, lambda: self._type_(**bound_kwargs)
++                )
+             yield self._process_output_and_update_values_(instance, kwargs)
+ 
++    @property
++    def _calls_procedure_(self) -> bool:
++        """
++        :return: Whether this variable binds the result of a predicate or a symbolic
++            function, rather than a newly constructed object.
++        """
++        return bool(self._predicate_type_) and not self._is_inferred_
++
+     def _generate_combinations_for_child_vars_values_(
+         self, sources: Optional[Dict[int, Any]] = None
+     ):
+@@ -1369,11 +1392,19 @@ class Variable(CanBehaveLikeAVariable[T]):
+             self is self._conditions_root_
+         ):
+             current_value = bindings[self._id_]
+-            is_true = (
++            procedure_results = _procedure_results.get()
++            read_truth = lambda: (
+                 len(current_value) > 0
+                 if is_iterable(current_value)
+                 else bool(current_value)
+             )
++            is_true = (
++                procedure_results.truth_of(current_value, read_truth)
++                if procedure_results is not None
++                and self._calls_procedure_
++                and self._predicate_type_ == PredicateType.SubClassOfPredicate
++                else read_truth()
++            )
+             self._is_false_ = not is_true
+         else:
+             self._is_false_ = False
+@@ -2172,3 +2203,52 @@ def _any_of_the_kwargs_is_a_variable(bindings: Dict[str, Any]) -> bool:
+ 
+ 
+ DomainType = TypingUnion[Iterable, None]
++
++
++@dataclass
++class ProcedureResults:
++    """
++    The value of each distinct predicate or symbolic-function call made during one
++    evaluation, and the truth of each predicate instance read as a condition.
++
++    A query reads a predicate as one relation during its evaluation, so a procedure is
++    called once per distinct tuple of argument objects (compared by identity) and its
++    result is reused. This assumes that a procedure's result does not change while one
++    query is evaluated. An iterator result is not reused, since its reader consumes it.
++    """
++
++    values: Dict[Tuple, Tuple[Dict[str, Any], Any]] = field(default_factory=dict)
++    """
++    The arguments and the value, per procedure and argument identities.
++    """
++
++    truths: Dict[int, Tuple[Any, bool]] = field(default_factory=dict)
++    """
++    The predicate instance and its truth, per identity of the instance.
++    """
++
++    def value_of(
++        self, procedure: Callable, arguments: Dict[str, Any], compute: Callable[[], Any]
++    ) -> Any:
++        key = (id(procedure),) + tuple(
++            sorted((name, id(value)) for name, value in arguments.items())
++        )
++        if key in self.values:
++            return self.values[key][1]
++        value = compute()
++        if not isinstance(value, Iterator):
++            self.values[key] = (arguments, value)
++        return value
++
++    def truth_of(self, instance: Any, compute: Callable[[], bool]) -> bool:
++        if id(instance) not in self.truths:
++            self.truths[id(instance)] = (instance, compute())
++        return self.truths[id(instance)][1]
++
++
++_procedure_results: ContextVar[Optional[ProcedureResults]] = ContextVar(
++    "procedure_results", default=None
++)
++"""
++The procedure results of the query evaluation in progress, if any.
++"""
