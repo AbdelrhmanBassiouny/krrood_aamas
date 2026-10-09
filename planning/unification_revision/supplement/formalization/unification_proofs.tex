@@ -8,10 +8,10 @@
 EQL evaluates $=$, $\neq$ and $\in$ with Python's \texttt{operator.eq} and
 \texttt{operator.contains}, so the classes of the compared objects decide equality. We therefore
 define $\mathit{ans}(Q,\mathcal{K})$ over assignments $\theta$ of \emph{objects} and values, with
-$o=o'$ read as the equality of their classes. In the current version, every generated class and
-\texttt{Role} compare by identity (\texttt{Role.\_\_eq\_\_} is \texttt{self is other},
-\texttt{patterns/role.py}); the predicate \texttt{IsSameSemanticEntity}
-(\texttt{patterns/role\_predicates.py}) compares the individuals two objects denote. In the
+$o=o'$ read as the equality of their classes. In the current version, roles and classes declared with \texttt{eq=False} compare by identity
+(\texttt{Role.\_\_eq\_\_} is \texttt{self is other}, \texttt{patterns/role.py}), while a plain
+dataclass compares its fields; the predicate \texttt{IsSameSemanticEntity}
+(\texttt{patterns/role\_predicates.py}) compares the role takers of two objects. In the
 earlier version, which ran the experiments, a role's hash is the identity of its root taker and
 its equality compares hashes (\texttt{class\_diagrams/utils.py}, template \texttt{onto\_base.j2}),
 so a role equals its taker and its taker's other roles. In both versions two root objects that
@@ -187,6 +187,10 @@ Proposition~5.1, with the asserted facts added to $\mathcal{O}$.
 \end{proof}
 
 \begin{proof}[Proof of Corollary 5.4]
+The earlier loader may store, as a value, a role whose class fits the range through its taker, so
+a stored value's class can differ from the declared range; the earlier version's equality, which
+equates a role with its taker and sibling roles, makes such values equal to the variable's object
+of the same individual.
 By Proposition~5.2, every certain answer $\bar a$ of a positive query $Q$ satisfies $Q$ over
 individuals in $\mathcal{I}_{\mathcal{A}^*}$. Under the corollary's hypothesis,
 Proposition~\ref{prop:objects-individuals} applies, so $\bar a$ is the image of an answer over
