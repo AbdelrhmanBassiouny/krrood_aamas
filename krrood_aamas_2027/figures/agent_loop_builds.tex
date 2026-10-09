@@ -1,11 +1,6 @@
-% One step of the delivery robot (Section "An Agent Loop") built four ways.
+% One step of the delivery robot (Section "An Agent Loop"): KRROOD, and what every build with a separate store has in common.
 % Input inside a figure environment:  \centering\input{figures/agent_loop_builds.tex}
 % Needs only \usepackage{tikz} in the preamble (no TikZ libraries); xcolor comes with acmart.
-% Suggested caption:
-%   One step of the delivery robot with KRROOD, GraphDB, Nemo and Owlready2. Blue: the agent's Python process;
-%   orange: a second process holding a second world model. Red arrows cross a process boundary;
-%   the numbers on them count requests to the server per step (one update, two queries). GraphDB with push (Table~\ref{tab:integration})
-%   instead runs the planner before the query, for every room, and writes its results into the store.
 \begin{tikzpicture}[x=1cm, y=1cm, >=stealth, font=\footnotesize,
   agent/.style={draw=blue!60!black, fill=blue!6, rounded corners=2pt, line width=0.5pt},
   other/.style={draw=orange!75!black, fill=orange!10, rounded corners=2pt, line width=0.5pt},
@@ -29,46 +24,17 @@
 \draw[flow] (k1) -- (k2);
 \draw[flow, <->] (k2) -- (k3);
 
-% ---------------------------------------------------------------- GraphDB
-\node[rowname] at (0,1.3) {\textbf{GraphDB}\\[-1pt]{\scriptsize 3 round trips}};
+% ---------------------------------------------------------------- separate store
+\node[rowname] at (0,1.3) {\textbf{Separate}\\[-1pt]\textbf{store}\\[-1pt]{\scriptsize all other builds}};
 \draw[agent] (1.25,0.75) rectangle (3.15,1.85);
 \node[boxlabel, text=blue!60!black] at (1.25,1.85) {agent};
 \draw[other] (3.4,0.75) rectangle (6.05,1.85);
-\node[boxlabel, text=orange!60!black] at (3.4,1.85) {GraphDB server: 2nd model};
+\node[boxlabel, text=orange!60!black] at (3.4,1.85) {store or reasoner: 2nd model};
 \draw[agent] (6.3,0.75) rectangle (8.4,1.85);
 \node[boxlabel, text=blue!60!black] at (6.3,1.85) {agent};
-\node[op, text width=1.7cm] (g1) at (2.2,1.18) {facts as\\SPARQL update};
-\node[op, text width=1.2cm] (g2) at (4.1,1.18) {triples;\\OWL 2 RL};
-\node[op, text width=0.95cm] (g3) at (5.45,1.18) {SPARQL\\query};
-\node[op, text width=1.85cm] (g4) at (7.35,1.18) {IRIs mapped;\\on the answers};
-\draw[cross] (g1) -- node[rt, above=1.5pt] {1} (g2);
-\draw[flow] (g2) -- (g3);
-\draw[cross] (g3) -- node[rt, above=1.5pt] {2} (g4);
-
-% ---------------------------------------------------------------- Nemo
-\node[rowname] at (0,0) {\textbf{Nemo}\\[-1pt]{\scriptsize no server,}\\[-1pt]{\scriptsize new process}};
-\draw[agent] (1.25,-0.55) rectangle (3.15,0.55);
-\node[boxlabel, text=blue!60!black] at (1.25,0.55) {agent};
-\draw[other] (3.4,-0.55) rectangle (6.05,0.55);
-\node[boxlabel, text=orange!60!black] at (3.4,0.55) {Nemo, every step: 2nd model};
-\draw[agent] (6.3,-0.55) rectangle (8.4,0.55);
-\node[boxlabel, text=blue!60!black] at (6.3,0.55) {agent};
-\node[op, text width=1.7cm] (n1) at (2.2,-0.12) {facts appended\\to a file};
-\node[op, text width=2.3cm] (n2) at (4.72,-0.12) {closure from scratch;\\decision rules};
-\node[op, text width=1.85cm] (n3) at (7.35,-0.12) {IRIs mapped;\\on the answers};
-\draw[cross] (n1) -- (n2);
-\draw[cross] (n2) -- (n3);
-% ---------------------------------------------------------------- Owlready2
-\node[rowname] at (0,-1.3) {\textbf{Owlready2}\\[-1pt]{\scriptsize no server,}\\[-1pt]{\scriptsize new process}};
-\draw[agent] (1.25,-1.85) rectangle (3.15,-0.75);
-\node[boxlabel, text=blue!60!black] at (1.25,-0.75) {agent: quadstore};
-\draw[other] (3.4,-1.85) rectangle (6.05,-0.75);
-\node[boxlabel, text=orange!60!black] at (3.4,-0.75) {Pellet, every step: 2nd model};
-\draw[agent] (6.3,-1.85) rectangle (8.4,-0.75);
-\node[boxlabel, text=blue!60!black] at (6.3,-0.75) {agent: quadstore};
-\node[op, text width=1.7cm] (o1) at (2.2,-1.42) {assignment;\\no inference};
-\node[op, text width=2.3cm] (o2) at (4.72,-1.42) {store exported;\\inferences back};
-\node[op, text width=1.85cm] (o3) at (7.35,-1.42) {search;\\on the answers};
-\draw[cross] (o1) -- (o2);
-\draw[cross] (o2) -- (o3);
+\node[op, text width=1.7cm] (g1) at (2.2,1.18) {facts copied\\to the store};
+\node[op, text width=2.3cm] (g2) at (4.72,1.18) {inference;\\query returns rows};
+\node[op, text width=1.85cm] (g3) at (7.35,1.18) {IRIs mapped;\\planner filters};
+\draw[cross] (g1) -- (g2);
+\draw[cross] (g2) -- (g3);
 \end{tikzpicture}
