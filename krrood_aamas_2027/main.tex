@@ -188,7 +188,7 @@ Pellet~\cite{sirin2007pellet}, HermiT~\cite{glimm2014hermit} and RacerPro~\cite{
 LINQ~\cite{meijer2006linq} and Pony ORM~\cite{ponyorm} embed queries; pyDatalog~\cite{carbonnelle2020pydatalog}, ProbLog~\cite{dries2015problog2} and ErgoAI with F-logic~\cite{kifer2018ergoai,kifer1995flogic} embed logic programs, and production rule systems (CLIPS/COOL~\cite{giarratano2005expert}, Jess~\cite{friedmanhill2003jess}, Drools~\cite{proctor2012drools}) match rules without ontological semantics against objects in a Rete engine~\cite{forgy1982rete}. ConceptBase~\cite{jarke1995conceptbase} and KnowRob~\cite{Tenorth2013,beetz2018know} keep their knowledge in a store of their own (Table~\ref{tab:related}); predicate classes~\cite{chambers1993predicate}, like \ac{krrood}'s axioms, classify objects by a condition.
 
 \paragraph{Procedural attachment}
-Attaching procedures to a knowledge representation goes back to KRL~\cite{bobrow1977overview}. CLASSIC admits host-language individuals and tests written as Lisp functions~\cite{brachman1991classic}, LOOM's CLOS instances shadow its concepts~\cite{macgregor1991loom}, prior art for concepts and individuals as host classes and objects, and concrete domains add computed predicates to description logics~\cite{baader1991concrete}. Semantic attachments call external procedures from a planner's conditions~\cite{dornhege2009semantic}, and clingo calls Python functions in @-terms while grounding~\cite{gebser2019multishot,clingoapi}. In \ac{krrood}, the program's own classes and objects are the knowledge base, and inference, queries and persistence operate on them.
+Attaching procedures to a knowledge representation goes back to KRL~\cite{bobrow1977overview}. CLASSIC admits host-language individuals and tests written as Lisp functions~\cite{brachman1991classic}, LOOM's CLOS instances shadow its concepts~\cite{macgregor1991loom,loommanual}, prior art for concepts and individuals as host classes and objects, and concrete domains add computed predicates to description logics~\cite{baader1991concrete}. Semantic attachments call external procedures from a planner's conditions~\cite{dornhege2009semantic}, and clingo calls Python functions in @-terms while grounding~\cite{gebser2019multishot,clingoapi}. In \ac{krrood}, the program's own classes and objects are the knowledge base, and inference, queries and persistence operate on them.
 
 \begin{table}[t]
   \centering
@@ -204,12 +204,12 @@ Attaching procedures to a knowledge representation goes back to KRL~\cite{bobrow
   ABox are live objects & \checkmark & $\sim^{a}$ & -- & -- & -- & -- & --\\
   Inference on assignment & $\sim^{b}$ & $\sim^{c}$ & $\sim^{d}$ & -- & -- & $\sim^{e}$ & $\sim^{f}$\\
   FO queries in host language & \checkmark & $\sim^{g}$ & -- & $\sim^{h}$ & -- & -- & --\\
-  Procedures as predicates & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & $\sim^{i}$ & \checkmark\\
-  Persistent, same language & $\sim^{j}$ & \checkmark & \checkmark & \checkmark & -- & \checkmark & \checkmark\\
+  Procedures as predicates & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & -- & \checkmark\\
+  Persistent, same language & $\sim^{j}$ & \checkmark & \checkmark & $\sim^{i}$ & -- & \checkmark & \checkmark\\
   One semantics, both & $\sim^{k}$ & $\sim$ & $\sim$ & -- & $\sim$ & $\sim$ & \checkmark\\
   \bottomrule
   \end{tabular}\\[2pt]
-  \parbox{\columnwidth}{\scriptsize $^{a}$views on its quadstore; $^{b}$property rules; $^{c}$inverses only; $^{d}$reactive tabling on insert; $^{e}$incremental, on commit; $^{f}$ECA rules on Tell; $^{g}$\texttt{search()}, no joins; $^{h}$formula objects in C++/Python; $^{i}$experimental Java embedder, embedding functions only; $^{j}$translated fragment; $^{k}$Theorem~\ref{thm:ormatic}'s fragment. Sources: \cite{owlready2docs,floramanual,knowrobgithub,clingoapi,rdfoxdocs,conceptbasemanual}.}
+  \parbox{\columnwidth}{\scriptsize $^{a}$views on its quadstore; $^{b}$property rules; $^{c}$inverses only; $^{d}$reactive tabling on insert; $^{e}$incremental, on commit; $^{f}$ECA rules on Tell; $^{g}$\texttt{search()}, nested, no shared variables; $^{h}$formula objects in C++/Python; $^{i}$mongolog: a non-recursive fragment; $^{j}$translated fragment; $^{k}$Theorem~\ref{thm:ormatic}'s fragment. Sources: \cite{owlready2docs,floramanual,knowrobgithub,clingoapi,rdfoxdocs,conceptbasemanual}.}
 \end{table}
 
 \paragraph{Ontologies in agent programming}
