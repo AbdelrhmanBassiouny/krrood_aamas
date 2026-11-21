@@ -13,6 +13,7 @@ We thank the reviewers for careful reviews. Below we answer the points raised, a
 **What we claim about the closed world.** We do not claim open-world reasoning. The claim is narrower, and Propositions 5.1 and 5.2 and Corollary 1 state it. Every answer of a positive EQL query is a certain answer over the OWL ontology. Under the conditions we state, every certain answer is returned. For positive queries, the closed-world reading therefore gives the same answers as OWL's open-world entailment. Negation and aggregates are deliberately closed-world, as negation as failure. The final version states this distinction in the introduction and the discussion rather than only in Section 5.
 
 **Changes promised for the final version:**
+
 1. One pinned version for all listings, proofs and experiments, with every experiment rerun (above).
 2. A proof sketch, or the key invariant, in the main text for Propositions 5.1 to 5.3, Corollary 1 and Theorem 6.1.
 3. A second benchmark, LUBM: closure checked against GraphDB's OWL 2 RL closure, loading, and its 14 queries. LUBM has no property that is both symmetric and transitive, so step 5 does not apply to it.
@@ -33,8 +34,11 @@ We thank the reviewers for careful reviews. Below we answer the points raised, a
 **One benchmark.** The final version adds LUBM (promise 3).
 
 **Retraction of inferred facts.** We agree that this matters and will treat it explicitly. KRROOD handles three kinds of fact differently:
+
 - Facts that predicates compute, such as `CanReach`, are recomputed on every query, so they are never stale.
+
 - An asserted attribute value that is reassigned replaces the old value.
+
 - Facts derived by property rules on assignment are not retracted. This is the limitation, and it is stated in Section 8.
 
 The new agent-loop variant (promise 4) measures the three kinds separately. It compares the robot's decisions with Nemo's, which recomputes the closure on every step, and reports every stale rule-derived fact. Incremental maintenance of inferences (Motik et al., 2015) remains future work.
@@ -68,7 +72,9 @@ The new agent-loop variant (promise 4) measures the three kinds separately. It c
 ## To Reviewer MnFm
 
 **Closed-world and unique-name assumptions.** Neither assumption changes the answers of positive queries under the conditions we state.
+
 - **Closed world.** Every answer of a positive query is a certain answer over the OWL ontology (Proposition 5.1). Under the conditions of Proposition 5.2, every certain answer is returned (Corollary 1). Only negation and aggregates are closed-world, deliberately, as negation as failure.
+
 - **Unique names.** KRROOD does not merge individuals. After loading, a check reports every application of an equality rule (functional and inverse-functional properties, keys, maximum cardinalities). If none applies, no equality between distinct names is entailed, so keeping individuals apart loses no certain answer. On OWL2Bench, the check reports no equality and no inconsistency.
 
 Where these conditions fail, an answer can contradict OWL entailment. Section 8 states this, and the final version makes it explicit in the introduction. We do not claim open-world reasoning.
