@@ -1,25 +1,12 @@
 # Author response, AAMAS 2027 submission 1481
 
-Each section below is one OpenReview reply, at most 2500 characters. Post the general reply first, then the one under each review. Check lengths with `python3 count.py` before posting.
-
----
-
-## To all reviewers
-
-We thank the reviewers. The final version will contain these changes:
-
-1. One version (7FxR). Every listing, proposition and number refers to one pinned release of KRROOD. We rerun all experiments on it and accept the rerun only if the closure again equals GraphDB's and Nemo's assertion by assertion, and every answer set equals GraphDB's.
-2. Proof sketches in the main text (7FxR): the strategy or key invariant of Propositions 5.1 to 5.3, Corollary 1 and Theorem 6.1.
-3. Loading with step 5 disabled, reported next to the main results (7FxR, MnFm, HKHa).
-4. Reflection (HKHa, sSAi): a listing in which an EQL query inspects the agent's own queries, rules and planner calls.
-5. Scope (HKHa, MnFm, 7FxR): we claim certain answers of positive queries, not open-world reasoning, stated in the introduction; which facts can become stale; the agent-loop claim scoped to what it measures.
-6. Presentation (sSAi, MnFm): citations, full sentences in Section 3, a novelty paragraph tied to Table 1, a narrower title, related work.
-
-What we will not change. We keep OWL2Bench: its RL profile tests exactly the fragment our propositions cover, while LUBM, for example, uses class expressions outside OWL 2 RL. Open-world negation, incremental retraction and a query planner are research problems of their own; we name them as future work.
+Each section below is one OpenReview reply, at most 2500 characters. Post each under its review; there is no general reply. Check lengths with `python3 count.py` before posting.
 
 ---
 
 ## To Reviewer HKHa
+
+We thank the reviewer. The final version adds a listing of the agent querying its own queries and rules (W1), states in the introduction that we claim certain answers of positive queries, not open-world reasoning (W2), reports loading with step 5 disabled (W3), and states which facts can become stale (W4).
 
 Why unify. (1) Reflection: queries, rules and planner calls are objects of the same program as the domain knowledge, so the agent queries them with the same language, e.g. which rules derive T20CricketFan, or which decisions call the planner through CanReach. This puts the agent's own components at the level of its domain knowledge, in the spirit of Newell's knowledge level; a separate store needs a second meta-model. We add a listing. (2) Cost (Section 7.4): with GraphDB, deciding in SPARQL writes 405 values per step instead of 4; Owlready2 writes back 1.4 million inferences per step (33 s). (3) Predicates are the agent's own procedures, so reasoning calls its code directly.
 
@@ -35,7 +22,9 @@ Retraction. Three kinds of fact: computed predicates (all of the planner's contr
 
 ## To Reviewer 7FxR
 
-Two versions. The reviewer is right: in the submission, Propositions 5.1 to 5.3 and Theorem 6.1 do not apply to the version that produced the numbers. The final version uses one pinned release of the current version for all listings, proofs and experiments, all rerun. Footnotes 2 and 3 and the "earlier version's equality" clause go; Corollary 1's proof is rewritten for identity equality of roles; the 18-query check runs after the two ORMatic fixes; Table 5 reports the same release. We take the space from Section 3's vocabulary and the contribution list, as suggested.
+We thank the reviewer. The final version refers to one pinned release throughout (main concern), adds proof sketches to the main text, reports loading with step 5 disabled (A), and scopes the agent-loop claim (B).
+
+Two versions. The reviewer is right: in the submission, Propositions 5.1 to 5.3 and Theorem 6.1 do not apply to the version that produced the numbers. The final version uses one pinned release of the current version for all listings, proofs and experiments, all rerun; a rerun counts only if the closure again equals GraphDB's and Nemo's assertion by assertion and every answer set equals GraphDB's. Footnotes 2 and 3 and the "earlier version's equality" clause go; Corollary 1's proof is rewritten for identity equality of roles; the 18-query check runs after the two ORMatic fixes; Table 5 reports the same release. We take the space from Section 3's vocabulary and the contribution list, as suggested.
 
 Proofs. We add a few lines per result giving its strategy or key invariant. E.g., Proposition 5.2: step 1 adds the super-, equivalent, inverse and symmetric facts of every assertion; step 2 closes chains and the transitive properties they use; every later fact then relates individuals that already hold its property, so no rule derives a new type.
 
@@ -46,6 +35,8 @@ B. Agreed. The loop measures what a second world model adds (sync code, writes, 
 ---
 
 ## To Reviewer sSAi
+
+We thank the reviewer. The final version adds the citations, a novelty paragraph tied to Table 1, full sentences in Section 3 and a narrower title.
 
 Citations. GraphDB, Nemo and Owlready2 will be cited where the introduction first names them.
 
@@ -58,6 +49,8 @@ Title. Agreed; we narrow it to the claim, e.g. "KRROOD: The Agent's Object-Orien
 ---
 
 ## To Reviewer MnFm
+
+We thank the reviewer. The final version states the closed-world and unique-name conditions in the introduction, reports loading with step 5 disabled, and adds Do et al. (2018).
 
 Closed world and unique names. Neither changes the answers of positive queries under our stated conditions. Every answer is a certain answer over the ontology (Proposition 5.1), and under the conditions of Proposition 5.2 every certain answer is returned (Corollary 1). Only negation and aggregates are closed-world, as negation as failure. KRROOD does not merge individuals; after loading, a check reports every applicable equality rule (functional and inverse-functional properties, keys, max cardinalities). If none applies, no equality is entailed and no certain answer is lost. On OWL2Bench it reports none. Where the conditions fail, answers can differ from OWL entailment; Section 8 says so, and the introduction will too.
 
