@@ -56,7 +56,7 @@ Closed world and unique names. Neither changes the answers of positive queries u
 
 Symmetric and transitive properties. Step 5 is not a benchmark bypass. It is exact for every such property in any ontology: the closure relates exactly the members of each weakly connected component, as RDFox does for owl:sameAs. We add loading with step 5 disabled.
 
-Joins. Working-memory EQL has no query planner, and Section 7.3 reports this on Q22. Over all 18 queries it is still 1.8 times GraphDB's geometric mean and faster than RDFLib and Owlready2. For join-heavy queries, the same EQL query translated to SQL by ORMatic is the fastest system on 14 of 18 queries, with the same answers (Theorem 6.1).
+Joins. Working-memory EQL has no query planner, and Section 7.3 reports this on Q22. Over all 18 queries it is still 1.8 times GraphDB's geometric mean and faster than RDFLib and Owlready2. For join-heavy queries, the same EQL query translated to SQL by ORMatic is the fastest system on 14 of 18 queries, with the same answers (Theorem 6.1). A query planner for working memory is future work.
 
 Benchmark and punning. OWL2Bench's RL profile tests exactly the fragment our propositions cover. Its 47 punned IRIs (Section 7.1) place it just outside our conditions, yet the closure and all 18 answer sets equal GraphDB's.
 
