@@ -7,8 +7,8 @@ No new numbers are in the response: any number not ready by the evening of 23 No
 |---|---|---|
 | 1. One pinned version for listings, proofs and experiments; every experiment rerun | 7FxR | `revision-commits-to-main`, `ontomatic-on-main`, `ontomatic-paper-check`, `experiments-on-current-version`, `owl2bench-rerun`, `proofs-on-current-version` |
 | 2. Proof sketch or key invariant in the main text | 7FxR | `proofs-on-current-version`, `paper-revision` |
-| 3. Loading with step 5 disabled, reported next to the main results | 7FxR (A), MnFm, HKHa | `owl2bench-rerun` (the eager-closure ablation flag already exists in Ontomatic) |
-| 4. Reflection listing (EQL over the agent's own queries, rules and planner calls), framed by Newell's knowledge level | HKHa, sSAi | `reflection-listing` |
+| 3. Full loading time and memory without step 5, in Table 2 (Section 7.2 gives only "over two hours") | 7FxR (A), MnFm, HKHa | `owl2bench-rerun` (the eager-closure ablation flag already exists in Ontomatic) |
+| 4. Reflection listing (EQL over the agent's own queries, rules and planner calls), framed by Newell's knowledge level. The response shows its core, a query that finds the agent's queries calling CanReach; tested on the fork's `aamas27-unification-revision` (krrood 26.7.0) | HKHa, sSAi | `reflection-listing` |
 | 5. Closed-world claim stated in the introduction and the discussion; three kinds of fact and which can become stale; agent-loop claim scoped | HKHa, MnFm, 7FxR (B) | `paper-revision` |
 | 6. Citations in the introduction, related work stating what KRROOD adds per group of systems, full sentences in Section 3 and elsewhere, novelty paragraph, narrower title, "1.42 million of which are assertions", rela-model citation, trimmed references | sSAi, MnFm | `paper-revision` |
 
